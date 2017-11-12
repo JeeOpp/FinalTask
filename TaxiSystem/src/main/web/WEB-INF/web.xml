@@ -8,11 +8,11 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>AuthenticationController</servlet-name>
-        <servlet-class>controller.AuthenticationController</servlet-class>
+        <servlet-name>AuthorizationController</servlet-name>
+        <servlet-class>controller.AuthorizationController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AuthenticationController</servlet-name>
-        <url-pattern>/Authentication</url-pattern>
+        <servlet-name>AuthorizationController</servlet-name>
+        <url-pattern>/Authorization</url-pattern>
     </servlet-mapping>
 </web-app>

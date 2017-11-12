@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Добро пожаловать</title>
 </head>
 <body>
-HI!!
+    <button><a href="Authentication.jsp">Вход в систему</a></button>
+    <button><a href="Registration.jsp">Зарегистрироваться</a></button>
 </body>
 </html>
