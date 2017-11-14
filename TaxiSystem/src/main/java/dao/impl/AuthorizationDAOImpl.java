@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by DNAPC on 12.11.2017.
@@ -29,10 +31,8 @@ public class AuthorizationDAOImpl implements AuthorizationDAO {
     }
 
     @Override
-    public Boolean register(String... args) throws SQLException {
+    public Boolean register(String login, String password) throws SQLException {
         PreparedStatement preparedStatement=null;
-        String login = args[0];
-        String password = args[1];
         try {
             preparedStatement = connector.getRegistrationPreparedStatement();
             preparedStatement.setString(1, login);
@@ -48,9 +48,26 @@ public class AuthorizationDAOImpl implements AuthorizationDAO {
     }
 
     @Override
-    public String authenticate(String... args) throws SQLException {
-
-        return "admin";
+    public Map<String, Boolean> authenticate(String login, String password) throws SQLException {
+        ResultSet resultSet = null;
+        Map<String, Boolean> resultMap = new HashMap<>();;
+        PreparedStatement preparedStatement=null;
+        try {
+            preparedStatement = connector.getAuthenticationPreparedStatement();
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                String role = resultSet.getString(1);
+                Boolean status = resultSet.getBoolean(2);
+                resultMap.put(role, status);
+            }
+        }catch (SQLException e){
+            System.err.println("SQL exception (request or table failed): " + e);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+        return resultMap;
     }
 
     public Boolean isLoginFree(String login){

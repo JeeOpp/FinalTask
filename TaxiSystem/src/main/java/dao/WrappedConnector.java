@@ -34,6 +34,16 @@ public class WrappedConnector {
         throw new SQLException("connection or PreparedStatement is null");
     }
 
+    public PreparedStatement getAuthenticationPreparedStatement() throws SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT role, status FROM users WHERE login=? and password=?;");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
     public Statement getStatement() throws SQLException {
         if (connection != null) {
             Statement statement = connection.createStatement();
