@@ -11,10 +11,10 @@
     <title>Вход в систему</title>
 </head>
 <body>
-    <form action="Authorization" method="post">
-        <input type="hidden" name="method" value="authentication">
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value="authorization">
         <input type="text" name="login" value="Ivan">
-        <input type="text" name="password" value="Ivanov">
+        <input type="password" name="password" value="Ivanov">
         <button type="submit">Войти</button>
     </form>
 </body>

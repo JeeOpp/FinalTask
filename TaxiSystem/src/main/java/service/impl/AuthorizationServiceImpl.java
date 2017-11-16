@@ -16,21 +16,9 @@ import java.util.Map;
  */
 public class AuthorizationServiceImpl implements AuthorizationService {
     @Override
-    public Boolean register(String login, String password) throws SQLException{
+    public Map<String, Boolean> authorize(String login, String password) throws SQLException{
         DAOFactory daoFactory = DAOFactory.getInstance();
         AuthorizationDAO authorizationDAO = daoFactory.getAuthorizationDAO();
-        if (((AuthorizationDAOImpl)authorizationDAO).isLoginFree(login)) {
-            return authorizationDAO.register(login, MD5.md5Hash(password));
-        }
-        else{
-            return false;
-        }
-    }
-
-    @Override
-    public Map<String, Boolean> authenticate(String login, String password) throws SQLException{
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        AuthorizationDAO authorizationDAO = daoFactory.getAuthorizationDAO();
-        return authorizationDAO.authenticate(login, MD5.md5Hash(password));
+        return authorizationDAO.authorize(login, MD5.md5Hash(password));
     }
 }

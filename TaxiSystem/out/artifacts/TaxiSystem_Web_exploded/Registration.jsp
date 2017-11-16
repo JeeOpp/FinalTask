@@ -11,7 +11,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <form action="Authorization" method="post">
+    <form action="Controller" method="post">
         <input type="hidden" name="method" value="registration">
         <input type="text" name="login" value="Ivan">
         <input type="text" name="password" value="Ivanov">

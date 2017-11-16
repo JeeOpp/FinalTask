@@ -14,7 +14,6 @@ import java.util.Map;
  * Created by DNAPC on 12.11.2017.
  */
 public class AuthorizationDAOImpl implements AuthorizationDAO {
-    public static final String SQL_SELECT_LOGIN_USERS = "SELECT login FROM users";
 
     private WrappedConnector connector;
 
@@ -31,24 +30,7 @@ public class AuthorizationDAOImpl implements AuthorizationDAO {
     }
 
     @Override
-    public Boolean register(String login, String password) throws SQLException {
-        PreparedStatement preparedStatement=null;
-        try {
-            preparedStatement = connector.getRegistrationPreparedStatement();
-            preparedStatement.setString(1, login);
-            preparedStatement.setString(2, password);
-            preparedStatement.execute();
-            return true;
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
-            connector.closePreparedStatement(preparedStatement);
-        }
-        return false;
-    }
-
-    @Override
-    public Map<String, Boolean> authenticate(String login, String password) throws SQLException {
+    public Map<String, Boolean> authorize(String login, String password) throws SQLException {
         ResultSet resultSet = null;
         Map<String, Boolean> resultMap = new HashMap<>();;
         PreparedStatement preparedStatement=null;
@@ -68,25 +50,6 @@ public class AuthorizationDAOImpl implements AuthorizationDAO {
             connector.closePreparedStatement(preparedStatement);
         }
         return resultMap;
-    }
-
-    public Boolean isLoginFree(String login){
-        Statement statement = null;
-        try{
-            statement = connector.getStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_LOGIN_USERS);
-            while (resultSet.next()) {
-                if (resultSet.getString(1).equals(login)){
-                    return false;
-                }
-            }
-            return true;
-        }catch (SQLException e) {
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
-            connector.closeStatement(statement);
-        }
-        return false;
     }
 }
 

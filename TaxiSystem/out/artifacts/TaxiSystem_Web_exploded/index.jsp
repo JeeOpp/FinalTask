@@ -11,7 +11,7 @@
     <title>Добро пожаловать</title>
 </head>
 <body>
-    <button><a href="Authentication.jsp">Вход в систему</a></button>
+    <button><a href="Authorization.jsp">Вход в систему</a></button>
     <button><a href="Registration.jsp">Зарегистрироваться</a></button>
 </body>
 </html>
