@@ -1,12 +1,21 @@
 package service;
 
-import java.sql.ResultSet;
+import dao.AuthorizationDAO;
+import dao.DAOFactory;
+import entity.Client;
+import service.MD5;
+
 import java.sql.SQLException;
 import java.util.Map;
 
 /**
  * Created by DNAPC on 12.11.2017.
  */
-public interface AuthorizationService {
-    Map<String, Boolean> authorize(String login, String password) throws SQLException;
+public class AuthorizationService {
+
+    public Client authorize(Client client) throws SQLException{
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        AuthorizationDAO authorizationDAO = daoFactory.getAuthorizationDAO();
+        return authorizationDAO.authorize(client);
+    }
 }

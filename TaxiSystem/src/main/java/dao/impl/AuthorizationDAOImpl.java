@@ -2,6 +2,8 @@ package dao.impl;
 
 import dao.AuthorizationDAO;
 import dao.WrappedConnector;
+import entity.Client;
+import service.MD5;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,26 +32,31 @@ public class AuthorizationDAOImpl implements AuthorizationDAO {
     }
 
     @Override
-    public Map<String, Boolean> authorize(String login, String password) throws SQLException {
+    public Client authorize(Client client) throws SQLException {
         ResultSet resultSet = null;
-        Map<String, Boolean> resultMap = new HashMap<>();;
+        Client detected = null;
         PreparedStatement preparedStatement=null;
         try {
             preparedStatement = connector.getAuthenticationPreparedStatement();
-            preparedStatement.setString(1, login);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(1, client.getLogin());
+            preparedStatement.setString(2, MD5.md5Hash(client.getPassword()));
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-                String role = resultSet.getString(1);
-                Boolean status = resultSet.getBoolean(2);
-                resultMap.put(role, status);
+                int id = resultSet.getInt(1);
+                String login = resultSet.getString(2);
+                String password = resultSet.getString(3);
+                String name = resultSet.getString(4);
+                String surname = resultSet.getString(5);
+                int bonusPoints = resultSet.getInt(6);
+                Boolean banStatus  = resultSet.getBoolean(7);
+                detected = new Client(id,login,password,name,surname,bonusPoints,banStatus);
             }
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
             connector.closePreparedStatement(preparedStatement);
         }
-        return resultMap;
+        return detected;
     }
 }
 

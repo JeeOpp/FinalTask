@@ -1,10 +1,24 @@
 package service;
 
+import dao.DAOFactory;
+import dao.RegistrationDAO;
+import dao.impl.RegistrationDAOImpl;
+import entity.Client;
+
 import java.sql.SQLException;
 
 /**
- * Created by DNAPC on 16.11.2017.
+ * Created by DNAPC on 28.11.2017.
  */
-public interface RegistrationService {
-    Boolean register(String login, String password) throws SQLException;
+public class RegistrationService {
+    public Boolean registerClient(Client client) throws SQLException {
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        RegistrationDAO registrationDAO = daoFactory.getRegistrationDAO();
+        if (((RegistrationDAOImpl) registrationDAO).isLoginFree(client.getLogin())) {
+            return registrationDAO.registerClient(client);
+        } else {
+            return false;
+
+        }
+    }
 }

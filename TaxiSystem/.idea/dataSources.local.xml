@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="finaltask@localhost" uuid="9a123198-f630-4b82-bf42-269dd662c1d5">
+    <data-source name="taxisystem@localhost" uuid="d5c56219-4ea9-421e-b4bb-90bbf7d273ae">
       <database-info product="MySQL" version="5.5.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.44 ( Revision: b3cda4f864902ffdde495b9df93937c3e20009be )">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -9,7 +9,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <resolve-scope>finaltask:</resolve-scope>
+      <resolve-scope>taxisystem:</resolve-scope>
     </data-source>
   </component>
 </project>

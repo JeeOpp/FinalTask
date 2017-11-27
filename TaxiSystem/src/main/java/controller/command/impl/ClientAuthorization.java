@@ -1,6 +1,7 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import entity.Client;
 import service.AuthorizationService;
 import service.ServiceFactory;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 /**
  * Created by DNAPC on 16.11.2017.
  */
-public class Authorization implements ControllerCommand {
+public class ClientAuthorization implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -22,19 +23,22 @@ public class Authorization implements ControllerCommand {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        Map<String,Boolean> resultMap;
-        try {
-            if ((resultMap = authorizationService.authorize(login,password)).isEmpty()){
+
+        Client client = new Client(login,password);
+        try{
+            if ((client = authorizationService.authorize(client))==null){
                 req.getRequestDispatcher("WEB-INF/AuthorizationProblem.jsp").forward(req,resp);
             }else {
-                Map.Entry<String, Boolean> entry = resultMap.entrySet().iterator().next();
-                String role = entry.getKey();
-                Boolean status = entry.getValue();
-
-                if (status) {
+                if(client.hasBanStatus()){
                     req.getRequestDispatcher("WEB-INF/Banned.jsp").forward(req, resp);
                 } else {
-                    choosePageAuthentication(req, resp, role);
+                    //////////////////////// TODO refactor it
+                    if(client.getLogin().equals("root")){
+                        req.getRequestDispatcher("WEB-INF/Admin/AdminMain.jsp").forward(req, resp);
+                    }else {
+                        req.getRequestDispatcher("WEB-INF/User/UserMain.jsp").forward(req, resp);
+                    }
+                    ////////////////////////
                 }
             }
         }catch (SQLException ex){
@@ -42,7 +46,7 @@ public class Authorization implements ControllerCommand {
         }
     }
 
-    private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
+   /*private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
         if (role.equals("user")) {
             req.getRequestDispatcher("WEB-INF/User/UserMain.jsp").forward(req, resp);
         }
@@ -52,5 +56,5 @@ public class Authorization implements ControllerCommand {
         if (role.equals("admin")) {
             req.getRequestDispatcher("WEB-INF/Admin/AdminMain.jsp").forward(req, resp);
         }
-    }
+    }*/
 }

@@ -12,9 +12,11 @@
 </head>
 <body>
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value="registration">
+        <input type="hidden" name="method" value="ClientRegistration">
         <input type="text" name="login" value="Ivan">
         <input type="text" name="password" value="Ivanov">
+        <input type="text" name="firstName" value="">
+        <input type="text" name="lastName" value="">
         <button type="submit">Зарегистрироваться</button>
     </form>
 </body>

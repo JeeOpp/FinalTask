@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="taxisystem@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="taxisystem">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="finaltask"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mydb"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="task1"/>
+    <table id="9" parent="2" name="car"/>
+    <table id="10" parent="2" name="client"/>
+    <table id="11" parent="2" name="order"/>
+    <table id="12" parent="2" name="review"/>
+    <table id="13" parent="2" name="taxi"/>
+    <column id="14" parent="9" name="number">
+      <Position>1</Position>
+      <Comment>Государственный номер машины формата, пример: 3333AD7.</Comment>
+      <DataType>char(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="9" name="car">
+      <Position>2</Position>
+      <Comment>Марка и модель автомобиля. Не разбивал на отдельные таблицы марку и модель из-за того что в моей системе клиенту будут предъявлять марку и модель вместе. </Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="9" name="colour">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="17" parent="9" name="PRIMARY">
+      <ColNames>number</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>Уникальный номер клиента. Введен из-за того что альтернативный ключ логин может быть слишком большим.</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="10" name="login">
+      <Position>2</Position>
+      <Comment>Логин для входа в систему</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="10" name="password">
+      <Position>3</Position>
+      <Comment>Пароль для входа</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="10" name="name">
+      <Position>4</Position>
+      <Comment>Имя клиента. </Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="22" parent="10" name="surname">
+      <Position>5</Position>
+      <Comment>Фамилия клиента.</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="23" parent="10" name="bonusPoints">
+      <Position>6</Position>
+      <Comment>Колличество бонусных баллов у клиента. За бонусные баллы можно оплатить поездку. По умолчанию бонусов - 0.</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="24" parent="10" name="banStatus">
+      <Position>7</Position>
+      <Comment>Поле показывающее имеет ли бан данный клиент. true - имеет, false - не имеет.</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="25" parent="10" name="login">
+      <ColNames>login</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="27" parent="10" name="login">
+      <ColNames>login</ColNames>
+      <UnderlyingIndexName>login</UnderlyingIndexName>
+    </key>
+    <column id="28" parent="11" name="order_id">
+      <Position>1</Position>
+      <Comment>Уникальный номер (ключ) заказа, создавалься из-за того что cliend_id и taxi_id в качестве составного ключа не давали бы уникальность записей так как клиент может еще раз попасть к такому же таксисту. </Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="11" name="client_id">
+      <Position>2</Position>
+      <Comment>Внешний ключ клиента.</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="11" name="taxi_id">
+      <Position>3</Position>
+      <Comment>Внешний ключ таксиста.</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="11" name="orderStatus">
+      <Position>4</Position>
+      <Comment>Статус заказа. Как тоько клиент делает заказ статус заказа по имолчанию становиться processed (в ожидании). Таксист должен подтвердить (accepted) или отклонить (rejected) закад.В случае подтверждения клиент ждет свою машину, в случае отаза делает новый заказ.</Comment>
+      <DataType>enum(&apos;rejected&apos;, &apos;accepted&apos;, &apos;processed&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;processed&apos;</DefaultExpression>
+    </column>
+    <column id="32" parent="11" name="source_coord">
+      <Position>5</Position>
+      <Comment>Исходные координаты клиента.
+</Comment>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="11" name="destiny_coord">
+      <Position>6</Position>
+      <Comment>Кординаты пункта назначения клиента.</Comment>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="11" name="price">
+      <Position>7</Position>
+      <Comment>Цена поездки.</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="35" parent="11" name="fk_Client_has_Taxi_Client1_idx">
+      <ColNames>client_id</ColNames>
+    </index>
+    <index id="36" parent="11" name="fk_Client_has_Taxi_Taxi1_idx">
+      <ColNames>taxi_id</ColNames>
+    </index>
+    <index id="37" parent="11" name="order">
+      <ColNames>client_id
+taxi_id</ColNames>
+    </index>
+    <key id="38" parent="11" name="PRIMARY">
+      <ColNames>order_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="39" parent="11" name="fk_Client_has_Taxi_Client1">
+      <ColNames>client_id</ColNames>
+      <RefSchemaName>taxisystem</RefSchemaName>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="40" parent="11" name="fk_Client_has_Taxi_Taxi1">
+      <ColNames>taxi_id</ColNames>
+      <RefSchemaName>taxisystem</RefSchemaName>
+      <RefTableName>taxi</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="41" parent="12" name="review_id">
+      <Position>1</Position>
+      <Comment>Уникальный номер (ключ) отзыва, создавалься из-за того что cliend_id и taxi_id в качестве составного ключа не давали бы уникальность записей так как клиент может еще раз попасть к такому же таксисту.</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="12" name="client_id">
+      <Position>2</Position>
+      <Comment>Внишний ключ клиента.</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="12" name="taxi_id">
+      <Position>3</Position>
+      <Comment>Внешний ключ таксиста</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="12" name="comment">
+      <Position>4</Position>
+      <Comment>Комментарий (отзыв) к таксисту. Может отсуствовать.</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="45" parent="12" name="rating">
+      <Position>5</Position>
+      <Comment>Оценка таксисту от 1 до 5.</Comment>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <index id="46" parent="12" name="fk_client_has_Taxi_client_idx">
+      <ColNames>client_id</ColNames>
+    </index>
+    <index id="47" parent="12" name="fk_Client_has_Taxi_Taxi2_idx">
+      <ColNames>taxi_id</ColNames>
+    </index>
+    <index id="48" parent="12" name="rewiew">
+      <ColNames>client_id
+taxi_id</ColNames>
+    </index>
+    <key id="49" parent="12" name="PRIMARY">
+      <ColNames>review_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="50" parent="12" name="fk_client_has_Taxi_Client2">
+      <ColNames>client_id</ColNames>
+      <RefSchemaName>taxisystem</RefSchemaName>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="51" parent="12" name="fk_Client_has_Taxi_Taxi2">
+      <ColNames>taxi_id</ColNames>
+      <RefSchemaName>taxisystem</RefSchemaName>
+      <RefTableName>taxi</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="52" parent="13" name="id">
+      <Position>1</Position>
+      <Comment>Уникальный номер таксиста. Введен из-за того что альтернативный ключ логин может быть слишком большим.</Comment>
+      <DataType>mediumint(7)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="53" parent="13" name="carNumber">
+      <Position>2</Position>
+      <Comment>Государственный номер машины, на которой ездит текущий таксист, является внешним ключем к таблице car. </Comment>
+      <DataType>char(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="13" name="login">
+      <Position>3</Position>
+      <Comment>логин для входа в систему</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="13" name="password">
+      <Position>4</Position>
+      <Comment>пароль</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="13" name="name">
+      <Position>5</Position>
+      <Comment>Имя таксиста.</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="57" parent="13" name="surname">
+      <Position>6</Position>
+      <Comment>Фамилия таксиста.</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="58" parent="13" name="availableStatus">
+      <Position>7</Position>
+      <Comment>Поле показывающее доступен ли в данный момент таксист. Если в данный момент у него заказон нет, то значение true, если таксист не в системе или на заказе, то значение false.</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="59" parent="13" name="banStatus">
+      <Position>8</Position>
+      <Comment>есть ли бан у тасиста</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="60" parent="13" name="fk_Taxi_car1_idx">
+      <ColNames>carNumber</ColNames>
+    </index>
+    <index id="61" parent="13" name="login">
+      <ColNames>login</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="63" parent="13" name="login">
+      <ColNames>login</ColNames>
+      <UnderlyingIndexName>login</UnderlyingIndexName>
+    </key>
+    <foreign-key id="64" parent="13" name="fk_Taxi_car1">
+      <ColNames>carNumber</ColNames>
+      <RefSchemaName>taxisystem</RefSchemaName>
+      <RefTableName>car</RefTableName>
+      <RefColNames>number</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

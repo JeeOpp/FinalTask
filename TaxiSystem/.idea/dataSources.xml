@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="finaltask@localhost" uuid="9a123198-f630-4b82-bf42-269dd662c1d5">
+    <data-source source="LOCAL" name="taxisystem@localhost" uuid="d5c56219-4ea9-421e-b4bb-90bbf7d273ae">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/finaltask</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/taxisystem</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

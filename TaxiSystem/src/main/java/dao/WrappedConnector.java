@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.*;
 import java.util.MissingResourceException;
+import java.util.Properties;
 
 /**
  * Created by DNAPC on 13.11.2017.
@@ -14,7 +15,12 @@ public class WrappedConnector {
     public WrappedConnector() {
         try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/finaltask", "root", "root");
+            Properties properties=new Properties();
+            properties.setProperty("user","root");
+            properties.setProperty("password","root");
+            properties.setProperty("useUnicode","true");
+            properties.setProperty("characterEncoding","UTF-8");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/taxisystem", properties);
         } catch (MissingResourceException e) {
             //log.error("properties file is missing " + e);
             e.printStackTrace();
@@ -26,7 +32,7 @@ public class WrappedConnector {
 
     public PreparedStatement getRegistrationPreparedStatement() throws SQLException {
         if (connection != null) {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `finaltask`.`users` (`login`, `password`) VALUES (?,?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO client (login, password, name, surname) VALUES (?,?,?,?);");
             if (preparedStatement != null) {
                 return preparedStatement;
             }
@@ -36,7 +42,7 @@ public class WrappedConnector {
 
     public PreparedStatement getAuthenticationPreparedStatement() throws SQLException{
         if (connection != null) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT role, status FROM users WHERE login=? and password=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM client WHERE login=? and password=?;");
             if (preparedStatement != null) {
                 return preparedStatement;
             }

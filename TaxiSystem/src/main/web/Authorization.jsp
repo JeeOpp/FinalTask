@@ -12,10 +12,17 @@
 </head>
 <body>
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value="authorization">
-        <input type="text" name="login" value="Ivan">
-        <input type="password" name="password" value="Ivanov">
-        <button type="submit">Войти</button>
+        <input type="hidden" name="method" value="ClientAuthorization">
+        <input type="text" name="login" value="client">
+        <input type="password" name="password" value="root">
+        <button type="submit">Я клиент</button>
+    </form>
+
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value="TaxiAuthorization">
+        <input type="text" name="login" value="taxi">
+        <input type="password" name="password" value="root">
+        <button type="submit">Я таксист</button>
     </form>
 </body>
 </html>
