@@ -2,6 +2,7 @@ package controller.command.impl;
 
 import controller.command.ControllerCommand;
 import entity.Client;
+import entity.User;
 import service.AuthorizationService;
 import service.ServiceFactory;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 /**
  * Created by DNAPC on 16.11.2017.
  */
-public class ClientAuthorization implements ControllerCommand {
+public class Authorization implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -24,21 +25,15 @@ public class ClientAuthorization implements ControllerCommand {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        Client client = new Client(login,password);
+        User user = new User(login,password);
         try{
-            if ((client = authorizationService.authorize(client))==null){
+            if ((user = authorizationService.authorize(user))==null){
                 req.getRequestDispatcher("WEB-INF/AuthorizationProblem.jsp").forward(req,resp);
             }else {
-                if(client.hasBanStatus()){
+                if(user.hasBanStatus()){
                     req.getRequestDispatcher("WEB-INF/Banned.jsp").forward(req, resp);
                 } else {
-                    //////////////////////// TODO refactor it
-                    if(client.getLogin().equals("root")){
-                        req.getRequestDispatcher("WEB-INF/Admin/AdminMain.jsp").forward(req, resp);
-                    }else {
-                        req.getRequestDispatcher("WEB-INF/User/UserMain.jsp").forward(req, resp);
-                    }
-                    ////////////////////////
+                    choosePageAuthentication(req,resp,user.getRole());
                 }
             }
         }catch (SQLException ex){
@@ -46,9 +41,9 @@ public class ClientAuthorization implements ControllerCommand {
         }
     }
 
-   /*private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
-        if (role.equals("user")) {
-            req.getRequestDispatcher("WEB-INF/User/UserMain.jsp").forward(req, resp);
+   private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
+        if (role.equals("client")) {
+            req.getRequestDispatcher("WEB-INF/Client/ClientMain.jsp").forward(req, resp);
         }
         if (role.equals("taxi")) {
             req.getRequestDispatcher("WEB-INF/Taxi/TaxiMain.jsp").forward(req, resp);
@@ -56,5 +51,5 @@ public class ClientAuthorization implements ControllerCommand {
         if (role.equals("admin")) {
             req.getRequestDispatcher("WEB-INF/Admin/AdminMain.jsp").forward(req, resp);
         }
-    }*/
+    }
 }

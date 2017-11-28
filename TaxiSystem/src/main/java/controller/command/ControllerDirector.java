@@ -1,7 +1,7 @@
 package controller.command;
 
-import controller.command.impl.ClientAuthorization;
-import controller.command.impl.ClientRegistration;
+import controller.command.impl.Authorization;
+import controller.command.impl.Registration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +13,8 @@ public class ControllerDirector {
     private Map<String, ControllerCommand> commandMap = new HashMap<>();
 
     public ControllerDirector(){
-        commandMap.put("ClientAuthorization", new ClientAuthorization());
-        //commandMap.put("TaxiAuthorization", new TaxiAuthorization());
-        commandMap.put("ClientRegistration", new ClientRegistration());
+        commandMap.put("authorization", new Authorization());
+        commandMap.put("registration", new Registration());
     }
     public ControllerCommand getCommand(String method){
         return commandMap.get(method);

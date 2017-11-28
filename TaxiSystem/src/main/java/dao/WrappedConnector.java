@@ -42,7 +42,17 @@ public class WrappedConnector {
 
     public PreparedStatement getAuthenticationPreparedStatement() throws SQLException{
         if (connection != null) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM client WHERE login=? and password=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id,login,password, name,surname,banStatus,role  FROM client WHERE login=? AND password=? UNION SELECT id,login,password, name,surname,banStatus,role  FROM taxi WHERE login=? AND password=?");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
+    public PreparedStatement getRolePreparedStatement() throws  SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT role FROM taxi WHERE taxi.login = ? UNION SELECT role FROM client WHERE client.login = ?;");
             if (preparedStatement != null) {
                 return preparedStatement;
             }
