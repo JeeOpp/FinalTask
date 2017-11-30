@@ -27,12 +27,10 @@ public class Registration implements ControllerCommand {
         String lastName = req.getParameter("lastName");
         /// String CAR!!!!!!!!!!
         String role = req.getParameter("role");
-        User user;
-
         try {
             if (role.equals("client")) {
-                user = new Client(login,password,firstName,lastName);
-                if(registrationService.registerClient(user)){
+                Client client = new Client(login,password,firstName,lastName);
+                if(registrationService.registerClient(client)){
                     req.getRequestDispatcher("WEB-INF/RegistrationSuccess.jsp").forward(req,resp);
                 }else {
                     req.getRequestDispatcher("WEB-INF/RegistrationProblem.jsp").forward(req,resp);

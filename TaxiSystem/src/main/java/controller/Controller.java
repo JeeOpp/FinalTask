@@ -21,8 +21,8 @@ public class Controller extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(MD5.md5Hash("root"));
-        System.out.println(MD5.md5Hash("taxi"));
+        //System.out.println(MD5.md5Hash("root"));
+        //System.out.println(MD5.md5Hash("taxi"));
         resp.setContentType("text/html");
 
         String method = req.getParameter("method");

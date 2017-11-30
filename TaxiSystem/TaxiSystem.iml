@@ -30,5 +30,6 @@
     <orderEntry type="library" name="javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.44" level="project" />
     <orderEntry type="library" name="commons-codec-1.5" level="project" />
+    <orderEntry type="library" name="org.codehaus.sonar-plugins.javascript:javascript-squid:1.4" level="project" />
   </component>
 </module>

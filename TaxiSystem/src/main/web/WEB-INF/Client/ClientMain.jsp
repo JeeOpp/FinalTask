@@ -9,8 +9,21 @@
 <html>
 <head>
     <title>User</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
+    <style>
+        <%@include file="mapStyle.css"%>
+    </style>
+    <script>
+        <%@include file="map.js"%>
+    </script>
 </head>
 <body>
-    Darov USER
+    <div id="map" class="map"></div>
+
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value = "callTaxi">
+        <input type="hidden" name="position">
+        <button type="submit">Заказать такси</button>
+    </form>
 </body>
 </html>
