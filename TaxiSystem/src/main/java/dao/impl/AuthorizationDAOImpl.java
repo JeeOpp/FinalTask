@@ -32,7 +32,7 @@ public class AuthorizationDAOImpl implements AuthorizationDAO{
 
     @Override
     public User authorize(User user) throws SQLException {
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connector.getAuthenticationPreparedStatement();
@@ -41,6 +41,8 @@ public class AuthorizationDAOImpl implements AuthorizationDAO{
             preparedStatement.setString(3, user.getLogin());
             preparedStatement.setString(4, MD5.md5Hash(user.getPassword()));
             resultSet = preparedStatement.executeQuery();
+
+            user = null;
 
             if (resultSet.next()) {
                 int id = resultSet.getInt(1);

@@ -2,6 +2,7 @@ package controller.command;
 
 import controller.command.impl.Authorization;
 import controller.command.impl.Dispatcher;
+import controller.command.impl.Localization;
 import controller.command.impl.Registration;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class ControllerDirector {
         commandMap.put("authorization", new Authorization());
         commandMap.put("registration", new Registration());
         commandMap.put("callTaxi", new Dispatcher());
+        commandMap.put("localization", new Localization());
     }
     public ControllerCommand getCommand(String method){
         return commandMap.get(method);

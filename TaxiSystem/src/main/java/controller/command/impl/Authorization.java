@@ -28,10 +28,10 @@ public class Authorization implements ControllerCommand {
         User user = new User(login,password);
         try{
             if ((user = authorizationService.authorize(user))==null){
-                req.getRequestDispatcher("WEB-INF/AuthorizationProblem.jsp").forward(req,resp);
+                req.getRequestDispatcher("WEB-INF/authorizationProblem.jsp").forward(req,resp);
             }else {
                 if(user.hasBanStatus()){
-                    req.getRequestDispatcher("WEB-INF/Banned.jsp").forward(req, resp);
+                    req.getRequestDispatcher("WEB-INF/banned.jsp").forward(req, resp);
                 } else {
                     choosePageAuthentication(req,resp,user.getRole());
                 }
@@ -43,13 +43,13 @@ public class Authorization implements ControllerCommand {
 
    private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
         if (role.equals("client")) {
-            req.getRequestDispatcher("WEB-INF/Client/ClientMain.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/Client/clientMain.jsp").forward(req, resp);
         }
         if (role.equals("taxi")) {
-            req.getRequestDispatcher("WEB-INF/Taxi/TaxiMain.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/Taxi/taxiMain.jsp").forward(req, resp);
         }
         if (role.equals("admin")) {
-            req.getRequestDispatcher("WEB-INF/Admin/AdminMain.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/Admin/adminMain.jsp").forward(req, resp);
         }
     }
 }
