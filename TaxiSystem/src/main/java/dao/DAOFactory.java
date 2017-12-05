@@ -1,6 +1,7 @@
 package dao;
 
 import dao.impl.AuthorizationDAOImpl;
+import dao.impl.DispatcherDAO;
 import dao.impl.RegistrationDAOImpl;
 
 /**
@@ -10,6 +11,7 @@ public class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
     private final AuthorizationDAO authorizationDAO = new AuthorizationDAOImpl();
     private final RegistrationDAO registrationDAO = new RegistrationDAOImpl();
+    private final DispatcherDAO dispatcherDAO = new DispatcherDAO();
 
     private DAOFactory() {}
 
@@ -21,5 +23,8 @@ public class DAOFactory {
     }
     public RegistrationDAO getRegistrationDAO(){
         return registrationDAO;
+    }
+    public DispatcherDAO getDispatcherDAO(){
+        return dispatcherDAO;
     }
 }

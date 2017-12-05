@@ -12,4 +12,5 @@ import java.util.Map;
  */
 public interface AuthorizationDAO {
     User authorize(User user) throws SQLException;
+    void logOut(User user) throws SQLException;
 }

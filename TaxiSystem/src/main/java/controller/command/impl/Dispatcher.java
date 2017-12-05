@@ -1,6 +1,9 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import entity.Taxi;
+import service.DispatcherService;
+import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.List;
 
 /**
  * Created by DNAPC on 29.11.2017.
@@ -16,9 +20,11 @@ import java.io.Writer;
 public class Dispatcher implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Taxi> availableTaxiList = dispatcherService.getAvailableTaxiList();
 
-        Object position = req.getParameter("position");
-        PrintWriter printWriter = resp.getWriter();
-        printWriter.println(position.toString());
+        req.setAttribute("availableTaxiList", availableTaxiList);
+        req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req,resp);
     }
 }

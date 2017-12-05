@@ -7,6 +7,7 @@ public class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
     private final AuthorizationService authorizationService = new AuthorizationService();
     private final RegistrationService registrationService = new RegistrationService();
+    private final DispatcherService dispatcherService = new DispatcherService();
 
     private ServiceFactory() {}
 
@@ -19,4 +20,5 @@ public class ServiceFactory {
     public RegistrationService getRegistrationService(){
         return registrationService;
     }
+    public DispatcherService getDispatcherService(){ return dispatcherService; }
 }

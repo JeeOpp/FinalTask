@@ -1,8 +1,11 @@
+//dispatcherDAO метод setResultSet
+
+
+
 package controller;
 
 import controller.command.ControllerCommand;
 import controller.command.ControllerDirector;
-import service.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

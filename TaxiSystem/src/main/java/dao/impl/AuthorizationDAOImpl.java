@@ -62,5 +62,8 @@ public class AuthorizationDAOImpl implements AuthorizationDAO{
         return user;
     }
 
+    @Override
+    public void logOut(User user) throws SQLException {
 
+    }
 }
