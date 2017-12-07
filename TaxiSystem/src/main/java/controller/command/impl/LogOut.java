@@ -4,6 +4,8 @@ import controller.command.ControllerCommand;
 import dao.AuthorizationDAO;
 import dao.DAOFactory;
 import entity.User;
+import service.AuthorizationService;
+import service.ServiceFactory;
 
 
 import javax.servlet.ServletException;
@@ -20,14 +22,7 @@ public class LogOut implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        AuthorizationDAO authorizationDAO = daoFactory.getAuthorizationDAO();
-        try {
-            authorizationDAO.logOut(user); //TODO Realize
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }
+
         session.invalidate();
         resp.sendRedirect("index.jsp");
     }

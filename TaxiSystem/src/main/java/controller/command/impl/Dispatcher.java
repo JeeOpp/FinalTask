@@ -20,11 +20,24 @@ import java.util.List;
 public class Dispatcher implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if (action.equals("preOrder")) {
+            preOrder(req,resp);
+        }
+        if (action.equals("callTaxi")){
+            callTaxi(req,resp);
+        }
+    }
+
+    private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         List<Taxi> availableTaxiList = dispatcherService.getAvailableTaxiList();
 
         req.setAttribute("availableTaxiList", availableTaxiList);
-        req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req, resp);
+    }
+    private void callTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
     }
 }

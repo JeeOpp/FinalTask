@@ -16,9 +16,19 @@ public class User {
     public User() {
     }
 
+    public User(String role){
+        this.role = role;
+    }
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User(int id, boolean banStatus, String role){
+        this(role);
+        this.id = id;
+        this.banStatus = banStatus;
     }
 
     public User(String login, String password, String firstName, String lastName) {

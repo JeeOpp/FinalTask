@@ -5,7 +5,6 @@ package entity;
  */
 public class Client extends User{
     private int bonusPoints;
-    private boolean banStatus;
 
     public Client(){}
 
@@ -17,15 +16,8 @@ public class Client extends User{
         return bonusPoints;
     }
 
-    public boolean hasBanStatus() {
-        return banStatus;
-    }
-
     public void setBonusPoints(int bonusPoints) {
         this.bonusPoints = bonusPoints;
     }
 
-    public void setBanStatus(boolean banStatus) {
-        this.banStatus = banStatus;
-    }
 }

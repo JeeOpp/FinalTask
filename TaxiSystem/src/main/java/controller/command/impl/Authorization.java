@@ -2,6 +2,7 @@ package controller.command.impl;
 
 import controller.command.ControllerCommand;
 import entity.Client;
+import entity.Taxi;
 import entity.User;
 import service.AuthorizationService;
 import service.ServiceFactory;
@@ -9,6 +10,7 @@ import service.ServiceFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
@@ -25,25 +27,24 @@ public class Authorization implements ControllerCommand {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        User user = new User(login,password);
-        try{
-            if ((user = authorizationService.authorize(user))==null){
+        User user;
+        try {
+            if ((user = authorizationService.authorize(login,password)) == null) {
                 resp.sendRedirect("authorizationProblem.jsp");
-            }else {
-                req.getSession().setAttribute("user",user);
-                if(user.hasBanStatus()){
+            } else {
+                if (user.hasBanStatus()) {
                     resp.sendRedirect("banned.jsp");
                 } else {
-                    choosePageAuthentication(req,resp,user.getRole());
+                    req.getSession().setAttribute("user",user);
+                    choosePageAuthentication(req, resp, user.getRole());
                 }
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
    private void choosePageAuthentication(HttpServletRequest req, HttpServletResponse resp, String role) throws ServletException, IOException{
-
         if (role.equals("client")) {
             req.getRequestDispatcher("WEB-INF/Client/main.jsp").forward(req, resp);
         }

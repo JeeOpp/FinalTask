@@ -2,7 +2,9 @@ package dao.impl;
 
 import dao.AuthorizationDAO;
 import dao.WrappedConnector;
+import entity.Car;
 import entity.Client;
+import entity.Taxi;
 import entity.User;
 import service.MD5;
 
@@ -31,39 +33,93 @@ public class AuthorizationDAOImpl implements AuthorizationDAO{
     }
 
     @Override
-    public User authorize(User user) throws SQLException {
+    public String preAuthorize(String login, String password) throws SQLException {
         ResultSet resultSet;
         PreparedStatement preparedStatement = null;
+        String role = null;
         try {
-            preparedStatement = connector.getAuthenticationPreparedStatement();
-            preparedStatement.setString(1, user.getLogin());
-            preparedStatement.setString(2, MD5.md5Hash(user.getPassword()));
-            preparedStatement.setString(3, user.getLogin());
-            preparedStatement.setString(4, MD5.md5Hash(user.getPassword()));
+            preparedStatement = connector.getAuthRolePreparedStatement();
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, MD5.md5Hash(password));
+            preparedStatement.setString(3, login);
+            preparedStatement.setString(4, MD5.md5Hash(password));
             resultSet = preparedStatement.executeQuery();
-
-            user = null;
-
             if (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String login = resultSet.getString(2);
-                String password = resultSet.getString(3);
-                String name = resultSet.getString(4);
-                String surname = resultSet.getString(5);
-                boolean banStatus = resultSet.getBoolean(6);
-                String role = resultSet.getString(7);
-                user = new User(id, login, password, name, surname, banStatus, role);
+                 role = resultSet.getString(1);
             }
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
             connector.closePreparedStatement(preparedStatement);
         }
-        return user;
+        return role;
+    }
+
+    @Override
+    public Client clientAuthorize(String login, String password) throws SQLException {
+        ResultSet resultSet;
+        PreparedStatement preparedStatement = null;
+        Client client = null;
+        try {
+            preparedStatement = connector.getAuthClientPreparedStatement();
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, MD5.md5Hash(password));
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                client = new Client();
+                client.setId(resultSet.getInt(1));
+                client.setLogin(resultSet.getString(2));
+                client.setPassword(resultSet.getString(3));
+                client.setFirstName(resultSet.getString(4));
+                client.setLastName(resultSet.getString(5));
+                client.setBonusPoints(resultSet.getInt(6));
+                client.setBanStatus(resultSet.getBoolean(7));
+                client.setRole(resultSet.getString(8));
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQL exception (request or table failed): " + ex);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+        return client;
+    }
+
+    @Override
+    public Taxi taxiAuthorize(String login, String password) throws SQLException {
+        ResultSet resultSet;
+        PreparedStatement preparedStatement = null;
+        Taxi taxi = null;
+        try {
+            preparedStatement = connector.getAuthTaxiPreparedStatement();
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, MD5.md5Hash(password));
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                taxi = new Taxi();
+                taxi.setId(resultSet.getInt(1));
+                taxi.setLogin(resultSet.getString(2));
+                taxi.setPassword(resultSet.getString(3));
+                taxi.setFirstName(resultSet.getString(4));
+                taxi.setLastName(resultSet.getString(5));
+                taxi.setAvailableStatus(resultSet.getBoolean(6));
+                taxi.setBanStatus(resultSet.getBoolean(7));
+                taxi.setRole(resultSet.getString(8));
+                Car car = new Car();
+                car.setNumber(resultSet.getString(9));
+                car.setName(resultSet.getString(10));
+                car.setColour(resultSet.getString(11));
+                taxi.setCar(car);
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQL exception (request or table failed): " + ex);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+        return taxi;
     }
 
     @Override
     public void logOut(User user) throws SQLException {
-
+        //TODO нахера?
     }
 }

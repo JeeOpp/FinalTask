@@ -22,4 +22,8 @@ public class DispatcherService {
         }
         return availableTaxiList;
     }
+    public void setOrder(){
+
+    }
+
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherDAO {
-    private static final String SQL_SELECT_AVAILABLE_TAXI="SELECT taxi.carNumber, taxi.login, taxi.name, taxi.surname, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number WHERE taxi.availableStatus = true;";
+    private static final String SQL_SELECT_AVAILABLE_TAXI="SELECT taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number WHERE taxi.availableStatus = true;";
 
     private WrappedConnector connector;
 

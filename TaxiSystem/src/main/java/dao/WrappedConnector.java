@@ -40,9 +40,27 @@ public class WrappedConnector {
         throw new SQLException("connection or PreparedStatement is null");
     }
 
-    public PreparedStatement getAuthenticationPreparedStatement() throws SQLException{
+    public PreparedStatement getAuthRolePreparedStatement() throws SQLException{
         if (connection != null) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id,login,password, name,surname,banStatus,role  FROM client WHERE login=? AND password=? UNION SELECT id,login,password, name,surname,banStatus,role  FROM taxi WHERE login=? AND password=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement getAuthClientPreparedStatement() throws SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT *  FROM client WHERE login=? AND password=?");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement getAuthTaxiPreparedStatement() throws SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;");
             if (preparedStatement != null) {
                 return preparedStatement;
             }
@@ -50,15 +68,6 @@ public class WrappedConnector {
         throw new SQLException("connection or PreparedStatement is null");
     }
 
-    public PreparedStatement getRolePreparedStatement() throws  SQLException{
-        if (connection != null) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT role FROM taxi WHERE taxi.login = ? UNION SELECT role FROM client WHERE client.login = ?;");
-            if (preparedStatement != null) {
-                return preparedStatement;
-            }
-        }
-        throw new SQLException("connection or PreparedStatement is null");
-    }
 
     public Statement getStatement() throws SQLException {
         if (connection != null) {

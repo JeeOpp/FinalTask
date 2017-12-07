@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <jsp:useBean id="user" class="entity.User" scope="session"/>
+    <jsp:useBean id="user" class="entity.Client" scope="session"/>
     <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
 
     <form action="Controller" method="post">
@@ -40,13 +40,12 @@
 
 <!--///////////////////////////////////////////////////////////////////////////////// -->
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher">
-        <input type="hidden" name="page" value="WEB-INF/Client/main.jsp"/>
+        <input type="hidden" name="method" value = "dispatcher"/>
+        <input type="hidden" name="action" value="preOrder"/>
         <button type="submit">$$$Заказать такси</button>
     </form>
     <form action="Controller" method="post">
         <input type="hidden" name="method" value = "profile">
-        <input type="hidden" name="page" value="WEB-INF/Client/profile.jsp"/>
         <button type="submit">$$$Мой профиль</button>
     </form>
 
