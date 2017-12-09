@@ -1,4 +1,4 @@
-package service;
+package support;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

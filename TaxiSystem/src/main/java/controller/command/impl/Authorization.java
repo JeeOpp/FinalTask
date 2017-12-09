@@ -49,7 +49,7 @@ public class Authorization implements ControllerCommand {
             req.getRequestDispatcher("WEB-INF/Client/main.jsp").forward(req, resp);
         }
         if (role.equals("taxi")) {
-            req.getRequestDispatcher("WEB-INF/Taxi/taxiMain.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/Taxi/main.jsp").forward(req, resp);
         }
         if (role.equals("admin")) {
             req.getRequestDispatcher("WEB-INF/Admin/adminMain.jsp").forward(req, resp);

@@ -19,12 +19,14 @@
     <style>
         <%@include file="mapStyle.css"%>
     </style>
+
     <script>
         <%@include file="map.js"%>
+        <%@include file="radioTaxi.js"%>
     </script>
 </head>
 <body>
-    <jsp:useBean id="user" class="entity.User" scope="session"/>
+    <jsp:useBean id="user" class="entity.Client" scope="session"/>
     <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
 
     <form action="Controller" method="post">
@@ -44,18 +46,23 @@
         <input type="submit" value="${engButton}">
     </form>
 
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher">
-        <input type="hidden" name="action" value="callTaxi">
-        <input type="hidden" name="position">
-        <input type="hidden" name="user" value="${sessionScope.user}">
+    <form onsubmit="check()" action="Controller" method="post">
+        <input type="hidden" name="method" value = "dispatcher"/>
+        <input type="hidden" name="action" value="callTaxi"/>
+        <input id="srcCoord" type="hidden" name="sourceCoordinate" value="53.90453,27.56152"/>
+        <input id="dstCoord" type="hidden" name="destinyCoordinate" value="53.90453,27.56152"/>
         <ul>
             <c:forEach var="taxi" items="${requestScope.availableTaxiList}">
-                <li><input type="radio" name="taxi" value="${taxi}">${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.colour}</li>
-            </c:forEach> <!-- JAVA SCRIPT!!!!!!!!!!-->
+                <li><input type="radio" name="taxi" value="${taxi.id}" >${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.colour}</li>
+            </c:forEach>
         </ul>
+        <input type="hidden" name="checkedTaxiId"/>
+        <label for="bonus">$$$Доступно баллов ${user.bonusPoints} </label>
+        <input id="bonus" type="text" name="bonus" value="0"/>
+        <input id="price" type="text" name="price" value="0" readonly>
         <button type="submit">$$$Заказать такси</button>
     </form>
+
 
     <div id="map" class="map"></div>
 </body>

@@ -1,5 +1,7 @@
 package dao;
 
+import entity.Order;
+
 import java.sql.*;
 import java.util.MissingResourceException;
 import java.util.Properties;
@@ -62,6 +64,16 @@ public class WrappedConnector {
         if (connection != null) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;");
             if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
+    public PreparedStatement makeOrderPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);");
+            if (preparedStatement!=null){
                 return preparedStatement;
             }
         }

@@ -6,9 +6,8 @@ import entity.Car;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import service.MD5;
+import support.MD5;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

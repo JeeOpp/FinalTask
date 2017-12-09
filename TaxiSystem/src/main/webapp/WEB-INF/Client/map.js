@@ -1,22 +1,69 @@
 function initMap() {
-    var centerLatLng = new google.maps.LatLng(53.9045398, 27.5615244);
+    var coord = document.getElementById('srcCoord').getAttribute('value');
+    var srcArr = coord.split(',');
+
+    var centerLatLng = new google.maps.LatLng(srcArr[0], srcArr[1]);
     var mapOptions = {
         center: centerLatLng, // Координаты центра мы берем из переменной centerLatLng
         zoom: 12               // Зум по умолчанию. Возможные значения от 0 до 21
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var destinyIcon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-    var marker = new google.maps.Marker({
+    var markerClient = new google.maps.Marker({
+            position: centerLatLng,
+            map: map,
+            draggable:true,
+            title:"I'm here"
+    });
+
+    var markerDestiny = new google.maps.Marker({
         position: centerLatLng,
         map: map,
+        icon: destinyIcon,
         draggable:true,
         title:"Drag me!"
     });
 
-    dragHandler=function(e){
-        document.querySelector('input[name="position"]').value = e.latLng.lat() + "," + e.latLng.lng();
+    var dragSrcHandler=function(e){
+        document.getElementById('srcCoord').setAttribute('value',e.latLng.lat().toFixed(5) + "," + e.latLng.lng().toFixed(5));
+        writePrice();
     };
-    marker.addListener('drag',dragHandler);
-    marker.addListener('dragend',dragHandler);
+
+    var dragDestHandler=function(e){
+        document.getElementById('dstCoord').setAttribute('value',e.latLng.lat().toFixed(5) + "," + e.latLng.lng().toFixed(5));
+        writePrice();
+    };
+
+    var writePrice = function () {
+        var src = document.getElementById('srcCoord').getAttribute('value');
+        var dst = document.getElementById('dstCoord').getAttribute('value');
+        document.getElementById('price').setAttribute('value',calculatePrice(src,dst).toFixed(2));
+    };
+    var calculatePrice = function(src,dst) {
+        var coefficient = 40;
+        var srcArr = src.split(',');
+        var dstArr = dst.split(',');
+
+        var sourceLat = srcArr[0];
+        var sourceLng = srcArr[1];
+        var destinyLat = dstArr[0];
+        var destinyLng = dstArr[1];
+        var distance = Math.sqrt(Math.pow(destinyLat-sourceLat,2) + Math.pow(destinyLng-sourceLng,2));
+        return distance*coefficient;
+    };
+
+    markerDestiny.addListener('drag',dragDestHandler);
+    markerDestiny.addListener('dragend',dragDestHandler);
+
+    markerClient.addListener('drag',dragSrcHandler);
+    markerClient.addListener('dragend',dragSrcHandler);
 }
 google.maps.event.addDomListener(window, "load", initMap);
+
+
+/*
+    var dragDestHandler=function(e){
+        document.querySelector('input[name="destinyCoordinate"]').value = e.latLng.lat() + "," + e.latLng.lng();
+    };
+*/

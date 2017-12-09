@@ -3,7 +3,7 @@ package dao.impl;
 import dao.RegistrationDAO;
 import dao.WrappedConnector;
 import entity.Client;
-import service.MD5;
+import support.MD5;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

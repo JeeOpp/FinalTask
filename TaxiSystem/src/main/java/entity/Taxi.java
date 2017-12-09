@@ -13,6 +13,10 @@ public class Taxi extends User{
     public Taxi() {
     }
 
+    public Taxi(int id){
+        super(id);
+    }
+
     public Car getCar() {
         return car;
     }

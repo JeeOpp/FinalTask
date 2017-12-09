@@ -1,9 +1,8 @@
 package dao.impl;
 
 import dao.WrappedConnector;
+import entity.Order;
 import entity.Taxi;
-import entity.User;
-import service.MD5;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,5 +53,21 @@ public class DispatcherDAO {
         return taxiList;
     }
 
+    public void orderConfirm(Order order) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.makeOrderPreparedStatement();
+            preparedStatement.setInt(1, order.getClient().getId());
+            preparedStatement.setInt(2, order.getTaxi().getId());
+            preparedStatement.setString(3, order.getSourceCoordinate());
+            preparedStatement.setString(4, order.getDestinyCoordinate());
+            preparedStatement.setDouble(5, order.getPrice());
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            System.err.println("SQL exception (request or table failed): " + ex);
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
 
 }

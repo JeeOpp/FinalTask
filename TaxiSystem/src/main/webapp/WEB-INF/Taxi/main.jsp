@@ -13,21 +13,44 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>Taxi</title>
+    <title>$$$Taxi</title>
 </head>
+
 <body>
+<jsp:useBean id="user" class="entity.Taxi" scope="session"/>
+<span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value="logOut">
+    <input type="hidden" name="role" value="taxi">
+    <input type="submit" value="$$$Выйти">
+</form>
+
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="WEB-INF/Taxi/taxiMain.jsp"/>
+    <input type="hidden" name="page" value="WEB-INF/Taxi/main.jsp"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Taxi/taxiMain.jsp"/>
+    <input type="hidden" name="page" value="WEB-INF/Taxi/main.jsp"/>
     <input type="submit" value="${engButton}">
 </form>
-    Darov Taxi
+
+<!--///////////////////////////////////////////////////////////////////////////////// -->
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value = "dispatcher"/>
+    <input type="hidden" name="action" value="orderForTaxi"/>
+    <button type="submit">$$$Заказы</button>
+</form>
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value = "profile">
+    <button type="submit">$$$Мой профиль</button>
+</form>
+
+
+
 </body>
 </html>

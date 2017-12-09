@@ -22,6 +22,7 @@
 
     <form action="Controller" method="post">
         <input type="hidden" name="method" value="logOut">
+        <input type="hidden" name="role" value="client">
         <input type="submit" value="$$$Выйти">
     </form>
 
