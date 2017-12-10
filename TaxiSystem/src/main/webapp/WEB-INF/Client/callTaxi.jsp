@@ -36,16 +36,27 @@
     <form action="Controller" method="post">
         <input type="hidden" name="method" value="localization"/>
         <input type="hidden" name="local" value="ru"/>
-        <input type="hidden" name="page" value="WEB-INF/Client/clientMain.jsp"/>
+        <input type="hidden" name="page" value="Controller?method=dispatcher&action=preOrder"/>
         <input type="submit" value="${rusButton}">
     </form>
     <form action="Controller" method="post">
         <input type="hidden" name="method" value="localization"/>
         <input type="hidden" name="local" value="en"/>
-        <input type="hidden" name="page" value="WEB-INF/Client/clientMain.jsp"/>
+        <input type="hidden" name="page" value="Controller?method=dispatcher&action=preOrder"/>
         <input type="submit" value="${engButton}">
     </form>
-
+    <!--/////////////////////////////////////////////////////////-->
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value = "dispatcher"/>
+        <input type="hidden" name="action" value="preOrder"/>
+        <button type="submit">$$$Заказать такси</button>
+    </form>
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value = "profile">
+        <input type="hidden" name="action" value="getOrders">
+        <button type="submit">$$$Мой профиль</button>
+    </form>
+    <!--/////////////////////////////////////////////////////////-->
     <form onsubmit="check()" action="Controller" method="post">
         <input type="hidden" name="method" value = "dispatcher"/>
         <input type="hidden" name="action" value="callTaxi"/>

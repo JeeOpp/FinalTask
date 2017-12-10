@@ -47,9 +47,10 @@
     </form>
     <form action="Controller" method="post">
         <input type="hidden" name="method" value = "profile">
+        <input type="hidden" name="action" value="getOrders">
         <button type="submit">$$$Мой профиль</button>
     </form>
-
+    <!--/////////////////////////////////////////////////////////-->
 
 
 </body>

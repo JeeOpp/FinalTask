@@ -42,28 +42,24 @@ public class Dispatcher implements ControllerCommand {
         req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req, resp);
     }
     private void callTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        /*<input type="hidden" name="destinyCoordinate">
-        <input type="hidden" name="checkedTaxiId"/>
-        <input id="bonus" type="text" name="bonus" value="0"/>*/
-
         String sourceCoordinate = req.getParameter("sourceCoordinate");
         String destinyCoordinate = req.getParameter("destinyCoordinate");
-
-        System.out.println(sourceCoordinate+","+destinyCoordinate);
-
         Client client = (Client) req.getSession().getAttribute("user");
         Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxi"))) ;
-        int bonus = Integer.parseInt(req.getParameter("bonus"));
-        double price = Double.parseDouble(req.getParameter("price"));
-        //TODO проверка на доступность бонусов
+        Integer bonus = Integer.parseInt(req.getParameter("bonus"));
+        Double price = Double.parseDouble(req.getParameter("price"));
+
+        Order order = new Order(client,taxi,sourceCoordinate,destinyCoordinate,price);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        Order order = dispatcherService.makeOrder(client,taxi,sourceCoordinate, destinyCoordinate,price);  //TODO может быть засунуть в бин?
-
-        //TODO обраборать бонусные баллы
-        dispatcherService.callConfirm(order);
-        req.getRequestDispatcher("WEB-INF/Client/profile.jsp").forward(req,resp);
+        if (dispatcherService.callConfirm(order, bonus)){
+            req.getRequestDispatcher("WEB-INF/Client/main.jsp").forward(req,resp);
+        }else{
+            //TODO недостаточно бонусов
+            //баг - нужно еще раз как-то список таксистов доставать!
+            req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req,resp);
+        }
     }
 
     private void orderForTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{

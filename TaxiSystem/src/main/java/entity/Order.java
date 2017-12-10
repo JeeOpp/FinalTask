@@ -1,5 +1,8 @@
 package entity;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Created by DNAPC on 08.12.2017.
  */
@@ -11,6 +14,14 @@ public class Order {
     private String sourceCoordinate;
     private String destinyCoordinate;
     private double price;
+
+    public Order(Client client, Taxi taxi, String sourceCoordinate, String destinyCoordinate, double price) {
+        this.client = client;
+        this.taxi = taxi;
+        this.sourceCoordinate = sourceCoordinate;
+        this.destinyCoordinate = destinyCoordinate;
+        this.price = price;
+    }
 
     public Order(){
         orderStatus = "processed";
@@ -70,5 +81,30 @@ public class Order {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setFromResultSet(ResultSet resultSet){
+        try {
+            this.setOrderId(resultSet.getInt(1));
+            this.setOrderStatus(resultSet.getString(2));
+            this.setSourceCoordinate(resultSet.getString(3));
+            this.setDestinyCoordinate(resultSet.getString(4));
+            this.setPrice(resultSet.getDouble(5));
+            Client client = new Client();
+            client.setId(resultSet.getInt(6));
+            client.setLogin(resultSet.getString(7));
+            this.setClient(client);
+            Taxi taxi = new Taxi();
+            taxi.setId(resultSet.getInt(8));
+            taxi.setLogin(resultSet.getString(9));
+            Car car = new Car();
+            car.setNumber(resultSet.getString(10));
+            car.setName(resultSet.getString(11));
+            car.setColour(resultSet.getString(12));
+            taxi.setCar(car);
+            this.setTaxi(taxi);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
     }
 }

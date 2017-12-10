@@ -40,10 +40,11 @@ public class Taxi extends User{
             this.setLogin(resultSet.getString(2));
             this.setFirstName(resultSet.getString(3));
             this.setLastName(resultSet.getString(4));
+            this.setAvailableStatus(resultSet.getBoolean(5));
             car = new Car();
-            car.setNumber(resultSet.getString(5));
-            car.setName(resultSet.getString(6));
-            car.setColour(resultSet.getString(7));
+            car.setNumber(resultSet.getString(6));
+            car.setName(resultSet.getString(7));
+            car.setColour(resultSet.getString(8));
             this.setCar(car);
         }catch (SQLException ex){
             ex.printStackTrace();

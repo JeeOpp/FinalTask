@@ -80,6 +80,15 @@ public class WrappedConnector {
         throw new SQLException("connection or PreparedStatement is null");
     }
 
+    public PreparedStatement decreaseBonus() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
 
     public Statement getStatement() throws SQLException {
         if (connection != null) {

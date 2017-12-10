@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.WrappedConnector;
+import entity.Client;
 import entity.Order;
 import entity.Taxi;
 
@@ -15,7 +16,11 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherDAO {
-    private static final String SQL_SELECT_AVAILABLE_TAXI="SELECT taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number WHERE taxi.availableStatus = true;";
+    private static final String SQL_SELECT_ALL_TAXI="SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number";
+    private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, taxi.id, taxi.login, car.number, car.car, car.colour FROM taxisystem.order\n" +
+            "\tJOIN client ON taxisystem.order.client_id = client.id\n" +
+            "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
+            "    JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";
 
     private WrappedConnector connector;
 
@@ -31,14 +36,14 @@ public class DispatcherDAO {
         connector.closeConnection();
     }
 
-    public List<Taxi> getAvailableTaxiList() throws SQLException {
+    public List<Taxi> getTaxiList() throws SQLException {
         ResultSet resultSet;
         Statement statement = null;
         List<Taxi> taxiList = new ArrayList<>();
         Taxi taxi;
         try {
             statement = connector.getStatement();
-            if((resultSet = statement.executeQuery(SQL_SELECT_AVAILABLE_TAXI))!=null){
+            if((resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI))!=null){
                 while (resultSet.next()){
                     taxi = new Taxi();
                     taxi.setFromResultSet(resultSet);
@@ -51,6 +56,28 @@ public class DispatcherDAO {
             connector.closeStatement(statement);
         }
         return taxiList;
+    }
+
+    public List<Order> getOrderList() throws SQLException{
+        ResultSet resultSet;
+        Statement statement = null;
+        List<Order> orderList = new ArrayList<>();
+        Order order;
+        try {
+            statement = connector.getStatement();
+            if((resultSet = statement.executeQuery(SQL_SELECT_ALL_ORDER))!=null){
+                while (resultSet.next()){
+                    order = new Order();
+                    order.setFromResultSet(resultSet);
+                    orderList.add(order);
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQL exception (request or table failed): " + ex);
+        } finally {
+            connector.closeStatement(statement);
+        }
+        return orderList;
     }
 
     public void orderConfirm(Order order) throws SQLException{
@@ -70,4 +97,17 @@ public class DispatcherDAO {
         }
     }
 
+    public void decreaseBonus(Client client, int bonus) throws SQLException{ //bonus - how many client spend
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.decreaseBonus();
+            preparedStatement.setInt(1,bonus);
+            preparedStatement.setInt(2,client.getId());
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
 }
