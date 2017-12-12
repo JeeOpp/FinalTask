@@ -110,4 +110,17 @@ public class DispatcherDAO {
             connector.closePreparedStatement(preparedStatement);
         }
     }
+
+    public void cancelOrder(Integer orderId) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.cancelOrder();
+            preparedStatement.setInt(1,orderId);
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
 }

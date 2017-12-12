@@ -83,4 +83,15 @@ public class DispatcherService {
         return orderList;
     }
 
+    public boolean cancelOrder(Integer orderId){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.cancelOrder(orderId);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+
 }

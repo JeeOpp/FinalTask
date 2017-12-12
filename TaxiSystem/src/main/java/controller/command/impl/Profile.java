@@ -26,7 +26,7 @@ public class Profile implements ControllerCommand
             getOrders(req,resp);
         }
     }
-    private void getOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public void getOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Client client = (Client) req.getSession().getAttribute("user");
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();

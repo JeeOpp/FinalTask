@@ -31,6 +31,9 @@ public class Dispatcher implements ControllerCommand {
         if(action.equals("orderForTaxi")){
             orderForTaxi(req,resp);
         }
+        if(action.equals("cancelOrder")){
+            cancelOrder(req,resp);
+        }
     }
 
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -57,13 +60,22 @@ public class Dispatcher implements ControllerCommand {
             req.getRequestDispatcher("WEB-INF/Client/main.jsp").forward(req,resp);
         }else{
             //TODO недостаточно бонусов
-            //баг - нужно еще раз как-то список таксистов доставать!
-            req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req,resp);
+            preOrder(req,resp);  //Костыль?!?!
         }
     }
 
     private void orderForTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
 
+    }
+
+    private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.cancelOrder(orderId)){
+            new Profile().getOrders(req,resp);
+        }
     }
 
 }

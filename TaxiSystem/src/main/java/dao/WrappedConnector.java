@@ -41,7 +41,6 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
-
     public PreparedStatement getAuthRolePreparedStatement() throws SQLException{
         if (connection != null) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?");
@@ -69,7 +68,6 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
-
     public PreparedStatement makeOrderPreparedStatement() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);");
@@ -79,7 +77,6 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
-
     public PreparedStatement decreaseBonus() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;");
@@ -89,7 +86,15 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
-
+    public PreparedStatement cancelOrder() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM taxisystem.order WHERE order_id = ?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
     public Statement getStatement() throws SQLException {
         if (connection != null) {
             Statement statement = connection.createStatement();
@@ -99,7 +104,6 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or statement is null");
     }
-
     public void closeStatement(Statement statement) {
         if (statement != null) {
             try {
@@ -109,7 +113,6 @@ public class WrappedConnector {
             }
         }
     }
-
     public void closePreparedStatement(PreparedStatement preparedStatement) {
         if (preparedStatement != null) {
             try {
@@ -120,7 +123,6 @@ public class WrappedConnector {
             }
         }
     }
-
     public void closeConnection() {
         if (connection != null) {
             try {
