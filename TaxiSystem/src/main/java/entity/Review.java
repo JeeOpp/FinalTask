@@ -12,6 +12,12 @@ public class Review {
     public Review() {
     }
 
+    public Review(Client client, Taxi taxi, String comment) {
+        this.client = client;
+        this.taxi = taxi;
+        this.comment = comment;
+    }
+
     public int getReviewId() {
         return reviewId;
     }

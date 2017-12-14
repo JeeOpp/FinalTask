@@ -28,12 +28,22 @@ public class Dispatcher implements ControllerCommand {
         if (action.equals("callTaxi")){
             callTaxi(req,resp);
         }
-        if(action.equals("orderForTaxi")){
-            orderForTaxi(req,resp);
+        if(action.equals("getClientOrders")){
+            getClientOrders(req,resp);
+        }
+        if(action.equals("getTaxiOrders")){
+            getTaxiOrders(req,resp);
         }
         if(action.equals("cancelOrder")){
             cancelOrder(req,resp);
         }
+        if(action.equals("acceptOrder")){
+            acceptOrder(req,resp);
+        }
+        if(action.equals("rejectOrder")){
+            rejectOrder(req,resp);
+        }
+
     }
 
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -57,25 +67,56 @@ public class Dispatcher implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.callConfirm(order, bonus)){
-            req.getRequestDispatcher("WEB-INF/Client/main.jsp").forward(req,resp);
+            getClientOrders(req,resp);
         }else{
             //TODO недостаточно бонусов
             preOrder(req,resp);  //Костыль?!?!
         }
     }
+    public void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Client client = (Client) req.getSession().getAttribute("user");
 
-    private void orderForTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Order> orderList = dispatcherService.getClientOrders(client);
+        req.setAttribute("clientOrder",orderList);
+        req.getRequestDispatcher("WEB-INF/Client/order.jsp").forward(req,resp);
     }
+    public void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        Taxi taxi = (Taxi) req.getSession().getAttribute("user");
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Order> orderList = dispatcherService.getTaxiOrders(taxi);
 
+        req.setAttribute("taxiOrder", orderList);
+        req.getRequestDispatcher("WEB-INF/Taxi/order.jsp").forward(req,resp);
+    }
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Integer orderId = Integer.parseInt(req.getParameter("orderId"));
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.cancelOrder(orderId)){
-            new Profile().getOrders(req,resp);
+            getClientOrders(req,resp);
         }
     }
+    private void acceptOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
 
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.acceptOrder(orderId)){
+            //TODO availablestatus  0
+            req.getRequestDispatcher("WEB-INF/Taxi/main.jsp").forward(req,resp);
+        }
+    }
+    private void rejectOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.rejectOrder(orderId)){
+            getTaxiOrders(req,resp);
+        }
+    }
 }

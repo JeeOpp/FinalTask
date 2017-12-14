@@ -32,13 +32,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=profile&action=getOrders"/>
+    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getClientOrders"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=profile&action=getOrders"/>
+    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getClientOrders"/>
     <input type="submit" value="${engButton}">
 </form>
 <!--/////////////////////////////////////////////////////////-->
@@ -49,9 +49,9 @@
     <button type="submit">$$$Заказать такси</button>
 </form>
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value = "profile">
-    <input type="hidden" name="action" value="getOrders">
-    <button type="submit">$$$Мой профиль</button>
+    <input type="hidden" name="method" value = "dispatcher">
+    <input type="hidden" name="action" value="getClientOrders">
+    <button type="submit">$$$Мои заказы</button>
 </form>
 <!-- ВСплывающее окно -->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,6 +60,7 @@
             <form action="Controller" method="post">              <!--ФОРМА НА ОТПРАВКУ ОТзЫВА-->
                 <input type="hidden" name="method" value="feedback">   <!--input-->
                 <input type="hidden" name="action" value="writeReview">  <!--input-->
+                <input type="hidden" name="taxiId">                    <!--input-->
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">$$$Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -110,7 +111,7 @@
                 </form>
             </c:when>
             <c:when test = "${order.orderStatus eq 'accepted'}">
-                <button onclick="setTaxi()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
+                <button onclick="setTaxi(<c:out value="${order.taxi.id}"/>)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
                     $$$Добавить отзыв
                 </button>
             </c:when>

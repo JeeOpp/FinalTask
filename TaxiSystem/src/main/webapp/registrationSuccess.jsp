@@ -19,13 +19,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="WEB-INF/registrationSuccess.jsp"/>
+    <input type="hidden" name="page" value="registrationSuccess.jsp"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/registrationSuccess.jsp"/>
+    <input type="hidden" name="page" value="registrationSuccess.jsp"/>
     <input type="submit" value="${engButton}">
 </form>
     Registration Success

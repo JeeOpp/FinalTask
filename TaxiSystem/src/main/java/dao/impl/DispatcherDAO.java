@@ -123,4 +123,30 @@ public class DispatcherDAO {
             connector.closePreparedStatement(preparedStatement);
         }
     }
+
+    public void acceptOrder(Integer orderId) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.acceptOrder();
+            preparedStatement.setInt(1,orderId);
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
+
+    public void rejectOrder(Integer orderId) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.rejectOrder();
+            preparedStatement.setInt(1,orderId);
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
 }

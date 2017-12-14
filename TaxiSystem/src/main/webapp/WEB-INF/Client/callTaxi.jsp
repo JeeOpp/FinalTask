@@ -52,9 +52,9 @@
         <button type="submit">$$$Заказать такси</button>
     </form>
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "profile">
-        <input type="hidden" name="action" value="getOrders">
-        <button type="submit">$$$Мой профиль</button>
+        <input type="hidden" name="method" value = "dispatcher">
+        <input type="hidden" name="action" value="getClientOrders">
+        <button type="submit">$$$Мои заказы</button>
     </form>
     <!--/////////////////////////////////////////////////////////-->
     <form onsubmit="check()" action="Controller" method="post">

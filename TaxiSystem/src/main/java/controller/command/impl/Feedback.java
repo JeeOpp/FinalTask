@@ -1,6 +1,11 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import entity.Client;
+import entity.Review;
+import entity.Taxi;
+import service.DispatcherService;
+import service.FeedbackService;
 import service.ServiceFactory;
 
 import javax.servlet.ServletException;
@@ -21,11 +26,18 @@ public class Feedback implements ControllerCommand {
     }
 
     private void writeReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Client client = (Client) req.getSession().getAttribute("user");
+        Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxiId")));
         String comment = req.getParameter("review");
 
-
+        Review review = new Review(client,taxi,comment);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        FeedbackService feedbackService = serviceFactory.getFeedbackService();
+        feedbackService.setReview(review);
 
-        System.out.println(comment);
+        //Спасибо за отзыв все дела
+        //TODO не создавать больше одного отзыва за раз
+
+        new Dispatcher().getClientOrders(req, resp);
     }
 }

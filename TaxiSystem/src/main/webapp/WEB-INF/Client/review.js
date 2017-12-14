@@ -3,8 +3,7 @@
  */
 
 
-function setTaxi()
+function setTaxi(id)
 {
-    var inp = document.getElementsByName('taxi');
-    document.querySelector('input[name="checkedTaxiId"]').value = inp[i].value;
+    document.querySelector('input[name="taxiId"]').value = id;
 }

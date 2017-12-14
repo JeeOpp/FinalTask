@@ -31,9 +31,9 @@ public class Registration implements ControllerCommand {
             if (role.equals("client")) {
                 Client client = new Client(login,password,firstName,lastName);
                 if(registrationService.registerClient(client)){
-                    req.getRequestDispatcher("WEB-INF/registrationSuccess.jsp").forward(req,resp);
+                    req.getRequestDispatcher("registrationSuccess.jsp").forward(req,resp);
                 }else {
-                    req.getRequestDispatcher("WEB-INF/registrationProblem.jsp").forward(req,resp);
+                    req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
                 }
             }
             if (role.equals("taxi")) {

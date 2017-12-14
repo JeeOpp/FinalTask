@@ -17,8 +17,8 @@ public class ControllerDirector {
         commandMap.put("dispatcher", new Dispatcher());
         commandMap.put("localization", new Localization());
         commandMap.put("logOut", new LogOut());
-        commandMap.put("profile", new Profile());
         commandMap.put("feedback", new Feedback());
+        commandMap.put("profile", new Profile());
     }
     public ControllerCommand getCommand(String method){
         return commandMap.get(method);

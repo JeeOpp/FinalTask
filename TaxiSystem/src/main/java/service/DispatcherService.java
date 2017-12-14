@@ -71,7 +71,18 @@ public class DispatcherService {
         return orderList;
     }
 
-    public List<Order> getAllOrderList(){
+    public List<Order> getTaxiOrders(Taxi taxi){
+        List<Order> orderList = getAllOrderList();
+        Iterator<Order> orderIterator = orderList.listIterator();
+        while (orderIterator.hasNext()) {
+            if (orderIterator.next().getTaxi().getId() != taxi.getId()) {
+                orderIterator.remove();
+            }
+        }
+        return orderList;
+    }
+
+    private List<Order> getAllOrderList(){
         List<Order> orderList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
@@ -88,6 +99,26 @@ public class DispatcherService {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             dispatcherDAO.cancelOrder(orderId);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public boolean acceptOrder(Integer orderId){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.acceptOrder(orderId);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public boolean rejectOrder(Integer orderId){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.rejectOrder(orderId);
         }catch (SQLException ex){
             ex.printStackTrace();
         }

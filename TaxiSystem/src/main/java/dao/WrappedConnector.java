@@ -95,6 +95,34 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+    public PreparedStatement acceptOrder() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement rejectOrder() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement setReviewPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.review (client_id, taxi_id, comment) VALUES (?, ?, ?);");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
     public Statement getStatement() throws SQLException {
         if (connection != null) {
             Statement statement = connection.createStatement();
@@ -104,6 +132,7 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or statement is null");
     }
+
     public void closeStatement(Statement statement) {
         if (statement != null) {
             try {
