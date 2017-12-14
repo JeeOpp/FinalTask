@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class DispatcherDAO {
     private static final String SQL_SELECT_ALL_TAXI="SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number";
-    private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, taxi.id, taxi.login, car.number, car.car, car.colour FROM taxisystem.order\n" +
+    private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, car.number, car.car, car.colour FROM taxisystem.order\n" +
             "\tJOIN client ON taxisystem.order.client_id = client.id\n" +
             "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
             "    JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";

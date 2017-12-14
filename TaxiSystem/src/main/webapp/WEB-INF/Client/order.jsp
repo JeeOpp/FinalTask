@@ -53,6 +53,10 @@
     <input type="hidden" name="action" value="getClientOrders">
     <button type="submit">$$$Мои заказы</button>
 </form>
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value = "profile">
+    <button type="submit">$$$Мой профиль</button>
+</form>
 <!-- ВСплывающее окно -->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

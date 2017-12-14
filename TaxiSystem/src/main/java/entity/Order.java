@@ -93,14 +93,16 @@ public class Order {
             Client client = new Client();
             client.setId(resultSet.getInt(6));
             client.setLogin(resultSet.getString(7));
+            client.setFirstName(resultSet.getString(8));
+            client.setLastName(resultSet.getString(9));
             this.setClient(client);
             Taxi taxi = new Taxi();
-            taxi.setId(resultSet.getInt(8));
-            taxi.setLogin(resultSet.getString(9));
+            taxi.setId(resultSet.getInt(10));
+            taxi.setLogin(resultSet.getString(11));
             Car car = new Car();
-            car.setNumber(resultSet.getString(10));
-            car.setName(resultSet.getString(11));
-            car.setColour(resultSet.getString(12));
+            car.setNumber(resultSet.getString(12));
+            car.setName(resultSet.getString(13));
+            car.setColour(resultSet.getString(14));
             taxi.setCar(car);
             this.setTaxi(taxi);
         }catch (SQLException ex){

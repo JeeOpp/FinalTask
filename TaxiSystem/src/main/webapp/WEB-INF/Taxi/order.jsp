@@ -86,6 +86,9 @@
                         <button type="submit">$$$Отклонить</button>
                     </form>
                 </c:when>
+                <c:when test="${order.orderStatus eq 'accepted'}">
+                    <button disabled>$$$Заказ принят</button>
+                </c:when>
             </c:choose></td>
         </tr>
     </c:forEach>

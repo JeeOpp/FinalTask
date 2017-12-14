@@ -6,26 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <fmt:setLocale value="${sessionScope.local}"/>
-    <fmt:setBundle basename="localization.local" var="loc"/>
-    <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
-    <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>$$$User</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
-    <style>
-        <%@include file="mapStyle.css"%>
-    </style>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <html>
+    <head>
+        <fmt:setLocale value="${sessionScope.local}"/>
+        <fmt:setBundle basename="localization.local" var="loc"/>
+        <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
+        <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
+        <title>$$$User</title>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
+        <style>
+            <%@include file="mapStyle.css"%>
+        </style>
 
-    <script>
-        <%@include file="map.js"%>
-        <%@include file="radioTaxi.js"%>
-    </script>
-</head>
-<body>
+        <script>
+            <%@include file="map.js"%>
+            <%@include file="radioTaxi.js"%>
+        </script>
+    </head>
+    <body>
     <jsp:useBean id="user" class="entity.Client" scope="session"/>
     <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
 
@@ -55,6 +55,10 @@
         <input type="hidden" name="method" value = "dispatcher">
         <input type="hidden" name="action" value="getClientOrders">
         <button type="submit">$$$Мои заказы</button>
+    </form>
+    <form action="Controller" method="post">
+        <input type="hidden" name="method" value = "profile">
+        <button type="submit">$$$Мой профиль</button>
     </form>
     <!--/////////////////////////////////////////////////////////-->
     <form onsubmit="check()" action="Controller" method="post">
