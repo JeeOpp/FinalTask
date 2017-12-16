@@ -21,9 +21,9 @@
 <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
 
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value="logOut">
-    <input type="hidden" name="role" value="taxi">
-    <input type="submit" value="$$$Выйти">
+    <input type="hidden" name="method" value="signManager"/>
+    <input type="hidden" name="action" value="logOut"/>
+    <input type="submit" value="$$$Выйти"/>
 </form>
 
 <form action="Controller" method="post">
@@ -46,11 +46,11 @@
     <button type="submit">$$$Заказы</button>
 </form>
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value = "profile">
+    <input type="hidden" name="method" value = "profile"/>
+    <input type="hidden" name="action" value="preProfile"/>
     <button type="submit">$$$Мой профиль</button>
 </form>
-
-
-
+<!-- моб сюда карту прикрутить и типо показывать таксисту куда ехать, и кнопку сделать типо заказ выполнен. и она же
+available status-->
 </body>
 </html>

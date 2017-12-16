@@ -122,6 +122,29 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+    public PreparedStatement getReviewClientPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT taxi.id, taxi.name, taxi.surname, review.`comment` FROM review \n" +
+                    "\tJOIN taxi ON review.taxi_id = taxi.id \n" +
+                    "\tWHERE review.client_id = ?; ");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement getReviewTaxiPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT client.id, client.name, client.surname, review.`comment` FROM review\n" +
+                    "        JOIN client ON review.client_id = client.id\n" +
+                    "        WHERE review.taxi_id = ?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
 
     public Statement getStatement() throws SQLException {
         if (connection != null) {

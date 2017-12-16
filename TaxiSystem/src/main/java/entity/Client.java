@@ -8,6 +8,10 @@ public class Client extends User{
 
     public Client(){}
 
+    public Client(int id, String name, String surname){
+        super(id,null,null,name,surname);
+    }
+
     public Client(String login, String password, String firstName, String lastName) {
         super(login, password, firstName, lastName);
     }

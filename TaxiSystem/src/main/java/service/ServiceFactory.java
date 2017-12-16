@@ -12,6 +12,7 @@ public class ServiceFactory {
     private final DispatcherService dispatcherService = new DispatcherService();
     private final FeedbackService feedbackService = new FeedbackService();
     private final CoordinateGenerator coordinateGenerator = new CoordinateGenerator();
+    private final ProfileService profileService = new ProfileService();
 
     private ServiceFactory() {}
 
@@ -30,5 +31,8 @@ public class ServiceFactory {
     }
     public CoordinateGenerator getCoordinateGenerator(){
         return coordinateGenerator;
+    }
+    public ProfileService getProfileService(){
+        return  profileService;
     }
 }

@@ -12,11 +12,9 @@ public class ControllerDirector {
     private Map<String, ControllerCommand> commandMap = new HashMap<>();
 
     public ControllerDirector(){
-        commandMap.put("authorization", new Authorization());
-        commandMap.put("registration", new Registration());
+        commandMap.put("signManager", new SignManager());
         commandMap.put("dispatcher", new Dispatcher());
         commandMap.put("localization", new Localization());
-        commandMap.put("logOut", new LogOut());
         commandMap.put("feedback", new Feedback());
         commandMap.put("profile", new Profile());
     }

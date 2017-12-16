@@ -29,6 +29,11 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, String login, String password){
+        this(login,password);
+        this.id = id;
+    }
+
     public User(int id, boolean banStatus, String role){
         this(role);
         this.id = id;
@@ -41,8 +46,13 @@ public class User {
         this.lastName = lastName;
     }
 
+    public User(int id, String login, String password, String firstName, String lastName){
+        this(login, password, firstName, lastName);
+        this.id=id;
+    }
+
     public User(int id, String login, String password, String firstName, String lastName, boolean banStatus, String role) {
-        this(login,password,firstName,lastName);
+        this(id,login,password,firstName,lastName);
         this.banStatus = banStatus;
         this.role = role;
     }

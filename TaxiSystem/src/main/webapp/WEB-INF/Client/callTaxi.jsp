@@ -30,8 +30,9 @@
     <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
 
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value="logOut">
-        <input type="submit" value="$$$Выйти">
+        <input type="hidden" name="method" value="signManager"/>
+        <input type="hidden" name="action" value="logOut"/>
+        <input type="submit" value="$$$Выйти"/>
     </form>
     <form action="Controller" method="post">
         <input type="hidden" name="method" value="localization"/>
@@ -57,7 +58,8 @@
         <button type="submit">$$$Мои заказы</button>
     </form>
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "profile">
+        <input type="hidden" name="method" value = "profile"/>
+        <input type="hidden" name="action" value="preProfile"/>
         <button type="submit">$$$Мой профиль</button>
     </form>
     <!--/////////////////////////////////////////////////////////-->

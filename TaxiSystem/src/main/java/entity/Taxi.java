@@ -16,6 +16,9 @@ public class Taxi extends User{
     public Taxi(int id){
         super(id);
     }
+    public Taxi(int id, String name, String surname){
+        super(id,null,null,name,surname);
+    }
 
     public Car getCar() {
         return car;

@@ -34,9 +34,10 @@
 
 
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value="authorization">
-        <input type="text" name="login" value="client">
-        <input type="password" name="password" value="root">
+        <input type="hidden" name="method" value="signManager"/>
+        <input type="hidden" name="action" value="authorization"/>
+        <input type="text" name="login" value="client"/>
+        <input type="password" name="password" value="root"/>
         <button type="submit">${authButton}</button>
     </form>
 </body>

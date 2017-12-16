@@ -1,9 +1,6 @@
 package dao;
 
-import dao.impl.AuthorizationDAOImpl;
-import dao.impl.DispatcherDAO;
-import dao.impl.FeedbackDAO;
-import dao.impl.RegistrationDAOImpl;
+import dao.impl.*;
 
 /**
  * Created by DNAPC on 12.11.2017.
@@ -14,6 +11,7 @@ public class DAOFactory {
     private final RegistrationDAO registrationDAO = new RegistrationDAOImpl();
     private final DispatcherDAO dispatcherDAO = new DispatcherDAO();
     private final FeedbackDAO feedbackDAO = new FeedbackDAO();
+    private final ProfileDAO profileDAO = new ProfileDAO();
 
     private DAOFactory() {}
 
@@ -29,5 +27,10 @@ public class DAOFactory {
     public DispatcherDAO getDispatcherDAO(){
         return dispatcherDAO;
     }
-    public FeedbackDAO getFeedbackDAO(){ return feedbackDAO; }
+    public FeedbackDAO getFeedbackDAO(){
+        return feedbackDAO;
+    }
+    public ProfileDAO getProfileDAO(){
+        return profileDAO;
+    }
 }
