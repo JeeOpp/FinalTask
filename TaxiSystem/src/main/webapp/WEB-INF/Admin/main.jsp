@@ -13,21 +13,50 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>Admin</title>
+    <title>$$$User</title>
 </head>
+
 <body>
+<span>$$$Здравствуйте Администратор</span>
+
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value="signManager"/>
+    <input type="hidden" name="action" value="logOut"/>
+    <input type="submit" value="$$$Выйти"/>
+</form>
+
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/adminMain.jsp"/>
+    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/adminMain.jsp"/>
+    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
     <input type="submit" value="${engButton}">
 </form>
-    Darov Admin
+
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value="dispatcher"/>
+    <input type="hidden" name="action" value="getAllOrders"/>
+    <input type="submit" value="$$$Архив Заказов">
+</form>
+
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value="localization"/>
+    <input type="hidden" name="local" value="en"/>
+    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="submit" value="$$$Таксисты">
+</form>
+
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value="localization"/>
+    <input type="hidden" name="local" value="en"/>
+    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="submit" value="$$$Клиенты">
+</form>
+
 </body>
 </html>

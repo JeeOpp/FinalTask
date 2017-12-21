@@ -82,7 +82,7 @@ public class DispatcherService {
         return orderList;
     }
 
-    private List<Order> getAllOrderList(){
+    public List<Order> getAllOrderList(){
         List<Order> orderList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
@@ -119,6 +119,16 @@ public class DispatcherService {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             dispatcherDAO.rejectOrder(orderId);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public boolean payOrder(Integer orderId){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.payOrder(orderId);
         }catch (SQLException ex){
             ex.printStackTrace();
         }

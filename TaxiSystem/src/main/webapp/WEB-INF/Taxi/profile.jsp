@@ -51,7 +51,7 @@
 <!--///////////////////////////////////////////////////////////////////////////////// -->
 <form action="Controller" method="post">
     <input type="hidden" name="method" value = "dispatcher"/>
-    <input type="hidden" name="action" value="getOrders"/>
+    <input type="hidden" name="action" value="getTaxiOrders"/>
     <button type="submit">$$$Заказы</button>
 </form>
 <form action="Controller" method="post">

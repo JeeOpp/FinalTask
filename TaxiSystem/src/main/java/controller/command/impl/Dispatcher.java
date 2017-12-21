@@ -1,18 +1,18 @@
 package controller.command.impl;
 
-import com.google.gson.Gson;
 import controller.command.ControllerCommand;
 import entity.Client;
 import entity.Order;
+import entity.Page;
 import entity.Taxi;
 import service.DispatcherService;
+import service.PaginationService;
 import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -43,7 +43,31 @@ public class Dispatcher implements ControllerCommand {
         if(action.equals("rejectOrder")){
             rejectOrder(req,resp);
         }
+        if(action.equals("payOrder")){
+            payOrder(req,resp);
+        }
+        if(action.equals("getAllOrders")){
+            getAllOrders(req,resp);
+        }
 
+    }
+    public void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Client client = (Client) req.getSession().getAttribute("user");
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Order> orderList = dispatcherService.getClientOrders(client);
+        req.setAttribute("clientOrder",orderList);
+        req.getRequestDispatcher("WEB-INF/Client/orders.jsp").forward(req,resp);
+    }
+    public void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        Taxi taxi = (Taxi) req.getSession().getAttribute("user");
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Order> orderList = dispatcherService.getTaxiOrders(taxi);
+
+        req.setAttribute("taxiOrder", orderList);
+        req.getRequestDispatcher("WEB-INF/Taxi/orders.jsp").forward(req,resp);
     }
 
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -73,24 +97,6 @@ public class Dispatcher implements ControllerCommand {
             preOrder(req,resp);  //Костыль?!?!
         }
     }
-    public void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        Client client = (Client) req.getSession().getAttribute("user");
-
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        List<Order> orderList = dispatcherService.getClientOrders(client);
-        req.setAttribute("clientOrder",orderList);
-        req.getRequestDispatcher("WEB-INF/Client/order.jsp").forward(req,resp);
-    }
-    public void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-        Taxi taxi = (Taxi) req.getSession().getAttribute("user");
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        List<Order> orderList = dispatcherService.getTaxiOrders(taxi);
-
-        req.setAttribute("taxiOrder", orderList);
-        req.getRequestDispatcher("WEB-INF/Taxi/order.jsp").forward(req,resp);
-    }
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Integer orderId = Integer.parseInt(req.getParameter("orderId"));
 
@@ -106,7 +112,6 @@ public class Dispatcher implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.acceptOrder(orderId)){
-            //TODO availablestatus  0
             req.getRequestDispatcher("WEB-INF/Taxi/main.jsp").forward(req,resp);
         }
     }
@@ -118,5 +123,36 @@ public class Dispatcher implements ControllerCommand {
         if (dispatcherService.rejectOrder(orderId)){
             getTaxiOrders(req,resp);
         }
+    }
+    private void payOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.payOrder(orderId)){
+            getClientOrders(req,resp); //TODO Добавить вверху страницу оплачено
+        }
+    }
+    private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+        int page = 1; //default page
+        if(req.getParameter("page") != null){
+            page = Integer.parseInt(req.getParameter("page"));
+        }
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Order> orderList = dispatcherService.getAllOrderList();
+
+
+        PaginationService paginationService = serviceFactory.getPaginationService();
+        paginationService.buildPagination(orderList);
+        List<Order> pageOrderList = paginationService.getPageList(page);
+
+
+        req.setAttribute("pageOrderList", pageOrderList);
+        req.setAttribute("countPages", paginationService.getCountPages());
+        req.setAttribute("currentPage", page);
+
+        req.getRequestDispatcher("WEB-INF/Admin/orders.jsp").forward(req,resp);
     }
 }

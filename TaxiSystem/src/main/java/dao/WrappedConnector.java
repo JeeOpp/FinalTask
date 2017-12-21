@@ -113,6 +113,16 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+    public PreparedStatement payOrder() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
     public PreparedStatement setReviewPreparedStatement() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.review (client_id, taxi_id, comment) VALUES (?, ?, ?);");
@@ -144,7 +154,28 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
-
+    public PreparedStatement getChangeClientPassPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client " +
+                    "SET password = ? "+
+                    "WHERE id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement getChangeTaxiPassPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi " +
+                    "SET password = ? "+
+                    "WHERE id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
 
     public Statement getStatement() throws SQLException {
         if (connection != null) {

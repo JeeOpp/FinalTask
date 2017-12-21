@@ -44,14 +44,17 @@ public class Profile implements ControllerCommand {
     }
 
     private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        User user = (User) req.getSession().getAttribute("user");
         String currentPassword = req.getParameter("previousPass");
         String newPassword = req.getParameter("newPass");
-        String login = ((User) req.getSession().getAttribute("user")).getLogin();
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         ProfileService profileService = serviceFactory.getProfileService();
-
-        //if(profileService.is)
-        //profileService.changePassword();
+        if(profileService.changePassword(user, currentPassword, newPassword)){
+            req.getSession().setAttribute("user",user);
+            //success
+        }else{
+            //failed
+        }
     }
 }

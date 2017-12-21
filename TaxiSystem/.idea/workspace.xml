@@ -2,37 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/ProfileService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/formValidator.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Authorization.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/LogOut.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Registration.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/ControllerDirector.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/ControllerDirector.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/SignDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/entity/Page.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/PaginationService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Clients.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Taxi.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/orders.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/WrappedConnector.class" afterPath="$PROJECT_DIR$/target/classes/dao/WrappedConnector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Client.class" afterPath="$PROJECT_DIR$/target/classes/entity/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" afterPath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/ControllerDirector.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/ControllerDirector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java" afterPath="$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/FeedbackDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/FeedbackDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Client.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Taxi.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Taxi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" afterPath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Order.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Order.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" afterPath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/ProfileService.java" afterPath="$PROJECT_DIR$/src/main/java/service/ProfileService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" afterPath="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/order.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/authorization.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/authorization.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/adminMain.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/orders.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/review.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/support.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/orders.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,103 +60,117 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Profile.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="97" column="106" lean-forward="false" selection-start-line="97" selection-start-column="94" selection-end-line="97" selection-end-column="106" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/ProfileService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/ServiceFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-              <folding>
-                <element signature="e#1319#1320#0" expanded="true" />
-                <element signature="e#1357#1358#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DAOFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/DAOFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Dispatcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="48" column="112" lean-forward="false" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="112" />
+            <state relative-caret-position="1212">
+              <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
               <folding>
+                <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
                 <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
                 <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
-                <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
-                <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
                 <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
                 <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeedbackService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+            <state relative-caret-position="814">
+              <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
+      <file leaf-file-name="PaginationService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="201">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#643#644#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Feedback.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+      <file leaf-file-name="CharsetFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="40" column="52" lean-forward="false" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+            <state relative-caret-position="326">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orders.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/orders.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="18" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clients.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Clients.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orders.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/orders.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="880">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="callTaxi.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -178,8 +185,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="CSS File" />
-        <option value="Jsp File" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -195,14 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/radioTaxi.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/LogOut.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/AuthorizationDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/AuthorizationDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/CoordinateGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/support/MD5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/support/CoordinateGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/AuthorizationService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/confirmOrder.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxiConfirm.css" />
@@ -217,35 +216,43 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Registration.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/registrationSuccess.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Authorization.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SingManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/ControllerDirector.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/authorization.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/FeedbackDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/order.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Taxi.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Client.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/formValidator.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/registration.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/ProfileService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/impl/RegistrationDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/ProfileService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/support.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Clients.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Taxi.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Page.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/PaginationService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/orders.jsp" />
       </list>
     </option>
   </component>
@@ -333,6 +340,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -760,8 +769,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1421,7 +1428,12 @@
       <workItem from="1513270567308" duration="10882000" />
       <workItem from="1513369934058" duration="762000" />
       <workItem from="1513419379615" duration="10695000" />
-      <workItem from="1513442592211" duration="7553000" />
+      <workItem from="1513442592211" duration="7603000" />
+      <workItem from="1513536037428" duration="918000" />
+      <workItem from="1513538069352" duration="129000" />
+      <workItem from="1513546676379" duration="4177000" />
+      <workItem from="1513611410916" duration="1214000" />
+      <workItem from="1513804726867" duration="11032000" />
     </task>
     <task id="LOCAL-00001" summary="new structure">
       <created>1511907017124</created>
@@ -1493,11 +1505,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513290685654</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="profile, some in change password">
+      <created>1513457012282</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1513457012282</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265740000" />
+    <option name="totallyTimeSpent" value="283260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1515,18 +1534,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34541336" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23782559" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30124575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18459795" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30124575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26984978" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2886266" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1534,7 +1554,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1571,7 +1590,8 @@
     <MESSAGE value="some in profile" />
     <MESSAGE value="some in taxi" />
     <MESSAGE value="some in taxi and client Profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="some in taxi and client Profile" />
+    <MESSAGE value="profile, some in change password" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile, some in change password" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1596,7 +1616,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java</url>
-          <line>57</line>
+          <line>81</line>
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
@@ -1614,15 +1634,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java</url>
-          <line>31</line>
+          <line>46</line>
           <properties />
-          <option name="timeStamp" value="69" />
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Controller.java</url>
-          <line>28</line>
+          <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java</url>
+          <line>127</line>
           <properties />
-          <option name="timeStamp" value="72" />
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java</url>
@@ -1631,7 +1657,7 @@
           <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="73" />
+      <option name="time" value="82" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1640,206 +1666,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/review.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1628">
-          <caret line="105" column="29" lean-forward="false" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#669#670#0" expanded="false" />
-            <element signature="e#710#711#0" expanded="false" />
-            <element signature="e#741#742#0" expanded="false" />
-            <element signature="e#771#772#0" expanded="false" />
-            <element signature="e#804#805#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-            <element signature="e#862#863#0" expanded="false" />
-            <element signature="e#889#890#0" expanded="false" />
-            <element signature="e#927#928#0" expanded="false" />
-            <element signature="e#961#962#0" expanded="false" />
-            <element signature="e#1004#1005#0" expanded="false" />
-            <element signature="e#1043#1044#0" expanded="false" />
-            <element signature="e#1087#1088#0" expanded="false" />
-            <element signature="e#1127#1128#0" expanded="false" />
-            <element signature="e#1159#1160#0" expanded="false" />
-            <element signature="e#1187#1188#0" expanded="false" />
-            <element signature="e#1230#1231#0" expanded="false" />
-            <element signature="e#1268#1269#0" expanded="false" />
-            <element signature="e#1312#1313#0" expanded="false" />
-            <element signature="e#1348#1349#0" expanded="false" />
-            <element signature="e#1386#1387#0" expanded="false" />
-            <element signature="e#1418#1419#0" expanded="false" />
-            <element signature="e#1472#1473#0" expanded="false" />
-            <element signature="e#1518#1519#0" expanded="false" />
-            <element signature="e#1582#1583#0" expanded="false" />
-            <element signature="e#1638#1639#0" expanded="false" />
-            <element signature="e#1704#1705#0" expanded="false" />
-            <element signature="e#1762#1763#0" expanded="false" />
-            <element signature="e#1804#1805#0" expanded="false" />
-            <element signature="e#1838#1839#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/11e40c27/d5c56219-4ea9-421e-b4bb-90bbf7d273ae/taxisystem.order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="116" column="19" lean-forward="false" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
-          <folding>
-            <element signature="method#getAvailableTaxiList#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#getAllTaxiList#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#callConfirm#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Review.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/AuthorizationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/RegistrationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Registration.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/LogOut.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/banned.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/registrationProblem.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="32" column="7" lean-forward="false" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/registrationSuccess.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Authorization.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/authorization.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/authorizationProblem.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-264">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="156" column="5" lean-forward="true" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
-          <folding>
-            <element signature="method#WrappedConnector#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getRegistrationPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getAuthRolePreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getAuthClientPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getAuthTaxiPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#makeOrderPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#decreaseBonus#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#setReviewPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getReviewClientPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getReviewTaxiPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#getStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#closeStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#closePreparedStatement#0;class#WrappedConnector#0" expanded="false" />
-            <element signature="method#closeConnection#0;class#WrappedConnector#0" expanded="false" />
-            <marker date="1513429193176" expanded="true" signature="1319:1387" ph="INSERT INTO `finaltask`.`users`... " />
-            <marker date="1513429193176" expanded="true" signature="1778:1831" ph="SELECT role client" />
-            <marker date="1513429193176" expanded="true" signature="1778:1889" ph="SELECT role " />
-            <marker date="1513429193176" expanded="true" signature="1838:1889" ph="SELECT role taxi" />
-            <marker date="1513429193176" expanded="true" signature="2281:2331" ph="SELECT * FRO... client" />
-            <marker date="1513429193176" expanded="true" signature="2721:2891" ph="SELECT id, l... taxi" />
-            <marker date="1513429193176" expanded="true" signature="3276:3379" ph="INSERT INTO `taxisystem`.`order`... " />
-            <marker date="1513429193176" expanded="true" signature="3748:3809" ph="UPDATE clien... " />
-            <marker date="1513429193176" expanded="true" signature="4176:4223" ph="DELETE FROM " />
-            <marker date="1513429193176" expanded="true" signature="4590:4659" ph="UPDATE taxis... " />
-            <marker date="1513429193176" expanded="true" signature="5026:5095" ph="UPDATE taxis... " />
-            <marker date="1513429193176" expanded="true" signature="5477:5553" ph="INSERT INTO taxisystem.review... " />
-            <marker date="1513429193176" expanded="true" signature="5941:6133" ph="SELECT taxi.... review" />
-            <marker date="1513429193176" expanded="true" signature="6520:6527" ph="SELECT taxi.... review" />
-            <marker date="1513429193176" expanded="true" signature="6520:6732" ph="SELECT clien... review" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1859,38 +1690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/radioTaxi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/order.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="121" column="25" lean-forward="true" selection-start-line="119" selection-start-column="16" selection-end-line="121" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entity/Car.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
@@ -1899,38 +1698,6 @@
             <element signature="e#559#560#0" expanded="false" />
             <element signature="e#595#596#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/order.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1947,8 +1714,8 @@
         <state relative-caret-position="-125">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="false" />
+            <element signature="e#386#387#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1965,15 +1732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-88">
           <caret line="41" column="6" lean-forward="false" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-698">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1989,9 +1747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2003,125 +1758,458 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="98" column="64" lean-forward="true" selection-start-line="98" selection-start-column="64" selection-end-line="98" selection-end-column="64" />
+        <state relative-caret-position="506">
+          <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/RegistrationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/SignDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="110">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/RegistrationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding>
-            <marker date="1513290198009" expanded="true" signature="408:575" ph="SELECT taxi.... taxi" />
-            <marker date="1513290198009" expanded="true" signature="632:1140" ph="SELECT taxis... order" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/RegistrationDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="32" lean-forward="false" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#545#546#0" expanded="false" />
+            <element signature="e#600#601#0" expanded="false" />
+            <element signature="e#662#663#0" expanded="false" />
+            <element signature="e#704#705#0" expanded="false" />
+            <element signature="e#731#732#0" expanded="false" />
+            <element signature="e#774#775#0" expanded="false" />
+            <marker date="1512717999297" expanded="true" signature="401:432" ph="SELECT clien... client" />
+            <marker date="1512717999297" expanded="true" signature="401:466" ph="SELECT clien... " />
+            <marker date="1512717999297" expanded="true" signature="439:466" ph="SELECT taxi.... taxi" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/ProfileDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ProfileService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ServiceFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="false" />
+            <element signature="e#344#345#0" expanded="false" />
+            <element signature="e#397#398#0" expanded="false" />
+            <element signature="e#439#440#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#509#510#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/DAOFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="48" column="112" lean-forward="false" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="112" />
+        <state relative-caret-position="286">
+          <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
           <folding>
-            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+            <element signature="e#624#625#0" expanded="false" />
+            <element signature="e#675#676#0" expanded="false" />
+            <element signature="e#714#715#0" expanded="false" />
+            <element signature="e#763#764#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#846#847#0" expanded="false" />
+            <element signature="e#882#883#0" expanded="false" />
+            <element signature="e#923#924#0" expanded="false" />
+            <element signature="e#957#958#0" expanded="false" />
+            <element signature="e#996#997#0" expanded="false" />
+            <element signature="e#1029#1030#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="40" column="52" lean-forward="false" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="97" column="106" lean-forward="false" selection-start-line="97" selection-start-column="94" selection-end-line="97" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/AuthorizationDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="70" column="44" lean-forward="false" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="44" />
+        <state relative-caret-position="682">
+          <caret line="67" column="38" lean-forward="false" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#454#455#0" expanded="false" />
+            <element signature="e#509#510#0" expanded="false" />
+            <element signature="e#572#573#0" expanded="false" />
+            <element signature="e#614#615#0" expanded="false" />
+            <element signature="e#641#642#0" expanded="false" />
+            <element signature="e#684#685#0" expanded="false" />
             <element signature="method#preAuthorize#0;class#AuthorizationDAOImpl#0" expanded="false" />
             <element signature="method#taxiAuthorize#0;class#AuthorizationDAOImpl#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1276">
+          <caret line="70" column="45" lean-forward="false" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="44" column="59" lean-forward="false" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/authorization.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/support.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1602">
+          <caret line="100" column="16" lean-forward="true" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-500">
+          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Taxi.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/radioTaxi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Review.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+        <state relative-caret-position="902">
+          <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/support/CoordinateGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/support/MD5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/WrappedConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding>
+            <element signature="method#WrappedConnector#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getRegistrationPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getAuthRolePreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getAuthClientPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getAuthTaxiPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#makeOrderPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#decreaseBonus#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#payOrder#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#setReviewPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getReviewClientPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getReviewTaxiPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getChangeClientPassPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getChangeTaxiPassPreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#getStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#closeStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#closePreparedStatement#0;class#WrappedConnector#0" expanded="false" />
+            <element signature="method#closeConnection#0;class#WrappedConnector#0" expanded="false" />
+            <marker date="1513806916077" expanded="true" signature="1319:1387" ph="INSERT INTO `finaltask`.`users`... " />
+            <marker date="1513806916077" expanded="true" signature="1778:1831" ph="SELECT role client" />
+            <marker date="1513806916077" expanded="true" signature="1778:1889" ph="SELECT role " />
+            <marker date="1513806916077" expanded="true" signature="1838:1889" ph="SELECT role taxi" />
+            <marker date="1513806916077" expanded="true" signature="2281:2331" ph="SELECT * FRO... client" />
+            <marker date="1513806916077" expanded="true" signature="2721:2891" ph="SELECT id, l... taxi" />
+            <marker date="1513806916077" expanded="true" signature="3276:3379" ph="INSERT INTO `taxisystem`.`order`... " />
+            <marker date="1513806916077" expanded="true" signature="3748:3809" ph="UPDATE clien... " />
+            <marker date="1513806916077" expanded="true" signature="4176:4223" ph="DELETE FROM " />
+            <marker date="1513806916077" expanded="true" signature="4590:4659" ph="UPDATE taxis... " />
+            <marker date="1513806916077" expanded="true" signature="5026:5095" ph="UPDATE taxis... " />
+            <marker date="1513806916077" expanded="true" signature="5459:5529" ph="UPDATE taxis... " />
+            <marker date="1513806916077" expanded="true" signature="5912:5988" ph="INSERT INTO taxisystem.review... " />
+            <marker date="1513806916077" expanded="true" signature="6376:6568" ph="SELECT taxi.... review" />
+            <marker date="1513806916077" expanded="true" signature="6955:6962" ph="SELECT taxi.... review" />
+            <marker date="1513806916077" expanded="false" signature="6955:7167" ph="SELECT clien... review" />
+            <marker date="1513806916077" expanded="true" signature="7559:7614" ph="UPDATE clien... " />
+            <marker date="1513806916077" expanded="false" signature="7559:7648" ph="UPDATE clien... " />
+            <marker date="1513806916077" expanded="true" signature="7559:7649" ph="UPDATE clien... " />
+            <marker date="1513806916077" expanded="true" signature="8039:8127" ph="UPDATE taxi " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
+          <folding>
+            <element signature="method#getAvailableTaxiList#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getAllTaxiList#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#callConfirm#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#payOrder#0;class#DispatcherService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="66" column="35" lean-forward="false" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+          <folding>
+            <element signature="method#getTaxiList#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#orderConfirm#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#decreaseBonus#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <marker date="1513810791010" expanded="true" signature="408:575" ph="SELECT taxi.... taxi" />
+            <marker date="1513810791010" expanded="true" signature="632:1165" ph="SELECT taxis... order" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/PaginationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ServiceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ProfileService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1212">
+          <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding>
+            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/Clients.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

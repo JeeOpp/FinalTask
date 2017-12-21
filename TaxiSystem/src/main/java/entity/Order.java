@@ -99,10 +99,12 @@ public class Order {
             Taxi taxi = new Taxi();
             taxi.setId(resultSet.getInt(10));
             taxi.setLogin(resultSet.getString(11));
+            taxi.setFirstName(resultSet.getString(12));
+            taxi.setLastName(resultSet.getString(13));
             Car car = new Car();
-            car.setNumber(resultSet.getString(12));
-            car.setName(resultSet.getString(13));
-            car.setColour(resultSet.getString(14));
+            car.setNumber(resultSet.getString(14));
+            car.setName(resultSet.getString(15));
+            car.setColour(resultSet.getString(16));
             taxi.setCar(car);
             this.setTaxi(taxi);
         }catch (SQLException ex){

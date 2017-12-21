@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <script>
-        <%@include file="review.js"%>
+        <%@include file="support.js"%>
     </script>
 </head>
 <body>
@@ -60,6 +60,32 @@
     <button type="submit">$$$Мой профиль</button>
 </form>
 <!-- ВСплывающее окно -->
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="Controller" method="post">              <!--Оплата не работает, так что прост -->
+                <input type="hidden" name="method" value="dispatcher">   <!--input-->
+                <input type="hidden" name="action" value="payOrder">  <!--input-->
+                <input type="hidden" name="orderId">                    <!--input-->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="payModalLabel">$$$Modal pay title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="payText">$$$ К оплате:</label>
+                    <input type="text" id="payText" name="payText" readonly>  <!--input-->
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">$$$Оплатить</button>  <!--input-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">$$$Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -68,7 +94,7 @@
                 <input type="hidden" name="action" value="writeReview">  <!--input-->
                 <input type="hidden" name="taxiId">                    <!--input-->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">$$$Modal title</h5>
+                    <h5 class="modal-title" id="reviewModalLabel">$$$Modal review title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -117,6 +143,11 @@
                 </form>
             </c:when>
             <c:when test = "${order.orderStatus eq 'accepted'}">
+                <button onclick="setOrder(<c:out value="${order.orderId}"/>, <c:out value="${order.price}"/>)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal">
+                    $$$Оплатить
+                </button>
+            </c:when>
+            <c:when test="${order.orderStatus eq 'completed'}">
                 <button onclick="setTaxi(<c:out value="${order.taxi.id}"/>)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
                     $$$Добавить отзыв
                 </button>
