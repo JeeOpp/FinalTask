@@ -38,13 +38,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=profile&action=preProfile"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=preProfile"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=profile&action=preProfile"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=preProfile"/>
     <input type="submit" value="${engButton}">
 </form>
 <!--/////////////////////////////////////////////////////////-->
@@ -59,7 +59,7 @@
     <button type="submit">$$$Мои заказы</button>
 </form>
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value = "profile">
+    <input type="hidden" name="method" value = "userManager">
     <input type="hidden" name="action" value="preProfile"/>
     <button type="submit">$$$Мой профиль</button>
 </form>

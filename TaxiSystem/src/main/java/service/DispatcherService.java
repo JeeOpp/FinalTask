@@ -15,28 +15,6 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherService {
-    public List<Taxi> getAvailableTaxiList() {
-        List<Taxi> taxiList = getAllTaxiList();
-        Iterator<Taxi> taxiIterator = taxiList.listIterator();
-        while (taxiIterator.hasNext()) {
-            if (!taxiIterator.next().isAvailableStatus()) {
-                taxiIterator.remove();
-            }
-        }
-        return taxiList;
-    }
-
-    public List<Taxi> getAllTaxiList(){
-        List<Taxi> taxiList = null;
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            taxiList = dispatcherDAO.getTaxiList();
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return taxiList;
-    }
 
     public Boolean callConfirm(Order order, Integer bonus){
         if(order.getClient().getBonusPoints()<bonus){
@@ -129,6 +107,16 @@ public class DispatcherService {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             dispatcherDAO.payOrder(orderId);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public boolean deleteAllOrders(){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.deleteAllOrders();
         }catch (SQLException ex){
             ex.printStackTrace();
         }

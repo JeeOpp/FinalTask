@@ -3,9 +3,8 @@ package controller.command.impl;
 import controller.command.ControllerCommand;
 import entity.Client;
 import entity.User;
-import service.AuthorizationService;
-import service.RegistrationService;
 import service.ServiceFactory;
+import service.SignService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,17 +33,17 @@ public class SignManager implements ControllerCommand {
 
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        AuthorizationService authorizationService = serviceFactory.getAuthorizationService();
+        SignService signService = serviceFactory.getSignService();
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
         User user;
         try {
-            if ((user = authorizationService.authorize(login,password)) == null) {
+            if ((user = signService.authorize(login,password)) == null) {
                 resp.sendRedirect("authorizationProblem.jsp");
             } else {
-                if (user.hasBanStatus()) {
+                if (user.getBanStatus()) {
                     resp.sendRedirect("banned.jsp");
                 } else {
                     req.getSession().setAttribute("user",user);
@@ -57,7 +56,7 @@ public class SignManager implements ControllerCommand {
     }
     private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        RegistrationService registrationService = serviceFactory.getRegistrationService();
+        SignService registrationService = serviceFactory.getSignService();
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");

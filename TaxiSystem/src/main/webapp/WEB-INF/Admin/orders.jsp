@@ -5,7 +5,7 @@
   Time: 1:38
   To change this template use File | Settings | File Templates.
 --%>
-<<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -31,13 +31,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getAllOrders"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getAllOrders"/>
     <input type="submit" value="${engButton}">
 </form>
 
@@ -48,16 +48,14 @@
 </form>
 
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="method" value="userManager"/>
+    <input type="hidden" name="action" value="getTaxiList"/>
     <input type="submit" value="$$$Таксисты">
 </form>
 
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="method" value="userManager"/>
+    <input type="hidden" name="action" value="getClientList"/>
     <input type="submit" value="$$$Клиенты">
 </form>
 
@@ -115,25 +113,28 @@
         </c:forEach>
     </table>
     <nav aria-label="Page navigation example">    <!-- table -->
-        <ul class="pagination">                   <!-- tr -->
-            <c:forEach begin="1" end="${requestScope.countPages}" var="i">
-                <c:choose>
-                    <c:when test="${requestScope.currentPage eq i}">
-                        <li class="page-item"><a class="page-link">${i}</a></li>      <!-- td-->
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item"><a class="page-link" href="/Controller?method=dispatcher&action=getAllOrders&page=${i}">${i}</a></li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </ul>
-    </nav>
+    <ul class="pagination">                   <!-- tr -->
+        <c:forEach begin="1" end="${requestScope.countPages}" var="i">
+            <c:choose>
+                <c:when test="${requestScope.currentPage eq i}">
+                    <li class="page-item"><a class="page-link">${i}</a></li>      <!-- td-->
+                </c:when>
+                <c:otherwise>
+                    <li class="page-item"><a class="page-link" href="/Controller?method=dispatcher&action=getAllOrders&page=${i}">${i}</a></li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </ul>
+</nav>
 </div>
 
 
 <!--УДАЛИТЬ ВСЕ-->
-
-
+<form action="Controller" method="post">
+    <input type="hidden" name="method" value = "dispatcher"/>
+    <input type="hidden" name="action" value="deleteAllOrders"/>
+    <button type="submit">$$$Удалить все заказы</button>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

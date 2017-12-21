@@ -45,16 +45,14 @@
 </form>
 
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="method" value="userManager"/>
+    <input type="hidden" name="action" value="getTaxiList"/>
     <input type="submit" value="$$$Таксисты">
 </form>
 
 <form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="WEB-INF/Admin/main.jsp"/>
+    <input type="hidden" name="method" value="userManager"/>
+    <input type="hidden" name="action" value="getClientList"/>
     <input type="submit" value="$$$Клиенты">
 </form>
 

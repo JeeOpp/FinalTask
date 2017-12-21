@@ -5,26 +5,22 @@ import support.CoordinateGenerator;
 /**
  * Created by DNAPC on 12.11.2017.
  */
-public class ServiceFactory {
+public class ServiceFactory <E>{
     private static final ServiceFactory instance = new ServiceFactory();
-    private final AuthorizationService authorizationService = new AuthorizationService();
-    private final RegistrationService registrationService = new RegistrationService();
+    private final SignService signService = new SignService();
     private final DispatcherService dispatcherService = new DispatcherService();
     private final FeedbackService feedbackService = new FeedbackService();
     private final CoordinateGenerator coordinateGenerator = new CoordinateGenerator();
-    private final ProfileService profileService = new ProfileService();
-    private final PaginationService paginationService = new PaginationService();
+    private final UserManagerService userManagerService = new UserManagerService();
+    private final PaginationService<E> paginationService = new PaginationService<>();
 
     private ServiceFactory() {}
 
     public static ServiceFactory getInstance(){
         return instance;
     }
-    public AuthorizationService getAuthorizationService(){
-        return authorizationService;
-    }
-    public RegistrationService getRegistrationService(){
-        return registrationService;
+    public SignService getSignService(){
+        return signService;
     }
     public DispatcherService getDispatcherService(){ return dispatcherService; }
     public FeedbackService getFeedbackService(){
@@ -33,8 +29,8 @@ public class ServiceFactory {
     public CoordinateGenerator getCoordinateGenerator(){
         return coordinateGenerator;
     }
-    public ProfileService getProfileService(){
-        return  profileService;
+    public UserManagerService getUserManagerService(){
+        return userManagerService;
     }
     public PaginationService getPaginationService(){
         return paginationService;

@@ -1,6 +1,7 @@
 package service;
 
 import entity.Page;
+import entity.Pagination;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,50 +9,31 @@ import java.util.List;
 /**
  * Created by DNAPC on 21.12.2017.
  */
-public class PaginationService <E>{
+public class PaginationService<E>{
     private static final int RECORDS_PER_PAGE = 5;
-    private List<Page<E>> pagesList = null;
-    private List<E> entityList = null;
-    private int countRecords;
-    private int countPages;
+    private Pagination<E> pagination = null;
 
     public PaginationService() {
     }
 
-    public List<E> getPageList(int page) {
-        if(page>0) {
-            return pagesList.get(page - 1).getRecords();
-        }
-        return null;
-    }
-
-    public static int getRecordsPerPage() {
-        return RECORDS_PER_PAGE;
-    }
-
-    public int getCountRecords() {
-        return countRecords;
-    }
-
-    public int getCountPages() {
-        return countPages;
+    public Pagination<E> getPagination() {
+        return pagination;
     }
 
     public void buildPagination(List<E> entityList){
-        this.entityList = entityList;
-        this.countRecords = entityList.size();
-        this.countPages = (int) Math.ceil(countRecords* 1.0 / RECORDS_PER_PAGE);
-        this.pagesList = new ArrayList<>();
+        pagination = new Pagination<>();
+        pagination.setCountRecords(entityList.size());
+        pagination.setCountPages((int) Math.ceil(pagination.getCountRecords()* 1.0 / RECORDS_PER_PAGE));
 
         Page<E> page;
-        for (int i=1; i<=countPages;i++){
-            page = new Page<E>();
-            page.setRecords(splitList(i));
-            pagesList.add(page);
+        for (int i=1; i<=pagination.getCountPages();i++){
+            page = new Page<>();
+            page.setRecords(splitList(i, entityList));
+            pagination.getPagesList().add(page);
         }
     }
 
-    private List<E> splitList(int currentPage){
+    private List<E> splitList(int currentPage, List<E> entityList){
         int firstElement = (currentPage-1)*RECORDS_PER_PAGE;
         int lastElement = firstElement+RECORDS_PER_PAGE-1;
         int i=0;

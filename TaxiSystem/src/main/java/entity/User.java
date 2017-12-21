@@ -77,7 +77,7 @@ public class User {
         return lastName;
     }
 
-    public boolean hasBanStatus() {
+    public boolean getBanStatus() {
         return banStatus;
     }
 

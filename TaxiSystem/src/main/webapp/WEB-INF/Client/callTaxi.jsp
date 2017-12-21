@@ -58,7 +58,7 @@
         <button type="submit">$$$Мои заказы</button>
     </form>
     <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "profile"/>
+        <input type="hidden" name="method" value = "userManager"/>
         <input type="hidden" name="action" value="preProfile"/>
         <button type="submit">$$$Мой профиль</button>
     </form>

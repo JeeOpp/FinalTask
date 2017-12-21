@@ -1,5 +1,8 @@
 package entity;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Created by DNAPC on 28.11.2017.
  */
@@ -24,4 +27,16 @@ public class Client extends User{
         this.bonusPoints = bonusPoints;
     }
 
+    public void setFromResultSet(ResultSet resultSet){
+        try {
+            this.setId(resultSet.getInt(1));
+            this.setLogin(resultSet.getString(2));
+            this.setFirstName(resultSet.getString(3));
+            this.setLastName(resultSet.getString(4));
+            this.setBonusPoints(resultSet.getInt(5));
+            this.setBanStatus(resultSet.getBoolean(6));
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }

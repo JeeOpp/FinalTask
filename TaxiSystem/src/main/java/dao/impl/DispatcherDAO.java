@@ -16,12 +16,11 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherDAO {
-    private static final String SQL_SELECT_ALL_TAXI="SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number";
     private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.order\n" +
             "\tJOIN client ON taxisystem.order.client_id = client.id\n" +
             "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
             "    JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";
-
+    private static final String SQL_DELETE_ALL_ORDER="DELETE FROM `order` WHERE `order`.order_id > 0;";
     private WrappedConnector connector;
 
     public DispatcherDAO() {
@@ -32,27 +31,6 @@ public class DispatcherDAO {
     }
     public void close() {
         connector.closeConnection();
-    }
-    public List<Taxi> getTaxiList() throws SQLException {
-        ResultSet resultSet;
-        Statement statement = null;
-        List<Taxi> taxiList = new ArrayList<>();
-        Taxi taxi;
-        try {
-            statement = connector.getStatement();
-            if((resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI))!=null){
-                while (resultSet.next()){
-                    taxi = new Taxi();
-                    taxi.setFromResultSet(resultSet);
-                    taxiList.add(taxi);
-                }
-            }
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
-            connector.closeStatement(statement);
-        }
-        return taxiList;
     }
     public List<Order> getOrderList() throws SQLException{
         ResultSet resultSet;
@@ -150,6 +128,17 @@ public class DispatcherDAO {
             ex.printStackTrace();
         }finally {
             connector.closePreparedStatement(preparedStatement);
+        }
+    }
+    public void deleteAllOrders() throws SQLException{
+        Statement statement = null;
+        try {
+            statement = connector.getStatement();
+            statement.execute(SQL_DELETE_ALL_ORDER);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closeStatement(statement);
         }
     }
 }

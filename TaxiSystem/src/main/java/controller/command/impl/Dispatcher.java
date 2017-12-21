@@ -8,6 +8,7 @@ import entity.Taxi;
 import service.DispatcherService;
 import service.PaginationService;
 import service.ServiceFactory;
+import service.UserManagerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -49,9 +50,12 @@ public class Dispatcher implements ControllerCommand {
         if(action.equals("getAllOrders")){
             getAllOrders(req,resp);
         }
-
+        if(action.equals("deleteAllOrders")){
+            deleteAllOrders(req,resp);
+        }
     }
-    public void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+    void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Client client = (Client) req.getSession().getAttribute("user");
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -60,7 +64,7 @@ public class Dispatcher implements ControllerCommand {
         req.setAttribute("clientOrder",orderList);
         req.getRequestDispatcher("WEB-INF/Client/orders.jsp").forward(req,resp);
     }
-    public void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+    private void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         Taxi taxi = (Taxi) req.getSession().getAttribute("user");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
@@ -69,11 +73,10 @@ public class Dispatcher implements ControllerCommand {
         req.setAttribute("taxiOrder", orderList);
         req.getRequestDispatcher("WEB-INF/Taxi/orders.jsp").forward(req,resp);
     }
-
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        List<Taxi> availableTaxiList = dispatcherService.getAvailableTaxiList();
+        UserManagerService userManagerService = serviceFactory.getUserManagerService();
+        List<Taxi> availableTaxiList = userManagerService.getAvailableTaxiList();
 
         req.setAttribute("availableTaxiList", availableTaxiList);
         req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req, resp);
@@ -134,7 +137,6 @@ public class Dispatcher implements ControllerCommand {
         }
     }
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
         int page = 1; //default page
         if(req.getParameter("page") != null){
             page = Integer.parseInt(req.getParameter("page"));
@@ -144,15 +146,22 @@ public class Dispatcher implements ControllerCommand {
         List<Order> orderList = dispatcherService.getAllOrderList();
 
 
-        PaginationService paginationService = serviceFactory.getPaginationService();
+        PaginationService<Order> paginationService = serviceFactory.getPaginationService();
         paginationService.buildPagination(orderList);
-        List<Order> pageOrderList = paginationService.getPageList(page);
+        List<Order> pageOrderList = paginationService.getPagination().getPage(page);
 
 
         req.setAttribute("pageOrderList", pageOrderList);
-        req.setAttribute("countPages", paginationService.getCountPages());
+        req.setAttribute("countPages", paginationService.getPagination().getCountPages());
         req.setAttribute("currentPage", page);
 
         req.getRequestDispatcher("WEB-INF/Admin/orders.jsp").forward(req,resp);
+    }
+    private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.deleteAllOrders()){
+            //удалено
+        }
     }
 }
