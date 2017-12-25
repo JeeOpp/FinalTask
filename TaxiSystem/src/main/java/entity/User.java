@@ -34,9 +34,13 @@ public class User {
         this.id = id;
     }
 
-    public User(int id, boolean banStatus, String role){
+    public User(int id, String role){
         this(role);
         this.id = id;
+    }
+
+    public User(int id, boolean banStatus, String role){
+        this(id,role);
         this.banStatus = banStatus;
     }
 
@@ -44,6 +48,11 @@ public class User {
         this(login,password);
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public User(String login, String password, String firstName, String lastName, String role) {
+        this(login,password,firstName,lastName);
+        this.role = role;
     }
 
     public User(int id, String login, String password, String firstName, String lastName){

@@ -5,6 +5,7 @@ import dao.DAOFactory;
 import dao.RegistrationDAO;
 import dao.impl.SignDAO;
 import entity.Client;
+import entity.Taxi;
 import entity.User;
 
 import java.sql.SQLException;
@@ -13,8 +14,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 21.12.2017.
  */
 public class SignService {
-    public Boolean registerClient(User user) throws SQLException {
-        Client client = (Client) user;
+    public Boolean registerClient(Client client) throws SQLException {
         DAOFactory daoFactory = DAOFactory.getInstance();
         SignDAO signDAO = daoFactory.getSignDAO();
         if (signDAO.isLoginFree(client.getLogin())) {
@@ -24,6 +24,17 @@ public class SignService {
 
         }
     }
+    public Boolean registerTaxi(Taxi taxi) throws SQLException {
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        SignDAO signDAO = daoFactory.getSignDAO();
+        if (signDAO.isLoginFree(taxi.getLogin())) {
+            return signDAO.registerTaxi(taxi);
+        } else {
+            return false;
+
+        }
+    }
+
     public User authorize(String login, String password) throws SQLException{
         User user = null;
         DAOFactory daoFactory = DAOFactory.getInstance();
@@ -42,11 +53,11 @@ public class SignService {
     }
 
 
-    public void logOut(User user) throws SQLException{
+    public void changeSessionStatus(Taxi taxi) throws SQLException{
         DAOFactory daoFactory = DAOFactory.getInstance();
         SignDAO signDAO = daoFactory.getSignDAO();
         try {
-            signDAO.logOut(user);
+            signDAO.changeAvailableStatus(taxi);
         }catch (SQLException ex){
             ex.printStackTrace();
         }

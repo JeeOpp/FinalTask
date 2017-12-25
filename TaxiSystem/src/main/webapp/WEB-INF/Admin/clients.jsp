@@ -82,19 +82,29 @@
                 <td>${client.bonusPoints}</td>
                 <td>${client.banStatus}</td>
                 <td>
+                        <form action="Controller" method="post">
+                            <input type="hidden" name="method" value = "userManager"/>
+                            <input type="hidden" name="action" value="changeBanStatus"/>
+                            <input type="hidden" name="id" value="${client.id}"/>
+                            <input type="hidden" name="banStatus" value="${client.banStatus}"/>
+                            <input type="hidden" name="role" value="${client.role}"/>
+                            <button type="submit">
+                                <c:choose>
+                                    <c:when test="${!client.banStatus}">
+                                        $$$Забанить
+                                    </c:when>
+                                    <c:otherwise>
+                                        $$$Разбанить
+                                    </c:otherwise>
+                                </c:choose>
+                            </button>
+                        </form>
                     <form action="Controller" method="post">
                         <input type="hidden" name="method" value = "userManager"/>
-                        <input type="hidden" name="action" value="ban"/>
-                        <input type="hidden" name="id" value="${client.id}"/>
-                        <input type="hidden" name="role" value="${client.role}"/>
-                        <button type="submit">$$$Забанить</button>
-                    </form>
-                    <form action="Controller" method="post">
-                        <input type="hidden" name="method" value = "userManager"/>
-                        <input type="hidden" name="action" value="giveBonusPoints"/>
+                        <input type="hidden" name="action" value="changeBonusCount"/>
                         <input type="hidden" name="clientId" value="${client.id}"/>
-                        <input type="text" name="bonusPoints" placeholder="$$$СКОЛЬКО???" required/>
-                        <button type="submit">$$$ДатьБонусы</button>
+                        <input type="text" name="bonusPoints" placeholder="$$$на сколько изменить???" required/>
+                        <button type="submit">$$$Выполнить</button>
                     </form>
                 </td>
             </tr>
@@ -115,8 +125,5 @@
         </ul>
     </nav>
 </div>
-
-
-    забанить, дать бонус
 </body>
 </html>

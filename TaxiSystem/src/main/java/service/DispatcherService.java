@@ -2,6 +2,8 @@ package service;
 
 import dao.DAOFactory;
 import dao.impl.DispatcherDAO;
+import dao.impl.UserManagerDAO;
+import entity.Car;
 import entity.Client;
 import entity.Order;
 import entity.Taxi;
@@ -27,17 +29,17 @@ public class DispatcherService {
 
         DAOFactory daoFactory = DAOFactory.getInstance();
         DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
         try {
             dispatcherDAO.orderConfirm(order);
             if(bonus>0){
-                dispatcherDAO.decreaseBonus(order.getClient(),bonus);
+                userManagerDAO.decreaseBonus(order.getClient(),bonus);
             }
         }catch (SQLException ex){
             ex.printStackTrace();
         }
         return true;
     }
-
     public List<Order> getClientOrders(Client client) {
         List<Order> orderList = getAllOrderList();
         Iterator<Order> orderIterator = orderList.listIterator();
@@ -48,7 +50,6 @@ public class DispatcherService {
         }
         return orderList;
     }
-
     public List<Order> getTaxiOrders(Taxi taxi){
         List<Order> orderList = getAllOrderList();
         Iterator<Order> orderIterator = orderList.listIterator();
@@ -59,7 +60,6 @@ public class DispatcherService {
         }
         return orderList;
     }
-
     public List<Order> getAllOrderList(){
         List<Order> orderList = null;
         try {
@@ -121,6 +121,17 @@ public class DispatcherService {
             ex.printStackTrace();
         }
         return true;
+    }
+    public List<Car> getCarList(){
+        List<Car> carList = null;
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            carList = dispatcherDAO.getCarList();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return carList;
     }
 
 }

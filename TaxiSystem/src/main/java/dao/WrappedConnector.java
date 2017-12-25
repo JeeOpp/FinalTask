@@ -32,9 +32,18 @@ public class WrappedConnector {
         }
     }
 
-    public PreparedStatement getRegistrationPreparedStatement() throws SQLException {
+    public PreparedStatement getClientRegistrationPreparedStatement() throws SQLException {
         if (connection != null) {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO client (login, password, name, surname) VALUES (?,?,?,?);");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+    public PreparedStatement getTaxiRegistrationPreparedStatement() throws SQLException {
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxi (login, password, name, surname,carNumber) VALUES (?,?,?,?,?);");
             if (preparedStatement != null) {
                 return preparedStatement;
             }
@@ -59,6 +68,26 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+
+    public PreparedStatement getClientBanPreparedStatement() throws SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET banStatus = ? WHERE id = ?;");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
+    public PreparedStatement getTaxiBanPreparedStatement() throws SQLException{
+        if (connection != null) {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi SET banStatus = ? WHERE id = ?;");
+            if (preparedStatement != null) {
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
     public PreparedStatement getAuthTaxiPreparedStatement() throws SQLException{
         if (connection != null) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;");
@@ -68,6 +97,7 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+
     public PreparedStatement makeOrderPreparedStatement() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);");
@@ -86,6 +116,16 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+    public PreparedStatement changeBonusCount() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
     public PreparedStatement cancelOrder() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM taxisystem.order WHERE order_id = ?;");
@@ -154,6 +194,7 @@ public class WrappedConnector {
         }
         throw new SQLException("connection or PreparedStatement is null");
     }
+
     public PreparedStatement getChangeClientPassPreparedStatement() throws SQLException{
         if(connection!=null){
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client " +
@@ -170,6 +211,16 @@ public class WrappedConnector {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi " +
                     "SET password = ? "+
                     "WHERE id=?;");
+            if (preparedStatement!=null){
+                return preparedStatement;
+            }
+        }
+        throw new SQLException("connection or PreparedStatement is null");
+    }
+
+    public PreparedStatement changeAvailableStatusPreparedStatement() throws SQLException{
+        if(connection!=null){
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi SET availableStatus = ?  WHERE id = ?;");
             if (preparedStatement!=null){
                 return preparedStatement;
             }

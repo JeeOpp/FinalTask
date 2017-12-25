@@ -118,11 +118,30 @@ public class SignDAO {
     public Boolean registerClient(Client client) throws SQLException {
         PreparedStatement preparedStatement=null;
         try {
-            preparedStatement = connector.getRegistrationPreparedStatement();
+            preparedStatement = connector.getClientRegistrationPreparedStatement();
             preparedStatement.setString(1, client.getLogin());
             preparedStatement.setString(2, MD5.md5Hash(client.getPassword()));
             preparedStatement.setString(3, client.getFirstName());
             preparedStatement.setString(4, client.getLastName());
+            preparedStatement.execute();
+            return true;
+        }catch (SQLException e){
+            System.err.println("SQL exception (request or table failed): " + e);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+        return false;
+    }
+
+    public Boolean registerTaxi(Taxi taxi) throws SQLException {
+        PreparedStatement preparedStatement=null;
+        try {
+            preparedStatement = connector.getTaxiRegistrationPreparedStatement();
+            preparedStatement.setString(1, taxi.getLogin());
+            preparedStatement.setString(2, MD5.md5Hash(taxi.getPassword()));
+            preparedStatement.setString(3, taxi.getFirstName());
+            preparedStatement.setString(4, taxi.getLastName());
+            preparedStatement.setString(5, taxi.getCar().getNumber());
             preparedStatement.execute();
             return true;
         }catch (SQLException e){
@@ -152,7 +171,17 @@ public class SignDAO {
         return false;
     }
 
-    public void logOut(User user) throws SQLException {
-        //TODO для таксиста
+    public void changeAvailableStatus(Taxi taxi) throws SQLException {
+        PreparedStatement preparedStatement=null;
+        try {
+            preparedStatement = connector.changeAvailableStatusPreparedStatement();
+            preparedStatement.setBoolean(1, !taxi.isAvailableStatus());
+            preparedStatement.setInt(2, taxi.getId());
+            preparedStatement.execute();
+        }catch (SQLException e){
+            System.err.println("SQL exception (request or table failed): " + e);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
     }
 }

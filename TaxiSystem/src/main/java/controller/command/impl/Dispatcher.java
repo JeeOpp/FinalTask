@@ -1,10 +1,8 @@
 package controller.command.impl;
 
+import com.google.gson.Gson;
 import controller.command.ControllerCommand;
-import entity.Client;
-import entity.Order;
-import entity.Page;
-import entity.Taxi;
+import entity.*;
 import service.DispatcherService;
 import service.PaginationService;
 import service.ServiceFactory;
@@ -52,6 +50,9 @@ public class Dispatcher implements ControllerCommand {
         }
         if(action.equals("deleteAllOrders")){
             deleteAllOrders(req,resp);
+        }
+        if(action.equals("getCarList")){
+            getCarList(req,resp);
         }
     }
 
@@ -161,7 +162,18 @@ public class Dispatcher implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.deleteAllOrders()){
-            //удалено
+            new UserManager().getTaxiList(req,resp);
         }
+    }
+    private void getCarList(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        List<Car> carList = dispatcherService.getCarList();
+
+        Gson gson = new Gson();
+        String carListJson = gson.toJson(carList);
+
+        resp.setContentType("application/json");
+        resp.getWriter().write(carListJson);
     }
 }

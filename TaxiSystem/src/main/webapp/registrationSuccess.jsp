@@ -13,7 +13,7 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>Title</title>
+    <title>$$$Title</title>
 </head>
 <body>
 <form action="Controller" method="post">
@@ -28,6 +28,6 @@
     <input type="hidden" name="page" value="registrationSuccess.jsp"/>
     <input type="submit" value="${engButton}">
 </form>
-    Registration Success
+    $$$Registration Success
 </body>
 </html>

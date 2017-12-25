@@ -70,7 +70,7 @@
         <input id="dstCoord" type="hidden" name="destinyCoordinate" value="53.90453,27.56152"/>
         <ul>
             <c:forEach var="taxi" items="${requestScope.availableTaxiList}">
-                <li><input type="radio" name="taxi" value="${taxi.id}" >${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.colour}</li>
+                <li><input type="radio" name="taxi" value="${taxi.id}" checked>${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.colour}</li>
             </c:forEach>
         </ul>
         <input type="hidden" name="checkedTaxiId"/>

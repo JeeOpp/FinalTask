@@ -58,5 +58,18 @@ public class UserManagerService {
         }
         return taxiList;
     }
-
+    public void changeBanStatus(User user){
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
+        userManagerDAO.changeBanStatus(user);
+    }
+    public void changeBonusCount(Client client) {
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
+            userManagerDAO.changeBonusCount(client);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

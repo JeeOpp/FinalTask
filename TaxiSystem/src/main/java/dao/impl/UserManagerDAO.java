@@ -17,8 +17,8 @@ import java.util.List;
  * Created by DNAPC on 16.12.2017.
  */
 public class UserManagerDAO {
-    private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number;";
-    private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.bonusPoints, client.banStatus FROM taxisystem.client WHERE client.role = \"client\";";
+    private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, taxi.banStatus, taxi.role, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number;";
+    private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
 
     private WrappedConnector connector;
 
@@ -29,7 +29,6 @@ public class UserManagerDAO {
     public UserManagerDAO(WrappedConnector connector) {
         this.connector = connector;
     }
-
 
     public void close() {
         connector.closeConnection();
@@ -93,5 +92,48 @@ public class UserManagerDAO {
             connector.closeStatement(statement);
         }
         return clientList;
+    }
+    public void changeBanStatus(User user){
+        PreparedStatement preparedStatement=null;
+        try {
+            if(user.getRole().equals("taxi")) {
+                preparedStatement = connector.getTaxiBanPreparedStatement();
+            }else{
+                preparedStatement = connector.getClientBanPreparedStatement();
+            }
+            preparedStatement.setBoolean(1,!user.getBanStatus());
+            preparedStatement.setInt(2, user.getId());
+            preparedStatement.execute();
+        }catch (SQLException e){
+            System.err.println("SQL exception (request or table failed): " + e);
+        } finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
+    public void decreaseBonus(Client client, int bonus) throws SQLException{ //bonus - how many client spend
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.decreaseBonus();
+            preparedStatement.setInt(1,bonus);
+            preparedStatement.setInt(2,client.getId());
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
+    }
+    public void changeBonusCount(Client client) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.changeBonusCount();
+            preparedStatement.setInt(1,client.getBonusPoints());
+            preparedStatement.setInt(2,client.getId());
+            preparedStatement.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closePreparedStatement(preparedStatement);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.WrappedConnector;
+import entity.Car;
 import entity.Client;
 import entity.Order;
 import entity.Taxi;
@@ -21,6 +22,7 @@ public class DispatcherDAO {
             "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
             "    JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";
     private static final String SQL_DELETE_ALL_ORDER="DELETE FROM `order` WHERE `order`.order_id > 0;";
+    private static final String SQL_SELECT_ALL_CARS="SELECT * FROM taxisystem.car;";
     private WrappedConnector connector;
 
     public DispatcherDAO() {
@@ -65,19 +67,6 @@ public class DispatcherDAO {
             preparedStatement.execute();
         }catch (SQLException ex){
             System.err.println("SQL exception (request or table failed): " + ex);
-        }finally {
-            connector.closePreparedStatement(preparedStatement);
-        }
-    }
-    public void decreaseBonus(Client client, int bonus) throws SQLException{ //bonus - how many client spend
-        PreparedStatement preparedStatement = null;
-        try {
-            preparedStatement = connector.decreaseBonus();
-            preparedStatement.setInt(1,bonus);
-            preparedStatement.setInt(2,client.getId());
-            preparedStatement.execute();
-        }catch (SQLException ex){
-            ex.printStackTrace();
         }finally {
             connector.closePreparedStatement(preparedStatement);
         }
@@ -140,5 +129,26 @@ public class DispatcherDAO {
         }finally {
             connector.closeStatement(statement);
         }
+    }
+    public List<Car> getCarList() throws SQLException{
+        Statement statement = null;
+        ResultSet resultSet = null;
+        List<Car> carList = new ArrayList<>();
+        Car car;
+        try {
+            statement = connector.getStatement();
+            if((resultSet = statement.executeQuery(SQL_SELECT_ALL_CARS))!=null){
+                while (resultSet.next()){
+                    car = new Car();
+                    car.setFromResultSet(resultSet);
+                    carList.add(car);
+                }
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connector.closeStatement(statement);
+        }
+    return carList;
     }
 }

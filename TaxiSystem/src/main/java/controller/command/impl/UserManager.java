@@ -32,13 +32,12 @@ public class UserManager implements ControllerCommand {
         if (action.equals("getTaxiList")){
             getTaxiList(req,resp);
         }
-        if (action.equals("ban")){
-            ban(req,resp);
+        if (action.equals("changeBanStatus")){
+            changeBanStatus(req,resp);
         }
-        if (action.equals("giveBonusPoints")){
-            giveBonusPoints(req,resp);
+        if (action.equals("changeBonusCount")){
+            changeBonusCount(req,resp);
         }
-
     }
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         List<Review> reviewList = null;
@@ -54,7 +53,6 @@ public class UserManager implements ControllerCommand {
             req.getRequestDispatcher("WEB-INF/Taxi/profile.jsp").forward(req,resp);
         }
     }
-
     private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         String currentPassword = req.getParameter("previousPass");
@@ -90,7 +88,7 @@ public class UserManager implements ControllerCommand {
 
         req.getRequestDispatcher("WEB-INF/Admin/clients.jsp").forward(req,resp);
     }
-    private void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         int page = 1; //default page
         if(req.getParameter("page") != null){
             page = Integer.parseInt(req.getParameter("page"));
@@ -111,10 +109,30 @@ public class UserManager implements ControllerCommand {
 
         req.getRequestDispatcher("WEB-INF/Admin/taxi.jsp").forward(req,resp);
     }
-    private void ban(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    private void changeBanStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int userId = Integer.parseInt(req.getParameter("id"));
+        boolean banStatus = Boolean.parseBoolean(req.getParameter("banStatus"));
+        String role = req.getParameter("role");
 
+        User user = new User(userId,banStatus,role);
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        UserManagerService userManagerService = serviceFactory.getUserManagerService();
+        userManagerService.changeBanStatus(user);
+        if (role.equals("client")){
+            getClientList(req,resp);
+        }else {
+            getTaxiList(req,resp);
+        }
     }
-    private void giveBonusPoints(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    private void changeBonusCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+            Integer clientId = Integer.parseInt(req.getParameter("clientId"));
+            Integer bonusPoints = Integer.parseInt(req.getParameter("bonusPoints"));
 
+            Client client = new Client(clientId,bonusPoints);
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            UserManagerService userManagerService = serviceFactory.getUserManagerService();
+            userManagerService.changeBonusCount(client);
+            getClientList(req,resp);
     }
 }

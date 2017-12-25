@@ -19,6 +19,10 @@ public class Taxi extends User{
     public Taxi(int id, String name, String surname){
         super(id,null,null,name,surname);
     }
+    public Taxi(String login, String password, String firstName, String lastName, String role, Car car){
+        super(login,password,firstName,lastName,role);
+        this.car = car;
+    }
 
     public Car getCar() {
         return car;
@@ -44,10 +48,12 @@ public class Taxi extends User{
             this.setFirstName(resultSet.getString(3));
             this.setLastName(resultSet.getString(4));
             this.setAvailableStatus(resultSet.getBoolean(5));
+            this.setBanStatus(resultSet.getBoolean(6));
+            this.setRole(resultSet.getString(7));
             car = new Car();
-            car.setNumber(resultSet.getString(6));
-            car.setName(resultSet.getString(7));
-            car.setColour(resultSet.getString(8));
+            car.setNumber(resultSet.getString(8));
+            car.setName(resultSet.getString(9));
+            car.setColour(resultSet.getString(10));
             this.setCar(car);
         }catch (SQLException ex){
             ex.printStackTrace();

@@ -13,7 +13,7 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>Problem</title>
+    <title>$$$Problem</title>
 </head>
 <body>
 <form action="Controller" method="post">
@@ -28,6 +28,6 @@
     <input type="hidden" name="page" value="authorizationProblem.jsp"/>
     <input type="submit" value="${engButton}">
 </form>
-    Wrong login or password
+    $$$Wrong login or password
 </body>
 </html>
