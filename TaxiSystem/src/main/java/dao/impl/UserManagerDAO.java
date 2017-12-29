@@ -1,10 +1,9 @@
 package dao.impl;
 
-import dao.WrappedConnector;
+import dao.WrappedConnection;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import support.MD5;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,27 +19,23 @@ public class UserManagerDAO {
     private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, taxi.banStatus, taxi.role, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number;";
     private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
 
-    private WrappedConnector connector;
+    private WrappedConnection wrappedConnection;
 
     public UserManagerDAO() {
-        this.connector = new WrappedConnector();
-    }
-
-    public UserManagerDAO(WrappedConnector connector) {
-        this.connector = connector;
+        this.wrappedConnection = new WrappedConnection();
     }
 
     public void close() {
-        connector.closeConnection();
+        wrappedConnection.closeConnection();
     }
 
     public void changePassword(User user){
         PreparedStatement preparedStatement=null;
         try {
             if(user.getRole().equals("taxi")) {
-                preparedStatement = connector.getChangeTaxiPassPreparedStatement();
+                preparedStatement = wrappedConnection.getChangeTaxiPassPreparedStatement();
             }else{
-                preparedStatement = connector.getChangeClientPassPreparedStatement();
+                preparedStatement = wrappedConnection.getChangeClientPassPreparedStatement();
             }
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setInt(2, user.getId());
@@ -48,7 +43,7 @@ public class UserManagerDAO {
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
     }
     public List<Taxi> getTaxiList() throws SQLException {
@@ -57,7 +52,7 @@ public class UserManagerDAO {
         List<Taxi> taxiList = new ArrayList<>();
         Taxi taxi;
         try {
-            statement = connector.getStatement();
+            statement = wrappedConnection.getStatement();
             if((resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI))!=null){
                 while (resultSet.next()){
                     taxi = new Taxi();
@@ -68,7 +63,7 @@ public class UserManagerDAO {
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            connector.closeStatement(statement);
+            wrappedConnection.closeStatement(statement);
         }
         return taxiList;
     }
@@ -78,7 +73,7 @@ public class UserManagerDAO {
         List<Client> clientList = new ArrayList<>();
         Client client;
         try {
-            statement = connector.getStatement();
+            statement = wrappedConnection.getStatement();
             if((resultSet = statement.executeQuery(SQL_SELECT_ALL_CLIENT))!=null){
                 while (resultSet.next()){
                     client = new Client();
@@ -89,7 +84,7 @@ public class UserManagerDAO {
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            connector.closeStatement(statement);
+            wrappedConnection.closeStatement(statement);
         }
         return clientList;
     }
@@ -97,9 +92,9 @@ public class UserManagerDAO {
         PreparedStatement preparedStatement=null;
         try {
             if(user.getRole().equals("taxi")) {
-                preparedStatement = connector.getTaxiBanPreparedStatement();
+                preparedStatement = wrappedConnection.getTaxiBanPreparedStatement();
             }else{
-                preparedStatement = connector.getClientBanPreparedStatement();
+                preparedStatement = wrappedConnection.getClientBanPreparedStatement();
             }
             preparedStatement.setBoolean(1,!user.getBanStatus());
             preparedStatement.setInt(2, user.getId());
@@ -107,33 +102,33 @@ public class UserManagerDAO {
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
     }
     public void decreaseBonus(Client client, int bonus) throws SQLException{ //bonus - how many client spend
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connector.decreaseBonus();
+            preparedStatement = wrappedConnection.decreaseBonus();
             preparedStatement.setInt(1,bonus);
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
     }
     public void changeBonusCount(Client client) throws SQLException{
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connector.changeBonusCount();
+            preparedStatement = wrappedConnection.changeBonusCount();
             preparedStatement.setInt(1,client.getBonusPoints());
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
     }
 }

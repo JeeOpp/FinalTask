@@ -19,8 +19,8 @@ import java.sql.SQLException;
  * Created by DNAPC on 16.12.2017.
  */
 public class SignManager implements ControllerCommand {
-    private static final String ADMIN_MAIN_PATH = "WEB-INF/Client/main.jsp";
-    private static final String CLIENT_MAIN_PATH = "WEB-INF/Admin/main.jsp";
+    private static final String ADMIN_MAIN_PATH = "WEB-INF/Admin/main.jsp";
+    private static final String CLIENT_MAIN_PATH = "WEB-INF/Client/main.jsp";
     private static final String TAXI_MAIN_PATH = "WEB-INF/Taxi/main.jsp";
     private static final String AUTHORIZATION_PROBLEM = "authorizationProblem.jsp";
 
@@ -83,7 +83,9 @@ public class SignManager implements ControllerCommand {
                 if(signService.registerClient(client)){
                     req.getRequestDispatcher("registrationSuccess.jsp").forward(req,resp);
                 }else {
-                    req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
+                    resp.getWriter().println("<h1>ОШИБКА</h1>");
+                    req.getRequestDispatcher("registrationProblem.jsp").include(req,resp);
+                    //req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
                 }
             }
             if (role.equals("taxi")) {
@@ -103,12 +105,14 @@ public class SignManager implements ControllerCommand {
     }
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Taxi taxi = (Taxi) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
         try {
-            signService.changeSessionStatus(taxi);
+            if(user.getRole().equals("taxi")) {
+                signService.changeSessionStatus((Taxi)user);
+            }
             session.invalidate();
             resp.sendRedirect("index.jsp");
         } catch (SQLException ex) {

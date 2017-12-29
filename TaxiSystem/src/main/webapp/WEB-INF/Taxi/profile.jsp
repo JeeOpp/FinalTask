@@ -62,7 +62,7 @@
 <!--/////////////////////////////////////////////////////////////////////////////////////-->
 <ul>
     <c:forEach var="review" items="${requestScope.userReviews}">
-    <li><c:out value="${review.client.id} ${review.client.firstName} ${review.client.lastName} ${review.comment}"/><li>
+    <li><c:out value="${review.client.id} ${review.client.firstName} ${review.client.lastName} ${review.comment}"/></li>
     </c:forEach>
 </ul>
 

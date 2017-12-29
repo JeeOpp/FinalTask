@@ -66,7 +66,7 @@
 <!--//////////////////////////////////////////////////////-->
 <ul>
     <c:forEach var="review" items="${requestScope.userReviews}">
-        <li><c:out value="${review.taxi.id} ${review.taxi.firstName} ${review.taxi.lastName} ${review.comment}"/><li>
+        <li><c:out value="${review.taxi.id} ${review.taxi.firstName} ${review.taxi.lastName} ${review.comment}"/></li>
     </c:forEach>
 </ul>
 <!-- Сменить пароль///////////////////////////////////////////////////-->

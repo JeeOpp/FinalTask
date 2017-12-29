@@ -1,6 +1,6 @@
 package dao.impl;
 
-import dao.WrappedConnector;
+import dao.WrappedConnection;
 import entity.Client;
 import entity.Review;
 import entity.Taxi;
@@ -16,24 +16,20 @@ import java.util.List;
  * Created by DNAPC on 12.12.2017.
  */
 public class FeedbackDAO {
-    private WrappedConnector connector;
+    private WrappedConnection wrappedConnection;
 
     public FeedbackDAO() {
-        this.connector = new WrappedConnector();
-    }
-
-    public FeedbackDAO(WrappedConnector connector) {
-        this.connector = connector;
+        this.wrappedConnection = new WrappedConnection();
     }
 
     public void close() {
-        connector.closeConnection();
+        wrappedConnection.closeConnection();
     }
 
     public void setReview(Review review) throws SQLException {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connector.setReviewPreparedStatement();
+            preparedStatement = wrappedConnection.setReviewPreparedStatement();
             preparedStatement.setInt(1, review.getClient().getId());
             preparedStatement.setInt(2, review.getTaxi().getId());
             preparedStatement.setString(3, review.getComment());
@@ -41,7 +37,7 @@ public class FeedbackDAO {
         }catch (SQLException ex){
             System.err.println("SQL exception (request or table failed): " + ex);
         }finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
     }
     public List<Review> getClientReviews(User user) throws SQLException{
@@ -50,7 +46,7 @@ public class FeedbackDAO {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connector.getReviewClientPreparedStatement();
+            preparedStatement = wrappedConnection.getReviewClientPreparedStatement();
             preparedStatement.setInt(1,user.getId());
             if((resultSet = preparedStatement.executeQuery()) != null){
                 while (resultSet.next()){
@@ -67,7 +63,7 @@ public class FeedbackDAO {
         }catch (SQLException ex){
             System.err.println("SQL exception (request or table failed): " + ex);
         }finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
         return reviewList;
     }
@@ -77,7 +73,7 @@ public class FeedbackDAO {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connector.getReviewTaxiPreparedStatement();
+            preparedStatement = wrappedConnection.getReviewTaxiPreparedStatement();
             preparedStatement.setInt(1,user.getId());
             if((resultSet = preparedStatement.executeQuery()) != null){
                 while (resultSet.next()){
@@ -94,7 +90,7 @@ public class FeedbackDAO {
         }catch (SQLException ex){
             System.err.println("SQL exception (request or table failed): " + ex);
         }finally {
-            connector.closePreparedStatement(preparedStatement);
+            wrappedConnection.closePreparedStatement(preparedStatement);
         }
         return reviewList;
     }
