@@ -1,38 +1,40 @@
 package dao.impl;
 
-import dao.WrappedConnection;
+import dao.connectionPool.ConnectionPool;
+import dao.connectionPool.ConnectionPoolException;
 import entity.Car;
 import entity.Client;
 import entity.Taxi;
 import support.MD5;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Created by DNAPC on 18.12.2017.
  */
 public class SignDAO {
     private static final String SQL_SELECT_LOGIN_ALL = "SELECT client.login FROM client UNION SELECT taxi.login FROM taxi;";
+    private static final String SQL_GET_AUTH_ROLE = "SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?";
+    private static final String SQL_GET_AUTH_CLIENT = "SELECT *  FROM client WHERE login=? AND password=?";
+    private static final String SQL_GET_AUTH_TAXI = "SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;";
+    private static final String SQL_REG_CLIENT = "INSERT INTO client (login, password, name, surname) VALUES (?,?,?,?);";
+    private static final String SQL_REG_TAXI = "INSERT INTO taxi (login, password, name, surname,carNumber) VALUES (?,?,?,?,?);";
+    private static final String SQL_CHANGE_AVAILABLE_STATUS = "UPDATE taxi SET availableStatus = ?  WHERE id = ?;";
 
-    private WrappedConnection wrappedConnection;
+    private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private Statement statement = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
 
     public SignDAO() {
-        this.wrappedConnection = new WrappedConnection();
-    }
-
-    public void close() {
-        wrappedConnection.closeConnection();
     }
 
     public String preAuthorize(String login, String password) throws SQLException {
-        ResultSet resultSet;
-        PreparedStatement preparedStatement = null;
         String role = null;
         try {
-            preparedStatement = wrappedConnection.getAuthRolePreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_GET_AUTH_ROLE);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, MD5.md5Hash(password));
             preparedStatement.setString(3, login);
@@ -41,19 +43,20 @@ public class SignDAO {
             if (resultSet.next()) {
                 role = resultSet.getString(1);
             }
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
         return role;
     }
     public Client clientAuthorize(String login, String password) throws SQLException {
-        ResultSet resultSet;
-        PreparedStatement preparedStatement = null;
         Client client = null;
         try {
-            preparedStatement = wrappedConnection.getAuthClientPreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_GET_AUTH_CLIENT);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, MD5.md5Hash(password));
             resultSet = preparedStatement.executeQuery();
@@ -68,19 +71,20 @@ public class SignDAO {
                 client.setBanStatus(resultSet.getBoolean(7));
                 client.setRole(resultSet.getString(8));
             }
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
         return client;
     }
     public Taxi taxiAuthorize(String login, String password) throws SQLException {
-        ResultSet resultSet;
-        PreparedStatement preparedStatement = null;
         Taxi taxi = null;
         try {
-            preparedStatement = wrappedConnection.getAuthTaxiPreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_GET_AUTH_TAXI);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, MD5.md5Hash(password));
             resultSet = preparedStatement.executeQuery();
@@ -100,34 +104,38 @@ public class SignDAO {
                 car.setColour(resultSet.getString(11));
                 taxi.setCar(car);
             }
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
         return taxi;
     }
     public Boolean registerClient(Client client) throws SQLException {
-        PreparedStatement preparedStatement=null;
         try {
-            preparedStatement = wrappedConnection.getClientRegistrationPreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_REG_CLIENT);
             preparedStatement.setString(1, client.getLogin());
             preparedStatement.setString(2, MD5.md5Hash(client.getPassword()));
             preparedStatement.setString(3, client.getFirstName());
             preparedStatement.setString(4, client.getLastName());
             preparedStatement.execute();
             return true;
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
         return false;
     }
     public Boolean registerTaxi(Taxi taxi) throws SQLException {
-        PreparedStatement preparedStatement=null;
         try {
-            preparedStatement = wrappedConnection.getTaxiRegistrationPreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_REG_TAXI);
             preparedStatement.setString(1, taxi.getLogin());
             preparedStatement.setString(2, MD5.md5Hash(taxi.getPassword()));
             preparedStatement.setString(3, taxi.getFirstName());
@@ -135,42 +143,48 @@ public class SignDAO {
             preparedStatement.setString(5, taxi.getCar().getNumber());
             preparedStatement.execute();
             return true;
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
         return false;
     }
     public Boolean isLoginFree(String login){
-        Statement statement = null;
-        try{
-            statement = wrappedConnection.getStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_LOGIN_ALL);
+        try {
+            connection = connectionPool.takeConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(SQL_SELECT_LOGIN_ALL);
             while (resultSet.next()) {
-                if (resultSet.getString(1).equals(login)){
+                if (resultSet.getString(1).equals(login)) {
                     return false;
                 }
             }
             return true;
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e) {
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closeStatement(statement);
+            connectionPool.closeConnection(connection,statement,resultSet);
         }
         return false;
     }
     public void changeAvailableStatus(Taxi taxi) throws SQLException {
-        PreparedStatement preparedStatement=null;
         try {
-            preparedStatement = wrappedConnection.changeAvailableStatusPreparedStatement();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_CHANGE_AVAILABLE_STATUS);
             preparedStatement.setBoolean(1, !taxi.isAvailableStatus());
             preparedStatement.setInt(2, taxi.getId());
             preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
     }
 }

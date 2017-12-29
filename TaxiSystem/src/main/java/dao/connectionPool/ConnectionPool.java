@@ -12,6 +12,7 @@ import java.util.concurrent.Executor;
  * Created by DNAPC on 26.12.2017.
  */
 public class ConnectionPool {
+    private static final ConnectionPool instance = new ConnectionPool();
     private BlockingQueue <Connection> connectionQueue;
     private BlockingQueue <Connection> giveAwayConQueue;
 
@@ -27,9 +28,17 @@ public class ConnectionPool {
         this.url = dbResourceManager.getValue(DBParameter.DB_URL.getValue());
         this.user = dbResourceManager.getValue(DBParameter.DB_USER.getValue());
         this.password = dbResourceManager.getValue(DBParameter.DB_PASSWORD.getValue());
-        this.poolSize = Integer.parseInt(DBParameter.DB_POOL_SIZE.getValue());
+        this.poolSize = Integer.parseInt(dbResourceManager.getValue(DBParameter.DB_POOL_SIZE.getValue()));
+        try {
+            initPoolData();
+        }catch (ConnectionPoolException ex){
+            ;
+        }
     }
 
+    public static ConnectionPool getInstance(){
+        return instance;
+    }
     public void initPoolData() throws ConnectionPoolException{
         Locale.setDefault(Locale.ENGLISH);
         try {
@@ -98,13 +107,45 @@ public class ConnectionPool {
             ;
         }
     }
+    public void closeConnection(Connection con, PreparedStatement st, ResultSet rs){
+        try {
+            con.close();
+        }catch (SQLException ex) {
+            ;
+        }
+        try {
+            rs.close();
+        }catch (SQLException ex){
+
+        }
+        try {
+            st.close();
+        }catch (SQLException ex){
+
+        }
+    }
+    public void closeConnection(Connection con, PreparedStatement st) {
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            ;
+        }
+        try {
+            st.close();
+        } catch (SQLException ex) {
+            ;
+        }
+    }
+
+
+
     private void closeConnectionQueue(BlockingQueue<Connection> queue) throws SQLException{
         Connection connection;
         while ((connection = queue.poll()) != null){
             if(!connection.getAutoCommit()){
                 connection.commit();
             }
-            ((WrappedConnection) connection).closeConnection();
+            ((WrappedConnection) connection).reallyClose();
         }
     }
 
@@ -116,235 +157,9 @@ public class ConnectionPool {
             this.connection.setAutoCommit(true);
         }
 
-        public PreparedStatement getClientRegistrationPreparedStatement() throws SQLException {
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO client (login, password, name, surname) VALUES (?,?,?,?);");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getTaxiRegistrationPreparedStatement() throws SQLException {
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxi (login, password, name, surname,carNumber) VALUES (?,?,?,?,?);");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getAuthRolePreparedStatement() throws SQLException{
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getAuthClientPreparedStatement() throws SQLException{
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT *  FROM client WHERE login=? AND password=?");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement getClientBanPreparedStatement() throws SQLException{
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET banStatus = ? WHERE id = ?;");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement getTaxiBanPreparedStatement() throws SQLException{
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi SET banStatus = ? WHERE id = ?;");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getAuthTaxiPreparedStatement() throws SQLException{
-            if (connection != null) {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;");
-                if (preparedStatement != null) {
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement makeOrderPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement decreaseBonus() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement changeBonusCount() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement cancelOrder() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM taxisystem.order WHERE order_id = ?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement acceptOrder() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement rejectOrder() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement payOrder() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement setReviewPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxisystem.review (client_id, taxi_id, comment) VALUES (?, ?, ?);");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getReviewClientPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT taxi.id, taxi.name, taxi.surname, review.`comment` FROM review \n" +
-                        "\tJOIN taxi ON review.taxi_id = taxi.id \n" +
-                        "\tWHERE review.client_id = ?; ");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getReviewTaxiPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT client.id, client.name, client.surname, review.`comment` FROM review\n" +
-                        "        JOIN client ON review.client_id = client.id\n" +
-                        "        WHERE review.taxi_id = ?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement getChangeClientPassPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE client " +
-                        "SET password = ? "+
-                        "WHERE id=?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-        public PreparedStatement getChangeTaxiPassPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi " +
-                        "SET password = ? "+
-                        "WHERE id=?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public PreparedStatement changeAvailableStatusPreparedStatement() throws SQLException{
-            if(connection!=null){
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE taxi SET availableStatus = ?  WHERE id = ?;");
-                if (preparedStatement!=null){
-                    return preparedStatement;
-                }
-            }
-            throw new SQLException("connection or PreparedStatement is null");
-        }
-
-        public Statement getStatement() throws SQLException {
-            if (connection != null) {
-                Statement statement = connection.createStatement();
-                if (statement != null) {
-                    return statement;
-                }
-            }
-            throw new SQLException("connection or statement is null");
-        }
-
-        public void closeStatement(Statement statement) {
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    System.err.println("statement is null " + e);
-                }
-            }
-        }
-        public void closePreparedStatement(PreparedStatement preparedStatement) {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    //log.error("Prepared statement is null " + e);
-                    e.printStackTrace();
-                }
-            }
-        }
-        public void closeConnection() throws SQLException {
+        public void reallyClose() throws SQLException{
             connection.close();
         }
-
         @Override
         public Statement createStatement() throws SQLException {
             return  connection.createStatement();

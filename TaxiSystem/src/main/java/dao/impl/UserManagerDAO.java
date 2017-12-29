@@ -1,14 +1,12 @@
 package dao.impl;
 
-import dao.WrappedConnection;
+import dao.connectionPool.ConnectionPool;
+import dao.connectionPool.ConnectionPoolException;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,41 +16,48 @@ import java.util.List;
 public class UserManagerDAO {
     private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, taxi.banStatus, taxi.role, car.number, car.car, car.colour FROM taxisystem.taxi JOIN car ON taxi.carNumber = car.number;";
     private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
+    private static final String SQL_CHANGE_TAXI_PASS = "UPDATE taxi SET password = ? WHERE id=?;";
+    private static final String SQL_CHANGE_CLIENT_PASS = "UPDATE client SET password = ? WHERE id=?;";
+    private static final String SQL_GET_TAXI_BAN = "UPDATE taxi SET banStatus = ? WHERE id = ?;";
+    private static final String SQL_GET_CLIENT_BAN = "UPDATE client SET banStatus = ? WHERE id = ?;";
+    private static final String SQL_DECREASE_BONUS = "UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;";
+    private static final String SQL_CHANGE_BONUS_COUNT = "UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;";
 
-    private WrappedConnection wrappedConnection;
+
+    private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private Statement statement = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
 
     public UserManagerDAO() {
-        this.wrappedConnection = new WrappedConnection();
-    }
-
-    public void close() {
-        wrappedConnection.closeConnection();
     }
 
     public void changePassword(User user){
-        PreparedStatement preparedStatement=null;
         try {
-            if(user.getRole().equals("taxi")) {
-                preparedStatement = wrappedConnection.getChangeTaxiPassPreparedStatement();
-            }else{
-                preparedStatement = wrappedConnection.getChangeClientPassPreparedStatement();
+            connection = connectionPool.takeConnection();
+            if (user.getRole().equals("taxi")) {
+                preparedStatement = connection.prepareStatement(SQL_CHANGE_TAXI_PASS);
+            } else {
+                preparedStatement = connection.prepareStatement(SQL_CHANGE_CLIENT_PASS);
             }
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setInt(2, user.getId());
             preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
     }
     public List<Taxi> getTaxiList() throws SQLException {
-        ResultSet resultSet;
-        Statement statement = null;
         List<Taxi> taxiList = new ArrayList<>();
         Taxi taxi;
         try {
-            statement = wrappedConnection.getStatement();
+            connection = connectionPool.takeConnection();
+            statement = connection.createStatement();
             if((resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI))!=null){
                 while (resultSet.next()){
                     taxi = new Taxi();
@@ -60,20 +65,21 @@ public class UserManagerDAO {
                     taxiList.add(taxi);
                 }
             }
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         } catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            wrappedConnection.closeStatement(statement);
+            connectionPool.closeConnection(connection,statement,resultSet);
         }
         return taxiList;
     }
     public List<Client> getClientList() throws SQLException{
-        ResultSet resultSet;
-        Statement statement = null;
         List<Client> clientList = new ArrayList<>();
         Client client;
         try {
-            statement = wrappedConnection.getStatement();
+            connection = connectionPool.takeConnection();
+            statement = connection.createStatement();
             if((resultSet = statement.executeQuery(SQL_SELECT_ALL_CLIENT))!=null){
                 while (resultSet.next()){
                     client = new Client();
@@ -81,54 +87,62 @@ public class UserManagerDAO {
                     clientList.add(client);
                 }
             }
-        } catch (SQLException ex) {
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
+        }catch (SQLException ex) {
             System.err.println("SQL exception (request or table failed): " + ex);
         } finally {
-            wrappedConnection.closeStatement(statement);
+            connectionPool.closeConnection(connection,statement,resultSet);
         }
         return clientList;
     }
     public void changeBanStatus(User user){
-        PreparedStatement preparedStatement=null;
         try {
+            connection = connectionPool.takeConnection();
             if(user.getRole().equals("taxi")) {
-                preparedStatement = wrappedConnection.getTaxiBanPreparedStatement();
+                preparedStatement = connection.prepareStatement(SQL_GET_TAXI_BAN);
             }else{
-                preparedStatement = wrappedConnection.getClientBanPreparedStatement();
+                preparedStatement = connection.prepareStatement(SQL_GET_CLIENT_BAN);
             }
             preparedStatement.setBoolean(1,!user.getBanStatus());
             preparedStatement.setInt(2, user.getId());
             preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException e){
             System.err.println("SQL exception (request or table failed): " + e);
         } finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
     }
     public void decreaseBonus(Client client, int bonus) throws SQLException{ //bonus - how many client spend
-        PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = wrappedConnection.decreaseBonus();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_DECREASE_BONUS);
             preparedStatement.setInt(1,bonus);
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
     }
     public void changeBonusCount(Client client) throws SQLException{
-        PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = wrappedConnection.changeBonusCount();
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_CHANGE_BONUS_COUNT);
             preparedStatement.setInt(1,client.getBonusPoints());
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {
-            wrappedConnection.closePreparedStatement(preparedStatement);
+            connectionPool.closeConnection(connection,preparedStatement);
         }
     }
 }
