@@ -72,7 +72,7 @@ public class SignManager implements ControllerCommand {
         SignService signService = serviceFactory.getSignService();
 
         String login = req.getParameter("login");
-        String password = req.getParameter("pass");
+        String password = req.getParameter("password");
         String firstName = req.getParameter("name");
         String lastName = req.getParameter("surname");
         String carNumber = req.getParameter("checkedCarNumber");

@@ -34,10 +34,6 @@ public class Feedback implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FeedbackService feedbackService = serviceFactory.getFeedbackService();
         feedbackService.setReview(review);
-
-        //Спасибо за отзыв все дела
-        //TODO не создавать больше одного отзыва за раз
-
         new Dispatcher().getClientOrders(req, resp);
     }
 }

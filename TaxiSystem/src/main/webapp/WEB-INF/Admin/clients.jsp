@@ -31,13 +31,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=userManager&action=getClientList"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=getClientList&page=1"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=userManager&action=getClientList"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=getClientList&page=1"/>
     <input type="submit" value="${engButton}">
 </form>
 

@@ -14,49 +14,92 @@
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
     <title>$$$User</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/clientMain.css">
 </head>
 
 <body>
     <jsp:useBean id="user" class="entity.Client" scope="session"/>
-    <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+        <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="main.jsp">TAXI</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrder">$$$Мои заказы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+            </li>
+        </ul>
 
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="signManager"/>
-        <input type="hidden" name="action" value="logOut"/>
-        <input type="submit" value="$$$Выйти"/>
-    </form>
-
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="localization"/>
-        <input type="hidden" name="local" value="ru"/>
-        <input type="hidden" name="page" value="WEB-INF/Client/main.jsp"/>
-        <input type="submit" value="${rusButton}">
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="localization"/>
-        <input type="hidden" name="local" value="en"/>
-        <input type="hidden" name="page" value="WEB-INF/Client/main.jsp"/>
-        <input type="submit" value="${engButton}">
-    </form>
-
-<!--///////////////////////////////////////////////////////////////////////////////// -->
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher"/>
-        <input type="hidden" name="action" value="preOrder"/>
-        <button type="submit">$$$Заказать такси</button>
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher"/>
-        <input type="hidden" name="action" value="getClientOrders"/>
-        <button type="submit">$$$Мои заказы</button>
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "userManager"/>
-        <input type="hidden" name="action" value="preProfile"/>
-        <button type="submit">$$$Мой профиль</button>
-    </form>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                &&&Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="Controller?method=localization&local=ru&page=WEB-INF/Client/main.jsp">${rusButton}</a>
+                <a class="dropdown-item" href="Controller?method=localization&local=en&page=WEB-INF/Client/main.jsp">${engButton}</a>
+            </div>
+            <div class="logOutMenu">
+                <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+                <a href="Controller?method=signManager&action=logOut">
+                    <button type="button" class="btn btn-light">$$$LogOut</button>
+                </a>
+            </div>
+        </div>
+    </nav>
     <!--/////////////////////////////////////////////////////////-->
+    <div class="my-flex-container" style="height: 92%">
+        <div class="my-flex-block">
+            $$$Заказать уже сейчас
+        </div>
+        <div class="my-flex-block">
+            <div style="height: 400px;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div  class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://www.belnovosti.by/sites/default/files/article/17-04-2017/taxi.jpg" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>$$$Современный сервис</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://w-dog.ru/wallpapers/2/9/337529567428389/ulica-nochnoj-gorod-avtomobili-fonari.jpg" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>$$$Знакомо?</h5>
+                            <p>$$$Довезем за кратчайшее время</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://www.walldevil.com/wallpapers/a26/wallpapers-sites-top-gauntlet-aston-background.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>$Мы это качественное обслуживание</h5>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
 
 
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>

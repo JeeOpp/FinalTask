@@ -19,7 +19,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <script>
         <%@include file="getCarAjax.js"%>
-        <%@include file="/WEB-INF/formValidator.js"%>
+        <%@include file="/js/formValidator.js"%>
     </script>
 </head>
 
@@ -35,13 +35,13 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=userManager&action=getTaxiList"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=getTaxiList&page=1"/>
     <input type="submit" value="${rusButton}">
 </form>
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="localization"/>
     <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=userManager&action=getTaxiList"/>
+    <input type="hidden" name="page" value="Controller?method=userManager&action=getTaxiList$page=1"/>
     <input type="submit" value="${engButton}">
 </form>
 
@@ -144,8 +144,8 @@
                 </div>
                 <div class="modal-body">
                     <label for="login">$$$логин</label><input type="text" id="login" name="login" required/><br/>
-                    <label for="pass1">$$$пароль</label><input type="text" id="pass1" name="pass" required/><br/>
-                    <label for="pass2">$$$повторите пароль</label><input type="text" id="pass2" name="pass2" required/><br/>
+                    <label for="pass1">$$$пароль</label><input type="text" id="pass1" name="password" required/><br/>
+                    <label for="pass2">$$$повторите пароль</label><input type="text" id="pass2" name="password" required/><br/>
                     <label for="name">$$$имя</label><input type="text" id="name" name="name" required><br/>
                     <label for="surname">$$$фамилия</label><input type="text" id="surname" name="surname" required/><br/>
                     <input type="hidden" name="role" value="taxi"/>

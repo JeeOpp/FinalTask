@@ -44,6 +44,8 @@
     <input type="submit" value="$$$Архив Заказов">
 </form>
 
+<a href="Controller?method=userManager&action=getTaxiList">$$$Таксисты</a>
+
 <form action="Controller" method="post">
     <input type="hidden" name="method" value="userManager"/>
     <input type="hidden" name="action" value="getTaxiList"/>
