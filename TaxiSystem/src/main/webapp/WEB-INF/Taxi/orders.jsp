@@ -14,6 +14,10 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
+    <script>
+        <%@include file="../../js/taxiMap.js"%>
+    </script>
     <title>$$$Taxi</title>
 </head>
 
@@ -55,7 +59,7 @@
 <!--/////////////////////////////////////////////////////////////////////////////////////--->
 
 <table>
-    <tr>
+    <tr class="tr-text">
         <th>$$$id</th>
         <th>$$$name</th>
         <th>$$$surname</th>
@@ -65,7 +69,7 @@
         <th>###Действие</th>
     </tr>
     <c:forEach var="order" items="${requestScope.taxiOrder}">
-        <tr>
+        <tr class="tr-text">
             <td>${order.orderId}</td>
             <td>${order.client.firstName}</td>
             <td>${order.client.lastName}</td>
@@ -88,7 +92,7 @@
                     </form>
                 </c:when>
                 <c:when test="${order.orderStatus eq 'accepted'}">
-                    <button disabled>$$$Заказ принят</button>
+                    <button onclick="setCoord(${order.sourceCoordinate},${order.destinyCoordinate})">$$$Показать на карте</button>
                 </c:when>
                 <c:when test="${order.orderStatus eq 'rejected'}">
                     <button disabled>$$$Заказ отклонен</button>
@@ -99,9 +103,9 @@
             </c:choose></td>
         </tr>
     </c:forEach>
-
-
 </table>
+
+<div id="taxiMap" class="map" style="width: 50%; height: 50%;"></div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

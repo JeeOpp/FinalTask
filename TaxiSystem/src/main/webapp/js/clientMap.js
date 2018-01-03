@@ -7,7 +7,7 @@ function initMap() {
         center: centerLatLng, // Координаты центра мы берем из переменной centerLatLng
         zoom: 12               // Зум по умолчанию. Возможные значения от 0 до 21
     };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var map = new google.maps.Map(document.getElementById("clientMap"), mapOptions);
     var destinyIcon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
     var markerClient = new google.maps.Marker({
@@ -38,10 +38,12 @@ function initMap() {
     var writePrice = function () {
         var src = document.getElementById('srcCoord').getAttribute('value');
         var dst = document.getElementById('dstCoord').getAttribute('value');
-        document.getElementById('price').setAttribute('value',calculatePrice(src,dst).toFixed(2));
+        var price = calculatePrice(src,dst).toFixed(2);
+        document.getElementById('price').setAttribute('value', price);
+        document.getElementById('priceView').innerHTML = price;
     };
     var calculatePrice = function(src,dst) {
-        var coefficient = 40;
+        var coefficient = 60;
         var srcArr = src.split(',');
         var dstArr = dst.split(',');
 

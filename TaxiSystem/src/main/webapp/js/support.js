@@ -3,9 +3,10 @@
  */
 
 
-function setTaxi(id)
+function setReview(orderId, taxiId)
 {
-    document.querySelector('input[name="taxiId"]').value = id;
+    document.getElementById('orderId').setAttribute('value',orderId);
+    document.querySelector('input[name="taxiId"]').value = taxiId;
 }
 
 function setOrder(id, price)

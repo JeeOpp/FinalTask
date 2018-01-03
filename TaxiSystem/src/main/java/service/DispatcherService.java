@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class DispatcherService {
 
-    public Boolean callConfirm(Order order, Integer bonus){
+    public Boolean callConfirm(Order order, int bonus){
         if(order.getClient().getBonusPoints()<bonus){
             return false;
         }
         double newPrice;
-        order.setPrice((newPrice = (order.getPrice() - bonus/100)) < 0 ? 0 : newPrice);
+        order.setPrice((newPrice = (order.getPrice() - (bonus*1.0)/100)) < 0 ? 0 : newPrice);
 
         //TODO проверяй на клинте чтобы бонусы не были больше чем заказ, и возвращай в этом случае
 
@@ -44,7 +44,8 @@ public class DispatcherService {
         List<Order> orderList = getAllOrderList();
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
-            if (orderIterator.next().getClient().getId() != client.getId()) {
+            Order order = orderIterator.next();
+            if (order.getClient().getId() != client.getId() || order.getOrderStatus().equals("archive")) {
                 orderIterator.remove();
             }
         }
@@ -54,7 +55,8 @@ public class DispatcherService {
         List<Order> orderList = getAllOrderList();
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
-            if (orderIterator.next().getTaxi().getId() != taxi.getId()) {
+            Order order = orderIterator.next();
+            if (order.getTaxi().getId() != taxi.getId() || order.getOrderStatus().equals("achive")) {
                 orderIterator.remove();
             }
         }
@@ -117,6 +119,16 @@ public class DispatcherService {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             dispatcherDAO.deleteAllOrders();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public boolean moveOrderToArchive(Integer orderId){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
+            dispatcherDAO.moveOrderToAchive(orderId);
         }catch (SQLException ex){
             ex.printStackTrace();
         }

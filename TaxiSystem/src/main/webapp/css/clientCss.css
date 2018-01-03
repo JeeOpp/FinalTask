@@ -1,0 +1,89 @@
+.welcomeUser{
+    color: #ffffff;
+}
+body{
+    min-width:1280px;
+    min-height:720px;
+    background: url("http://sf.co.ua/14/02/wallpaper-1846992.jpg");
+}
+
+.d-block{
+    height: 92%;
+}
+
+a.callTaxiButton {
+    z-index: 100;
+    color: white;
+    display: inline-block;
+    margin: 0 0 20px;
+    font-weight: 700;
+    font-size: large;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+a.callTaxiButton:hover { background: rgba(255,255,255,.2); }
+a.callTaxiButton:active { background: white; }
+
+.big-green-button {
+    display: inline-block;
+    width: 80%;
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #1ab188;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+}
+.big-green-button:hover, .big-green-button:focus {
+    background: #179b77;
+}
+
+.simple-white-button{
+    width: 150px;
+    height: 40px;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+    background: #9a9a9a;
+    color: white;
+}
+.simple-white-button:hover{
+    background: #545454;
+}
+
+.tr-text{
+    text-align: center;
+    height: 40px;
+}
+
+.colour-accepted{
+    color: blue;
+}
+.colour-rejected{
+    color: red;
+}
+.colour-processed{
+    color: white;
+}
+.colour-completed{
+    color: green;
+}
+.colour-archive{
+    color: grey;
+}

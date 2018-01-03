@@ -102,12 +102,17 @@ public class Dispatcher implements ControllerCommand {
         }
     }
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        User user = (User) req.getSession().getAttribute("user");
         Integer orderId = Integer.parseInt(req.getParameter("orderId"));
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.cancelOrder(orderId)){
-            getClientOrders(req,resp);
+            if(user.getRole().equals("client")){
+                getClientOrders(req,resp);   //to user
+            }else {
+                getAllOrders(req, resp);         //to admin
+            }
         }
     }
     private void acceptOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -134,7 +139,7 @@ public class Dispatcher implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
         if (dispatcherService.payOrder(orderId)){
-            getClientOrders(req,resp); //TODO Добавить вверху страницу оплачено
+            getClientOrders(req,resp);
         }
     }
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

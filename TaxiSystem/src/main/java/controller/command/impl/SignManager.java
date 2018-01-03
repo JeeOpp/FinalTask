@@ -37,8 +37,15 @@ public class SignManager implements ControllerCommand {
         if(action.equals("logOut")){
             logOut(req,resp);
         }
+        if (action.equals("goHomePage")){
+            goHomePage(req,resp);
+        }
     }
 
+    private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        User user = (User) req.getSession().getAttribute("user");
+        req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req,resp);
+    }
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
@@ -59,7 +66,7 @@ public class SignManager implements ControllerCommand {
                         ((Taxi) user).setAvailableStatus(true);
                     }
                     req.getSession().setAttribute("user",user);
-                    String pageAuthentication =  choosePageAuthentication(user.getRole());
+                    String pageAuthentication =  chooseUserPage(user.getRole());
                     req.getRequestDispatcher(pageAuthentication).forward(req,resp);
                 }
             }
@@ -119,10 +126,7 @@ public class SignManager implements ControllerCommand {
             ex.printStackTrace();
         }
     }
-
-
-
-    private String choosePageAuthentication(String role){
+    private String chooseUserPage(String role){
         if (role.equals("client")) {
             return CLIENT_MAIN_PATH;
         }

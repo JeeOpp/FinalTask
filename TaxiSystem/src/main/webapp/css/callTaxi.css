@@ -1,0 +1,52 @@
+.map {
+    width: 50%;
+}
+.my-flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.my-flex-block{
+    display: block;
+    height: 92%;
+}
+
+.inner-flex-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.inner-flex-box:not(:first-child){
+    display: inline-block;
+    text-align: center;
+}
+
+.taxiItem {
+    list-style-type: none;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .8em 1em;
+    background: #3f3f3f;
+    color: #ffffff;
+    transition: 0.2s;
+    margin: 10px;
+}
+
+.taxiItem:hover {
+    color: #7b7b7b;
+}
+.pre-price{
+    text-align: center;
+    color: #fff;
+    font-size: 140%;
+}
+.price{
+    color: #ffda34;
+    font-size: 180%; /* Размер шрифта в процентах */
+    font-family: serif; /* Шрифт с засечками */
+}
+#bonus{
+    font-size:30px;
+}

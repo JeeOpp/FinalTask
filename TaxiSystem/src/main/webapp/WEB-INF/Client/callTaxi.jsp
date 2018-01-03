@@ -5,7 +5,7 @@
   Time: 22:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <html>
@@ -16,71 +16,85 @@
         <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
         <title>$$$User</title>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
-        <style>
-            <%@include file="mapStyle.css"%>
-        </style>
-
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../css/clientCss.css"/>
+        <link rel="stylesheet" href="../../css/callTaxi.css"/>
         <script>
-            <%@include file="map.js"%>
-            <%@include file="radioTaxi.js"%>
+            <%@include file="../../js/clientMap.js"%>
+            <%@include file="../../js/radioTaxi.js"%>
         </script>
     </head>
     <body>
     <jsp:useBean id="user" class="entity.Client" scope="session"/>
-    <span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
-
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="signManager"/>
-        <input type="hidden" name="action" value="logOut"/>
-        <input type="submit" value="$$$Выйти"/>
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="localization"/>
-        <input type="hidden" name="local" value="ru"/>
-        <input type="hidden" name="page" value="Controller?method=dispatcher&action=preOrder"/>
-        <input type="submit" value="${rusButton}">
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value="localization"/>
-        <input type="hidden" name="local" value="en"/>
-        <input type="hidden" name="page" value="Controller?method=dispatcher&action=preOrder"/>
-        <input type="submit" value="${engButton}">
-    </form>
-    <!--/////////////////////////////////////////////////////////-->
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher"/>
-        <input type="hidden" name="action" value="preOrder"/>
-        <button type="submit">$$$Заказать такси</button>
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher">
-        <input type="hidden" name="action" value="getClientOrders">
-        <button type="submit">$$$Мои заказы</button>
-    </form>
-    <form action="Controller" method="post">
-        <input type="hidden" name="method" value = "userManager"/>
-        <input type="hidden" name="action" value="preProfile"/>
-        <button type="submit">$$$Мой профиль</button>
-    </form>
-    <!--/////////////////////////////////////////////////////////-->
-    <form onsubmit="check()" action="Controller" method="post">
-        <input type="hidden" name="method" value = "dispatcher"/>
-        <input type="hidden" name="action" value="callTaxi"/>
-        <input id="srcCoord" type="hidden" name="sourceCoordinate" value="53.90453,27.56152"/>
-        <input id="dstCoord" type="hidden" name="destinyCoordinate" value="53.90453,27.56152"/>
-        <ul>
-            <c:forEach var="taxi" items="${requestScope.availableTaxiList}">
-                <li><input type="radio" name="taxi" value="${taxi.id}" checked>${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.colour}</li>
-            </c:forEach>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+        <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+            </li>
         </ul>
-        <input type="hidden" name="checkedTaxiId"/>
-        <label for="bonus">$$$Доступно баллов ${user.bonusPoints} </label>
-        <input id="bonus" type="text" name="bonus" value="0"/>
-        <input id="price" type="text" name="price" value="0" readonly>
-        <button type="submit">$$$Заказать такси</button>
-    </form>
 
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                &&&Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${rusButton}</a>
+                <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${engButton}</a>
+            </div>
+            <div class="logOutMenu">
+                <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+                <a href="Controller?method=signManager&action=logOut">
+                    <button type="button" class="btn btn-light">$$$LogOut</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--/////////////////////////////////////////////////////////-->
+    <div class="my-flex-container">
+        <form onsubmit="check()" action="Controller" method="post">
+            <div class="my-flex-block inner-flex-container">
+                <div class="inner-flex-box">
+                    <input type="hidden" name="method" value = "dispatcher"/>
+                    <input type="hidden" name="action" value="callTaxi"/>
+                    <input id="srcCoord" type="hidden" name="sourceCoordinate" value="53.90453,27.56152"/>
+                    <input id="dstCoord" type="hidden" name="destinyCoordinate" value="53.90453,27.56152"/>
 
-    <div id="map" class="map"></div>
-</body>
+                    <ul class="taxiList">
+                        <c:forEach var="taxi" items="${requestScope.availableTaxiList}">
+                            <li class="taxiItem">
+                                <input type="radio" id="${taxi.id}" name="taxi" value="${taxi.id}" checked>
+                                <label for="${taxi.id}">${taxi.firstName} ${taxi.lastName} ${taxi.car.name} ${taxi.car.number}</label>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                    <input type="hidden" name="checkedTaxiId"/>
+                </div>
+                <div class="inner-flex-box">
+                    <span class="pre-price">$$$Предварительно: <span class="price" id="priceView">0</span></span>
+                </div>
+                <div class="inner-flex-box">
+                    <label class="pre-price" for="bonus">$$$Доступно баллов ${user.bonusPoints}   </label>
+                    <input id="bonus" type="number" name="bonus" min="0" max="${user.bonusPoints}" value="0"/>
+                    <input id="price" type="hidden" name="price" value="0">
+                </div>
+                <div class="inner-flex-box">
+                    <button class="big-green-button" type="submit">$$$Заказать</button>
+                </div>
+            </div>
+        </form>
+        <div id="clientMap" class="map my-flex-block"></div>
+    </div>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
 </html>

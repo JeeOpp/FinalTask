@@ -24,6 +24,7 @@ public class DispatcherDAO {
     private static final String SQL_ACCEPT_ORDER="UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;";
     private static final String SQL_REJECT_ORDER="UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;";
     private static final String SQL_PAY_ORDER="UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;";
+    private static final String SQL_ACHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
 
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private Connection connection = null;
@@ -124,6 +125,20 @@ public class DispatcherDAO {
             preparedStatement.execute();
         }catch (ConnectionPoolException ex){
             ;;;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connectionPool.closeConnection(connection,preparedStatement);
+        }
+    }
+    public void moveOrderToAchive(Integer orderId) throws SQLException{
+        try {
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_ACHIVE_ORDER);
+            preparedStatement.setInt(1, orderId);
+            preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ;;;;
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {

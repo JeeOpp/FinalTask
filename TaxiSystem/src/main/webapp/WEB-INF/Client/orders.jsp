@@ -7,7 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="mytag" uri="/WEB-INF/tld/taglib.tld" %>
 <html>
 <head>
     <fmt:setLocale value="${sessionScope.local}"/>
@@ -15,50 +16,47 @@
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
     <title>$$$User</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <script>
-        <%@include file="support.js"%>
+        <%@include file="../../js/support.js"%>
     </script>
+    <link rel="stylesheet" href="../../css/clientCss.css"/>
 </head>
 <body>
 <jsp:useBean id="user" class="entity.Client" scope="session"/>
-<span>$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+    <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+        </li>
+    </ul>
 
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="signManager"/>
-    <input type="hidden" name="action" value="logOut"/>
-    <input type="submit" value="$$$Выйти"/>
-</form>
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getClientOrders"/>
-    <input type="submit" value="${rusButton}">
-</form>
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getClientOrders"/>
-    <input type="submit" value="${engButton}">
-</form>
-<!--/////////////////////////////////////////////////////////-->
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            &&&Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getClientOrders">${rusButton}</a>
+            <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getClientOrders">${engButton}</a>
+        </div>
+        <div class="logOutMenu">
+            <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+            <a href="Controller?method=signManager&action=logOut">
+                <button type="button" class="btn btn-light">$$$LogOut</button>
+            </a>
+        </div>
+    </div>
+</nav>
 
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value = "dispatcher"/>
-    <input type="hidden" name="action" value="preOrder"/>
-    <button type="submit">$$$Заказать такси</button>
-</form>
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value = "dispatcher">
-    <input type="hidden" name="action" value="getClientOrders">
-    <button type="submit">$$$Мои заказы</button>
-</form>
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value = "userManager">
-    <input type="hidden" name="action" value="preProfile"/>
-    <button type="submit">$$$Мой профиль</button>
-</form>
 <!-- ВСплывающее окно -->
 <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -86,13 +84,15 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="Controller" method="post">              <!--ФОРМА НА ОТПРАВКУ ОТзЫВА-->
-                <input type="hidden" name="method" value="feedback">   <!--input-->
-                <input type="hidden" name="action" value="writeReview">  <!--input-->
-                <input type="hidden" name="taxiId">                    <!--input-->
+                <input type="hidden" name="method" value="feedback"/>   <!--input-->
+                <input type="hidden" name="action" value="writeReview"/>  <!--input-->
+                <input type="hidden" name="taxiId"/>                    <!--input-->
+                <input id="orderId" type="hidden" name="orderId"/>
                 <div class="modal-header">
                     <h5 class="modal-title" id="reviewModalLabel">$$$Modal review title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,52 +111,53 @@
     </div>
 </div>
 <!--/////////////////////////////////////////////////////////-->
-<table>
-    <tr>
-        <th>$$$id</th>
-        <th>$$$src</th>
-        <th>$$$dst</th>
-        <th>$$$number</th>
-        <th>$$$car</th>
-        <th>$$$colour</th>
-        <th>$$$price</th>
-        <th>$$$status</th>
-        <th>###Действие</th>
-    </tr>
+<br/>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr class="tr-text">
+            <th>$$$id</th>
+            <th>$$$src</th>
+            <th>$$$dst</th>
+            <th>$$$number</th>
+            <th>$$$car</th>
+            <th>$$$price</th>
+            <th>$$$status</th>
+            <th>###Действие</th>
+        </tr>
+    </thead>
+    <tbody>
     <c:forEach var="order" items="${requestScope.clientOrder}">
-    <tr>
-        <td>${order.orderId}</td>
-        <td>${order.sourceCoordinate}</td>
-        <td>${order.destinyCoordinate}</td>
-        <td>${order.taxi.car.number}</td>
-        <td>${order.taxi.car.name}</td>
-        <td>${order.taxi.car.colour}</td>
-        <td>${order.price}</td>
-        <td>${order.orderStatus}</td>
-        <td><c:choose>
-            <c:when test = "${order.orderStatus eq 'processed'}">
-                <form action="Controller" method="post">
-                    <input type="hidden" name="method" value = "dispatcher"/>
-                    <input type="hidden" name="action" value="cancelOrder"/>
-                    <input type="hidden" name="orderId" value="${order.orderId}"/>
-                    <button type="submit">$$$Отменить</button>
-                </form>
-            </c:when>
-            <c:when test = "${order.orderStatus eq 'accepted'}">
-                <button onclick="setOrder(<c:out value="${order.orderId}"/>, <c:out value="${order.price}"/>)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal">
-                    $$$Оплатить
-                </button>
-            </c:when>
-            <c:when test="${order.orderStatus eq 'completed'}">
-                <button onclick="setTaxi(<c:out value="${order.taxi.id}"/>)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
-                    $$$Добавить отзыв
-                </button>
-            </c:when>
-        </c:choose></td>
-    </tr>
+        <tr class="tr-text">
+            <td>${order.orderId}</td>
+            <td>${order.sourceCoordinate}</td>
+            <td>${order.destinyCoordinate}</td>
+            <td>${order.taxi.car.number}</td>
+            <td>${order.taxi.car.name}</td>
+            <td>${order.price}</td>
+            <mytag:orderColour orderStatus="${order.orderStatus}" locale="${sessionScope.local}"/>
+            <td><c:choose>
+                <c:when test = "${order.orderStatus eq 'processed'}">
+                    <form action="Controller" method="post">
+                        <input type="hidden" name="method" value = "dispatcher"/>
+                        <input type="hidden" name="action" value="cancelOrder"/>
+                        <input type="hidden" name="orderId" value="${order.orderId}"/>
+                        <button class="simple-white-button" type="submit">$$$Отменить</button>
+                    </form>
+                </c:when>
+                <c:when test = "${order.orderStatus eq 'accepted'}">
+                    <button onclick="setOrder(${order.orderId},${order.price})" type="button" class="simple-white-button" data-toggle="modal" data-target="#payModal">
+                        $$$Оплатить
+                    </button>
+                </c:when>
+                <c:when test="${order.orderStatus eq 'completed'}">
+                    <button onclick="setReview(${order.orderId},${order.taxi.id})" type="button" class="simple-white-button" data-toggle="modal" data-target="#reviewModal">
+                        $$$Добавить отзыв
+                    </button>
+                </c:when>
+            </c:choose></td>
+        </tr>
     </c:forEach>
-
-
+    </tbody>
 </table>
 
 

@@ -28,12 +28,15 @@ public class Feedback implements ControllerCommand {
     private void writeReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Client client = (Client) req.getSession().getAttribute("user");
         Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxiId")));
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
         String comment = req.getParameter("review");
 
         Review review = new Review(client,taxi,comment);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FeedbackService feedbackService = serviceFactory.getFeedbackService();
         feedbackService.setReview(review);
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        dispatcherService.moveOrderToArchive(orderId);
         new Dispatcher().getClientOrders(req, resp);
     }
 }
