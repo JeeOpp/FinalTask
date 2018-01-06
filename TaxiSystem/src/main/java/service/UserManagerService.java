@@ -47,7 +47,6 @@ public class UserManagerService {
         }
         return taxiList;
     }
-
     public List<Taxi> getAvailableTaxiList() {
         List<Taxi> taxiList = getTaxiList();
         Iterator<Taxi> taxiIterator = taxiList.listIterator();
@@ -68,6 +67,15 @@ public class UserManagerService {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
             userManagerDAO.changeBonusCount(client);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void changeTaxiCar(Taxi taxi){
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
+            userManagerDAO.changeTaxiCar(taxi);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

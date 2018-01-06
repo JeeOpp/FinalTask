@@ -3,10 +3,7 @@ package controller.command.impl;
 import com.google.gson.Gson;
 import controller.command.ControllerCommand;
 import entity.*;
-import service.DispatcherService;
-import service.PaginationService;
-import service.ServiceFactory;
-import service.UserManagerService;
+import service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -172,8 +169,8 @@ public class Dispatcher implements ControllerCommand {
     }
     private void getCarList(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        List<Car> carList = dispatcherService.getCarList();
+        TaxisService taxisService = serviceFactory.getTaxisService();
+        List<Car> carList = taxisService.getCarList();
 
         Gson gson = new Gson();
         String carListJson = gson.toJson(carList);

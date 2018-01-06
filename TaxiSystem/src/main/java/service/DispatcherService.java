@@ -56,7 +56,7 @@ public class DispatcherService {
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
             Order order = orderIterator.next();
-            if (order.getTaxi().getId() != taxi.getId() || order.getOrderStatus().equals("achive")) {
+            if (order.getTaxi().getId() != taxi.getId() || order.getOrderStatus().equals("archive")) {
                 orderIterator.remove();
             }
         }
@@ -134,16 +134,4 @@ public class DispatcherService {
         }
         return true;
     }
-    public List<Car> getCarList(){
-        List<Car> carList = null;
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            carList = dispatcherDAO.getCarList();
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return carList;
-    }
-
 }

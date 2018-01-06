@@ -22,6 +22,7 @@
     <script>
         <%@include file="../../js/support.js"%>
     </script>
+    <link rel="stylesheet " href="../../css/common.css"/>
     <link rel="stylesheet" href="../../css/clientCss.css"/>
 </head>
 <body>
@@ -30,10 +31,10 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link active" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
+            <a class="nav-link active" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
@@ -68,7 +69,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="payModalLabel">$$$Modal pay title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span class="closeModal" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -76,8 +77,8 @@
                     <input type="text" id="payText" name="payText" readonly>  <!--input-->
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">$$$Оплатить</button>  <!--input-->
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">$$$Close</button>
+                    <button type="submit" class="btn btn-light">$$$Оплатить</button>  <!--input-->
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">$$$Close</button>
                 </div>
             </form>
         </div>
@@ -96,15 +97,15 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="reviewModalLabel">$$$Modal review title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span class="closeModal" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <textarea name="review" cols="62" rows="3" placeholder="$$$Напишите сюда отзыв" required></textarea>  <!--input-->
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">$$$Добавить отзыв</button>  <!--input-->
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">$$$Close</button>
+                    <button type="submit" class="btn btn-light">$$$Добавить отзыв</button>  <!--input-->
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">$$$Close</button>
                 </div>
             </form>
         </div>

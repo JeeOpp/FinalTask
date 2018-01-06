@@ -17,6 +17,7 @@ public class ControllerDirector {
         commandMap.put("localization", new Localization());
         commandMap.put("feedback", new Feedback());
         commandMap.put("userManager", new UserManager());
+        commandMap.put("taxis", new Taxis());
     }
     public ControllerCommand getCommand(String method){
         return commandMap.get(method);

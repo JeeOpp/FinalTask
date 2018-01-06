@@ -1,10 +1,7 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
-import entity.Client;
-import entity.Review;
-import entity.Taxi;
-import entity.User;
+import entity.*;
 import service.*;
 
 import javax.servlet.ServletException;
@@ -38,6 +35,9 @@ public class UserManager implements ControllerCommand {
         if (action.equals("changeBonusCount")){
             changeBonusCount(req,resp);
         }
+        if(action.equals("changeTaxiCar")){
+            changeTaxiCar(req,resp);
+        }
     }
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         List<Review> reviewList = null;
@@ -62,9 +62,6 @@ public class UserManager implements ControllerCommand {
         UserManagerService userManagerService = serviceFactory.getUserManagerService();
         if(userManagerService.changePassword(user, currentPassword, newPassword)){
             req.getSession().setAttribute("user",user);
-            //success
-        }else{
-            //failed
         }
     }
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -134,5 +131,16 @@ public class UserManager implements ControllerCommand {
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBonusCount(client);
             getClientList(req,resp);
+    }
+    private void changeTaxiCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int taxiId = Integer.parseInt(req.getParameter("changeTaxiId"));
+        String carNumber = req.getParameter("checkedCarNumber");
+        Car car = new Car(carNumber);
+        Taxi taxi = new Taxi(taxiId,car);
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        UserManagerService userManagerService = serviceFactory.getUserManagerService();
+        userManagerService.changeTaxiCar(taxi);
+        getTaxiList(req,resp);
     }
 }

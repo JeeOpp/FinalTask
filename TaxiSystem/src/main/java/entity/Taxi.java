@@ -16,6 +16,10 @@ public class Taxi extends User{
     public Taxi(int id){
         super(id);
     }
+    public Taxi(int id, Car car){
+        this(id);
+        this.car = car;
+    }
     public Taxi(int id, String name, String surname){
         super(id,null,null,name,surname);
     }

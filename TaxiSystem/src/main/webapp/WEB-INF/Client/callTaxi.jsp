@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
         <link rel="stylesheet" href="../../css/clientCss.css"/>
         <link rel="stylesheet" href="../../css/callTaxi.css"/>
+        <link rel="stylesheet " href="../../css/common.css"/>
         <script>
             <%@include file="../../js/clientMap.js"%>
             <%@include file="../../js/radioTaxi.js"%>
@@ -27,6 +28,7 @@
     </head>
     <body>
     <jsp:useBean id="user" class="entity.Client" scope="session"/>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
         <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
         <ul class="navbar-nav mr-auto">

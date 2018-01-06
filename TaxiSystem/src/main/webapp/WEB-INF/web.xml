@@ -35,6 +35,10 @@
         <filter-name>LocalFilter</filter-name>
         <filter-class>controller.filter.LocalFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>SessionAuthorizeFilter</filter-name>
+        <filter-class>controller.filter.SessionAuthorizeFilter</filter-class>
+    </filter>
 
     <filter-mapping>
         <filter-name>CharsetFilter</filter-name>
@@ -44,4 +48,17 @@
         <filter-name>LocalFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionAuthorizeFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <listener>
+        <listener-class>controller.listener.SessionDestroyedListener</listener-class>
+    </listener>
 </web-app>

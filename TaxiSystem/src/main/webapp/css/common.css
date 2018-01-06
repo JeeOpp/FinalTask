@@ -1,6 +1,7 @@
 .welcomeUser{
     color: #ffffff;
 }
+
 body{
     min-width:1280px;
     min-height:720px;
@@ -10,6 +11,7 @@ body{
 .d-block{
     height: 92%;
 }
+
 
 a.callTaxiButton {
     z-index: 100;
@@ -72,8 +74,12 @@ a.callTaxiButton:active { background: white; }
     height: 40px;
 }
 
+.map {
+    width: 50%;
+}
+
 .colour-accepted{
-    color: blue;
+    color: aqua;
 }
 .colour-rejected{
     color: red;
@@ -86,4 +92,77 @@ a.callTaxiButton:active { background: white; }
 }
 .colour-archive{
     color: grey;
+}
+
+.modal-content{
+    background: #7b7b7b;
+    color: #ffffff;
+}
+
+.closeModal{
+    color: white;
+}
+.label-line{
+    display: inline-block;
+    width: 40%;
+}
+
+.modal-header{
+    background: #3f3f3f;
+}
+
+.wightPage{
+    display: inline-block;
+    width: 45%;
+}
+
+.wightPage:first-child{
+    text-align: center;
+}
+
+.profileDiv{
+    width: 35%;
+}
+.profileDiv:first-child{
+    text-align: center;
+}
+
+.titleDiv{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+    margin: 20px;
+}
+.list-group{
+    font-size: x-large;
+}
+
+.my-flex-2page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.pageHeight{
+    height: 92%;
+}
+.ruleListDiv{
+    display: inline-block;
+    text-align: left;
+    padding: 50px;
+    width: 55%;
+}
+.ruleListTitle{
+    padding: 50px;
+    font-size: xx-large;
+    color: #9a9a9a;
+}
+.rileListText{
+    color: #eaeaea;
+    font-size: x-large;
+}
+.colour-accepted{
+    color: aqua;
 }

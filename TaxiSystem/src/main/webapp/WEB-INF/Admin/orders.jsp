@@ -15,104 +15,93 @@
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
     <title>$$$User</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/common.css"/>
 </head>
 
 <body>
-<span>$$$Здравствуйте Администратор</span>
 
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="signManager"/>
-    <input type="hidden" name="action" value="logOut"/>
-    <input type="submit" value="$$$Выйти"/>
-</form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+    <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="Controller?method=dispatcher&action=getAllOrders">$$$Архив заказов</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">$$$Таксисты</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=userManager&action=getClientList">$$$Клиенты</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=taxis&action=getCarList">$$$Автомобили</a>
+        </li>
+    </ul>
 
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="ru"/>
-    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getAllOrders&page=1"/>
-    <input type="submit" value="${rusButton}">
-</form>
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="localization"/>
-    <input type="hidden" name="local" value="en"/>
-    <input type="hidden" name="page" value="Controller?method=dispatcher&action=getAllOrders&page=1"/>
-    <input type="submit" value="${engButton}">
-</form>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            &&&Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders&amp;page&#61;1">${rusButton}</a>
+            <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders&amp;page&#61;1">${engButton}</a>
+        </div>
+        <div class="logOutMenu">
+            <span class="welcomeUser">$$$Здравствуйте Администратор</span>
+            <a href="Controller?method=signManager&action=logOut">
+                <button type="button" class="btn btn-light">$$$LogOut</button>
+            </a>
+        </div>
+    </div>
+</nav>
+<br/>
+<table class="table table-striped table-dark">
+    <thead class="thead-dark">
+    <tr class="tr-text">
+        <th>$$$id</th>
+        <th>$$$cID</th>
+        <th>$$$clogin</th>
+        <th>$$$tId</th>
+        <th>$$$tLogin</th>
+        <th>$$$src</th>
+        <th>$$$dst</th>
+        <th>$$$numb</th>
+        <th>$$$car</th>
+        <th>$$$colour</th>
+        <th>$$$price</th>
+        <th>$$$status</th>
+        <th>###Действие</th>
+    </tr>
+    </thead>
+    <c:forEach var="order" items="${requestScope.pageOrderList}">
+        <tr class="tr-text">
+            <td>${order.orderId}</td>
+            <td>${order.client.id}</td>
+            <td>${order.client.login}</td>
+            <td>${order.taxi.id}</td>
+            <td>${order.taxi.login}</td>
+            <td>${order.sourceCoordinate}</td>
+            <td>${order.destinyCoordinate}</td>
+            <td>${order.taxi.car.number}</td>
+            <td>${order.taxi.car.name}</td>
+            <td>${order.taxi.car.colour}</td>
+            <td>${order.price}</td>
+            <td>${order.orderStatus}</td>
+            <td>
+                <form action="Controller" method="post">
+                    <input type="hidden" name="method" value = "dispatcher"/>
+                    <input type="hidden" name="action" value="cancelOrder"/>
+                    <input type="hidden" name="orderId" value="${order.orderId}"/>
+                    <button class="btn btn-light" type="submit">$$$Удалить</button>
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
 
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="dispatcher"/>
-    <input type="hidden" name="action" value="getAllOrders"/>
-    <input type="submit" value="$$$Архив Заказов">
-</form>
-
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="userManager"/>
-    <input type="hidden" name="action" value="getTaxiList"/>
-    <input type="submit" value="$$$Таксисты">
-</form>
-
-<form action="Controller" method="post">
-    <input type="hidden" name="method" value="userManager"/>
-    <input type="hidden" name="action" value="getClientList"/>
-    <input type="submit" value="$$$Клиенты">
-</form>
-
-
-<div class="container" align="center">
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>$$$orderid</th>
-                <th>$$$clientID</th>
-                <th>$$$clientlogin</th>
-                <th>$$$clientfirstName</th>
-                <th>$$$clientLastName</th>
-                <th>$$$taxiId</th>
-                <th>$$$taxiLogin</th>
-                <th>$$$taxiFirstName</th>
-                <th>$$$taxiLastName</th>
-                <th>$$$src</th>
-                <th>$$$dst</th>
-                <th>$$$number</th>
-                <th>$$$car</th>
-                <th>$$$colour</th>
-                <th>$$$price</th>
-                <th>$$$status</th>
-                <th>###Действие</th>
-            </tr>
-        </thead>
-        <c:forEach var="order" items="${requestScope.pageOrderList}">
-            <tr>
-                <td>${order.orderId}</td>
-                <td>${order.client.id}</td>
-                <td>${order.client.login}</td>
-                <td>${order.client.firstName}</td>
-                <td>${order.client.lastName}</td>
-                <td>${order.taxi.id}</td>
-                <td>${order.taxi.login}</td>
-                <td>${order.taxi.firstName}</td>
-                <td>${order.taxi.lastName}</td>
-                <td>${order.sourceCoordinate}</td>
-                <td>${order.destinyCoordinate}</td>
-                <td>${order.taxi.car.number}</td>
-                <td>${order.taxi.car.name}</td>
-                <td>${order.taxi.car.colour}</td>
-                <td>${order.price}</td>
-                <td>${order.orderStatus}</td>
-                <td>
-                    <form action="Controller" method="post">
-                        <input type="hidden" name="method" value = "dispatcher"/>
-                        <input type="hidden" name="action" value="cancelOrder"/>
-                        <input type="hidden" name="orderId" value="${order.orderId}"/>
-                        <button type="submit">$$$Удалить</button>
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
-    <nav aria-label="Page navigation example">    <!-- table -->
+<nav aria-label="Page navigation example">    <!-- table -->
     <ul class="pagination">                   <!-- tr -->
         <c:forEach begin="1" end="${requestScope.countPages}" var="i">
             <c:choose>
@@ -126,14 +115,11 @@
         </c:forEach>
     </ul>
 </nav>
-</div>
-
-
 <!--УДАЛИТЬ ВСЕ-->
 <form action="Controller" method="post">
     <input type="hidden" name="method" value = "dispatcher"/>
     <input type="hidden" name="action" value="deleteAllOrders"/>
-    <button type="submit">$$$Удалить все заказы</button>
+    <button class="btn btn-danger" type="submit">$$$Удалить все заказы</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -31,7 +31,6 @@ public class SignService {
             return signDAO.registerTaxi(taxi);
         } else {
             return false;
-
         }
     }
 

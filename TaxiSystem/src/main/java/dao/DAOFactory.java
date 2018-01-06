@@ -1,5 +1,6 @@
 package dao;
 
+import controller.command.impl.Taxis;
 import dao.impl.*;
 
 /**
@@ -11,6 +12,7 @@ public class DAOFactory {
     private final DispatcherDAO dispatcherDAO = new DispatcherDAO();
     private final FeedbackDAO feedbackDAO = new FeedbackDAO();
     private final UserManagerDAO userManagerDAO = new UserManagerDAO();
+    private final TaxisDAO taxisDAO = new TaxisDAO();
 
     private DAOFactory() {}
 
@@ -28,5 +30,8 @@ public class DAOFactory {
     }
     public UserManagerDAO getUserManagerDAO(){
         return userManagerDAO;
+    }
+    public TaxisDAO getTaxisDAO(){
+        return taxisDAO;
     }
 }

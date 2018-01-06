@@ -90,7 +90,7 @@
                 <div class="field-wrap">
                     <input type="password" name="password" value="root" required/>
                 </div>
-                <button class="button button-block">${authButton}</button>
+                <button type="submit" class="button button-block">${authButton}</button>
             </form>
         </div>
     </div>

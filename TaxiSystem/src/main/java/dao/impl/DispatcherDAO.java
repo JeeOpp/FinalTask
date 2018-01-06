@@ -2,7 +2,6 @@ package dao.impl;
 
 import dao.connectionPool.ConnectionPool;
 import dao.connectionPool.ConnectionPoolException;
-import entity.Car;
 import entity.Order;
 
 import java.sql.*;
@@ -18,13 +17,12 @@ public class DispatcherDAO {
             "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
             "    JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";
     private static final String SQL_DELETE_ALL_ORDER="DELETE FROM `order` WHERE `order`.order_id > 0;";
-    private static final String SQL_SELECT_ALL_CARS="SELECT * FROM taxisystem.car;";
     private static final String SQL_MAKE_ORDER="INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);";
     private static final String SQL_CANCEL_ORDER ="DELETE FROM taxisystem.order WHERE order_id = ?;";
     private static final String SQL_ACCEPT_ORDER="UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;";
     private static final String SQL_REJECT_ORDER="UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;";
     private static final String SQL_PAY_ORDER="UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;";
-    private static final String SQL_ACHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
+    private static final String SQL_ARCHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
 
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private Connection connection = null;
@@ -134,7 +132,7 @@ public class DispatcherDAO {
     public void moveOrderToAchive(Integer orderId) throws SQLException{
         try {
             connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_ACHIVE_ORDER);
+            preparedStatement = connection.prepareStatement(SQL_ARCHIVE_ORDER);
             preparedStatement.setInt(1, orderId);
             preparedStatement.execute();
         }catch (ConnectionPoolException ex){
@@ -157,27 +155,5 @@ public class DispatcherDAO {
         }finally {
             connectionPool.closeConnection(connection,statement);
         }
-    }
-    public List<Car> getCarList() throws SQLException{
-        List<Car> carList = new ArrayList<>();
-        Car car;
-        try {
-            connection = connectionPool.takeConnection();
-            statement = connection.createStatement();
-            if ((resultSet = statement.executeQuery(SQL_SELECT_ALL_CARS)) != null) {
-                while (resultSet.next()) {
-                    car = new Car();
-                    car.setFromResultSet(resultSet);
-                    carList.add(car);
-                }
-            }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }finally {
-            connectionPool.closeConnection(connection,statement,resultSet);
-        }
-    return carList;
     }
 }

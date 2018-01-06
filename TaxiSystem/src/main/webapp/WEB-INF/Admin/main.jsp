@@ -18,6 +18,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/common.css"/>
 </head>
 <body>
 
@@ -34,7 +35,7 @@
             <a class="nav-link" href="Controller?method=userManager&action=getClientList">$$$Клиенты</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=userManager&action=getCarList">$$$Автомобили</a>
+            <a class="nav-link" href="Controller?method=taxis&action=getCarList">$$$Автомобили</a>
         </li>
     </ul>
 

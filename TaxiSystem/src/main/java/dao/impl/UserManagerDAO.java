@@ -22,6 +22,7 @@ public class UserManagerDAO {
     private static final String SQL_GET_CLIENT_BAN = "UPDATE client SET banStatus = ? WHERE id = ?;";
     private static final String SQL_DECREASE_BONUS = "UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;";
     private static final String SQL_CHANGE_BONUS_COUNT = "UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;";
+    private static final String SQL_CHANGE_TAXI_CAR = "UPDATE taxi SET carNumber=? WHERE id=?";
 
 
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
@@ -136,6 +137,21 @@ public class UserManagerDAO {
             preparedStatement = connection.prepareStatement(SQL_CHANGE_BONUS_COUNT);
             preparedStatement.setInt(1,client.getBonusPoints());
             preparedStatement.setInt(2,client.getId());
+            preparedStatement.execute();
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connectionPool.closeConnection(connection,preparedStatement);
+        }
+    }
+    public void changeTaxiCar(Taxi taxi) throws SQLException{
+        try {
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_CHANGE_TAXI_CAR);
+            preparedStatement.setString(1,taxi.getCar().getNumber());
+            preparedStatement.setInt(2,taxi.getId());
             preparedStatement.execute();
         }catch (ConnectionPoolException ex){
             ex.printStackTrace();

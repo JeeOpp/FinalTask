@@ -48,6 +48,7 @@ public class SelectColourTagWithBody extends BodyTagSupport {
             pageContext.getOut().write(bodyText);
         }catch (IOException ex){
             //log;
+            //todo 1234567
         }
         return SKIP_BODY;
     }

@@ -47,13 +47,14 @@ public class SignManager implements ControllerCommand {
         req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req,resp);
     }
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        User user;
+
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        User user;
         try {
             if ((user = signService.authorize(login,password)) == null) {
                 resp.sendRedirect("authorizationProblem.jsp");
@@ -83,6 +84,7 @@ public class SignManager implements ControllerCommand {
         String firstName = req.getParameter("name");
         String lastName = req.getParameter("surname");
         String carNumber = req.getParameter("checkedCarNumber");
+        System.out.println(carNumber);
         String role = req.getParameter("role");
         try {
             if (role.equals("client")) {
@@ -126,7 +128,7 @@ public class SignManager implements ControllerCommand {
             ex.printStackTrace();
         }
     }
-    private String chooseUserPage(String role){
+    public String chooseUserPage(String role){
         if (role.equals("client")) {
             return CLIENT_MAIN_PATH;
         }
