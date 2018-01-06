@@ -26,7 +26,7 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link active" href="Controller?method=dispatcher&action=getAllOrders">$$$Архив заказов</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=getAllOrders">$$$Архив заказов</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">$$$Таксисты</a>

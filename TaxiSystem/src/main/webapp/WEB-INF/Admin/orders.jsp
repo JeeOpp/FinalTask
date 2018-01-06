@@ -45,8 +45,8 @@
             &&&Dropdown
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders&amp;page&#61;1">${rusButton}</a>
-            <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders&amp;page&#61;1">${engButton}</a>
+            <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders">${rusButton}</a>
+            <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders">${engButton}</a>
         </div>
         <div class="logOutMenu">
             <span class="welcomeUser">$$$Здравствуйте Администратор</span>
@@ -109,7 +109,7 @@
                     <li class="page-item"><a class="page-link">${i}</a></li>      <!-- td-->
                 </c:when>
                 <c:otherwise>
-                    <li class="page-item"><a class="page-link" href="/Controller?method=dispatcher&action=getAllOrders&page=${i}">${i}</a></li>
+                    <li class="page-item"><a class="page-link" href="/Controller?method=dispatcher&action=getAllOrders&numPage=${i}">${i}</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>

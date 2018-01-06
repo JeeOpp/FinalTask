@@ -66,8 +66,8 @@ public class UserManager implements ControllerCommand {
     }
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         int page = 1; //default page
-        if(req.getParameter("page") != null){
-            page = Integer.parseInt(req.getParameter("page"));
+        if(req.getParameter("numPage") != null){
+            page = Integer.parseInt(req.getParameter("numPage"));
         }
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserManagerService userManagerService = serviceFactory.getUserManagerService();
@@ -87,8 +87,8 @@ public class UserManager implements ControllerCommand {
     }
     void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         int page = 1; //default page
-        if(req.getParameter("page") != null){
-            page = Integer.parseInt(req.getParameter("page"));
+        if(req.getParameter("numPage") != null){
+            page = Integer.parseInt(req.getParameter("numPage"));
         }
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserManagerService userManagerService = serviceFactory.getUserManagerService();

@@ -141,8 +141,8 @@ public class Dispatcher implements ControllerCommand {
     }
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         int page = 1; //default page
-        if(req.getParameter("page") != null){
-            page = Integer.parseInt(req.getParameter("page"));
+        if(req.getParameter("numPage") != null){
+            page = Integer.parseInt(req.getParameter("numPage"));
         }
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DispatcherService dispatcherService = serviceFactory.getDispatcherService();
