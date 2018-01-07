@@ -14,7 +14,23 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>$$$User</title>
+    <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+    <fmt:message bundle="${loc}" key="local.all.welcome" var="welcome"/>
+    <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.taxi.nav.orders" var="orders"/>
+    <fmt:message bundle="${loc}" key="local.taxi.nav.profile" var="myProfile"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.ruleTitle" var="ruleTitle"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule1" var="rule1"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule2" var="rule2"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule3" var="rule3"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule4" var="rule4"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule5" var="rule5"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule6" var="rule6"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule7" var="rule7"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.rule8" var="rule8"/>
+    <fmt:message bundle="${loc}" key="local.taxi.main.goOrder" var="goOrder"/>
+    <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -32,25 +48,25 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=dispatcher&action=getTaxiOrders">$$$Заказы</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=getTaxiOrders">${orders}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+            <a class="nav-link" href="Controller?method=userManager&action=preProfile">${myProfile}</a>
         </li>
     </ul>
 
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &&&Dropdown
+            ${languages}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="Controller?method=localization&local=ru&page=WEB-INF/Taxi/main.jsp">${rusButton}</a>
             <a class="dropdown-item" href="Controller?method=localization&local=en&page=WEB-INF/Taxi/main.jsp">${engButton}</a>
         </div>
         <div class="logOutMenu">
-            <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+            <span class="welcomeUser">${welcome} ${user.firstName} ${user.lastName}</span>
             <a href="Controller?method=signManager&action=logOut">
-                <button type="button" class="btn btn-light">$$$LogOut</button>
+                <button type="button" class="btn btn-light">${logOut}</button>
             </a>
         </div>
     </div>
@@ -58,19 +74,20 @@
 
 <div class="my-flex-2page pageHeight">
     <div class="ruleListDiv">
-        <div class="ruleListTitle">$$$Водителю  автомобиля-такси  запрещается:</div>
+        <div class="ruleListTitle">${ruleTitle}</div>
         <div class="rileListText">
-            - оставлять  автомобиль и установленное на него оборудование фирмы  без  присмотра;<br/>
-            - перевозить  большее  количество  пассажиров, чем  положено  по   техническим характеристикам автомобиля  и не пристегнутых ремнями безопасности;<br/>
-            - перевозить детей  до  12  лет без специального удерживающего устройства;<br/>
-            - передавать  управление  автомобилем  кому  бы  то  ни  было;<br/>
-            - превышать  установленную  скорость  движения;<br/>
-            - подавать автомобиль клиенту в темное время суток без включенного плафона такси;<br/>
+            ${rule1}.<br/>
+            ${rule2}.<br/>
+            ${rule3}.<br/>
+            ${rule4}.<br/>
+            ${rule5}.<br/>
+            ${rule6}.<br/>
+            ${rule7}.<br/>
         </div>
     </div>
     <div class="wightPage">
         <a href="Controller?method=dispatcher&action=getTaxiOrders">
-            <button class="big-green-button">$$$Поехали</button>
+            <button class="big-green-button">${goOrder}</button>
         </a>
     </div>
 </div>

@@ -129,7 +129,7 @@ public class DispatcherDAO {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
-    public void moveOrderToAchive(Integer orderId) throws SQLException{
+    public void moveOrderToArchive(Integer orderId) throws SQLException{
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_ARCHIVE_ORDER);

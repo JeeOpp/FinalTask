@@ -14,11 +14,21 @@
         <fmt:setBundle basename="localization.local" var="loc"/>
         <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
         <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-        <title>$$$User</title>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi.title" var="title"/>
+        <fmt:message bundle="${loc}" key="local.client.nav.callTaxi" var="navCallTaxi"/>
+        <fmt:message bundle="${loc}" key="local.client.nav.myOrders" var="navMyOrders"/>
+        <fmt:message bundle="${loc}" key="local.client.nav.myProfile" var="navMyProfile"/>
+        <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+        <fmt:message bundle="${loc}" key="local.all.welcome" var="welcome"/>
+        <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi.prePrice" var="prePrice"/>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi.availableBonuses" var="availableBonuses"/>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi" var="callTaxi"/>
+
+        <title>${title}</title>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../css/clientCss.css"/>
         <link rel="stylesheet" href="../../css/callTaxi.css"/>
         <link rel="stylesheet " href="../../css/common.css"/>
         <script>
@@ -33,28 +43,28 @@
         <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+                <a class="nav-link active" href="Controller?method=dispatcher&action=preOrder">${navCallTaxi}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
+                <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">${navMyOrders}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+                <a class="nav-link" href="Controller?method=userManager&action=preProfile">${navMyProfile}</a>
             </li>
         </ul>
 
         <div class="btn-group" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                &&&Dropdown
+                ${languages}
             </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${rusButton}</a>
                 <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${engButton}</a>
             </div>
             <div class="logOutMenu">
-                <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+                <span class="welcomeUser">  ${welcome} ${user.firstName} ${user.lastName}</span>
                 <a href="Controller?method=signManager&action=logOut">
-                    <button type="button" class="btn btn-light">$$$LogOut</button>
+                    <button type="button" class="btn btn-light">${logOut}</button>
                 </a>
             </div>
         </div>
@@ -80,15 +90,15 @@
                     <input type="hidden" name="checkedTaxiId"/>
                 </div>
                 <div class="inner-flex-box">
-                    <span class="pre-price">$$$Предварительно: <span class="price" id="priceView">0</span></span>
+                    <span class="pre-price">${prePrice}: <span class="price" id="priceView">0</span></span>
                 </div>
                 <div class="inner-flex-box">
-                    <label class="pre-price" for="bonus">$$$Доступно баллов ${user.bonusPoints}   </label>
+                    <label class="pre-price" for="bonus">${availableBonuses} ${user.bonusPoints}   </label>
                     <input id="bonus" type="number" name="bonus" min="0" max="${user.bonusPoints}" value="0"/>
                     <input id="price" type="hidden" name="price" value="0">
                 </div>
                 <div class="inner-flex-box">
-                    <button class="big-green-button" type="submit">$$$Заказать</button>
+                    <button class="big-green-button" type="submit">${callTaxi}</button>
                 </div>
             </div>
         </form>

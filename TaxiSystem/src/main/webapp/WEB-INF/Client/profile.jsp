@@ -6,12 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>$$$</title>
-</head>
-<body>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -20,13 +14,35 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>$$$User</title>
+    <fmt:message bundle="${loc}" key="local.client.orders.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.client.nav.callTaxi" var="navCallTaxi"/>
+    <fmt:message bundle="${loc}" key="local.client.nav.myOrders" var="navMyOrders"/>
+    <fmt:message bundle="${loc}" key="local.client.nav.myProfile" var="navMyProfile"/>
+    <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+    <fmt:message bundle="${loc}" key="local.all.welcome" var="welcome"/>
+    <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+    <fmt:message bundle="${loc}" key="local.all.changePassword" var="changePasswordButton"/>
+    <fmt:message bundle="${loc}" key="local.all.currentPass" var="currentPass"/>
+    <fmt:message bundle="${loc}" key="local.all.newPassword" var="newPass"/>
+    <fmt:message bundle="${loc}" key="local.all.repeatPass" var="repeatPass"/>
+    <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+    <fmt:message bundle="${loc}" key="local.client.profile.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.client.profile.myData" var="myData"/>
+    <fmt:message bundle="${loc}" key="local.client.profile.yourReview" var="yourReview"/>
+    <fmt:message bundle="${loc}" key="local.client.profile.changePassTitle" var="changePass"/>
+    <fmt:message bundle="${loc}" key="local.all.user.name" var="userName"/>
+    <fmt:message bundle="${loc}" key="local.all.user.surname" var="userSurname"/>
+    <fmt:message bundle="${loc}" key="local.all.user.login" var="userLogin"/>
+    <fmt:message bundle="${loc}" key="local.all.client.bonuses" var="bonuses"/>
+    <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
+
+
+    <title>${title}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <script type="text/javascript">
         <%@include file="/js/formValidator.js"%>
     </script>
-    <link rel="stylesheet" href="../../css/clientCss.css"/>
     <link rel="stylesheet " href="../../css/common.css"/>
 </head>
 
@@ -36,28 +52,28 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=dispatcher&action=preOrder">$$$Заказать такси</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=preOrder">${navCallTaxi}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">$$$Мои заказы</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=getClientOrders">${navMyOrders}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="Controller?method=userManager&action=preProfile">$$$Мой профиль</a>
+            <a class="nav-link active" href="Controller?method=userManager&action=preProfile">${navMyProfile}</a>
         </li>
     </ul>
 
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &&&Dropdown
+            ${languages}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;userManager&amp;action&#61;preProfile">${rusButton}</a>
             <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;userManager&amp;action&#61;preProfile">${engButton}</a>
         </div>
         <div class="logOutMenu">
-            <span class="welcomeUser">$$$Здравствуйте ${user.firstName} ${user.lastName}</span>
+            <span class="welcomeUser">${welcome} ${user.firstName} ${user.lastName}</span>
             <a href="Controller?method=signManager&action=logOut">
-                <button type="button" class="btn btn-light">$$$LogOut</button>
+                <button type="button" class="btn btn-light">${logOut}</button>
             </a>
         </div>
     </div>
@@ -67,21 +83,21 @@
 <br/>
 <div class="my-flex-2page">
     <div class="profileDiv">
-        <span class="titleDiv">$Ваши данные</span>
+        <span class="titleDiv">${myData}</span>
         <ul class="list-group">
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">$$$Имя: </span>${user.firstName}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">$$$Фамилия </span>${user.lastName}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">$$$login </span>${user.login}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">$$$bonuses </span>${user.bonusPoints}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userName}: </span>${user.firstName}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userSurname} </span>${user.lastName}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userLogin} </span>${user.login}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${bonuses} </span>${user.bonusPoints}</li>
         </ul>
         <br/>
         <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#reviewModal">
-            $$$сменить пароль
+            ${changePasswordButton}
         </button>
     </div>
 
     <div class="wightPage">
-        <div class="titleDiv">$Ваши отзывы</div>
+        <div class="titleDiv">${yourReview}</div>
         <ul class="list-group">
             <c:forEach var="review" items="${requestScope.userReviews}">
                 <li class="list-group-item list-group-item-dark"><b>${review.taxi.firstName} ${review.taxi.lastName}</b>: ${review.comment} </li>
@@ -97,19 +113,19 @@
                 <input type="hidden" name="method" value="userManager"/>  <!--Iinput--->
                 <input type="hidden" name="action" value="changePassword"/>  <!--input-->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">$$$Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">${yourReview}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="closeModal" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="label-line"><label for="previousPass">$$$текущий пароль</label></span><input type="text" id="previousPass" name="previousPass" required/><br/>
-                    <span class="label-line"><label for="pass1">$$$новый пароль</label></span><input type="text" id="pass1" name="newPass" required/><br/>
-                    <span class="label-line"><label for="pass2">$$$повторите пароль</label></span><input type="text" id="pass2" name="newPass" required>
+                    <span class="label-line"><label for="previousPass">${currentPass}</label></span><input type="text" id="previousPass" name="previousPass" required/><br/>
+                    <span class="label-line"><label for="pass1">${newPass}</label></span><input type="text" id="pass1" name="newPass" required/><br/>
+                    <span class="label-line"><label for="pass2">${repeatPass}</label></span><input type="text" id="pass2" name="newPass" required>
                 </div>
                 <div class="modal-footer">
-                    <button onclick="validatePassword()" type="submit" class="btn btn-light">$$$Cменить пароль</button>  <!--input-->
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">$$$Close</button>
+                    <button onclick="validatePassword()" type="submit" class="btn btn-light">${changePasswordButton}</button>  <!--input-->
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">${close}</button>
                 </div>
             </form>
         </div>

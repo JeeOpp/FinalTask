@@ -3,11 +3,9 @@ package service;
 import dao.DAOFactory;
 import dao.impl.DispatcherDAO;
 import dao.impl.UserManagerDAO;
-import entity.Car;
 import entity.Client;
 import entity.Order;
 import entity.Taxi;
-import support.CoordinateGenerator;
 
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -128,7 +126,7 @@ public class DispatcherService {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.moveOrderToAchive(orderId);
+            dispatcherDAO.moveOrderToArchive(orderId);
         }catch (SQLException ex){
             ex.printStackTrace();
         }
