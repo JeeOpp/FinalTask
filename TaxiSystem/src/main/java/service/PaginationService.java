@@ -19,7 +19,6 @@ public class PaginationService<E>{
     public Pagination<E> getPagination() {
         return pagination;
     }
-
     public void buildPagination(List<E> entityList){
         pagination = new Pagination<>();
         pagination.setCountRecords(entityList.size());
@@ -32,7 +31,6 @@ public class PaginationService<E>{
             pagination.getPagesList().add(page);
         }
     }
-
     private List<E> splitList(int currentPage, List<E> entityList){
         int firstElement = (currentPage-1)*RECORDS_PER_PAGE;
         int lastElement = firstElement+RECORDS_PER_PAGE-1;

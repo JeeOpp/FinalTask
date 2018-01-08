@@ -214,7 +214,7 @@
 </div>
 
 <button onclick="getCarList('reg');" type="button" class="btn btn-primary" data-toggle="modal" data-target="#regTaxiModal">
-    ${regTaxi}
+    ${regButton}
 </button>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

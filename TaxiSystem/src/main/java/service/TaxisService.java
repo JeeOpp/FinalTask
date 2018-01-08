@@ -23,7 +23,6 @@ public class TaxisService {
         }
         return carList;
     }
-
     public boolean addCar(Car car) {
         DAOFactory daoFactory = DAOFactory.getInstance();
         TaxisDAO taxisDAO = daoFactory.getTaxisDAO();
@@ -40,7 +39,6 @@ public class TaxisService {
         }
         return false;
     }
-
     public boolean removeCar(Car car) {
         DAOFactory daoFactory = DAOFactory.getInstance();
         TaxisDAO taxisDAO = daoFactory.getTaxisDAO();

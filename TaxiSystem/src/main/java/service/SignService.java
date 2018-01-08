@@ -50,8 +50,6 @@ public class SignService {
         }
         return user;
     }
-
-
     public void changeSessionStatus(Taxi taxi) throws SQLException{
         DAOFactory daoFactory = DAOFactory.getInstance();
         SignDAO signDAO = daoFactory.getSignDAO();

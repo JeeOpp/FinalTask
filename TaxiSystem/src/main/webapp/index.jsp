@@ -21,6 +21,15 @@
     <fmt:message bundle="${loc}" key="local.index.logIn" var="logIn"/>
     <fmt:message bundle="${loc}" key="local.index.signUp" var="signUp"/>
     <fmt:message bundle="${loc}" key="local.authorization.authorizationButton" var="authButton"/>
+    <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+    <fmt:message bundle="${loc}" key="local.index.signUpText" var="signUpText"/>
+    <fmt:message bundle="${loc}" key="local.index.signUpButton" var="signUpButton"/>
+    <fmt:message bundle="${loc}" key="local.all.user.name" var="userName"/>
+    <fmt:message bundle="${loc}" key="local.all.user.surname" var="userSurname"/>
+    <fmt:message bundle="${loc}" key="local.all.user.login" var="userLogin"/>
+    <fmt:message bundle="${loc}" key="local.admin.taxi.pass1" var="pass1"/>
+    <fmt:message bundle="${loc}" key="local.admin.taxi.pass2" var="pass2"/>
+    <fmt:message bundle="${loc}" key="local.index.signInText" var="signInText"/>
 
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -33,7 +42,7 @@
 
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &&&Dropdown
+            ${languages}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="Controller?method=localization&local=ru&page=index.jsp">${rusButton}</a>
@@ -45,50 +54,49 @@
 
 <div class="form">
     <ul class="tab-group">
-        <li class="tab active"><a href="#signup">$$$Sign Up</a></li>
-        <li class="tab"><a href="#login">$$$Log In</a></li>
+        <li class="tab active"><a href="#signup">${signUp}</a></li>
+        <li class="tab"><a href="#login">${logIn}</a></li>
     </ul>
     <div class="tab-content">
         <div id="signup">
-            <h1>$$$Sign Up for Free</h1>
-            </form>
+            <h1>${signUpText}</h1>
             <form action="Controller" method="post">
                 <input type="hidden" name="method" value="signManager"/>
                 <input type="hidden" name="action" value="registration"/>
                 <input type="hidden" name="role" value="client"/>
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="text" required name="firstName" placeholder="$$$Имя" autocomplete="off"/>
+                        <input type="text" required name="firstName" placeholder="${userName}" autocomplete="off"/>
                     </div>
                     <div class="field-wrap">
-                        <input type="text" required name="lastName" placeholder="$$$Фамилия" autocomplete="off"/>
+                        <input type="text" required name="lastName" placeholder="${userSurname}" autocomplete="off"/>
                     </div>
                 </div>
                 <div class="field-wrap">
-                    <input type="text" required name="login"  placeholder="$$$Логин" autocomplete="off"/>
+                    <input type="text" required name="login"  placeholder="${userLogin}" autocomplete="off"/>
                 </div>
 
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="password" required id="pass1" name="password"  placeholder="$$$Пароль" autocomplete="off"/>
+                        <input type="password" required id="pass1" name="password"  placeholder="${pass1}" autocomplete="off"/>
                     </div>
                     <div class="field-wrap">
-                        <input type="password" required id="pass2" name="password"  placeholder="$$$Пароль" autocomplete="off"/>
+                        <input type="password" required id="pass2" name="password"  placeholder="${pass2}" autocomplete="off"/>
                     </div>
                 </div>
-                <button type="submit" onclick="validatePassword()" class="button button-block">$$$Get Started</button>
+                <button type="submit" onclick="validatePassword()" class="button button-block">${signUpButton}</button>
             </form>
         </div>
         <div id="login">
-            <h1>$$$Welcome Back!</h1>
+            <h1>${signInText}</h1>
             <form action="Controller" method="post">
                 <input type="hidden" name="method" value="signManager"/>
                 <input type="hidden" name="action" value="authorization"/>
                 <div class="field-wrap">
-                    <input type="text" name="login" value="client" required/>
+                    <input type="text" name="login" placeholder="${userLogin}" required/>
                 </div>
                 <div class="field-wrap">
-                    <input type="password" name="password" value="root" required/>
+                    <input type="password" name="password" placeholder="${pass1}" required/>
                 </div>
                 <button type="submit" class="button button-block">${authButton}</button>
             </form>

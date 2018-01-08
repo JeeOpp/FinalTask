@@ -97,7 +97,7 @@
                     <input type="hidden" name="action" value="changeBonusCount"/>
                     <input type="hidden" name="clientId" value="${client.id}"/>
                     <label for="changeBonusText">${client.bonusPoints} </label>
-                    <input type="text" id="changeBonusText" name="bonusPoints" placeholder="${changeOn}" required/><br/>
+                    <input type="text" id="changeBonusText" name="bonusPoints" placeholder="${changeOn}" required/>
                     <button class="btn btn-light" type="submit">${changeButton}</button>
                 </form>
             </td>
