@@ -7,12 +7,10 @@ package controller;
 import controller.command.ControllerCommand;
 import controller.command.ControllerDirector;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSessionEvent;
 import java.io.IOException;
 
 /**
@@ -26,8 +24,11 @@ public class Controller extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //System.out.println(MD5.md5Hash("root"));
-        //System.out.println(MD5.md5Hash("taxi"));
+        //SSLSender sslSender = new SSLSender("demkoandrey2012@gmail.com","Neponime1234");
+        //TLSSender tlsSender = new TLSSender("demkoandrey2012@gmail.com","Neponime1234");
+
+        //tlsSender.send("TaxiSystem question", "TLS: This is text!", "demkoandrey2012@gmail.com", "123467890@p33.org");
+        //sslSender.send("TaxiSystem question", "SSL: This is text!", "demkoandrey2012@gmail.com", "123467890@p33.org");
         resp.setContentType("text/html");
 
         String method = req.getParameter("method");

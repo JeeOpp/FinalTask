@@ -14,7 +14,26 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>$$$User</title>
+    <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+    <fmt:message bundle="${loc}" key="local.admin.welcome" var="welcome"/>
+    <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+    <fmt:message bundle="${loc}" key="local.admin.client.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.orders" var="orders"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.taxi" var="taxi"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.client" var="client"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.cars" var="cars"/>
+    <fmt:message bundle="${loc}" key="local.all.user.id" var="userId"/>
+    <fmt:message bundle="${loc}" key="local.all.user.name" var="userName"/>
+    <fmt:message bundle="${loc}" key="local.all.user.surname" var="userSurname"/>
+    <fmt:message bundle="${loc}" key="local.all.user.login" var="userLogin"/>
+    <fmt:message bundle="${loc}" key="local.all.user.banStatus" var="banStatus"/>
+    <fmt:message bundle="${loc}" key="local.all.client.bonuses" var="bonuses"/>
+    <fmt:message bundle="${loc}" key="local.admin.client.changeOn" var="changeOn"/>
+    <fmt:message bundle="${loc}" key="local.admin.client.changeButton" var="changeButton"/>
+    <fmt:message bundle="${loc}" key="local.admin.ban" var="ban"/>
+    <fmt:message bundle="${loc}" key="local.admin.unBan" var="unban"/>
+
+    <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -25,30 +44,30 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=dispatcher&action=getAllOrders">$$$Архив заказов</a>
+            <a class="nav-link" href="Controller?method=dispatcher&action=getAllOrders">${orders}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">$$$Таксисты</a>
+            <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">${taxi}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="Controller?method=userManager&action=getClientList">$$$Клиенты</a>
+            <a class="nav-link active" href="Controller?method=userManager&action=getClientList">${client}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=taxis&action=getCarList">$$$Автомобили</a>
+            <a class="nav-link" href="Controller?method=taxis&action=getCarList">${cars}</a>
         </li>
     </ul>
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &&&Dropdown
+            ${languages}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;userManager&amp;action&#61;getClientList">${rusButton}</a>
             <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;userManager&amp;action&#61;getClientList">${engButton}</a>
         </div>
         <div class="logOutMenu">
-            <span class="welcomeUser">$$$Здравствуйте Администратор</span>
+            <span class="welcomeUser">${welcome}</span>
             <a href="Controller?method=signManager&action=logOut">
-                <button type="button" class="btn btn-light">$$$LogOut</button>
+                <button type="button" class="btn btn-light">${logOut}</button>
             </a>
         </div>
     </div>
@@ -58,12 +77,12 @@
 <table class="table table-striped table-dark">
     <thead class="thead-dark">
     <tr class="tr-text">
-        <th>$$$clientID</th>
-        <th>$$$clientlogin</th>
-        <th>$$$clientfirstName</th>
-        <th>$$$clientLastName</th>
-        <th>$$$bonus</th>
-        <th>$$$banStatus</th>
+        <th>${userId}</th>
+        <th>${userLogin}</th>
+        <th>${userName}</th>
+        <th>${userSurname}</th>
+        <th>${bonuses}</th>
+        <th>${banStatus}</th>
     </tr>
     </thead>
     <c:forEach var="client" items="${requestScope.pageClientList}">
@@ -78,8 +97,8 @@
                     <input type="hidden" name="action" value="changeBonusCount"/>
                     <input type="hidden" name="clientId" value="${client.id}"/>
                     <label for="changeBonusText">${client.bonusPoints} </label>
-                    <input type="text" id="changeBonusText" name="bonusPoints" placeholder="$$$изменить на" required/><br/>
-                    <button class="btn btn-light" type="submit">$$$Выполнить</button>
+                    <input type="text" id="changeBonusText" name="bonusPoints" placeholder="${changeOn}" required/><br/>
+                    <button class="btn btn-light" type="submit">${changeButton}</button>
                 </form>
             </td>
             <td>
@@ -92,10 +111,10 @@
                     <button class="btn btn-light" type="submit">
                         <c:choose>
                             <c:when test="${!client.banStatus}">
-                                $$$Забанить
+                                ${ban}
                             </c:when>
                             <c:otherwise>
-                                $$$Разбанить
+                                ${unban}
                             </c:otherwise>
                         </c:choose>
                     </button>

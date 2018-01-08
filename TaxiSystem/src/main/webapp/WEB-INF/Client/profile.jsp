@@ -86,9 +86,9 @@
         <span class="titleDiv">${myData}</span>
         <ul class="list-group">
             <li class="list-group-item list-group-item-dark"><span class="tr-text">${userName}: </span>${user.firstName}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userSurname} </span>${user.lastName}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userLogin} </span>${user.login}</li>
-            <li class="list-group-item list-group-item-dark"><span class="tr-text">${bonuses} </span>${user.bonusPoints}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userSurname}: </span>${user.lastName}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${userLogin}: </span>${user.login}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text">${bonuses}: </span>${user.bonusPoints}</li>
         </ul>
         <br/>
         <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#reviewModal">

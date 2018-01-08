@@ -14,7 +14,30 @@
     <fmt:setBundle basename="localization.local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
-    <title>$$$User</title>
+    <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
+    <fmt:message bundle="${loc}" key="local.admin.welcome" var="welcome"/>
+    <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
+    <fmt:message bundle="${loc}" key="local.admin.orders.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.orders" var="orders"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.taxi" var="taxi"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.client" var="client"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.cars" var="cars"/>
+    <fmt:message bundle="${loc}" key="local.all.order.orderId" var="orderId"/>
+    <fmt:message bundle="${loc}" key="local.all.order.source" var="orderSrc"/>
+    <fmt:message bundle="${loc}" key="local.all.order.destiny" var="orderDst"/>
+    <fmt:message bundle="${loc}" key="local.all.order.price" var="orderPrice"/>
+    <fmt:message bundle="${loc}" key="local.all.order.orderStatus" var="orderStatus"/>
+    <fmt:message bundle="${loc}" key="local.all.order.action" var="orderAction"/>
+    <fmt:message bundle="${loc}" key="local.all.client.id" var="clientId"/>
+    <fmt:message bundle="${loc}" key="local.all.client.login" var="clientLogin"/>
+    <fmt:message bundle="${loc}" key="local.all.taxi.id" var="taxiId"/>
+    <fmt:message bundle="${loc}" key="local.all.taxi.login" var="taxiLogin"/>
+    <fmt:message bundle="${loc}" key="local.all.car.number" var="carNumber"/>
+    <fmt:message bundle="${loc}" key="local.all.car.name" var="carName"/>
+    <fmt:message bundle="${loc}" key="local.all.car.colour" var="colour"/>
+    <fmt:message bundle="${loc}" key="local.admin.orders.deleteOrder" var="deleteOrder"/>
+    <fmt:message bundle="${loc}" key="local.admin.orders.deleteAll" var="deleteAll"/>
+    <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -27,31 +50,31 @@
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link active" href="Controller?method=dispatcher&action=getAllOrders">$$$Архив заказов</a>
+            <a class="nav-link active" href="Controller?method=dispatcher&action=getAllOrders">${orders}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">$$$Таксисты</a>
+            <a class="nav-link" href="Controller?method=userManager&action=getTaxiList">${taxi}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=userManager&action=getClientList">$$$Клиенты</a>
+            <a class="nav-link" href="Controller?method=userManager&action=getClientList">${client}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Controller?method=taxis&action=getCarList">$$$Автомобили</a>
+            <a class="nav-link" href="Controller?method=taxis&action=getCarList">${cars}</a>
         </li>
     </ul>
 
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            &&&Dropdown
+            ${languages}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="Controller?method=localization&local=ru&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders">${rusButton}</a>
             <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;getAllOrders">${engButton}</a>
         </div>
         <div class="logOutMenu">
-            <span class="welcomeUser">$$$Здравствуйте Администратор</span>
+            <span class="welcomeUser">${welcome}</span>
             <a href="Controller?method=signManager&action=logOut">
-                <button type="button" class="btn btn-light">$$$LogOut</button>
+                <button type="button" class="btn btn-light">${logOut}</button>
             </a>
         </div>
     </div>
@@ -60,19 +83,19 @@
 <table class="table table-striped table-dark">
     <thead class="thead-dark">
     <tr class="tr-text">
-        <th>$$$id</th>
-        <th>$$$cID</th>
-        <th>$$$clogin</th>
-        <th>$$$tId</th>
-        <th>$$$tLogin</th>
-        <th>$$$src</th>
-        <th>$$$dst</th>
-        <th>$$$numb</th>
-        <th>$$$car</th>
-        <th>$$$colour</th>
-        <th>$$$price</th>
-        <th>$$$status</th>
-        <th>###Действие</th>
+        <th>${orderId}</th>
+        <th>${clientId}</th>
+        <th>${clientLogin}</th>
+        <th>${taxiId}</th>
+        <th>${taxiLogin}</th>
+        <th>${orderSrc}</th>
+        <th>${orderDst}</th>
+        <th>${carNumber}</th>
+        <th>${carName}</th>
+        <th>${colour}</th>
+        <th>${orderPrice}</th>
+        <th>${orderStatus}</th>
+        <th>${orderAction}</th>
     </tr>
     </thead>
     <c:forEach var="order" items="${requestScope.pageOrderList}">
@@ -94,7 +117,7 @@
                     <input type="hidden" name="method" value = "dispatcher"/>
                     <input type="hidden" name="action" value="cancelOrder"/>
                     <input type="hidden" name="orderId" value="${order.orderId}"/>
-                    <button class="btn btn-light" type="submit">$$$Удалить</button>
+                    <button class="btn btn-light" type="submit">${deleteOrder}</button>
                 </form>
             </td>
         </tr>
@@ -119,7 +142,7 @@
 <form action="Controller" method="post">
     <input type="hidden" name="method" value = "dispatcher"/>
     <input type="hidden" name="action" value="deleteAllOrders"/>
-    <button class="btn btn-danger" type="submit">$$$Удалить все заказы</button>
+    <button class="btn btn-danger" type="submit">${deleteAll}</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
