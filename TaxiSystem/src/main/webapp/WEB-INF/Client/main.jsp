@@ -26,6 +26,13 @@
     <fmt:message bundle="${loc}" key="local.client.main.carousel.third" var="carouselThird"/>
     <fmt:message bundle="${loc}" key="local.client.main.carousel.previous" var="previous"/>
     <fmt:message bundle="${loc}" key="local.client.main.carousel.next" var="next"/>
+    <fmt:message bundle="${loc}" key="local.client.main.mailTitle" var="mailTitle"/>
+    <fmt:message bundle="${loc}" key="local.client.main.sendMailButton" var="sendMail"/>
+    <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
+    <fmt:message bundle="${loc}" key="local.client.main.placeholderSub" var="subject"/>
+    <fmt:message bundle="${loc}" key="local.client.main.placeholderText" var="text"/>
+    <fmt:message bundle="${loc}" key="local.client.main.mailText" var="mailText"/>
+    <fmt:message bundle="${loc}" key="local.client.main.mailButton" var="mailButton"/>
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -105,6 +112,36 @@
         </a>
     </div>
 
+    <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="Controller" method="post">
+                    <input type="hidden" name="method" value="mailer"/>   <!--input-->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewModalLabel">${mailTitle}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="closeModal" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="subject" placeholder="${subject}" required /><br/>
+                        <textarea name="text" cols="62" rows="3" placeholder="${text}" required></textarea>  <!--input-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-light">${sendMail}</button>  <!--input-->
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">${close}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ${mailText} <a style="color: white" href="mailto:demkoAndrey2012@yandex.by">demkoAndrey2012@yandex.by</a><br/>
+        <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#mailModal">
+            ${mailButton}
+        </button>
+    </div>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

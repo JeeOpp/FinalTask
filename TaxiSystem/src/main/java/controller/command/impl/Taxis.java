@@ -4,6 +4,7 @@ import controller.command.ControllerCommand;
 import entity.Car;
 import service.ServiceFactory;
 import service.TaxisService;
+import service.UserManagerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,14 +19,17 @@ public class Taxis implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action.equals("getCarList")) {
-            getCarList(req, resp);
-        }
-        if (action.equals("addCar")) {
-            addCar(req, resp);
-        }
-        if (action.equals("removeCar")) {
-            removeCar(req, resp);
+        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+        switch (switchConstant){
+            case GET_CAR_LIST:
+                getCarList(req,resp);
+                break;
+            case ADD_CAR:
+                addCar(req,resp);
+                break;
+            case REMOVE_CAR:
+                removeCar(req,resp);
+                break;
         }
     }
 
@@ -49,7 +53,6 @@ public class Taxis implements ControllerCommand {
         if(taxisService.addCar(car)){
             getCarList(req,resp);
         }
-        //todo error
     }
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String carNumber = req.getParameter("carNumber");
@@ -60,7 +63,7 @@ public class Taxis implements ControllerCommand {
         if(taxisService.removeCar(car)){
             getCarList(req,resp);
         }
-        //todo error
+        getCarList(req,resp);
     }
 
 }

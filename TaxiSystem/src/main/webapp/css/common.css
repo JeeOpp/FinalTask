@@ -173,3 +173,11 @@ a.callTaxiButton:active { background: white; }
 .colour-accepted{
     color: aqua;
 }
+.footer{
+    text-align: center;
+    left: 0; bottom: 0;
+    padding: 10px;
+    background: rgb(52,58,64);
+    color: #fff;
+    width: 100%;
+}

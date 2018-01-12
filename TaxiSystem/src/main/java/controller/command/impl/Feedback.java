@@ -20,8 +20,11 @@ public class Feedback implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action.equals("writeReview")) {
-            writeReview(req,resp);
+        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+        switch (switchConstant){
+            case WRITE_REVIEW:
+                writeReview(req,resp);
+                break;
         }
     }
 

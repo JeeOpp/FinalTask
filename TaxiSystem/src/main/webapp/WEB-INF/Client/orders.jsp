@@ -37,6 +37,7 @@
     <fmt:message bundle="${loc}" key="local.all.car.number" var="carNumber"/>
     <fmt:message bundle="${loc}" key="local.all.car.name" var="carName"/>
     <fmt:message bundle="${loc}" key="local.client.orders.cancelOrder" var="cancelOrder"/>
+    <fmt:message bundle="${loc}" key="local.client.main.placeholderText" var="text"/>
 
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -123,7 +124,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <textarea name="review" cols="62" rows="3" placeholder="$$$Напишите сюда отзыв" required></textarea>  <!--input-->
+                    <textarea name="review" cols="62" rows="3" placeholder="${text}" required></textarea>  <!--input-->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-light">${giveReview}</button>  <!--input-->

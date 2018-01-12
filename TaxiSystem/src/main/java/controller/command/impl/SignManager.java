@@ -28,17 +28,20 @@ public class SignManager implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action.equals("authorization")) {
-            authorize(req,resp);
-        }
-        if (action.equals("registration")){
-            register(req,resp);
-        }
-        if(action.equals("logOut")){
-            logOut(req,resp);
-        }
-        if (action.equals("goHomePage")){
-            goHomePage(req,resp);
+        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+        switch (switchConstant) {
+            case AUTHORIZATION:
+                authorize(req, resp);
+                break;
+            case REGISTRATION:
+                register(req, resp);
+                break;
+            case LOG_OUT:
+                logOut(req, resp);
+                break;
+            case GO_HOME_PAGE:
+                goHomePage(req, resp);
+                break;
         }
     }
 

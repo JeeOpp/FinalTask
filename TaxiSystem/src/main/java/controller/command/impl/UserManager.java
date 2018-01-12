@@ -17,26 +17,29 @@ public class UserManager implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if(action.equals("preProfile")){
-            getUserReview(req,resp);
-        }
-        if(action.equals("changePassword")){
-            changePassword(req,resp);
-        }
-        if (action.equals("getClientList")){
-            getClientList(req,resp);
-        }
-        if (action.equals("getTaxiList")){
-            getTaxiList(req,resp);
-        }
-        if (action.equals("changeBanStatus")){
-            changeBanStatus(req,resp);
-        }
-        if (action.equals("changeBonusCount")){
-            changeBonusCount(req,resp);
-        }
-        if(action.equals("changeTaxiCar")){
-            changeTaxiCar(req,resp);
+        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+        switch (switchConstant) {
+            case PRE_PROFILE:
+                getUserReview(req, resp);
+                break;
+            case CHANGE_PASSWORD:
+                changePassword(req, resp);
+                break;
+            case GET_CLIENT_LIST:
+                getClientList(req, resp);
+                break;
+            case GET_TAXI_LIST:
+                getTaxiList(req, resp);
+                break;
+            case CHANGE_BAN_STATUS:
+                changeBanStatus(req, resp);
+                break;
+            case CHANGE_BONUS_COUNT:
+                changeBonusCount(req, resp);
+                break;
+            case CHANGE_TAXI_CAR:
+                changeTaxiCar(req, resp);
+                break;
         }
     }
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

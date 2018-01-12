@@ -18,38 +18,42 @@ public class Dispatcher implements ControllerCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action.equals("preOrder")) {
-            preOrder(req,resp);
-        }
-        if (action.equals("callTaxi")){
-            callTaxi(req,resp);
-        }
-        if(action.equals("getClientOrders")){
-            getClientOrders(req,resp);
-        }
-        if(action.equals("getTaxiOrders")){
-            getTaxiOrders(req,resp);
-        }
-        if(action.equals("cancelOrder")){
-            cancelOrder(req,resp);
-        }
-        if(action.equals("acceptOrder")){
-            acceptOrder(req,resp);
-        }
-        if(action.equals("rejectOrder")){
-            rejectOrder(req,resp);
-        }
-        if(action.equals("payOrder")){
-            payOrder(req,resp);
-        }
-        if(action.equals("getAllOrders")){
-            getAllOrders(req,resp);
-        }
-        if(action.equals("deleteAllOrders")){
-            deleteAllOrders(req,resp);
-        }
-        if(action.equals("getCarList")){
-            getCarList(req,resp);
+        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+
+        switch (switchConstant){
+            case ACCEPT_ORDER:
+                acceptOrder(req,resp);
+                break;
+            case CALL_TAXI:
+                callTaxi(req,resp);
+                break;
+            case CANCEL_ORDER:
+                cancelOrder(req,resp);
+                break;
+            case DELETE_ALL_ORDERS:
+                deleteAllOrders(req,resp);
+                break;
+            case GET_ALL_ORDERS:
+                getAllOrders(req,resp);
+                break;
+            case GET_JSON_CAR_LIST:
+                getCarList(req,resp);
+                break;
+            case GET_CLIENT_ORDERS:
+                getClientOrders(req,resp);
+                break;
+            case GET_TAXI_ORDERS:
+                getTaxiOrders(req,resp);
+                break;
+            case PAY_ORDER:
+                payOrder(req,resp);
+                break;
+            case PRE_ORDER:
+                preOrder(req,resp);
+                break;
+            case REJECT_ORDER:
+                rejectOrder(req,resp);
+                break;
         }
     }
 

@@ -8,14 +8,17 @@ import javax.mail.internet.MimeMessage;
 /**
  * Created by DNAPC on 08.01.2018.
  */
-public class TLSSender {
-    private String username;
-    private String password;
+public class TLSSender implements Runnable{
+    private final static String USERNAME = "demkoandrey2012@gmail.com";
+    private final static String TO_EMAIL = "demkoandrey2012@yandex.by";
+    private final static String PASSWORD = "Neponime1234";
     private Properties props;
+    private String text;
+    private String subject;
 
-    public TLSSender(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public TLSSender(String text, String subject) {
+        this.text = text;
+        this.subject = subject;
 
         props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -24,16 +27,21 @@ public class TLSSender {
         props.put("mail.smtp.port", "587");
     }
 
-    public void send(String subject, String text, String fromEmail, String toEmail) {
+    @Override
+    public void run() {
+        send(subject,text,USERNAME,TO_EMAIL);
+    }
+
+    private void send(String subject, String text, String fromEmail, String toEmail) {
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(USERNAME, PASSWORD);
             }
         });
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
+            message.setFrom(new InternetAddress(USERNAME));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject(subject);
             message.setText(text);

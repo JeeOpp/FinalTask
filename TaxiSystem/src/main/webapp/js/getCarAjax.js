@@ -11,7 +11,7 @@ function getCarList(action) {
     req.onreadystatechange = handlerFunction;
     req.open("POST", "Controller", true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    req.send("method=dispatcher&action=getCarList");
+    req.send("method=dispatcher&action=getJsonCarList");
 }
 
 function handlerFunction() {

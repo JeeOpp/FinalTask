@@ -12,7 +12,6 @@ public class CoordinateGenerator {
     public static Double getLatitude() {
         return (Math.random()*(latTopBorder-latBottomBorder)) + latBottomBorder;
     }
-
     public static Double getLongitude() {
         return (Math.random()*(lngRightBorder-lngLeftBorder))+lngLeftBorder;
     }
