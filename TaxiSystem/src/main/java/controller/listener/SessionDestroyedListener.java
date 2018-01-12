@@ -23,7 +23,6 @@ public class SessionDestroyedListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         System.out.println("destroyed");
-        ServletContext servletContext = httpSessionEvent.getSession().getServletContext();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 

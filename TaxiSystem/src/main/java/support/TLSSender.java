@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 public class TLSSender implements Runnable{
     private final static String USERNAME = "demkoandrey2012@gmail.com";
     private final static String TO_EMAIL = "demkoandrey2012@yandex.by";
-    private final static String PASSWORD = "Neponime1234";
+    private final static String PASSWORD = "12345";
     private Properties props;
     private String text;
     private String subject;

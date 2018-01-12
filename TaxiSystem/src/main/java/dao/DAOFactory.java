@@ -1,8 +1,5 @@
 package dao;
 
-import controller.command.impl.Taxis;
-import dao.impl.*;
-
 /**
  * Created by DNAPC on 12.11.2017.
  */

@@ -42,6 +42,7 @@ public class UserManager implements ControllerCommand {
                 break;
         }
     }
+
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         List<Review> reviewList = null;
         User user = (User) req.getSession().getAttribute("user");

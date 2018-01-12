@@ -1,8 +1,7 @@
 package service;
 
 import dao.DAOFactory;
-import dao.impl.DispatcherDAO;
-import dao.impl.TaxisDAO;
+import dao.TaxisDAO;
 import entity.Car;
 
 import java.sql.SQLException;

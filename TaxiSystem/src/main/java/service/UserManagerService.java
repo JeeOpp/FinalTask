@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOFactory;
-import dao.impl.UserManagerDAO;
+import dao.UserManagerDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;

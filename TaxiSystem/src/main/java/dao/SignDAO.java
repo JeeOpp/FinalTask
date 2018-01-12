@@ -1,4 +1,4 @@
-package dao.impl;
+package dao;
 
 import dao.connectionPool.ConnectionPool;
 import dao.connectionPool.ConnectionPoolException;

@@ -1,9 +1,7 @@
 package service;
 
-import dao.AuthorizationDAO;
 import dao.DAOFactory;
-import dao.RegistrationDAO;
-import dao.impl.SignDAO;
+import dao.SignDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;

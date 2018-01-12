@@ -1,8 +1,8 @@
 package service;
 
 import dao.DAOFactory;
-import dao.impl.DispatcherDAO;
-import dao.impl.UserManagerDAO;
+import dao.DispatcherDAO;
+import dao.UserManagerDAO;
 import entity.Client;
 import entity.Order;
 import entity.Taxi;

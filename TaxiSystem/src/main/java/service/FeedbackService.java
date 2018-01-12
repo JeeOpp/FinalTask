@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOFactory;
-import dao.impl.FeedbackDAO;
+import dao.FeedbackDAO;
 import entity.Review;
 import entity.User;
 
