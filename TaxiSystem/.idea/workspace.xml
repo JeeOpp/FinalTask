@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dao/AuthorizationDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dao/RegistrationDAO.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j/log4j.properties" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/AuthorizationDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/RegistrationDAO.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" afterPath="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" afterPath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" afterPath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/SignService.java" afterPath="$PROJECT_DIR$/src/main/java/service/SignService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/TaxisService.java" afterPath="$PROJECT_DIR$/src/main/java/service/TaxisService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/UserManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/service/UserManagerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/support/TLSSender.java" afterPath="$PROJECT_DIR$/src/main/java/support/TLSSender.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/FeedbackDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/SignDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/SignDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/TaxisDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/TaxisDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/UserManagerDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/UserManagerDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/radioTaxi.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/radioTaxi.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,182 +50,124 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="DispatcherDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
+      <file leaf-file-name="ConnectionPoolException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPoolException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="e#248#249#0" expanded="false" />
+                <element signature="e#281#282#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dispatcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="85" column="112" lean-forward="false" selection-start-line="85" selection-start-column="112" selection-end-line="85" selection-end-column="112" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1056">
+              <caret line="69" column="32" lean-forward="false" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="method#getUserReview#0;class#UserManager#0" expanded="false" />
+                <element signature="method#getClientList#0;class#UserManager#0" expanded="false" />
+                <element signature="method#getTaxiList#0;class#UserManager#0" expanded="false" />
+                <element signature="method#changeBanStatus#0;class#UserManager#0" expanded="false" />
+                <element signature="method#changeBonusCount#0;class#UserManager#0" expanded="false" />
+                <element signature="method#changeTaxiCar#0;class#UserManager#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionPool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPool.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
               <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
               <folding>
-                <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#orderConfirm#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
-                <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
-                <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
-                <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
-                <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
-                <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
-                <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
-                <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
-                <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
-                <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1364#1365#0" expanded="false" />
+                <element signature="e#1395#1396#0" expanded="false" />
+                <element signature="e#2255#2256#0" expanded="false" />
+                <element signature="e#2293#2294#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeedbackDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java">
+      <file leaf-file-name="callTaxi.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="method#setReview#0;class#FeedbackDAO#0" expanded="false" />
-                <element signature="method#getClientReviews#0;class#FeedbackDAO#0" expanded="false" />
-                <element signature="method#getTaxiReviews#0;class#FeedbackDAO#0" expanded="false" />
-                <marker date="1515772826855" expanded="true" signature="383:459" ph="INSERT INTO taxisystem.review... " />
-                <marker date="1515772826855" expanded="true" signature="520:654" ph="SELECT taxi.... review" />
-                <marker date="1515772826855" expanded="true" signature="714:858" ph="SELECT clien... review" />
-              </folding>
+            <state relative-caret-position="2244">
+              <caret line="102" column="18" lean-forward="false" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/SignDAO.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="620">
+              <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
               <folding>
-                <element signature="method#preAuthorize#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#clientAuthorize#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#taxiAuthorize#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#registerClient#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#registerTaxi#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#isLoginFree#0;class#SignDAO#0" expanded="false" />
-                <element signature="method#changeAvailableStatus#0;class#SignDAO#0" expanded="false" />
-                <marker date="1515772826810" expanded="true" signature="331:362" ph="SELECT clien... client" />
-                <marker date="1515772826810" expanded="true" signature="331:396" ph="SELECT clien... " />
-                <marker date="1515772826810" expanded="true" signature="369:396" ph="SELECT taxi.... taxi" />
-                <marker date="1515772826810" expanded="true" signature="453:506" ph="SELECT role client" />
-                <marker date="1515772826810" expanded="true" signature="453:564" ph="SELECT role " />
-                <marker date="1515772826810" expanded="true" signature="513:564" ph="SELECT role taxi" />
-                <marker date="1515772826810" expanded="true" signature="622:672" ph="SELECT * FRO... client" />
-                <marker date="1515772826810" expanded="true" signature="728:898" ph="SELECT id, l... taxi" />
-                <marker date="1515772826810" expanded="true" signature="952:1020" ph="INSERT INTO client... " />
-                <marker date="1515772826810" expanded="true" signature="1072:1150" ph="INSERT INTO taxi... " />
-                <marker date="1515772826810" expanded="true" signature="1217:1266" ph="UPDATE taxi " />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxisDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/TaxisDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding>
-                <element signature="method#getCarList#0;class#TaxisDAO#0" expanded="false" />
-                <element signature="method#addCar#0;class#TaxisDAO#0" expanded="false" />
-                <element signature="method#removeCar#0;class#TaxisDAO#0" expanded="false" />
-                <marker date="1515772826877" expanded="true" signature="318:346" ph="SELECT * FRO... car" />
-                <marker date="1515772826877" expanded="true" signature="400:452" ph="INSERT INTO car... " />
-                <marker date="1515772826877" expanded="true" signature="506:549" ph="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TLSSender.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/support/TLSSender.java">
+      <file leaf-file-name="SessionAuthorizeFilter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-              <folding>
-                <element signature="e#1103#1294#0" expanded="true" />
-                <element signature="e#1293#1294#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registrationSuccess.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/registrationSuccess.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="14" column="73" lean-forward="true" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispatcherService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding>
-                <element signature="method#callConfirm#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#cancelOrder#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#acceptOrder#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#payOrder#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#deleteAllOrders#0;class#DispatcherService#0" expanded="false" />
-                <element signature="method#moveOrderToArchive#0;class#DispatcherService#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MD5.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/support/MD5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="462">
+              <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManagerDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserManagerDAO.java">
+      <file leaf-file-name="radioTaxi.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/radioTaxi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="method#changePassword#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#getTaxiList#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#getClientList#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#changeBanStatus#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#decreaseBonus#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#changeBonusCount#0;class#UserManagerDAO#0" expanded="false" />
-                <element signature="method#changeTaxiCar#0;class#UserManagerDAO#0" expanded="false" />
-                <marker date="1515772826903" expanded="true" signature="369:563" ph="SELECT taxi.... taxi" />
-                <marker date="1515772826903" expanded="true" signature="624:788" ph="SELECT clien... client" />
-                <marker date="1515772826903" expanded="true" signature="848:887" ph="UPDATE taxi " />
-                <marker date="1515772826903" expanded="true" signature="949:990" ph="UPDATE clien... " />
-                <marker date="1515772826903" expanded="true" signature="1046:1088" ph="UPDATE taxi " />
-                <marker date="1515772826903" expanded="true" signature="1146:1190" ph="UPDATE clien... " />
-                <marker date="1515772826903" expanded="true" signature="1248:1309" ph="UPDATE clien... " />
-                <marker date="1515772826903" expanded="true" signature="1371:1432" ph="UPDATE clien... " />
-                <marker date="1515772826903" expanded="true" signature="1491:1529" ph="UPDATE taxi " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SelectColourTagWithBody.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/support/mytag/SelectColourTagWithBody.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="484">
+              <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -273,16 +209,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/clientMap.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAO.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/service/TLSSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/emailer/TLSSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/emailer/SSLSender.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/Mailer.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/ControllerDirector.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" />
@@ -311,11 +241,9 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SwitchConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/getCarAjax.js" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SwitchConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java" />
@@ -324,6 +252,14 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/TaxisDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/UserManagerDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/support/TLSSender.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/log4j/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/connectionPool/db.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/radioTaxi.js" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -411,6 +347,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -620,6 +557,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -987,7 +950,6 @@
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1001,7 +963,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../DESKTOP/untitled" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
@@ -1703,7 +1665,15 @@
       <workItem from="1515675274285" duration="850000" />
       <workItem from="1515680922801" duration="7783000" />
       <workItem from="1515712278210" duration="207000" />
-      <workItem from="1515766956386" duration="5781000" />
+      <workItem from="1515766956386" duration="9175000" />
+      <workItem from="1515789531484" duration="87000" />
+      <workItem from="1515790033898" duration="5744000" />
+      <workItem from="1515855964437" duration="1496000" />
+      <workItem from="1515866322735" duration="79000" />
+      <workItem from="1515880533718" duration="651000" />
+      <workItem from="1515954638782" duration="351000" />
+      <workItem from="1515964267125" duration="131000" />
+      <workItem from="1516019098149" duration="3088000" />
     </task>
     <task id="LOCAL-00001" summary="new structure">
       <created>1511907017124</created>
@@ -1873,11 +1843,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515772696247</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="switch case redirect">
+      <created>1515772843047</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1515772843047</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="579280000" />
+    <option name="totallyTimeSpent" value="594301000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1906,15 +1883,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30577576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21517554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18459795" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21517554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34763947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23390558" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1922,6 +1898,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2028,7 +2005,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java</url>
-          <line>113</line>
+          <line>115</line>
           <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
@@ -2039,14 +2016,8 @@
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java</url>
-          <line>31</line>
-          <properties />
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java</url>
-          <line>139</line>
+          <line>141</line>
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
@@ -2068,8 +2039,14 @@
           <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="157" />
+      <option name="time" value="163" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2078,92 +2055,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="32" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/cars.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="68" />
-          <folding>
-            <element signature="e#5751#5758#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/orders.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1936">
-          <caret line="115" column="16" lean-forward="true" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
-          <folding>
-            <marker date="1515430404993" expanded="true" signature="5375:6443" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/clients.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="99" column="115" lean-forward="false" selection-start-line="99" selection-start-column="115" selection-end-line="99" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/authorizationProblem.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/taxi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/localization/local_ru.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="87" lean-forward="false" selection-start-line="2" selection-start-column="87" selection-end-line="2" selection-end-column="87" />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="103" column="24" lean-forward="true" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3146">
@@ -2192,50 +2083,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1606">
           <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/orders.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2354">
-          <caret line="107" column="33" lean-forward="false" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/RegistrationDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="method#setReview#0;class#FeedbackService#0" expanded="false" />
-            <element signature="method#getUserReviews#0;class#FeedbackService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#373#374#0" expanded="false" />
-            <element signature="e#406#407#0" expanded="false" />
-            <element signature="method#buildPagination#0;class#PaginationService#0" expanded="false" />
-            <element signature="method#splitList#0;class#PaginationService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/RegistrationDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/service/ServiceFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -2244,147 +2095,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/SignService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="method#registerClient#0;class#SignService#0" expanded="false" />
-            <element signature="method#registerTaxi#0;class#SignService#0" expanded="false" />
-            <element signature="method#authorize#0;class#SignService#0" expanded="false" />
-            <element signature="method#changeSessionStatus#0;class#SignService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/TaxisService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="method#getCarList#0;class#TaxisService#0" expanded="false" />
-            <element signature="method#addCar#0;class#TaxisService#0" expanded="false" />
-            <element signature="method#removeCar#0;class#TaxisService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/UserManagerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="method#changePassword#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#getClientList#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#getTaxiList#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#getAvailableTaxiList#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#changeBanStatus#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#changeBonusCount#0;class#UserManagerService#0" expanded="false" />
-            <element signature="method#changeTaxiCar#0;class#UserManagerService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/support/CoordinateGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/ControllerCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPoolException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/DBParameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/DBResourceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/getCarAjax.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="111" lean-forward="false" selection-start-line="18" selection-start-column="111" selection-end-line="18" selection-end-column="111" />
-          <folding>
-            <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="method#writeReview#0;class#Feedback#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2393,31 +2107,6 @@
         <state relative-caret-position="154">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="method#execute#0;class#SignManager#0" expanded="false" />
-            <element signature="method#goHomePage#0;class#SignManager#0" expanded="false" />
-            <element signature="method#authorize#0;class#SignManager#0" expanded="false" />
-            <element signature="method#register#0;class#SignManager#0" expanded="false" />
-            <element signature="method#logOut#0;class#SignManager#0" expanded="false" />
-            <element signature="method#chooseUserPage#0;class#SignManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SwitchConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="method#getConstant#0;class#SwitchConstant#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2433,31 +2122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding>
-            <element signature="method#execute#0;class#UserManager#0" expanded="false" />
-            <element signature="method#getUserReview#0;class#UserManager#0" expanded="false" />
-            <element signature="method#changePassword#0;class#UserManager#0" expanded="false" />
-            <element signature="method#getClientList#0;class#UserManager#0" expanded="false" />
-            <element signature="method#getTaxiList#0;class#UserManager#0" expanded="false" />
-            <element signature="method#changeBanStatus#0;class#UserManager#0" expanded="false" />
-            <element signature="method#changeBonusCount#0;class#UserManager#0" expanded="false" />
-            <element signature="method#changeTaxiCar#0;class#UserManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -2466,39 +2130,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AuthorizationDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#orderConfirm#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
-            <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
-            <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
-            <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
-            <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
-            <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AuthorizationDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -2561,6 +2193,7 @@
         <state relative-caret-position="154">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#changePassword#0;class#UserManagerDAO#0" expanded="false" />
             <element signature="method#getTaxiList#0;class#UserManagerDAO#0" expanded="false" />
             <element signature="method#getClientList#0;class#UserManagerDAO#0" expanded="false" />
@@ -2585,7 +2218,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#911#912#0" expanded="false" />
+            <element signature="e#957#958#0" expanded="false" />
+            <element signature="e#999#1000#0" expanded="false" />
+            <element signature="e#1035#1036#0" expanded="false" />
+            <element signature="e#1067#1068#0" expanded="false" />
+            <element signature="e#1108#1109#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2597,12 +2238,164 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="89" lean-forward="true" selection-start-line="6" selection-start-column="89" selection-end-line="6" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/ControllerCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="method#setReview#0;class#FeedbackService#0" expanded="false" />
+            <element signature="method#getUserReviews#0;class#FeedbackService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#buildPagination#0;class#PaginationService#0" expanded="false" />
+            <element signature="method#splitList#0;class#PaginationService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/TaxisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#getCarList#0;class#TaxisService#0" expanded="false" />
+            <element signature="method#addCar#0;class#TaxisService#0" expanded="false" />
+            <element signature="method#removeCar#0;class#TaxisService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/UserManagerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#changePassword#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#getClientList#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#getTaxiList#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#getAvailableTaxiList#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#changeBanStatus#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#changeBonusCount#0;class#UserManagerService#0" expanded="false" />
+            <element signature="method#changeTaxiCar#0;class#UserManagerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/SignService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="method#registerClient#0;class#SignService#0" expanded="false" />
+            <element signature="method#registerTaxi#0;class#SignService#0" expanded="false" />
+            <element signature="method#authorize#0;class#SignService#0" expanded="false" />
+            <element signature="method#changeSessionStatus#0;class#SignService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Taxi/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2354">
+          <caret line="107" column="33" lean-forward="false" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SwitchConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding>
+            <element signature="e#1075#1076#0" expanded="false" />
+            <element signature="e#1109#1110#0" expanded="false" />
+            <element signature="e#1139#1140#0" expanded="false" />
+            <element signature="e#1167#1168#0" expanded="false" />
+            <element signature="method#getConstant#0;class#SwitchConstant#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/LocalFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/formValidator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/DBResourceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <element signature="method#writeReview#0;class#Feedback#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="method#callConfirm#0;class#DispatcherService#0" expanded="false" />
             <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
             <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
             <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
@@ -2616,10 +2409,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/support/MD5.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="237">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
+            <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
+            <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
+            <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
+            <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
+            <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/connectionPool/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2628,10 +2452,162 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/support/CoordinateGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
-            <element signature="e#1103#1294#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="false" />
+            <element signature="e#449#450#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/support/MD5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/ControllerDirector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/DBParameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPoolException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#248#249#0" expanded="false" />
+            <element signature="e#281#282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/radioTaxi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="85" column="112" lean-forward="false" selection-start-line="85" selection-start-column="112" selection-end-line="85" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="method#execute#0;class#SignManager#0" expanded="false" />
+            <element signature="method#goHomePage#0;class#SignManager#0" expanded="false" />
+            <element signature="method#authorize#0;class#SignManager#0" expanded="false" />
+            <element signature="method#register#0;class#SignManager#0" expanded="false" />
+            <element signature="method#logOut#0;class#SignManager#0" expanded="false" />
+            <element signature="method#chooseUserPage#0;class#SignManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1364#1365#0" expanded="false" />
+            <element signature="e#1395#1396#0" expanded="false" />
+            <element signature="e#2255#2256#0" expanded="false" />
+            <element signature="e#2293#2294#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="69" column="32" lean-forward="false" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#getUserReview#0;class#UserManager#0" expanded="false" />
+            <element signature="method#getClientList#0;class#UserManager#0" expanded="false" />
+            <element signature="method#getTaxiList#0;class#UserManager#0" expanded="false" />
+            <element signature="method#changeBanStatus#0;class#UserManager#0" expanded="false" />
+            <element signature="method#changeBonusCount#0;class#UserManager#0" expanded="false" />
+            <element signature="method#changeTaxiCar#0;class#UserManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="102" column="18" lean-forward="false" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="14" column="73" lean-forward="true" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>

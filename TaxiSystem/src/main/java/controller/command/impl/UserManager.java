@@ -67,6 +67,8 @@ public class UserManager implements ControllerCommand {
         if(userManagerService.changePassword(user, currentPassword, newPassword)){
             req.getSession().setAttribute("user",user);
         }
+        getUserReview(req,resp);
+
     }
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         int page = 1; //default page

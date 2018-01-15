@@ -88,7 +88,8 @@ public class Dispatcher implements ControllerCommand {
         String destinyCoordinate = req.getParameter("destinyCoordinate");
         Client client = (Client) req.getSession().getAttribute("user");
         Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxi"))) ;
-        Integer bonus = Integer.parseInt(req.getParameter("bonus"));
+        String bonusText = req.getParameter("bonus");
+        Integer bonus = Integer.parseInt(bonusText.isEmpty() ? "0":bonusText);
         Double price = Double.parseDouble(req.getParameter("price"));
 
         Order order = new Order(client,taxi,sourceCoordinate,destinyCoordinate,price);
@@ -98,8 +99,7 @@ public class Dispatcher implements ControllerCommand {
         if (dispatcherService.callConfirm(order, bonus)){
             getClientOrders(req,resp);
         }else{
-            //TODO недостаточно бонусов
-            preOrder(req,resp);  //Костыль?!?!
+            preOrder(req,resp);
         }
     }
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -112,7 +112,7 @@ public class Dispatcher implements ControllerCommand {
             if(user.getRole().equals("client")){
                 getClientOrders(req,resp);   //to user
             }else {
-                getAllOrders(req, resp);         //to admin
+                getAllOrders(req, resp);     //to admin
             }
         }
     }

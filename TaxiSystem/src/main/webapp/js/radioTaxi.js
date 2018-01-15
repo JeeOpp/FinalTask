@@ -10,3 +10,14 @@ function check()
         }
     }
 }
+
+function checkBonus() {
+    debugger;
+    var bonusInp = document.getElementById('bonus');
+    var bonus = Number(bonusInp.value);
+    var priceInp = document.getElementById('price');
+    var price = Number(priceInp.getAttribute('value'))*100;
+    if(bonus>price){
+        bonusInp.value = price;
+    }
+}

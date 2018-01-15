@@ -71,7 +71,7 @@
     </nav>
     <!--/////////////////////////////////////////////////////////-->
     <div class="my-flex-container">
-        <form onsubmit="check()" action="Controller" method="post">
+        <form onsubmit="check();" action="Controller" method="post">
             <div class="my-flex-block inner-flex-container">
                 <div class="inner-flex-box">
                     <input type="hidden" name="method" value = "dispatcher"/>
@@ -94,11 +94,11 @@
                 </div>
                 <div class="inner-flex-box">
                     <label class="pre-price" for="bonus">${availableBonuses} ${user.bonusPoints}   </label>
-                    <input id="bonus" type="number" name="bonus" min="0" max="${user.bonusPoints}" value="0"/>
+                    <input id="bonus" type="number" name="bonus" min="0" max="${user.bonusPoints}" placeholder="0"/>
                     <input id="price" type="hidden" name="price" value="0">
                 </div>
                 <div class="inner-flex-box">
-                    <button class="big-green-button" type="submit">${callTaxi}</button>
+                    <button class="big-green-button" type="submit" onclick="checkBonus();">${callTaxi}</button>
                 </div>
             </div>
         </form>

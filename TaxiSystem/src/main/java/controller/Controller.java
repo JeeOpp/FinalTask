@@ -7,11 +7,13 @@ package controller;
 import controller.command.ControllerCommand;
 import controller.command.ControllerDirector;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by DNAPC on 12.11.2017.
@@ -24,11 +26,6 @@ public class Controller extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //SSLSender sslSender = new SSLSender("demkoandrey2012@gmail.com","Neponime1234");
-        //TLSSender tlsSender = new TLSSender("demkoandrey2012@gmail.com","Neponime1234");
-
-        //tlsSender.send("TaxiSystem question", "TLS: This is text!", "demkoandrey2012@gmail.com", "123467890@p33.org");
-        //sslSender.send("TaxiSystem question", "SSL: This is text!", "demkoandrey2012@gmail.com", "123467890@p33.org");
         resp.setContentType("text/html");
 
         String method = req.getParameter("method");
