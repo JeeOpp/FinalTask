@@ -2,204 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="switch case redirect">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/Authorization.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/Registration.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Admin/AdminMain.jsp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/AuthorizationProblem.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Banned.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/clientMain.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/map.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/mapStyle.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/RegistrationProblem.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/RegistrationSuccess.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Taxi/TaxiMain.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/ControllerCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/ControllerDirector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Authorization.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Dispatcher.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Localization.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Registration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/AuthorizationDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/DAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/RegistrationDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/WrappedConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/impl/AuthorizationDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/impl/RegistrationDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/Taxi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local_en.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local_ru.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/AuthorizationService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/MD5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/RegistrationService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/ServiceFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT.war" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/cars.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/clients.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/main.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/orders.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/taxi.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/callTaxi.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/main.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/orders.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/profile.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/main.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/orders.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/profile.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/connectionPool/db.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/AuthenticationController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/ControllerCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/ControllerDirector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Localization.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Mailer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SwitchConstant.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/BlockAuthorizationFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/CharsetFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/LocalFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/listener/SessionDestroyedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DispatcherDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/FeedbackDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/SignDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/TaxisDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/UserManagerDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPoolException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBParameter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBResourceManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Car.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Order.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Page.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Pagination.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Review.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Taxi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_en.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_ru.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/log4j/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/DispatcherService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/FeedbackService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/PaginationService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/ServiceFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/SignService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/TaxisService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/UserManagerService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/CoordinateGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/MD5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/TLSSender$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/TLSSender.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/mytag/SelectColourTag.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/mytag/SelectColourTagWithBody.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/activation-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/gson-2.8.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/jsp-api-2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/mail-1.4.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/servlet-api-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/smtp-1.4.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/tld/taglib.tld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/authorizationProblem.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/banned.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/callTaxi.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/common.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/taxiCss.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/clientMap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/formValidator.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/getCarAjax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/radioTaxi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/taxiMap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/registrationProblem.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/registrationSuccess.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/connectionPool/db.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/ControllerCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/ControllerDirector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Localization.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Mailer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SwitchConstant.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/BlockAuthorizationFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/CharsetFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/LocalFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/listener/SessionDestroyedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/DispatcherDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/FeedbackDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/SignDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/TaxisDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/UserManagerDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPoolException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBParameter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBResourceManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Car.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Order.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Page.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Pagination.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Review.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Taxi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local_en.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local_ru.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/log4j/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/DispatcherService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/FeedbackService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/PaginationService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/SignService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/TaxisService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/UserManagerService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/CoordinateGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/MD5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/TLSSender$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/TLSSender.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/mytag/SelectColourTag.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/mytag/SelectColourTagWithBody.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/localization/local_ru.properties" afterPath="$PROJECT_DIR$/src/main/resources/localization/local_ru.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -237,11 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BlockAuthorizationFilter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BlockAuthorizationFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/BlockAuthorizationFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="426">
+              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -249,32 +54,131 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
+      <file leaf-file-name="SessionDestroyedListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
+            <state relative-caret-position="528">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/css/common.css">
+      <file leaf-file-name="DAOFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/DAOFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+            <state relative-caret-position="110">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="callTaxi.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp">
+      <file leaf-file-name="DispatcherDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="699">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding>
+                <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
+                <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
+                <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
+                <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
+                <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
+                <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
+                <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
+                <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
+                <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
+                <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DispatcherService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#cancelOrder#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#acceptOrder#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#payOrder#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#deleteAllOrders#0;class#DispatcherService#0" expanded="false" />
+                <element signature="method#moveOrderToArchive#0;class#DispatcherService#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeedbackService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+              <folding>
+                <element signature="method#setReview#0;class#FeedbackService#0" expanded="false" />
+                <element signature="method#getUserReviews#0;class#FeedbackService#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaginationService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding>
+                <element signature="e#373#374#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="method#buildPagination#0;class#PaginationService#0" expanded="false" />
+                <element signature="method#splitList#0;class#PaginationService#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Feedback.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+              <folding>
+                <element signature="method#writeReview#0;class#Feedback#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dispatcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
-              <folding />
+              <caret line="85" column="112" lean-forward="false" selection-start-line="85" selection-start-column="112" selection-end-line="85" selection-end-column="112" />
+              <folding>
+                <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
+                <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -291,50 +195,6 @@
                 <element signature="method#logOut#0;class#SignManager#0" expanded="false" />
                 <element signature="method#chooseUserPage#0;class#SignManager#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1166">
-              <caret line="53" column="105" lean-forward="false" selection-start-line="53" selection-start-column="105" selection-end-line="53" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharsetFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="968">
-              <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
-              <folding>
-                <element signature="n#init-param#0;n#filter#0;n#web-app#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registrationProblem.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/registrationProblem.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -532,6 +392,150 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TaxiSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1267,7 +1271,7 @@
       <workItem from="1516111093005" duration="601000" />
       <workItem from="1516186659272" duration="680000" />
       <workItem from="1516203651815" duration="10579000" />
-      <workItem from="1516303125585" duration="2024000" />
+      <workItem from="1516303125585" duration="3650000" />
     </task>
     <task id="LOCAL-00001" summary="new structure">
       <created>1511907017124</created>
@@ -1462,7 +1466,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="610625000" />
+    <option name="totallyTimeSpent" value="612251000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1497,7 +1501,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18459795" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29784825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29784825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1635,14 +1639,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -1777,29 +1773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="method#setReview#0;class#FeedbackService#0" expanded="false" />
-            <element signature="method#getUserReviews#0;class#FeedbackService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#buildPagination#0;class#PaginationService#0" expanded="false" />
-            <element signature="method#splitList#0;class#PaginationService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/TaxisService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1906,58 +1879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="method#writeReview#0;class#Feedback#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#payOrder#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#deleteAllOrders#0;class#DispatcherService#0" expanded="false" />
-            <element signature="method#moveOrderToArchive#0;class#DispatcherService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
-            <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
-            <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
-            <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
-            <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
-            <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
-            <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
-            <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/connectionPool/db.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -2018,28 +1939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="85" column="112" lean-forward="false" selection-start-line="85" selection-start-column="112" selection-end-line="85" selection-end-column="112" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
-            <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1056">
@@ -2052,16 +1951,6 @@
             <element signature="method#changeBanStatus#0;class#UserManager#0" expanded="false" />
             <element signature="method#changeBonusCount#0;class#UserManager#0" expanded="false" />
             <element signature="method#changeTaxiCar#0;class#UserManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2190,12 +2079,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <element signature="method#writeReview#0;class#Feedback#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="85" column="112" lean-forward="false" selection-start-line="85" selection-start-column="112" selection-end-line="85" selection-end-column="112" />
+          <folding>
+            <element signature="method#execute#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getClientOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getTaxiOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#preOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#callTaxi#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#payOrder#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getAllOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#deleteAllOrders#0;class#Dispatcher#0" expanded="false" />
+            <element signature="method#getCarList#0;class#Dispatcher#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/BlockAuthorizationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="426">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="method#getOrderList#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#payOrder#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#moveOrderToArchive#0;class#DispatcherDAO#0" expanded="false" />
+            <element signature="method#deleteAllOrders#0;class#DispatcherDAO#0" expanded="false" />
+            <marker date="1515772826619" expanded="true" signature="326:859" ph="SELECT taxis... order" />
+            <marker date="1515772826619" expanded="true" signature="917:963" ph="DELETE FROM " />
+            <marker date="1515772826619" expanded="true" signature="1015:1118" ph="INSERT INTO taxisystem.order... " />
+            <marker date="1515772826619" expanded="true" signature="1173:1220" ph="DELETE FROM " />
+            <marker date="1515772826619" expanded="true" signature="1274:1343" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1397:1466" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1517:1587" ph="UPDATE taxis... " />
+            <marker date="1515772826619" expanded="true" signature="1644:1712" ph="UPDATE taxis... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="method#getClientOrders#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getTaxiOrders#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#getAllOrderList#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#cancelOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#acceptOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#rejectOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#payOrder#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#deleteAllOrders#0;class#DispatcherService#0" expanded="false" />
+            <element signature="method#moveOrderToArchive#0;class#DispatcherService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="method#setReview#0;class#FeedbackService#0" expanded="false" />
+            <element signature="method#getUserReviews#0;class#FeedbackService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/PaginationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="method#buildPagination#0;class#PaginationService#0" expanded="false" />
+            <element signature="method#splitList#0;class#PaginationService#0" expanded="false" />
           </folding>
         </state>
       </provider>
