@@ -2,16 +2,204 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="switch case redirect">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/BlockAuthorizationFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/Authorization.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/Registration.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Admin/AdminMain.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/AuthorizationProblem.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Banned.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/clientMain.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/map.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Client/mapStyle.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/RegistrationProblem.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/RegistrationSuccess.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/Taxi/TaxiMain.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/Controller.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/ControllerCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/ControllerDirector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Authorization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Dispatcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Localization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/controller/command/impl/Registration.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/AuthorizationDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/DAOFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/RegistrationDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/WrappedConnector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/impl/AuthorizationDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/dao/impl/RegistrationDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/Client.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/Taxi.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/entity/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local_en.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/localization/local_ru.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/AuthorizationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/MD5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/RegistrationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/classes/service/ServiceFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/TaxiSystem_Web_exploded/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT.war" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/cars.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/clients.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/main.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/orders.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/taxi.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/callTaxi.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/main.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/orders.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/profile.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/main.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/orders.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/profile.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/connectionPool/db.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/AuthenticationController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/Controller.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/ControllerCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/ControllerDirector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Localization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Mailer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SwitchConstant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/BlockAuthorizationFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/CharsetFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/LocalFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/listener/SessionDestroyedListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DAOFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DispatcherDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/FeedbackDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/SignDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/TaxisDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/UserManagerDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPoolException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBParameter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBResourceManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Car.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Client.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Order.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Page.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Pagination.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Review.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Taxi.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_en.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_ru.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/log4j/log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/DispatcherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/FeedbackService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/PaginationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/ServiceFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/SignService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/TaxisService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/UserManagerService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/CoordinateGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/MD5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/TLSSender$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/TLSSender.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/mytag/SelectColourTag.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/support/mytag/SelectColourTagWithBody.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/activation-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/gson-2.8.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/jsp-api-2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/mail-1.4.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/servlet-api-2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/lib/smtp-1.4.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/tld/taglib.tld" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/authorizationProblem.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/banned.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/callTaxi.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/common.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/css/taxiCss.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/clientMap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/formValidator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/getCarAjax.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/radioTaxi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/taxiMap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/registrationProblem.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/registrationSuccess.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/connectionPool/db.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/ControllerCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/ControllerDirector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Localization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Mailer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SwitchConstant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/BlockAuthorizationFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/CharsetFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/LocalFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/listener/SessionDestroyedListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/DispatcherDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/FeedbackDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/SignDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/TaxisDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/UserManagerDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPoolException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBParameter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBResourceManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Car.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Client.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Order.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Page.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Pagination.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Review.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/Taxi.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/entity/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local_en.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/localization/local_ru.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/log4j/log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/DispatcherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/FeedbackService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/PaginationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/SignService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/TaxisService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/service/UserManagerService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/CoordinateGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/MD5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/TLSSender$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/TLSSender.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/mytag/SelectColourTag.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/support/mytag/SelectColourTagWithBody.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/callTaxi.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,7 +241,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/BlockAuthorizationFilter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="536">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,7 +253,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="93" column="93" lean-forward="true" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
+              <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
               <folding />
             </state>
           </provider>
@@ -344,578 +532,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Taxi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="log4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="localization" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resource Bundle 'local'" />
-              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectionPool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mytag" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectionPool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="listener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="command" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1651,7 +1267,7 @@
       <workItem from="1516111093005" duration="601000" />
       <workItem from="1516186659272" duration="680000" />
       <workItem from="1516203651815" duration="10579000" />
-      <workItem from="1516303125585" duration="1459000" />
+      <workItem from="1516303125585" duration="2024000" />
     </task>
     <task id="LOCAL-00001" summary="new structure">
       <created>1511907017124</created>
@@ -1846,7 +1462,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="610060000" />
+    <option name="totallyTimeSpent" value="610625000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1883,7 +1499,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18459795" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29784825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2666309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2547,7 +2163,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Client/profile.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="93" column="93" lean-forward="true" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
+          <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
           <folding />
         </state>
       </provider>
@@ -2577,7 +2193,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/BlockAuthorizationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
