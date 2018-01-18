@@ -1,0 +1,183 @@
+.welcomeUser{
+    color: #ffffff;
+}
+
+body{
+    min-width:1280px;
+    min-height:720px;
+    background: url("http://sf.co.ua/14/02/wallpaper-1846992.jpg");
+}
+
+.d-block{
+    height: 92%;
+}
+
+
+a.callTaxiButton {
+    z-index: 100;
+    color: white;
+    display: inline-block;
+    margin: 0 0 20px;
+    font-weight: 700;
+    font-size: large;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+a.callTaxiButton:hover { background: rgba(255,255,255,.2); }
+a.callTaxiButton:active { background: white; }
+
+.big-green-button {
+    display: inline-block;
+    width: 80%;
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #1ab188;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+}
+.big-green-button:hover, .big-green-button:focus {
+    background: #179b77;
+}
+
+.simple-white-button{
+    width: 150px;
+    height: 40px;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+    background: #9a9a9a;
+    color: white;
+}
+.simple-white-button:hover{
+    background: #545454;
+}
+
+.tr-text{
+    text-align: center;
+    height: 40px;
+}
+
+.map {
+    width: 50%;
+}
+
+.colour-accepted{
+    color: aqua;
+}
+.colour-rejected{
+    color: red;
+}
+.colour-processed{
+    color: white;
+}
+.colour-completed{
+    color: green;
+}
+.colour-archive{
+    color: grey;
+}
+
+.modal-content{
+    background: #7b7b7b;
+    color: #ffffff;
+}
+
+.closeModal{
+    color: white;
+}
+.label-line{
+    display: inline-block;
+    width: 40%;
+}
+
+.modal-header{
+    background: #3f3f3f;
+}
+
+.wightPage{
+    display: inline-block;
+    width: 45%;
+}
+
+.wightPage:first-child{
+    text-align: center;
+}
+
+.profileDiv{
+    width: 35%;
+}
+.profileDiv:first-child{
+    text-align: center;
+}
+
+.titleDiv{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+    margin: 20px;
+}
+.messageTitle{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+.list-group{
+    font-size: x-large;
+}
+
+.my-flex-2page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.pageHeight{
+    height: 92%;
+}
+.ruleListDiv{
+    display: inline-block;
+    text-align: left;
+    padding: 50px;
+    width: 55%;
+}
+.ruleListTitle{
+    padding: 50px;
+    font-size: xx-large;
+    color: #9a9a9a;
+}
+.rileListText{
+    color: #eaeaea;
+    font-size: xx-large;
+}
+.colour-accepted{
+    color: aqua;
+}
+.footer{
+    text-align: center;
+    left: 0; bottom: 0;
+    padding: 10px;
+    background: rgb(52,58,64);
+    color: #fff;
+    width: 100%;
+}

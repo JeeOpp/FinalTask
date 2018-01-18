@@ -95,9 +95,7 @@ public class SignManager implements ControllerCommand {
                 if(signService.registerClient(client)){
                     req.getRequestDispatcher("registrationSuccess.jsp").forward(req,resp);
                 }else {
-                    resp.getWriter().println("<h1>ОШИБКА</h1>");
-                    req.getRequestDispatcher("registrationProblem.jsp").include(req,resp);
-                    //req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
+                    req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
                 }
             }
             if (role.equals("taxi")) {
