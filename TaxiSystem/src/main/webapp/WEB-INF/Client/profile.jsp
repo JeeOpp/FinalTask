@@ -47,7 +47,7 @@
 </head>
 
 <body>
-<jsp:useBean id="user" class="entity.Client" scope="session"/>
+<jsp:useBean id="user" class="entity.User" scope="session"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">

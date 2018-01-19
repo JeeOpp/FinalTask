@@ -19,12 +19,11 @@ import java.sql.SQLException;
  * Created by DNAPC on 16.12.2017.
  */
 public class SignManager implements ControllerCommand {
+    private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     private static final String ADMIN_MAIN_PATH = "WEB-INF/Admin/main.jsp";
     private static final String CLIENT_MAIN_PATH = "WEB-INF/Client/main.jsp";
     private static final String TAXI_MAIN_PATH = "WEB-INF/Taxi/main.jsp";
     private static final String AUTHORIZATION_PROBLEM = "authorizationProblem.jsp";
-
-
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -51,7 +50,6 @@ public class SignManager implements ControllerCommand {
     }
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user;
-
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
@@ -87,7 +85,6 @@ public class SignManager implements ControllerCommand {
         String firstName = req.getParameter("name");
         String lastName = req.getParameter("surname");
         String carNumber = req.getParameter("checkedCarNumber");
-        System.out.println(carNumber);
         String role = req.getParameter("role");
         try {
             if (role.equals("client")) {

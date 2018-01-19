@@ -158,7 +158,7 @@ public class SignDAO {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_LOGIN_ALL);
             while (resultSet.next()) {
-                if (resultSet.getString(1).equals(login)) {
+                if (resultSet.getString(1).equalsIgnoreCase(login)) {
                     return false;
                 }
             }

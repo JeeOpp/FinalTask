@@ -28,7 +28,6 @@
     <fmt:message bundle="${loc}" key="local.taxi.main.rule5" var="rule5"/>
     <fmt:message bundle="${loc}" key="local.taxi.main.rule6" var="rule6"/>
     <fmt:message bundle="${loc}" key="local.taxi.main.rule7" var="rule7"/>
-    <fmt:message bundle="${loc}" key="local.taxi.main.rule8" var="rule8"/>
     <fmt:message bundle="${loc}" key="local.taxi.main.goOrder" var="goOrder"/>
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
@@ -43,7 +42,7 @@
 
 <body>
 
-<jsp:useBean id="user" class="entity.Taxi" scope="session"/>
+<jsp:useBean id="user" class="entity.User" scope="session"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">

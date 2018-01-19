@@ -2,6 +2,7 @@ package controller.command.impl;
 
 import controller.command.ControllerCommand;
 import entity.Car;
+import entity.User;
 import service.ServiceFactory;
 import service.TaxisService;
 import service.UserManagerService;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by DNAPC on 03.01.2018.
  */
 public class Taxis implements ControllerCommand {
+    private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -34,36 +36,52 @@ public class Taxis implements ControllerCommand {
     }
 
     private void getCarList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        TaxisService taxisService = serviceFactory.getTaxisService();
-        List<Car> carList = taxisService.getCarList();
+        User user = (User) req.getSession().getAttribute("user");
+        String role = user.getRole();
+        if (role.equals("admin")) {
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            TaxisService taxisService = serviceFactory.getTaxisService();
+            List<Car> carList = taxisService.getCarList();
 
-        req.setAttribute("carList", carList);
-        req.getRequestDispatcher("WEB-INF/Admin/cars.jsp").forward(req, resp);
+            req.setAttribute("carList", carList);
+            req.getRequestDispatcher("WEB-INF/Admin/cars.jsp").forward(req, resp);
+        }else {
+            resp.sendRedirect(REDIRECT_HOME);
+        }
     }
     private void addCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String carNumber = req.getParameter("carNumber");
-        String carName = req.getParameter("carName");
-        String colour = req.getParameter("carColour");
+        User user = (User) req.getSession().getAttribute("user");
+        String role = user.getRole();
+        if (role.equals("admin")) {
+            String carNumber = req.getParameter("carNumber");
+            String carName = req.getParameter("carName");
+            String colour = req.getParameter("carColour");
 
-        Car car = new Car(carNumber,carName,colour);
+            Car car = new Car(carNumber, carName, colour);
 
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        TaxisService taxisService = serviceFactory.getTaxisService();
-        if(taxisService.addCar(car)){
-            getCarList(req,resp);
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            TaxisService taxisService = serviceFactory.getTaxisService();
+            if (taxisService.addCar(car)) {
+                getCarList(req, resp);
+            }
+        }else {
+            resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String carNumber = req.getParameter("carNumber");
-        Car car = new Car(carNumber);
+        User user = (User) req.getSession().getAttribute("user");
+        String role = user.getRole();
+        if (role.equals("admin")) {
+            String carNumber = req.getParameter("carNumber");
+            Car car = new Car(carNumber);
 
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        TaxisService taxisService = serviceFactory.getTaxisService();
-        if(taxisService.removeCar(car)){
-            getCarList(req,resp);
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            TaxisService taxisService = serviceFactory.getTaxisService();
+            taxisService.removeCar(car);
+            getCarList(req, resp);
+        }else {
+            resp.sendRedirect(REDIRECT_HOME);
         }
-        getCarList(req,resp);
     }
 
 }
