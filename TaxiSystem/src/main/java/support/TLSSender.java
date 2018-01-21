@@ -9,14 +9,15 @@ import javax.mail.internet.MimeMessage;
  * Created by DNAPC on 08.01.2018.
  */
 public class TLSSender implements Runnable{
-    private final static String USERNAME = "demkoandrey2012@gmail.com";
-    private final static String TO_EMAIL = "demkoandrey2012@yandex.by";
-    private final static String PASSWORD = "12345";
+    private final static String USERNAME = "demkoandrey1998@gmail.com";
+    private final static String PASSWORD = "Neponime1234";
     private Properties props;
     private String text;
     private String subject;
+    private String toEmail;
 
-    public TLSSender(String text, String subject) {
+    public TLSSender(String toEMail, String text, String subject) {
+        this.toEmail = toEMail;
         this.text = text;
         this.subject = subject;
 
@@ -29,7 +30,7 @@ public class TLSSender implements Runnable{
 
     @Override
     public void run() {
-        send(subject,text,USERNAME,TO_EMAIL);
+        send(subject,text,USERNAME,toEmail);
     }
 
     private void send(String subject, String text, String fromEmail, String toEmail) {
@@ -41,7 +42,7 @@ public class TLSSender implements Runnable{
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(USERNAME));
+            message.setFrom(new InternetAddress(fromEmail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject(subject);
             message.setText(text);

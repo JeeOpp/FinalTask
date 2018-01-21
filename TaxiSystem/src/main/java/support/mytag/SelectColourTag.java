@@ -19,7 +19,6 @@ public class SelectColourTag extends TagSupport {
     private String orderStatus;
     private String locale;
     private String bodyText;
-    private ResourceBundle resourceBundle = null;
 
     public void setOrderStatus(String orderStatus){
         this.orderStatus = orderStatus;
@@ -42,7 +41,7 @@ public class SelectColourTag extends TagSupport {
         return SKIP_BODY;
     }
     private String chooseClass(){
-        resourceBundle = ResourceBundle.getBundle("localization.local",getLocale());
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("localization.local",getLocale());
         if (orderStatus.equals("completed")){
             bodyText = resourceBundle.getString("local.statusOrder.completed");
             return success;

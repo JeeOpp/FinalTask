@@ -15,8 +15,8 @@ import java.util.List;
  * Created by DNAPC on 16.12.2017.
  */
 public class UserManagerService {
-    public Boolean changePassword(User user, String currentPassword, String newPassword){
-        if (user.getPassword().equals(MD5.md5Hash(currentPassword))){
+    public Boolean changePassword(User user, String currentPassword, String newPassword) {
+        if (user.getPassword().equals(MD5.md5Hash(currentPassword))) {
             user.setPassword(MD5.md5Hash(newPassword));
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
@@ -25,28 +25,31 @@ public class UserManagerService {
         }
         return false;
     }
-    public List<Client> getClientList(){
+
+    public List<Client> getClientList() {
         List<Client> clientList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
             clientList = userManagerDAO.getClientList();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return clientList;
     }
-    public List<Taxi> getTaxiList(){
+
+    public List<Taxi> getTaxiList() {
         List<Taxi> taxiList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
             taxiList = userManagerDAO.getTaxiList();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return taxiList;
     }
+
     public List<Taxi> getAvailableTaxiList() {
         List<Taxi> taxiList = getTaxiList();
         Iterator<Taxi> taxiIterator = taxiList.listIterator();
@@ -57,11 +60,13 @@ public class UserManagerService {
         }
         return taxiList;
     }
-    public void changeBanStatus(User user){
+
+    public void changeBanStatus(User user) {
         DAOFactory daoFactory = DAOFactory.getInstance();
         UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
         userManagerDAO.changeBanStatus(user);
     }
+
     public void changeBonusCount(Client client) {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
@@ -71,7 +76,8 @@ public class UserManagerService {
             ex.printStackTrace();
         }
     }
-    public void changeTaxiCar(Taxi taxi){
+
+    public void changeTaxiCar(Taxi taxi) {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
@@ -79,5 +85,11 @@ public class UserManagerService {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public String getHashPassword(String mail) {
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
+        return userManagerDAO.getHashPassword(mail);
     }
 }

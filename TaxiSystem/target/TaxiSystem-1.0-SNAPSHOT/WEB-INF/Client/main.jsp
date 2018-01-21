@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <jsp:useBean id="user" class="entity.Client" scope="session"/>
+    <jsp:useBean id="user" class="entity.User" scope="session"/>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
         <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
         <ul class="navbar-nav mr-auto">
@@ -117,8 +117,9 @@
             <div class="modal-content">
                 <form action="Controller" method="post">
                     <input type="hidden" name="method" value="mailer"/>   <!--input-->
+                    <input type="hidden" name="action" value="sendQuestion"/>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="reviewModalLabel">${mailTitle}</h5>
+                        <h5 class="modal-title" id="mailQuestionTitle">${mailTitle}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="closeModal" aria-hidden="true">&times;</span>
                         </button>

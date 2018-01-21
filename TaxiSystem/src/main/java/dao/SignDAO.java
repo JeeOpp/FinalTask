@@ -14,10 +14,11 @@ import java.sql.*;
  */
 public class SignDAO {
     private static final String SQL_SELECT_LOGIN_ALL = "SELECT client.login FROM client UNION SELECT taxi.login FROM taxi;";
+    private static final String SQL_SELECT_MAIL_ALL = "SELECT client.mail FROM client;";
     private static final String SQL_GET_AUTH_ROLE = "SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?";
     private static final String SQL_GET_AUTH_CLIENT = "SELECT *  FROM client WHERE login=? AND password=?";
     private static final String SQL_GET_AUTH_TAXI = "SELECT id, login, password, name, surname, availableStatus, banStatus,role,number,car,colour  FROM taxi JOIN car ON taxi.carNumber=car.number WHERE login=? AND password=?;";
-    private static final String SQL_REG_CLIENT = "INSERT INTO client (login, password, name, surname) VALUES (?,?,?,?);";
+    private static final String SQL_REG_CLIENT = "INSERT INTO client (login, password, name, surname, mail) VALUES (?,?,?,?,?);";
     private static final String SQL_REG_TAXI = "INSERT INTO taxi (login, password, name, surname,carNumber) VALUES (?,?,?,?,?);";
     private static final String SQL_CHANGE_AVAILABLE_STATUS = "UPDATE taxi SET availableStatus = ?  WHERE id = ?;";
 
@@ -67,9 +68,10 @@ public class SignDAO {
                 client.setPassword(resultSet.getString(3));
                 client.setFirstName(resultSet.getString(4));
                 client.setLastName(resultSet.getString(5));
-                client.setBonusPoints(resultSet.getInt(6));
-                client.setBanStatus(resultSet.getBoolean(7));
-                client.setRole(resultSet.getString(8));
+                client.setMail(resultSet.getString(6));
+                client.setBonusPoints(resultSet.getInt(7));
+                client.setBanStatus(resultSet.getBoolean(8));
+                client.setRole(resultSet.getString(9));
             }
         }catch (ConnectionPoolException ex){
             ex.printStackTrace();
@@ -113,7 +115,7 @@ public class SignDAO {
         }
         return taxi;
     }
-    public Boolean registerClient(Client client) throws SQLException {
+    public boolean registerClient(Client client) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_REG_CLIENT);
@@ -121,6 +123,7 @@ public class SignDAO {
             preparedStatement.setString(2, MD5.md5Hash(client.getPassword()));
             preparedStatement.setString(3, client.getFirstName());
             preparedStatement.setString(4, client.getLastName());
+            preparedStatement.setString(5,client.getMail());
             preparedStatement.execute();
             return true;
         }catch (ConnectionPoolException ex){
@@ -132,7 +135,7 @@ public class SignDAO {
         }
         return false;
     }
-    public Boolean registerTaxi(Taxi taxi) throws SQLException {
+    public boolean registerTaxi(Taxi taxi) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_REG_TAXI);
@@ -152,13 +155,13 @@ public class SignDAO {
         }
         return false;
     }
-    public Boolean isLoginFree(String login){
+    public boolean isLoginFree(String login){
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_LOGIN_ALL);
             while (resultSet.next()) {
-                if (resultSet.getString(1).equalsIgnoreCase(login)) {
+                if (resultSet.getString("login").equalsIgnoreCase(login)) {
                     return false;
                 }
             }
@@ -172,6 +175,27 @@ public class SignDAO {
         }
         return false;
     }
+    public boolean isMailFree(String mail){
+        try {
+            connection = connectionPool.takeConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(SQL_SELECT_MAIL_ALL);
+            while (resultSet.next()) {
+                if (resultSet.getString("mail").equalsIgnoreCase(mail)) {
+                    return false;
+                }
+            }
+            return true;
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
+        }catch (SQLException e) {
+            ;;
+        } finally {
+            connectionPool.closeConnection(connection,statement,resultSet);
+        }
+        return false;
+    }
+
     public void changeAvailableStatus(Taxi taxi) throws SQLException {
         try {
             connection = connectionPool.takeConnection();

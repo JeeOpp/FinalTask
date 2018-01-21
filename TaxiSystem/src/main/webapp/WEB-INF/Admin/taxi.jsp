@@ -27,7 +27,7 @@
     <fmt:message bundle="${loc}" key="local.all.user.surname" var="userSurname"/>
     <fmt:message bundle="${loc}" key="local.all.user.login" var="userLogin"/>
     <fmt:message bundle="${loc}" key="local.all.user.banStatus" var="banStatus"/>
-    <fmt:message bundle="${loc}" key="local.all.taxi.availebleStatus" var="availableStatus"/>
+    <fmt:message bundle="${loc}" key="local.all.taxi.availableStatus" var="availableStatus"/>
     <fmt:message bundle="${loc}" key="local.all.car.number" var="carNumber"/>
     <fmt:message bundle="${loc}" key="local.all.car.name" var="carName"/>
     <fmt:message bundle="${loc}" key="local.all.car.colour" var="colour"/>
@@ -39,7 +39,7 @@
     <fmt:message bundle="${loc}" key="local.admin.taxi.regTaxi" var="regTaxi"/>
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass1" var="pass1"/>
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass2" var="pass2"/>
-    <fmt:message bundle="${loc}" key="local.admin.taxi.registrateButton" var="regButton"/>
+    <fmt:message bundle="${loc}" key="local.admin.taxi.registerButton" var="regButton"/>
 
     <title>${title}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">

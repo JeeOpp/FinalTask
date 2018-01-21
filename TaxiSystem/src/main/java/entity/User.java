@@ -60,7 +60,7 @@ public class User {
         this.id=id;
     }
 
-    public User(int id, String login, String password, String firstName, String lastName, boolean banStatus, String role) {
+    public User(int id, String login, String password, String firstName, String lastName,boolean banStatus, String role) {
         this(id,login,password,firstName,lastName);
         this.banStatus = banStatus;
         this.role = role;

@@ -30,10 +30,16 @@
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass1" var="pass1"/>
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass2" var="pass2"/>
     <fmt:message bundle="${loc}" key="local.index.signInText" var="signInText"/>
+    <fmt:message bundle="${loc}" key="local.index.forgotPassword" var="forgot"/>
+    <fmt:message bundle="${loc}" key="local.index.restoreTitle" var="restoreTitle"/>
+    <fmt:message bundle="${loc}" key="local.index.restoreText" var="restoreText"/>
+    <fmt:message bundle="${loc}" key="local.index.restoreButton" var="restoreButton"/>
+    <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
 
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -66,16 +72,20 @@
                 <input type="hidden" name="role" value="client"/>
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="text" required name="firstName" placeholder="${userName}" autocomplete="off"/>
+                        <input type="text" required name="name" placeholder="${userName}" autocomplete="off"/>
                     </div>
                     <div class="field-wrap">
-                        <input type="text" required name="lastName" placeholder="${userSurname}" autocomplete="off"/>
+                        <input type="text" required name="surname" placeholder="${userSurname}" autocomplete="off"/>
                     </div>
                 </div>
-                <div class="field-wrap">
-                    <input type="text" required name="login"  placeholder="${userLogin}" autocomplete="off"/>
+                <div class="wrapped-row">
+                    <div class="field-wrap">
+                        <input type="text" required name="login"  placeholder="${userLogin}" autocomplete="off"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input type="email" required name="email"  placeholder="e-mail" autocomplete="off"/>
+                    </div>
                 </div>
-
                 <div class="wrapped-row">
                     <div class="field-wrap">
                         <input type="password" required id="pass1" name="password"  placeholder="${pass1}" autocomplete="off"/>
@@ -98,7 +108,34 @@
                 <div class="field-wrap">
                     <input type="password" name="password" placeholder="${pass1}" required/>
                 </div>
+                <p class="forgot"><a href="#" data-toggle="modal" data-target="#restorePassword">${forgot}</a></p>
                 <button type="submit" class="button button-block">${authButton}</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="restorePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form  action="Controller" method="post">
+                <input type="hidden" name="method" value="mailer"/>
+                <input type="hidden" name="action" value="preRestore"/>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="restorePasswordTitle">${restoreTitle}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ${restoreText}<br/>
+                    <label for="mail"></label><input id="mail" type="email" name="mail" required/><br/>
+                    </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-light">${restoreButton}</button>  <!--input-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">${close}</button>
+                </div>
             </form>
         </div>
     </div>

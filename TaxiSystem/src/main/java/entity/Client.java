@@ -8,6 +8,7 @@ import java.sql.SQLException;
  */
 public class Client extends User{
     private int bonusPoints;
+    private String mail;
 
     public Client(){}
 
@@ -20,16 +21,25 @@ public class Client extends User{
         super(id,null,null,name,surname);
     }
 
-    public Client(String login, String password, String firstName, String lastName) {
+    public Client(String login, String password, String firstName, String lastName, String mail) {
         super(login, password, firstName, lastName);
+        this.mail = mail;
     }
 
     public int getBonusPoints() {
         return bonusPoints;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
     public void setBonusPoints(int bonusPoints) {
         this.bonusPoints = bonusPoints;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public void setFromResultSet(ResultSet resultSet){
@@ -38,9 +48,10 @@ public class Client extends User{
             this.setLogin(resultSet.getString(2));
             this.setFirstName(resultSet.getString(3));
             this.setLastName(resultSet.getString(4));
-            this.setBonusPoints(resultSet.getInt(5));
-            this.setBanStatus(resultSet.getBoolean(6));
-            this.setRole(resultSet.getString(7));
+            this.setMail(resultSet.getString("mail"));
+            this.setBonusPoints(resultSet.getInt(6));
+            this.setBanStatus(resultSet.getBoolean(7));
+            this.setRole(resultSet.getString(8));
         }catch (SQLException ex){
             ex.printStackTrace();
         }

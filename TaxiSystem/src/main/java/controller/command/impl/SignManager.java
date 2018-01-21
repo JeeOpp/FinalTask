@@ -84,11 +84,12 @@ public class SignManager implements ControllerCommand {
         String password = req.getParameter("password");
         String firstName = req.getParameter("name");
         String lastName = req.getParameter("surname");
+        String mail = req.getParameter("email").toLowerCase();
         String carNumber = req.getParameter("checkedCarNumber");
         String role = req.getParameter("role");
         try {
             if (role.equals("client")) {
-                Client client = new Client(login,password,firstName,lastName);
+                Client client = new Client(login,password,firstName,lastName,mail);
                 if(signService.registerClient(client)){
                     req.getRequestDispatcher("registrationSuccess.jsp").forward(req,resp);
                 }else {
@@ -99,10 +100,8 @@ public class SignManager implements ControllerCommand {
                 Car car = new Car(carNumber);
                 Taxi taxi = new Taxi(login,password,firstName,lastName,role,car);
                 if(signService.registerTaxi(taxi)){
-                    resp.getWriter().println("success");
                     req.getRequestDispatcher("Controller?method=userManager&action=getTaxiList").forward(req,resp);
                 }else {
-                    resp.getWriter().println("failed");
                     req.getRequestDispatcher("Controller?method=userManager&action=getTaxiList").forward(req,resp);
                 }
             }

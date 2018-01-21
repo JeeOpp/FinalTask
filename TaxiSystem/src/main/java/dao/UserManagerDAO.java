@@ -3,6 +3,7 @@ package dao;
 import dao.connectionPool.ConnectionPool;
 import dao.connectionPool.ConnectionPoolException;
 import entity.Client;
+import entity.Order;
 import entity.Taxi;
 import entity.User;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class UserManagerDAO {
     private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, taxi.banStatus, taxi.role, car.number, car.car, car.colour FROM taxisystem.taxi LEFT JOIN car ON taxi.carNumber = car.number;";
-    private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
+    private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.mail, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
     private static final String SQL_CHANGE_TAXI_PASS = "UPDATE taxi SET password = ? WHERE id=?;";
     private static final String SQL_CHANGE_CLIENT_PASS = "UPDATE client SET password = ? WHERE id=?;";
     private static final String SQL_GET_TAXI_BAN = "UPDATE taxi SET banStatus = ? WHERE id = ?;";
@@ -23,7 +24,7 @@ public class UserManagerDAO {
     private static final String SQL_DECREASE_BONUS = "UPDATE client SET bonusPoints = bonusPoints - ?  WHERE id = ?;";
     private static final String SQL_CHANGE_BONUS_COUNT = "UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;";
     private static final String SQL_CHANGE_TAXI_CAR = "UPDATE taxi SET carNumber=? WHERE id=?";
-
+    private static final String SQL_GET_HASH_PASSWORD = "SELECT password FROM taxisystem.client WHERE mail = ?;";
 
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private Connection connection = null;
@@ -160,5 +161,23 @@ public class UserManagerDAO {
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
+    }
+    public String getHashPassword(String mail){
+        try {
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_GET_HASH_PASSWORD);
+            preparedStatement.setString(1,mail.toLowerCase());
+            if ((resultSet = preparedStatement.executeQuery()) != null) {
+                resultSet.next();
+                return resultSet.getString(1);
+            }
+        }catch (ConnectionPoolException ex){
+            ex.printStackTrace();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            connectionPool.closeConnection(connection,preparedStatement,resultSet);
+        }
+        return null;
     }
 }

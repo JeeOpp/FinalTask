@@ -17,14 +17,21 @@ import java.util.Set;
  */
 public class SimpleSignFilter implements Filter {
     private Set<String> availableLocalPages = null;
+    private Set<String> availableActionRequest = null;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        availableActionRequest = new HashSet<String>(){{
+           add("authorization");
+           add("registration");
+           add("preRestore");
+        }};
         availableLocalPages = new HashSet<String>() {{
             add("authorizationProblem.jsp");
             add("banned.jsp");
             add("registrationProblem.jsp");
             add("registrationSuccess.jsp");
+            add("index.jsp");
         }};
     }
 
@@ -42,11 +49,9 @@ public class SimpleSignFilter implements Filter {
             availableLocalRequest = isAvailableLocalPage(pageRequest);
         }
         String requestAction = req.getParameter("action");
+        boolean availableAction =  availableActionRequest.contains(requestAction);
 
-        boolean loginRequest = "authorization".equals(requestAction);
-        boolean signRequest = "registration".equals(requestAction);
-
-        if (loggedIn || loginRequest || signRequest || availableLocalRequest) {
+        if (loggedIn || availableAction || availableLocalRequest) {
             filterChain.doFilter(req, resp);
         } else {
             resp.sendRedirect("/index.jsp");
@@ -61,4 +66,6 @@ public class SimpleSignFilter implements Filter {
     private boolean isAvailableLocalPage(String page) {
         return availableLocalPages.contains(page);
     }
+
+
 }

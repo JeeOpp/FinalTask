@@ -81,6 +81,7 @@
         <th>${userLogin}</th>
         <th>${userName}</th>
         <th>${userSurname}</th>
+        <th>e-Mail</th>
         <th>${bonuses}</th>
         <th>${banStatus}</th>
     </tr>
@@ -91,6 +92,7 @@
             <td>${client.login}</td>
             <td>${client.firstName}</td>
             <td>${client.lastName}</td>
+            <td>${client.mail}</td>
             <td>
                 <form action="Controller" method="post">
                     <input type="hidden" name="method" value = "userManager"/>

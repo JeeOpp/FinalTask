@@ -15,7 +15,7 @@ public class SignService {
     public Boolean registerClient(Client client) throws SQLException {
         DAOFactory daoFactory = DAOFactory.getInstance();
         SignDAO signDAO = daoFactory.getSignDAO();
-        if (signDAO.isLoginFree(client.getLogin())) {
+        if (signDAO.isLoginFree(client.getLogin()) && signDAO.isMailFree(client.getMail())) {
             return signDAO.registerClient(client);
         } else {
             return false;

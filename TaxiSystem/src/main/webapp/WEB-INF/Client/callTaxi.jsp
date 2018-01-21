@@ -37,7 +37,7 @@
         </script>
     </head>
     <body>
-    <jsp:useBean id="user" class="entity.User" scope="session"/>
+    <jsp:useBean id="user" class="entity.Client" scope="session"/>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
         <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
@@ -62,7 +62,7 @@
                 <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${engButton}</a>
             </div>
             <div class="logOutMenu">
-                <span class="welcomeUser">  ${welcome} ${user.firstName} ${user.lastName}</span>
+                <span class="welcomeUser">${welcome} ${user.firstName} ${user.lastName}</span>
                 <a href="Controller?method=signManager&action=logOut">
                     <button type="button" class="btn btn-light">${logOut}</button>
                 </a>

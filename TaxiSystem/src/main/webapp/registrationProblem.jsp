@@ -14,8 +14,8 @@
     <fmt:message bundle="${loc}" key="local.all.rusButton" var="rusButton"/>
     <fmt:message bundle="${loc}" key="local.all.engButton" var="engButton"/>
     <fmt:message bundle="${loc}" key="local.all.localization" var="languages"/>
-    <fmt:message bundle="${loc}" key="local.registraionProblem.text" var="text"/>
-    <fmt:message bundle="${loc}" key="local.registraionProblem.title" var="title"/>
+    <fmt:message bundle="${loc}" key="local.registrationProblem.text" var="text"/>
+    <fmt:message bundle="${loc}" key="local.registrationProblem.title" var="title"/>
     <fmt:message bundle="${loc}" key="local.message.backIndex" var="goBack"/>
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">

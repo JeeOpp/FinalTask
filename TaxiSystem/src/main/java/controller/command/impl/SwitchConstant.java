@@ -35,6 +35,9 @@ public enum SwitchConstant {
     CHANGE_BONUS_COUNT("changeBonusCount"),
     CHANGE_TAXI_CAR("changeTaxiCar"),
 
+    SEND_QUESTION("sendQuestion"),
+    PRE_RESTORE("preRestore"),
+
     NONE("none");
     private String value;
 

@@ -47,7 +47,7 @@
 </head>
 
 <body>
-<jsp:useBean id="user" class="entity.User" scope="session"/>
+<jsp:useBean id="user" class="entity.Client" scope="session"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
     <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="Controller?method=signManager&action=goHomePage">TAXI</a>
     <ul class="navbar-nav mr-auto">
@@ -88,6 +88,7 @@
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userName}: </b></span>${user.firstName}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userSurname}: </b></span>${user.lastName}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userLogin}: </b></span>${user.login}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>E-Mail: </b></span>${user.mail}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${bonuses}: </b></span>${user.bonusPoints}</li>
         </ul>
         <br/>

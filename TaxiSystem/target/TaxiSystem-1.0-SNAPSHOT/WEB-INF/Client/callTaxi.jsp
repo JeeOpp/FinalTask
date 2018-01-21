@@ -62,7 +62,7 @@
                 <a class="dropdown-item" href="Controller?method=localization&local=en&page=Controller&#63;method&#61;dispatcher&amp;action&#61;preOrder">${engButton}</a>
             </div>
             <div class="logOutMenu">
-                <span class="welcomeUser">  ${welcome} ${user.firstName} ${user.lastName}</span>
+                <span class="welcomeUser">${welcome} ${user.firstName} ${user.lastName}</span>
                 <a href="Controller?method=signManager&action=logOut">
                     <button type="button" class="btn btn-light">${logOut}</button>
                 </a>
