@@ -1,8 +1,8 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import service.ServiceFactory;
-import service.SignService;
 import service.UserManagerService;
 import support.TLSSender;
 

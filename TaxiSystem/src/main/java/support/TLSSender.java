@@ -1,5 +1,7 @@
 package support;
 
+import org.apache.log4j.Logger;
+
 import java.util.Properties;
 
 import javax.mail.*;
@@ -9,6 +11,7 @@ import javax.mail.internet.MimeMessage;
  * Created by DNAPC on 08.01.2018.
  */
 public class TLSSender implements Runnable{
+    private final static Logger log = Logger.getLogger(TLSSender.class.getClass());
     private final static String USERNAME = "demkoandrey1998@gmail.com";
     private final static String PASSWORD = "Neponime1234";
     private Properties props;
@@ -48,8 +51,8 @@ public class TLSSender implements Runnable{
             message.setText(text);
 
             Transport.send(message);
-        } catch (MessagingException e) {
-            ;;
+        } catch (MessagingException ex) {
+            log.error(ex.getMessage());
         }
     }
 }

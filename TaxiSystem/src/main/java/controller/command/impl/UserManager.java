@@ -1,8 +1,10 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import entity.*;
 import service.*;
+import support.PasswordGen;
 import support.TLSSender;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Created by DNAPC on 14.12.2017.
@@ -41,6 +45,9 @@ public class UserManager implements ControllerCommand {
                 break;
             case CHANGE_TAXI_CAR:
                 changeTaxiCar(req, resp);
+                break;
+            case RESTORE_PASSWORD:
+                restorePassword(req,resp);
                 break;
         }
     }
@@ -207,4 +214,25 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    private void restorePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        String mail = req.getParameter("mail");
+        String hashPassword = req.getParameter("hashPassword");
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        UserManagerService userManagerService = serviceFactory.getUserManagerService();
+        String newPassword = PasswordGen.generate();
+        if(userManagerService.restorePassword(mail, hashPassword, newPassword)){
+            String locale = (String) req.getSession().getAttribute("local");
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("localization.local",new Locale(locale));
+            String restoreSubject = resourceBundle.getString("local.restoreEmail.subject");
+            String newPassTest = resourceBundle.getString("local.restoreEmail.newPassText")+"\n"+newPassword;
+
+            Thread sendMail = new Thread(new TLSSender(mail,newPassTest,restoreSubject));
+            sendMail.start();
+            resp.sendRedirect("index.jsp");
+        }else{
+            resp.sendRedirect("index.jsp");
+        }
+    }
 }
+

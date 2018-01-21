@@ -1,5 +1,7 @@
 package entity;
 
+import org.apache.log4j.Logger;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -7,6 +9,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 28.11.2017.
  */
 public class Client extends User{
+    private final static Logger log = Logger.getLogger(Client.class.getClass());
     private int bonusPoints;
     private String mail;
 
@@ -53,7 +56,7 @@ public class Client extends User{
             this.setBanStatus(resultSet.getBoolean(7));
             this.setRole(resultSet.getString(8));
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 }

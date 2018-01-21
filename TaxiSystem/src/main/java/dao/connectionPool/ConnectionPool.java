@@ -1,5 +1,7 @@
 package dao.connectionPool;
 
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.Locale;
 import java.util.Map;
@@ -12,6 +14,7 @@ import java.util.concurrent.Executor;
  * Created by DNAPC on 26.12.2017.
  */
 public class ConnectionPool {
+    private static final Logger log = Logger.getLogger(ConnectionPool.class.getClass());
     private static final ConnectionPool instance = new ConnectionPool();
     private BlockingQueue <Connection> connectionQueue;
     private BlockingQueue <Connection> giveAwayConQueue;
@@ -32,19 +35,19 @@ public class ConnectionPool {
         try {
             initPoolData();
         }catch (ConnectionPoolException ex){
-            ;
+            log.error(ex.getMessage());
         }
     }
 
     public static ConnectionPool getInstance(){
         return instance;
     }
-    public void initPoolData() throws ConnectionPoolException{
+    private void initPoolData() throws ConnectionPoolException{
         Locale.setDefault(Locale.ENGLISH);
         try {
             Class.forName(driverName);
-            giveAwayConQueue = new ArrayBlockingQueue<Connection>(poolSize);
-            connectionQueue = new ArrayBlockingQueue<Connection>(poolSize);
+            giveAwayConQueue = new ArrayBlockingQueue<>(poolSize);
+            connectionQueue = new ArrayBlockingQueue<>(poolSize);
             for(int i=0;i<poolSize;i++){
                 Connection connection = DriverManager.getConnection(url,user,password);
                 WrappedConnection wrappedConnection = new WrappedConnection(connection);
@@ -64,12 +67,12 @@ public class ConnectionPool {
             closeConnectionQueue(giveAwayConQueue);
             closeConnectionQueue(connectionQueue);
         }catch (SQLException ex){
-            ;;;
+            log.error(ex.getMessage());
         }
     }
     public Connection takeConnection() throws ConnectionPoolException{
         Connection connection = null;
-        try{
+            try{
             connection = connectionQueue.take();
             giveAwayConQueue.add(connection);
         }catch (InterruptedException ex){
@@ -82,58 +85,58 @@ public class ConnectionPool {
         try {
             con.close();
         }catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
         try {
             rs.close();
         }catch (SQLException ex){
-
+            log.error(ex.getMessage());
         }
         try {
             st.close();
         }catch (SQLException ex){
-
+            log.error(ex.getMessage());
         }
     }
     public void closeConnection(Connection con, Statement st) {
         try {
             con.close();
         } catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
         try {
             st.close();
         } catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
     }
     public void closeConnection(Connection con, PreparedStatement st, ResultSet rs){
         try {
             con.close();
         }catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
         try {
             rs.close();
         }catch (SQLException ex){
-
+            log.error(ex.getMessage());
         }
         try {
             st.close();
         }catch (SQLException ex){
-
+            log.error(ex.getMessage());
         }
     }
     public void closeConnection(Connection con, PreparedStatement st) {
         try {
             con.close();
         } catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
         try {
             st.close();
         } catch (SQLException ex) {
-            ;
+            log.error(ex.getMessage());
         }
     }
 
@@ -201,10 +204,10 @@ public class ConnectionPool {
                 connection.setReadOnly(false);
             }
             if(!giveAwayConQueue.remove(this)){
-                throw new SQLException("error");
+                throw new SQLException("remove connection from queue error");
             }
             if(!connectionQueue.offer(this)){
-                throw new SQLException("error");
+                throw new SQLException("offer connection to queue error");
             }
         }
         @Override

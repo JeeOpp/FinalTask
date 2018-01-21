@@ -3,6 +3,7 @@ package service;
 import dao.DAOFactory;
 import dao.TaxisDAO;
 import entity.Car;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,16 +12,16 @@ import java.util.List;
  * Created by DNAPC on 03.01.2018.
  */
 public class TaxisService {
+    private final static Logger log = Logger.getLogger(TaxisService.class.getClass());
     public List<Car> getCarList() {
-        List<Car> carList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             TaxisDAO taxisDAO = daoFactory.getTaxisDAO();
-            carList = taxisDAO.getCarList();
+            return taxisDAO.getCarList();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
-        return carList;
+        return null;
     }
     public boolean addCar(Car car) {
         DAOFactory daoFactory = DAOFactory.getInstance();
@@ -34,7 +35,7 @@ public class TaxisService {
             }
             return taxisDAO.addCar(car);
         } catch (SQLException ex) {
-            ///;
+            log.error(ex.getMessage());
         }
         return false;
     }

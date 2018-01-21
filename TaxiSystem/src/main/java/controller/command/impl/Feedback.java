@@ -1,6 +1,7 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import entity.Client;
 import entity.Review;
 import entity.Taxi;
@@ -53,7 +54,7 @@ public class Feedback implements ControllerCommand {
             feedbackService.setReview(review);
 
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            dispatcherService.moveOrderToArchive(orderId);
+            dispatcherService.changeOrderStatus("archive",orderId);
             new Dispatcher().getClientOrders(req, resp);
         }else {
             resp.sendRedirect(REDIRECT_HOME);

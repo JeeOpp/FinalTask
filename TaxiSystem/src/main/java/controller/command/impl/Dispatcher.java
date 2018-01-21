@@ -1,8 +1,8 @@
 package controller.command.impl;
 
 import com.google.gson.Gson;
-import com.sun.org.apache.regexp.internal.RE;
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import entity.*;
 import service.*;
 
@@ -121,6 +121,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.callConfirm(order, bonus)) {
+                ((Client)req.getSession().getAttribute("user")).setBonusPoints(client.getBonusPoints()-bonus);
                 getClientOrders(req, resp);
             } else {
                 preOrder(req, resp);
@@ -140,7 +141,7 @@ public class Dispatcher implements ControllerCommand {
             }
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.cancelOrder(orderId)) {
+            if (dispatcherService.changeOrderStatus("cancel",orderId)) {
                 if (user.getRole().equals("client")) {
                     getClientOrders(req, resp);   //to user
                 } else if (user.getRole().equals("admin")) {
@@ -163,7 +164,7 @@ public class Dispatcher implements ControllerCommand {
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.acceptOrder(orderId)) {
+            if (dispatcherService.changeOrderStatus("accept",orderId)) {
                 req.getRequestDispatcher("WEB-INF/Taxi/main.jsp").forward(req, resp);
             }
         } else {
@@ -181,7 +182,7 @@ public class Dispatcher implements ControllerCommand {
             }
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.rejectOrder(orderId)) {
+            if (dispatcherService.changeOrderStatus("reject",orderId)) {
                 getTaxiOrders(req, resp);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
@@ -199,7 +200,7 @@ public class Dispatcher implements ControllerCommand {
             }
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.payOrder(orderId)) {
+            if (dispatcherService.changeOrderStatus("pay",orderId)) {
                 getClientOrders(req, resp);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);

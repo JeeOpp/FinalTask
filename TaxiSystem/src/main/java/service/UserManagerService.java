@@ -5,6 +5,7 @@ import dao.UserManagerDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
+import org.apache.log4j.Logger;
 import support.MD5;
 
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import java.util.List;
  * Created by DNAPC on 16.12.2017.
  */
 public class UserManagerService {
+    private final static Logger log = Logger.getLogger(UserManagerService.class.getClass());
     public Boolean changePassword(User user, String currentPassword, String newPassword) {
         if (user.getPassword().equals(MD5.md5Hash(currentPassword))) {
             user.setPassword(MD5.md5Hash(newPassword));
@@ -27,27 +29,25 @@ public class UserManagerService {
     }
 
     public List<Client> getClientList() {
-        List<Client> clientList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            clientList = userManagerDAO.getClientList();
+            return userManagerDAO.getClientList();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
-        return clientList;
+        return null;
     }
 
     public List<Taxi> getTaxiList() {
-        List<Taxi> taxiList = null;
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            taxiList = userManagerDAO.getTaxiList();
+            return userManagerDAO.getTaxiList();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
-        return taxiList;
+        return null;
     }
 
     public List<Taxi> getAvailableTaxiList() {
@@ -73,7 +73,7 @@ public class UserManagerService {
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
             userManagerDAO.changeBonusCount(client);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public class UserManagerService {
             UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
             userManagerDAO.changeTaxiCar(taxi);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 
@@ -91,5 +91,11 @@ public class UserManagerService {
         DAOFactory daoFactory = DAOFactory.getInstance();
         UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
         return userManagerDAO.getHashPassword(mail);
+    }
+
+    public boolean restorePassword(String mail, String hashPassword,String newPassword) {
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
+        return userManagerDAO.restorePassword(mail, hashPassword, newPassword);
     }
 }

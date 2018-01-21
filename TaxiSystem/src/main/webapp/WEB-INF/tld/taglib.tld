@@ -9,7 +9,7 @@
 
     <tag>
         <name>orderColour</name>
-        <tag-class>support.mytag.SelectColourTag</tag-class>
+        <tag-class>support.mytag.orderStatus.OrderStatusTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>orderStatus</name>
@@ -24,10 +24,25 @@
     </tag>
     <tag>
         <name>bodyOrderColour</name>
-        <tag-class>support.mytag.SelectColourTagWithBody</tag-class>
+        <tag-class>support.mytag.orderStatus.OrderStatusTagWithBody</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>orderStatus</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>locale</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>carColour</name>
+        <tag-class>support.mytag.carColour.CarColourTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>colour</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>

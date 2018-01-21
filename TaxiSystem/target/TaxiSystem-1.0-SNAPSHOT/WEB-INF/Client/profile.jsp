@@ -88,6 +88,7 @@
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userName}: </b></span>${user.firstName}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userSurname}: </b></span>${user.lastName}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${userLogin}: </b></span>${user.login}</li>
+            <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>E-Mail: </b></span>${user.mail}</li>
             <li class="list-group-item list-group-item-dark"><span class="tr-text"><b>${bonuses}: </b></span>${user.bonusPoints}</li>
         </ul>
         <br/>

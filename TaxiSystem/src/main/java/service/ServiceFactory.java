@@ -1,6 +1,6 @@
 package service;
 
-import support.CoordinateGenerator;
+import support.CoordinateGen;
 
 /**
  * Created by DNAPC on 12.11.2017.
@@ -10,7 +10,6 @@ public class ServiceFactory <E>{
     private final SignService signService = new SignService();
     private final DispatcherService dispatcherService = new DispatcherService();
     private final FeedbackService feedbackService = new FeedbackService();
-    private final CoordinateGenerator coordinateGenerator = new CoordinateGenerator();
     private final UserManagerService userManagerService = new UserManagerService();
     private final PaginationService<E> paginationService = new PaginationService<>();
     private final TaxisService taxisService = new TaxisService();
@@ -26,9 +25,6 @@ public class ServiceFactory <E>{
     public DispatcherService getDispatcherService(){ return dispatcherService; }
     public FeedbackService getFeedbackService(){
         return feedbackService;
-    }
-    public CoordinateGenerator getCoordinateGenerator(){
-        return coordinateGenerator;
     }
     public UserManagerService getUserManagerService(){
         return userManagerService;

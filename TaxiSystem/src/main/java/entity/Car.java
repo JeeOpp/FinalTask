@@ -1,5 +1,7 @@
 package entity;
 
+import org.apache.log4j.Logger;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -7,6 +9,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 06.12.2017.
  */
 public class Car {
+    private final static Logger log = Logger.getLogger(Car.class.getClass());
     private String number;
     private String name;
     private String colour;
@@ -53,7 +56,7 @@ public class Car {
             this.setName(resultSet.getString(2));
             this.setColour(resultSet.getString(3));
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 

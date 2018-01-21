@@ -3,6 +3,7 @@ package dao;
 import dao.connectionPool.ConnectionPool;
 import dao.connectionPool.ConnectionPoolException;
 import entity.Car;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by DNAPC on 03.01.2018.
  */
 public class TaxisDAO {
+    private static final Logger log = Logger.getLogger(TaxisDAO.class.getClass());
     private static final String SQL_SELECT_ALL_CARS="SELECT * FROM taxisystem.car;";
     private static final String SQL_INSERT_CAR = "INSERT INTO car (number, car, colour) VALUES (?,?,?);";
     private static final String SQL_DELETE_CAR = "DELETE FROM taxisystem.car WHERE number = ?;";
@@ -38,11 +40,9 @@ public class TaxisDAO {
                     carList.add(car);
                 }
             }
-        } catch (ConnectionPoolException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection, statement, resultSet);
         }
         return carList;
@@ -56,11 +56,9 @@ public class TaxisDAO {
             preparedStatement.setString(3,car.getColour());
             preparedStatement.execute();
             return true;
-        } catch (ConnectionPoolException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection, statement, resultSet);
         }
         return false;
@@ -72,10 +70,8 @@ public class TaxisDAO {
             preparedStatement.setString(1, car.getNumber());
             preparedStatement.execute();
             return true;
-        }catch (ConnectionPoolException ex){
-            ;
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }

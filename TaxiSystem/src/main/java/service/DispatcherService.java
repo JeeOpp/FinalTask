@@ -6,6 +6,7 @@ import dao.UserManagerDAO;
 import entity.Client;
 import entity.Order;
 import entity.Taxi;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -15,15 +16,13 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherService {
-
+    private final static Logger log = Logger.getLogger(DispatcherService.class.getClass());
     public Boolean callConfirm(Order order, int bonus){
         if(order.getClient().getBonusPoints()<bonus){
             return false;
         }
         double newPrice;
         order.setPrice((newPrice = (order.getPrice() - (bonus*1.0)/100)) < 0 ? 0 : newPrice);
-
-        //TODO проверяй на клинте чтобы бонусы не были больше чем заказ, и возвращай в этом случае
 
         DAOFactory daoFactory = DAOFactory.getInstance();
         DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
@@ -34,7 +33,7 @@ public class DispatcherService {
                 userManagerDAO.decreaseBonus(order.getClient(),bonus);
             }
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
         return true;
     }
@@ -67,48 +66,18 @@ public class DispatcherService {
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             orderList = dispatcherDAO.getOrderList();
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
         return orderList;
     }
 
-    public boolean cancelOrder(Integer orderId){
+    public boolean changeOrderStatus(String orderAction, Integer orderId){
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.cancelOrder(orderId);
+            dispatcherDAO.changeOrderStatus(orderAction, orderId);
         }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return true;
-    }
-    public boolean acceptOrder(Integer orderId){
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.acceptOrder(orderId);
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return true;
-    }
-    public boolean rejectOrder(Integer orderId){
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.rejectOrder(orderId);
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return true;
-    }
-    public boolean payOrder(Integer orderId){
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.payOrder(orderId);
-        }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
         return true;
     }
@@ -118,17 +87,7 @@ public class DispatcherService {
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
             dispatcherDAO.deleteAllOrders();
         }catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return true;
-    }
-    public boolean moveOrderToArchive(Integer orderId){
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.moveOrderToArchive(orderId);
-        }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
         return true;
     }

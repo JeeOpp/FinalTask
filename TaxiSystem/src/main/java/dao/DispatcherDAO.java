@@ -3,6 +3,7 @@ package dao;
 import dao.connectionPool.ConnectionPool;
 import dao.connectionPool.ConnectionPoolException;
 import entity.Order;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by DNAPC on 06.12.2017.
  */
 public class DispatcherDAO {
+    private static final Logger log = Logger.getLogger(DispatcherDAO.class.getClass());
     private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.order\n" +
             "\tJOIN client ON taxisystem.order.client_id = client.id\n" +
             "    JOIN taxi ON taxisystem.order.taxi_id = taxi.id\n" +
@@ -46,11 +48,10 @@ public class DispatcherDAO {
                     orderList.add(order);
                 }
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }
+        finally {
             connectionPool.closeConnection(connection,statement,resultSet);
         }
         return orderList;
@@ -65,80 +66,20 @@ public class DispatcherDAO {
             preparedStatement.setString(4, order.getDestinyCoordinate());
             preparedStatement.setDouble(5, order.getPrice());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
-    public void cancelOrder(Integer orderId) throws SQLException{
+    public void changeOrderStatus(String orderAction, Integer orderId) throws SQLException{
         try {
             connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_CANCEL_ORDER);
+            preparedStatement = connection.prepareStatement(chooseOrderAction(orderAction));
             preparedStatement.setInt(1, orderId);
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ;
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
-    public void acceptOrder(Integer orderId) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_ACCEPT_ORDER);
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ;;
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
-    public void rejectOrder(Integer orderId) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_REJECT_ORDER);
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
-    public void payOrder(Integer orderId) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_PAY_ORDER);
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ;;;
-        }catch (SQLException ex){
-            ex.printStackTrace();
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
-    public void moveOrderToArchive(Integer orderId) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_ARCHIVE_ORDER);
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ;;;;
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
@@ -148,12 +89,49 @@ public class DispatcherDAO {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             statement.execute(SQL_DELETE_ALL_ORDER);
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,statement);
+        }
+    }
+
+    private String chooseOrderAction(String orderAction){
+        OrderAction orderEnum = OrderAction.getConstant(orderAction);
+        switch (orderEnum){
+            case CANCEL: return SQL_CANCEL_ORDER;
+            case ACCEPT: return SQL_ACCEPT_ORDER;
+            case REJECT: return SQL_REJECT_ORDER;
+            case PAY: return SQL_PAY_ORDER;
+            case ARCHIVE: return SQL_ARCHIVE_ORDER;
+        }
+        return null;
+    }
+
+    enum OrderAction{
+        CANCEL("cancel"),
+        ACCEPT("accept"),
+        REJECT("reject"),
+        PAY("pay"),
+        ARCHIVE("archive"),
+        NONE("none");
+
+        private String value;
+
+        OrderAction(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+
+        public static OrderAction getConstant(String orderStatus){
+            for (OrderAction each: OrderAction.values()){
+                if(each.getValue().equals(orderStatus)){
+                    return each;
+                }
+            }
+            return NONE;
         }
     }
 }

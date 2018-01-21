@@ -1,4 +1,4 @@
-package controller.command.impl;
+package controller.command;
 
 /**
  * Created by DNAPC on 12.01.2018.
@@ -34,6 +34,7 @@ public enum SwitchConstant {
     CHANGE_BAN_STATUS("changeBanStatus"),
     CHANGE_BONUS_COUNT("changeBonusCount"),
     CHANGE_TAXI_CAR("changeTaxiCar"),
+    RESTORE_PASSWORD("restorePassword"),
 
     SEND_QUESTION("sendQuestion"),
     PRE_RESTORE("preRestore"),

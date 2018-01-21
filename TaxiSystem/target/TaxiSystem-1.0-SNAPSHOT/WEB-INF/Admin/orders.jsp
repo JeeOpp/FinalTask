@@ -110,7 +110,7 @@
             <td>${order.destinyCoordinate}</td>
             <td>${order.taxi.car.number}</td>
             <td>${order.taxi.car.name}</td>
-            <td>${order.taxi.car.colour}</td>
+            <mytag:carColour colour="${order.taxi.car.colour}" locale="${sessionScope.local}"/>
             <td>${order.price}</td>
             <mytag:orderColour orderStatus="${order.orderStatus}" locale="${sessionScope.local}"/>
             <td>

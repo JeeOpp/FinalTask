@@ -1,5 +1,7 @@
 package entity;
 
+import org.apache.log4j.Logger;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -7,6 +9,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 08.12.2017.
  */
 public class Order {
+    private final static Logger log = Logger.getLogger(Order.class.getClass());
     private int orderId;
     private Client client;
     private Taxi taxi;
@@ -71,11 +74,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public void setSourceCoordinate(String sourceCoordinate) {
+    private void setSourceCoordinate(String sourceCoordinate) {
         this.sourceCoordinate = sourceCoordinate;
     }
 
-    public void setDestinyCoordinate(String destinyCoordinate) {
+    private void setDestinyCoordinate(String destinyCoordinate) {
         this.destinyCoordinate = destinyCoordinate;
     }
 
@@ -108,7 +111,7 @@ public class Order {
             taxi.setCar(car);
             this.setTaxi(taxi);
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 }

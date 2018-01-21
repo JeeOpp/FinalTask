@@ -25,6 +25,7 @@ public class SimpleSignFilter implements Filter {
            add("authorization");
            add("registration");
            add("preRestore");
+           add("restorePassword");
         }};
         availableLocalPages = new HashSet<String>() {{
             add("authorizationProblem.jsp");

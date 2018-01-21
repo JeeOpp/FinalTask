@@ -35,7 +35,7 @@ public class PaginationService<E>{
         int firstElement = (currentPage-1)*RECORDS_PER_PAGE;
         int lastElement = firstElement+RECORDS_PER_PAGE-1;
         int i=0;
-        List<E> pageList = new ArrayList<E>();
+        List<E> pageList = new ArrayList<>();
         for(E each:entityList){
             if (i>=firstElement){
                 pageList.add(each);

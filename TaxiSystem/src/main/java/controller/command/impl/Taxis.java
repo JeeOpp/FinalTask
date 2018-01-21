@@ -1,11 +1,11 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import entity.Car;
 import entity.User;
 import service.ServiceFactory;
 import service.TaxisService;
-import service.UserManagerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

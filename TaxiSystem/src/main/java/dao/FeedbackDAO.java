@@ -6,6 +6,7 @@ import entity.Client;
 import entity.Review;
 import entity.Taxi;
 import entity.User;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
  * Created by DNAPC on 12.12.2017.
  */
 public class FeedbackDAO {
+    private static final Logger log = Logger.getLogger(FeedbackDAO.class.getClass());
     private static final String SQL_SET_REVIEW = "INSERT INTO taxisystem.review (client_id, taxi_id, comment) VALUES (?, ?, ?);";
     private static final String SQL_GET_CLIENT_REVIEW = "SELECT taxi.id, taxi.name, taxi.surname, review.`comment` FROM review JOIN taxi ON review.taxi_id = taxi.id WHERE review.client_id = ?; ";
     private static final String SQL_GET_TAXI_REVIEW = "SELECT client.id, client.name, client.surname, review.`comment` FROM review JOIN client ON review.client_id = client.id WHERE review.taxi_id = ?;";
@@ -35,17 +37,15 @@ public class FeedbackDAO {
             preparedStatement.setInt(2, review.getTaxi().getId());
             preparedStatement.setString(3, review.getComment());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
     public List<Review> getClientReviews(User user) throws SQLException{
         List<Review> reviewList = new ArrayList<>();
-        Review review = null;
+        Review review;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_GET_CLIENT_REVIEW);
@@ -62,10 +62,8 @@ public class FeedbackDAO {
                     reviewList.add(review);
                 }
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
@@ -73,7 +71,7 @@ public class FeedbackDAO {
     }
     public List<Review> getTaxiReviews(User user) throws SQLException{
         List<Review> reviewList = new ArrayList<>();
-        Review review = null;
+        Review review;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_GET_TAXI_REVIEW);
@@ -90,10 +88,8 @@ public class FeedbackDAO {
                     reviewList.add(review);
                 }
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }

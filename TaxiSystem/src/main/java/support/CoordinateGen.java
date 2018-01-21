@@ -3,7 +3,7 @@ package support;
 /**
  * Created by DNAPC on 08.12.2017.
  */
-public class CoordinateGenerator {
+public class CoordinateGen {
     private static final Double lngLeftBorder = 27.404;
     private static final Double lngRightBorder = 27.695;
     private static final Double latTopBorder = 53.972;

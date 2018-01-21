@@ -1,10 +1,12 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
+import controller.command.SwitchConstant;
 import entity.Car;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
+import org.apache.log4j.Logger;
 import service.ServiceFactory;
 import service.SignService;
 
@@ -19,7 +21,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 16.12.2017.
  */
 public class SignManager implements ControllerCommand {
-    private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private static final Logger log = Logger.getLogger(SignManager.class.getClass());
     private static final String ADMIN_MAIN_PATH = "WEB-INF/Admin/main.jsp";
     private static final String CLIENT_MAIN_PATH = "WEB-INF/Client/main.jsp";
     private static final String TAXI_MAIN_PATH = "WEB-INF/Taxi/main.jsp";
@@ -73,7 +75,7 @@ public class SignManager implements ControllerCommand {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
     private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -106,7 +108,7 @@ public class SignManager implements ControllerCommand {
                 }
             }
         }catch (SQLException ex){
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -122,7 +124,7 @@ public class SignManager implements ControllerCommand {
             session.invalidate();
             resp.sendRedirect("index.jsp");
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
     public String chooseUserPage(String role){

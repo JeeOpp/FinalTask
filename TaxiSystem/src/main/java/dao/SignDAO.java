@@ -5,6 +5,7 @@ import dao.connectionPool.ConnectionPoolException;
 import entity.Car;
 import entity.Client;
 import entity.Taxi;
+import org.apache.log4j.Logger;
 import support.MD5;
 
 import java.sql.*;
@@ -13,6 +14,7 @@ import java.sql.*;
  * Created by DNAPC on 18.12.2017.
  */
 public class SignDAO {
+    private static final Logger log = Logger.getLogger(SignDAO.class.getClass());
     private static final String SQL_SELECT_LOGIN_ALL = "SELECT client.login FROM client UNION SELECT taxi.login FROM taxi;";
     private static final String SQL_SELECT_MAIL_ALL = "SELECT client.mail FROM client;";
     private static final String SQL_GET_AUTH_ROLE = "SELECT role  FROM client WHERE login=? AND password=? UNION SELECT role  FROM taxi WHERE login=? AND password=?";
@@ -44,10 +46,8 @@ public class SignDAO {
             if (resultSet.next()) {
                 role = resultSet.getString(1);
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         } finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
@@ -73,10 +73,8 @@ public class SignDAO {
                 client.setBanStatus(resultSet.getBoolean(8));
                 client.setRole(resultSet.getString(9));
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         } finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
@@ -106,11 +104,9 @@ public class SignDAO {
                 car.setColour(resultSet.getString(11));
                 taxi.setCar(car);
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
         return taxi;
@@ -126,11 +122,9 @@ public class SignDAO {
             preparedStatement.setString(5,client.getMail());
             preparedStatement.execute();
             return true;
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
         return false;
@@ -146,11 +140,9 @@ public class SignDAO {
             preparedStatement.setString(5, taxi.getCar().getNumber());
             preparedStatement.execute();
             return true;
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
         return false;
@@ -166,11 +158,9 @@ public class SignDAO {
                 }
             }
             return true;
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e) {
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,statement,resultSet);
         }
         return false;
@@ -186,11 +176,9 @@ public class SignDAO {
                 }
             }
             return true;
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e) {
-            ;;
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,statement,resultSet);
         }
         return false;
@@ -203,11 +191,9 @@ public class SignDAO {
             preparedStatement.setBoolean(1, !taxi.isAvailableStatus());
             preparedStatement.setInt(2, taxi.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }

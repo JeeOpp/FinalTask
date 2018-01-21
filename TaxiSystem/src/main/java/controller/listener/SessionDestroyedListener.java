@@ -2,6 +2,7 @@ package controller.listener;
 
 import entity.Taxi;
 import entity.User;
+import org.apache.log4j.Logger;
 import service.ServiceFactory;
 import service.SignService;
 
@@ -15,6 +16,7 @@ import java.sql.SQLException;
  * Created by DNAPC on 04.01.2018.
  */
 public class SessionDestroyedListener implements HttpSessionListener {
+    private static final Logger log = Logger.getLogger(SessionDestroyedListener.class.getClass());
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
 
@@ -22,7 +24,6 @@ public class SessionDestroyedListener implements HttpSessionListener {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        System.out.println("destroyed");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
@@ -33,7 +34,7 @@ public class SessionDestroyedListener implements HttpSessionListener {
                 signService.changeSessionStatus((Taxi)user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 }

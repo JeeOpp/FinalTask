@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="mytag" uri="/WEB-INF/tld/taglib.tld" %>
 <html>
 <head>
     <fmt:setLocale value="${sessionScope.local}"/>
@@ -114,7 +115,7 @@
                 </button>
             </td>
             <td>${taxi.car.name}</td>
-            <td>${taxi.car.colour}</td>
+            <mytag:carColour colour="${taxi.car.colour}" locale="${sessionScope.local}"/>
             <td>${taxi.availableStatus}</td>
             <td>
                 <form action="Controller" method="post">

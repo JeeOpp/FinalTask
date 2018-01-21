@@ -6,6 +6,8 @@ import entity.Client;
 import entity.Order;
 import entity.Taxi;
 import entity.User;
+import org.apache.log4j.Logger;
+import support.MD5;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.List;
  * Created by DNAPC on 16.12.2017.
  */
 public class UserManagerDAO {
+    private static final Logger log = Logger.getLogger(UserManagerDAO.class.getClass());
     private static final String SQL_SELECT_ALL_TAXI = "SELECT taxi.id, taxi.login, taxi.name, taxi.surname, taxi.availableStatus, taxi.banStatus, taxi.role, car.number, car.car, car.colour FROM taxisystem.taxi LEFT JOIN car ON taxi.carNumber = car.number;";
     private static final String SQL_SELECT_ALL_CLIENT = "SELECT client.id, client.login, client.name, client.surname, client.mail, client.bonusPoints, client.banStatus, client.role FROM taxisystem.client WHERE client.role = \"client\";";
     private static final String SQL_CHANGE_TAXI_PASS = "UPDATE taxi SET password = ? WHERE id=?;";
@@ -25,6 +28,7 @@ public class UserManagerDAO {
     private static final String SQL_CHANGE_BONUS_COUNT = "UPDATE client SET bonusPoints = bonusPoints + ?  WHERE id = ?;";
     private static final String SQL_CHANGE_TAXI_CAR = "UPDATE taxi SET carNumber=? WHERE id=?";
     private static final String SQL_GET_HASH_PASSWORD = "SELECT password FROM taxisystem.client WHERE mail = ?;";
+    private static final String SQL_RESTORE_PASSWORD = "UPDATE client SET password=? WHERE mail=? AND password=?";
 
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private Connection connection = null;
@@ -46,11 +50,9 @@ public class UserManagerDAO {
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setInt(2, user.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
@@ -67,11 +69,9 @@ public class UserManagerDAO {
                     taxiList.add(taxi);
                 }
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,statement,resultSet);
         }
         return taxiList;
@@ -89,11 +89,9 @@ public class UserManagerDAO {
                     clientList.add(client);
                 }
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex) {
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,statement,resultSet);
         }
         return clientList;
@@ -109,11 +107,9 @@ public class UserManagerDAO {
             preparedStatement.setBoolean(1,!user.getBanStatus());
             preparedStatement.setInt(2, user.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException e){
-            System.err.println("SQL exception (request or table failed): " + e);
-        } finally {
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
@@ -124,10 +120,8 @@ public class UserManagerDAO {
             preparedStatement.setInt(1,bonus);
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
@@ -139,10 +133,8 @@ public class UserManagerDAO {
             preparedStatement.setInt(1,client.getBonusPoints());
             preparedStatement.setInt(2,client.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
@@ -154,10 +146,8 @@ public class UserManagerDAO {
             preparedStatement.setString(1,taxi.getCar().getNumber());
             preparedStatement.setInt(2,taxi.getId());
             preparedStatement.execute();
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement);
         }
@@ -171,13 +161,26 @@ public class UserManagerDAO {
                 resultSet.next();
                 return resultSet.getString(1);
             }
-        }catch (ConnectionPoolException ex){
-            ex.printStackTrace();
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,preparedStatement,resultSet);
         }
         return null;
+    }
+    public boolean restorePassword(String mail,String hashPassword,String newPassword){
+        try {
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_RESTORE_PASSWORD);
+            preparedStatement.setString(1, MD5.md5Hash(newPassword));
+            preparedStatement.setString(2,mail);
+            preparedStatement.setString(3,hashPassword);
+            return preparedStatement.executeUpdate()>0;
+        }catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        }finally {
+            connectionPool.closeConnection(connection,preparedStatement);
+        }
+        return false;
     }
 }
