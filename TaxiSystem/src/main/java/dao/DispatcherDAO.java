@@ -72,7 +72,7 @@ public class DispatcherDAO {
             connectionPool.closeConnection(connection,preparedStatement);
         }
     }
-    public void changeOrderStatus(String orderAction, Integer orderId) throws SQLException{
+    public void changeOrderStatus(String orderAction, int orderId) throws SQLException{
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(chooseOrderAction(orderAction));

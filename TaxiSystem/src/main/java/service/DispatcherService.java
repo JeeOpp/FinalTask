@@ -71,7 +71,7 @@ public class DispatcherService {
         return orderList;
     }
 
-    public boolean changeOrderStatus(String orderAction, Integer orderId){
+    public boolean changeOrderStatus(String orderAction, int orderId){
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();

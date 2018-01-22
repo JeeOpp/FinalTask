@@ -91,12 +91,9 @@ public class UserManager implements ControllerCommand {
     }
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")){
-            int page = 1;
-            if (req.getParameter("numPage") != null) {
-                page = Integer.parseInt(req.getParameter("numPage"));
-            }
+        if (user.getRole().equals("admin")){
+            String numPage = req.getParameter("numPage");
+            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Client> clientList = userManagerService.getClientList();
@@ -116,14 +113,11 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
-    void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    private void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
-            int page = 1; //default page
-            if (req.getParameter("numPage") != null) {
-                page = Integer.parseInt(req.getParameter("numPage"));
-            }
+        if (user.getRole().equals("admin")) {
+            String numPage = req.getParameter("numPage");
+            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Taxi> taxiList = userManagerService.getTaxiList();
@@ -145,13 +139,9 @@ public class UserManager implements ControllerCommand {
     }
     private void changeBanStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
-            String userIdString;
-            int userId = 0;
-            if((userIdString = req.getParameter("id"))!=null){
-                userId = Integer.parseInt(userIdString);
-            }
+        if (user.getRole().equals("admin")) {
+            String userIdString = req.getParameter("id");
+            int userId = (userIdString!=null)? Integer.parseInt(userIdString) : -1;
             boolean banStatus = Boolean.parseBoolean(req.getParameter("banStatus"));
             String rolePage = req.getParameter("role");
 
@@ -171,18 +161,11 @@ public class UserManager implements ControllerCommand {
     }
     private void changeBonusCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
-            int clientId = 0;
-            String clientIdString;
-            if((clientIdString = req.getParameter("clientId"))!=null){
-                clientId = Integer.parseInt(clientIdString);
-            }
-            int bonusPoints = 0;
-            String bonusPointsString;
-            if((bonusPointsString = req.getParameter("bonusPoints"))!=null){
-                bonusPoints = Integer.parseInt(bonusPointsString);
-            }
+        if (user.getRole().equals("admin")) {
+            String clientIdString = req.getParameter("clientId");
+            int clientId = (clientIdString!=null)? Integer.parseInt(clientIdString) : -1;
+            String bonusPointsString = req.getParameter("bonusPoints");
+            int bonusPoints = (bonusPointsString!=null)? Integer.parseInt(bonusPointsString) : 0;
 
             Client client = new Client(clientId, bonusPoints);
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -195,13 +178,9 @@ public class UserManager implements ControllerCommand {
     }
     private void changeTaxiCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
-            int taxiId = 0;
-            String taxiIdString;
-            if((taxiIdString = req.getParameter("changeTaxiId"))!=null) {
-                taxiId = Integer.parseInt(taxiIdString);
-            }
+        if (user.getRole().equals("admin")) {
+            String taxiIdString = req.getParameter("changeTaxiId");
+            int taxiId = (taxiIdString != null)? Integer.parseInt(taxiIdString):-1;
             String carNumber = req.getParameter("checkedCarNumber");
             Car car = new Car(carNumber);
             Taxi taxi = new Taxi(taxiId, car);

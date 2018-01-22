@@ -37,8 +37,7 @@ public class Taxis implements ControllerCommand {
 
     private void getCarList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
+        if (user.getRole().equals("admin")) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             TaxisService taxisService = serviceFactory.getTaxisService();
             List<Car> carList = taxisService.getCarList();
@@ -51,8 +50,7 @@ public class Taxis implements ControllerCommand {
     }
     private void addCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
+        if (user.getRole().equals("admin")) {
             String carNumber = req.getParameter("carNumber");
             String carName = req.getParameter("carName");
             String colour = req.getParameter("carColour");
@@ -70,8 +68,7 @@ public class Taxis implements ControllerCommand {
     }
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
+        if (user.getRole().equals("admin")) {
             String carNumber = req.getParameter("carNumber");
             Car car = new Car(carNumber);
 

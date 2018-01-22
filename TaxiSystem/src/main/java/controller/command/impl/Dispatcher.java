@@ -61,8 +61,7 @@ public class Dispatcher implements ControllerCommand {
 
     void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("client")) {
+        if (user.getRole().equals("client")) {
             Client client = (Client) user;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -76,8 +75,7 @@ public class Dispatcher implements ControllerCommand {
     }
     private void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         User user = (User)req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if(role.equals("taxi")) {
+        if(user.getRole().equals("taxi")) {
             Taxi taxi = (Taxi) user;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -92,8 +90,7 @@ public class Dispatcher implements ControllerCommand {
     }
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User)req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if(role.equals("client")) {
+        if(user.getRole().equals("client")) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Taxi> availableTaxiList = userManagerService.getAvailableTaxiList();
@@ -106,14 +103,13 @@ public class Dispatcher implements ControllerCommand {
     }
     private void callTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User)req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if(role.equals("client")) {
+        if(user.getRole().equals("client")) {
             Client client = (Client) user;
             String sourceCoordinate = req.getParameter("sourceCoordinate");
             String destinyCoordinate = req.getParameter("destinyCoordinate");
             Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxi")));
             String bonusText = req.getParameter("bonus");
-            Integer bonus = Integer.parseInt(bonusText.isEmpty() ? "0" : bonusText);
+            int bonus = Integer.parseInt(bonusText.isEmpty() ? "0" : bonusText);
             Double price = Double.parseDouble(req.getParameter("price"));
 
             Order order = new Order(client, taxi, sourceCoordinate, destinyCoordinate, price);
@@ -134,11 +130,9 @@ public class Dispatcher implements ControllerCommand {
         User user = (User)req.getSession().getAttribute("user");
         String role = user.getRole();
         if(role.equals("client") || role.equals("admin")) {
-            Integer orderId = null;
-            String orderIdString;
-            if ((orderIdString = req.getParameter("orderId")) != null) {
-                orderId = Integer.parseInt(orderIdString);
-            }
+            String orderIdString = req.getParameter("orderId");
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus("cancel",orderId)) {
@@ -154,13 +148,9 @@ public class Dispatcher implements ControllerCommand {
     }
     private void acceptOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("taxi")) {
-            Integer orderId = null;
-            String orderIdString;
-            if ((orderIdString = req.getParameter("orderId")) != null) {
-                orderId = Integer.parseInt(orderIdString);
-            }
+        if (user.getRole().equals("taxi")) {
+            String orderIdString = req.getParameter("orderId");
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
@@ -175,11 +165,9 @@ public class Dispatcher implements ControllerCommand {
         User user = (User) req.getSession().getAttribute("user");
         String role = user.getRole();
         if (role.equals("taxi")) {
-            Integer orderId = null;
-            String orderIdString;
-            if ((orderIdString = req.getParameter("orderId")) != null) {
-                orderId = Integer.parseInt(orderIdString);
-            }
+            String orderIdString = req.getParameter("orderId");
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus("reject",orderId)) {
@@ -193,11 +181,9 @@ public class Dispatcher implements ControllerCommand {
         User user = (User) req.getSession().getAttribute("user");
         String role = user.getRole();
         if (role.equals("client")) {
-            Integer orderId = null;
-            String orderIdString;
-            if ((orderIdString = req.getParameter("orderId")) != null) {
-                orderId = Integer.parseInt(orderIdString);
-            }
+            String orderIdString = req.getParameter("orderId");
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus("pay",orderId)) {
@@ -210,12 +196,10 @@ public class Dispatcher implements ControllerCommand {
     }
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
-            int page = 1; //default page
-            if (req.getParameter("numPage") != null) {
-                page = Integer.parseInt(req.getParameter("numPage"));
-            }
+        if (user.getRole().equals("admin")) {
+            String numPage = req.getParameter("numPage");
+            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
+
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             List<Order> orderList = dispatcherService.getAllOrderList();
@@ -237,8 +221,7 @@ public class Dispatcher implements ControllerCommand {
     }
     private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("admin")) {
+        if (user.getRole().equals("admin")) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.deleteAllOrders()) {

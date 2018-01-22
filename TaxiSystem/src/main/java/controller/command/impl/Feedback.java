@@ -33,19 +33,15 @@ public class Feedback implements ControllerCommand {
 
     private void writeReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
-        String role = user.getRole();
-        if (role.equals("client")) {
+        if (user.getRole().equals("client")) {
             Client client = (Client) user;
-            String taxiIdString;
-            Taxi taxi = null;
-            if((taxiIdString = req.getParameter("taxiId"))!=null) {
-                taxi = new Taxi(Integer.parseInt(taxiIdString));
-            }
-            Integer orderId = null;
-            String orderIdString;
-            if((orderIdString = req.getParameter("orderId"))!=null) {
-                orderId = Integer.parseInt(orderIdString);
-            }
+
+            String taxiIdString = req.getParameter("taxiId");
+            Taxi taxi = (taxiIdString != null)? new Taxi(Integer.parseInt(taxiIdString)): null;
+
+            String orderIdString = req.getParameter("orderId");
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+
             String comment = req.getParameter("review");
             Review review = new Review(client, taxi, comment);
 

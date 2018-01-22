@@ -53,7 +53,7 @@ public class FeedbackDAO {
             if ((resultSet = preparedStatement.executeQuery()) != null) {
                 while (resultSet.next()) {
                     review = new Review();
-                    Integer taxiId = resultSet.getInt(1);
+                    int taxiId = resultSet.getInt(1);
                     String taxiName = resultSet.getString(2);
                     String taxiSurname = resultSet.getString(3);
                     review.setTaxi(new Taxi(taxiId, taxiName, taxiSurname));
@@ -79,7 +79,7 @@ public class FeedbackDAO {
             if ((resultSet = preparedStatement.executeQuery()) != null) {
                 while (resultSet.next()) {
                     review = new Review();
-                    Integer clientId = resultSet.getInt(1);
+                    int clientId = resultSet.getInt(1);
                     String clientName = resultSet.getString(2);
                     String clientSurname = resultSet.getString(3);
                     review.setClient(new Client(clientId, clientName, clientSurname));
