@@ -201,6 +201,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus("pay",orderId)) {
+
                 getClientOrders(req, resp);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
@@ -241,7 +242,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.deleteAllOrders()) {
-                new UserManager().getTaxiList(req, resp);
+                getAllOrders(req,resp);
             }
         }else {
             resp.sendRedirect(REDIRECT_HOME);

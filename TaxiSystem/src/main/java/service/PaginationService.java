@@ -22,8 +22,12 @@ public class PaginationService<E>{
     public void buildPagination(List<E> entityList){
         pagination = new Pagination<>();
         pagination.setCountRecords(entityList.size());
-        pagination.setCountPages((int) Math.ceil(pagination.getCountRecords()* 1.0 / RECORDS_PER_PAGE));
-
+        int countPages;
+        if((countPages = (int) Math.ceil(pagination.getCountRecords()* 1.0 / RECORDS_PER_PAGE))>0){
+            pagination.setCountPages(countPages);
+        }else{
+            pagination.setCountPages(1);
+        }
         Page<E> page;
         for (int i=1; i<=pagination.getCountPages();i++){
             page = new Page<>();
