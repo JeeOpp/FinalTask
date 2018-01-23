@@ -3,9 +3,6 @@ package entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by DNAPC on 28.11.2017.
- */
 public class Taxi extends User{
     private boolean availableStatus;
     private Car car;

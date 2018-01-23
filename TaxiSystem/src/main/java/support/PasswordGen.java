@@ -1,14 +1,9 @@
 package support;
 
-import org.apache.commons.lang.RandomStringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by DNAPC on 21.01.2018.
- */
 public final class PasswordGen {
 
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";

@@ -9,9 +9,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DNAPC on 03.01.2018.
- */
 public class TaxisDAO {
     private static final Logger log = Logger.getLogger(TaxisDAO.class.getClass());
     private static final String SQL_SELECT_ALL_CARS="SELECT * FROM taxisystem.car;";

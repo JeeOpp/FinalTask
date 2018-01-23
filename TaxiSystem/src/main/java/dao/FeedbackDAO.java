@@ -12,9 +12,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DNAPC on 12.12.2017.
- */
 public class FeedbackDAO {
     private static final Logger log = Logger.getLogger(FeedbackDAO.class.getClass());
     private static final String SQL_SET_REVIEW = "INSERT INTO taxisystem.review (client_id, taxi_id, comment) VALUES (?, ?, ?);";

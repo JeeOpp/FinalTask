@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by DNAPC on 02.01.2018.
- */
 public class OrderStatusTag extends TagSupport implements IOrderStatus {
     private final static Logger log = Logger.getLogger(OrderStatusTag.class.getClass());
     private String orderStatus;

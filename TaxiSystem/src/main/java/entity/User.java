@@ -1,8 +1,5 @@
 package entity;
 
-/**
- * Created by DNAPC on 28.11.2017.
- */
 public class User {
     private int id;
     private String login;

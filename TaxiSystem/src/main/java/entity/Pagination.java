@@ -3,9 +3,6 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DNAPC on 21.12.2017.
- */
 public class Pagination<E>{
     private List<Page<E>> pagesList = null;
     private int countRecords;

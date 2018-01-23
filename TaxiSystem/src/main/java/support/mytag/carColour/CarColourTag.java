@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by DNAPC on 21.01.2018.
- */
 public class CarColourTag extends TagSupport implements ICarColour {
     private final static Logger log = Logger.getLogger(CarColourTag.class.getClass());
     private String colour;

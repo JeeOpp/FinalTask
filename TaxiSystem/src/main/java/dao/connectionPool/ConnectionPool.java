@@ -10,9 +10,6 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
-/**
- * Created by DNAPC on 26.12.2017.
- */
 public class ConnectionPool {
     private static final String EX_IN_POOL_MESSAGE = "SQLException in pool";
     private static final String NO_DRIVER_MASSAGE = "no driver";

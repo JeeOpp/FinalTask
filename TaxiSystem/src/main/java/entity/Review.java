@@ -1,8 +1,5 @@
 package entity;
 
-/**
- * Created by DNAPC on 12.12.2017.
- */
 public class Review {
     private int reviewId;
     private Client client;

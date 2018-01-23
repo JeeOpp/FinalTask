@@ -2,9 +2,6 @@ package entity;
 
 import java.util.List;
 
-/**
- * Created by DNAPC on 21.12.2017.
- */
 public class Page <E>{
     private int page;
     private List<E> records = null;

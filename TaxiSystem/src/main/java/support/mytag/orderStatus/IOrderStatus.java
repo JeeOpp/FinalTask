@@ -1,8 +1,5 @@
 package support.mytag.orderStatus;
 
-/**
- * Created by DNAPC on 23.01.2018.
- */
 public interface IOrderStatus {
     String PRIMARY = "colour-accepted";
     String WARNING = "colour-processed";

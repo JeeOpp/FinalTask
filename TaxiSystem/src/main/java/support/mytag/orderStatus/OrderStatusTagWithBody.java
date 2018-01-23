@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
 public class OrderStatusTagWithBody extends BodyTagSupport implements IOrderStatus {
     private final static Logger log = Logger.getLogger(OrderStatusTagWithBody.class.getClass());
     private String orderStatus;

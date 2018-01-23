@@ -133,7 +133,7 @@
                     <li class="page-item"><a class="page-link">${i}</a></li>      <!-- td-->
                 </c:when>
                 <c:otherwise>
-                    <li class="page-item"><a class="page-link" href="/Controller?method=dispatcher&action=getAllOrders&numPage=${i}">${i}</a></li>
+                    <li class="page-item"><a class="page-link" href="Controller?method=dispatcher&action=getAllOrders&numPage=${i}">${i}</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>

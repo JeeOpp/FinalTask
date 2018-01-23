@@ -5,9 +5,6 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by DNAPC on 28.11.2017.
- */
 public class Client extends User{
     private final static Logger log = Logger.getLogger(Client.class.getClass());
     private int bonusPoints;

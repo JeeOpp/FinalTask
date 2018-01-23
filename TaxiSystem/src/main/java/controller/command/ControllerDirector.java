@@ -5,9 +5,6 @@ import controller.command.impl.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by DNAPC on 16.11.2017.
- */
 public class ControllerDirector {
     private static final String SIGN_MANAGER_COMMAND = "signManager";
     private static final String DISPATCHER_COMMAND = "dispatcher";

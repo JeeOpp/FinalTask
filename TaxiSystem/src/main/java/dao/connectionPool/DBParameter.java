@@ -1,8 +1,5 @@
 package dao.connectionPool;
 
-/**
- * Created by DNAPC on 29.12.2017.
- */
 public enum DBParameter {
     DB_DRIVER("db.driver"),
     DB_URL("db.url"),

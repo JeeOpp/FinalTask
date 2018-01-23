@@ -10,9 +10,6 @@ import org.apache.log4j.Logger;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by DNAPC on 12.12.2017.
- */
 public class FeedbackService {
     private final static Logger log = Logger.getLogger(FeedbackService.class.getClass());
     public void setReview(Review review){

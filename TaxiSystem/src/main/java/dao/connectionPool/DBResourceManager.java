@@ -2,9 +2,6 @@ package dao.connectionPool;
 
 import java.util.ResourceBundle;
 
-/**
- * Created by DNAPC on 29.12.2017.
- */
 public class DBResourceManager {
     private final static DBResourceManager instance = new DBResourceManager();
 

@@ -10,9 +10,6 @@ import support.MD5;
 
 import java.sql.*;
 
-/**
- * Created by DNAPC on 18.12.2017.
- */
 public class SignDAO {
     private static final Logger log = Logger.getLogger(SignDAO.class.getClass());
     private static final String SQL_SELECT_LOGIN_ALL = "SELECT client.login FROM client UNION SELECT taxi.login FROM taxi;";

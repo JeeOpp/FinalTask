@@ -1,8 +1,5 @@
 package support.mytag.carColour;
 
-/**
- * Created by DNAPC on 23.01.2018.
- */
 public interface ICarColour {
     String OPEN_TAG = "<td>";
     String CLOSE_TAG = "</td>";

@@ -7,9 +7,7 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-/**
- * Created by DNAPC on 08.01.2018.
- */
+
 public class TLSSender implements Runnable{
     private final static Logger log = Logger.getLogger(TLSSender.class.getClass());
     private final static String USERNAME = "demkoandrey1998@gmail.com";

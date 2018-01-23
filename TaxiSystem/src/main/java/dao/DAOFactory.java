@@ -1,8 +1,5 @@
 package dao;
 
-/**
- * Created by DNAPC on 12.11.2017.
- */
 public class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
     private final SignDAO signDAO = new SignDAO();
