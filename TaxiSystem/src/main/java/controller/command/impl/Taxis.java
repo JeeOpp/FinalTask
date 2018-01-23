@@ -1,7 +1,6 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
-import controller.command.SwitchConstant;
 import entity.Car;
 import entity.User;
 import service.ServiceFactory;
@@ -13,16 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by DNAPC on 03.01.2018.
- */
 public class Taxis implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
-        switch (switchConstant){
+        TaxisAction taxisAction = TaxisAction.getConstant(action);
+        switch (taxisAction){
             case GET_CAR_LIST:
                 getCarList(req,resp);
                 break;
@@ -81,4 +77,28 @@ public class Taxis implements ControllerCommand {
         }
     }
 
+    private enum TaxisAction{
+        GET_CAR_LIST("getCarList"),
+        ADD_CAR("addCar"),
+        REMOVE_CAR("removeCar"),
+
+        NONE("none");
+        private String value;
+
+        TaxisAction(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+
+        public static TaxisAction getConstant(String action){
+            for (TaxisAction each: TaxisAction.values()){
+                if(each.getValue().equals(action)){
+                    return each;
+                }
+            }
+            return NONE;
+        }
+    }
 }

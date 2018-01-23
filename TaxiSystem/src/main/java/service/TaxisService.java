@@ -8,9 +8,6 @@ import org.apache.log4j.Logger;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by DNAPC on 03.01.2018.
- */
 public class TaxisService {
     private final static Logger log = Logger.getLogger(TaxisService.class.getClass());
     public List<Car> getCarList() {

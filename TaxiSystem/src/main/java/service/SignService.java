@@ -5,13 +5,11 @@ import dao.SignDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
+import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 
-/**
- * Created by DNAPC on 21.12.2017.
- */
 public class SignService {
     private final static Logger log = Logger.getLogger(SignService.class.getClass());
     public Boolean registerClient(Client client) throws SQLException {
@@ -38,14 +36,14 @@ public class SignService {
         DAOFactory daoFactory = DAOFactory.getInstance();
         SignDAO signDAO = daoFactory.getSignDAO();
         String role = signDAO.preAuthorize(login, password);
-        if ("client".equals(role)){
+        if (UserEnum.CLIENT.getValue().equals(role)){
             return signDAO.clientAuthorize(login, password);
         }
-        if("taxi".equals(role)){
+        if(UserEnum.TAXI.getValue().equals(role)){
             return signDAO.taxiAuthorize(login, password);
         }
-        if("admin".equals(role)){
-            return new User("admin");
+        if(UserEnum.ADMIN.getValue().equals(role)){
+            return new User(UserEnum.ADMIN.getValue());
         }
         return null;
     }

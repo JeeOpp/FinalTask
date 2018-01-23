@@ -14,10 +14,11 @@ public final class PasswordGen {
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String DIGITS = "0123456789";
+    private static final String EXCEPTION_MESSAGE = "Empty constructor is not supported.";
     private static final int PASS_LENGTH = 10;
 
     private PasswordGen() {
-        throw new UnsupportedOperationException("Empty constructor is not supported.");
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
     }
 
     public static String generate() {

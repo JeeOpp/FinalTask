@@ -1,11 +1,12 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
-import controller.command.SwitchConstant;
 import entity.Car;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
+import entity.entityEnum.OrderEnum;
+import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import service.ServiceFactory;
 import service.SignService;
@@ -17,20 +18,23 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/**
- * Created by DNAPC on 16.12.2017.
- */
 public class SignManager implements ControllerCommand {
     private static final Logger log = Logger.getLogger(SignManager.class.getClass());
+    private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     private static final String ADMIN_MAIN_PATH = "WEB-INF/Admin/main.jsp";
     private static final String CLIENT_MAIN_PATH = "WEB-INF/Client/main.jsp";
     private static final String TAXI_MAIN_PATH = "WEB-INF/Taxi/main.jsp";
     private static final String AUTHORIZATION_PROBLEM = "authorizationProblem.jsp";
+    private static final String REGISTRATION_PROBLEM = "registrationProblem.jsp";
+    private static final String REGISTRATION_SUCCESS = "registrationSuccess.jsp";
+    private static final String BANNED_PAGE = "banned.jsp";
+    private static final String INDEX_PAGE = "index.jsp";
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
-        switch (switchConstant) {
+        String action = req.getParameter(ACTION);
+        SignManagerAction signManagerAction = SignManagerAction.getConstant(action);
+        switch (signManagerAction) {
             case AUTHORIZATION:
                 authorize(req, resp);
                 break;
@@ -46,97 +50,128 @@ public class SignManager implements ControllerCommand {
         }
     }
 
-    private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        User user = (User) req.getSession().getAttribute("user");
-        req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req,resp);
+    private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req, resp);
     }
-    private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+    private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String login = req.getParameter(UserEnum.LOGIN.getValue());
+        String password = req.getParameter(UserEnum.PASSWORD.getValue());
 
         try {
-            if ((user = signService.authorize(login,password)) == null) {
-                resp.sendRedirect("authorizationProblem.jsp");
+            if ((user = signService.authorize(login, password)) == null) {
+                resp.sendRedirect(AUTHORIZATION_PROBLEM);
             } else {
                 if (user.getBanStatus()) {
-                    resp.sendRedirect("banned.jsp");
+                    resp.sendRedirect(BANNED_PAGE);
                 } else {
-                    if(user.getRole().equals("taxi")){
+                    if (user.getRole().equals(UserEnum.TAXI.getValue())) {
                         signService.changeSessionStatus((Taxi) user);
                         ((Taxi) user).setAvailableStatus(true);
                     }
-                    req.getSession().setAttribute("user",user);
-                    String pageAuthentication =  chooseUserPage(user.getRole());
-                    req.getRequestDispatcher(pageAuthentication).forward(req,resp);
+                    req.getSession().setAttribute(UserEnum.USER.getValue(), user);
+                    String pageAuthentication = chooseUserPage(user.getRole());
+                    req.getRequestDispatcher(pageAuthentication).forward(req, resp);
                 }
             }
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
-    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String firstName = req.getParameter("name");
-        String lastName = req.getParameter("surname");
-        String mail = req.getParameter("email").toLowerCase();
-        String carNumber = req.getParameter("checkedCarNumber");
-        String role = req.getParameter("role");
+        String login = req.getParameter(UserEnum.LOGIN.getValue());
+        String password = req.getParameter(UserEnum.PASSWORD.getValue());
+        String firstName = req.getParameter(UserEnum.NAME.getValue());
+        String lastName = req.getParameter(UserEnum.SURNAME.getValue());
+        String mail = req.getParameter(UserEnum.EMAIL.getValue()).toLowerCase();
+        String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
+        String role = req.getParameter(UserEnum.ROLE.getValue());
         try {
-            if (role.equals("client")) {
-                Client client = new Client(login,password,firstName,lastName,mail);
-                if(signService.registerClient(client)){
-                    req.getRequestDispatcher("registrationSuccess.jsp").forward(req,resp);
-                }else {
-                    req.getRequestDispatcher("registrationProblem.jsp").forward(req,resp);
+            if (role.equals(UserEnum.CLIENT.getValue())) {
+                Client client = new Client(login, password, firstName, lastName, mail);
+                if (signService.registerClient(client)) {
+                    req.getRequestDispatcher(REGISTRATION_SUCCESS).forward(req, resp);
+                } else {
+                    req.getRequestDispatcher(REGISTRATION_PROBLEM).forward(req, resp);
                 }
             }
-            if (role.equals("taxi")) {
+            if (role.equals(UserEnum.TAXI.getValue())) {
                 Car car = new Car(carNumber);
-                Taxi taxi = new Taxi(login,password,firstName,lastName,role,car);
-                if(signService.registerTaxi(taxi)){
-                    req.getRequestDispatcher("Controller?method=userManager&action=getTaxiList").forward(req,resp);
-                }else {
-                    req.getRequestDispatcher("Controller?method=userManager&action=getTaxiList").forward(req,resp);
+                Taxi taxi = new Taxi(login, password, firstName, lastName, role, car);
+                if (signService.registerTaxi(taxi)) {
+                    new UserManager().getTaxiList(req,resp);
+                } else {
+                    resp.sendRedirect(REDIRECT_HOME);
                 }
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
+
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(UserEnum.USER.getValue());
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
         try {
-            if(user.getRole().equals("taxi")) {
-                signService.changeSessionStatus((Taxi)user);
+            if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+                signService.changeSessionStatus((Taxi) user);
             }
             session.invalidate();
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect(INDEX_PAGE);
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
-    public String chooseUserPage(String role){
-        if (role.equals("client")) {
+
+    public String chooseUserPage(String role) {
+        if (role.equals(UserEnum.CLIENT.getValue())) {
             return CLIENT_MAIN_PATH;
         }
-        if (role.equals("taxi")) {
+        if (role.equals(UserEnum.TAXI.getValue())) {
             return TAXI_MAIN_PATH;
         }
-        if (role.equals("admin")) {
+        if (role.equals(UserEnum.ADMIN.getValue())) {
             return ADMIN_MAIN_PATH;
         }
         return AUTHORIZATION_PROBLEM;
+    }
+
+    private enum SignManagerAction {
+        AUTHORIZATION("authorization"),
+        REGISTRATION("registration"),
+        LOG_OUT("logOut"),
+        GO_HOME_PAGE("goHomePage"),
+
+        NONE("none");
+        private String value;
+
+        SignManagerAction(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public static SignManagerAction getConstant(String action) {
+            for (SignManagerAction each : SignManagerAction.values()) {
+                if (each.getValue().equals(action)) {
+                    return each;
+                }
+            }
+            return NONE;
+        }
     }
 }

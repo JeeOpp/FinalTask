@@ -6,6 +6,7 @@ import entity.Client;
 import entity.Order;
 import entity.Taxi;
 import entity.User;
+import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import support.MD5;
 
@@ -42,7 +43,7 @@ public class UserManagerDAO {
     public void changePassword(User user){
         try {
             connection = connectionPool.takeConnection();
-            if (user.getRole().equals("taxi")) {
+            if (user.getRole().equals(UserEnum.TAXI.getValue())) {
                 preparedStatement = connection.prepareStatement(SQL_CHANGE_TAXI_PASS);
             } else {
                 preparedStatement = connection.prepareStatement(SQL_CHANGE_CLIENT_PASS);
@@ -99,7 +100,7 @@ public class UserManagerDAO {
     public void changeBanStatus(User user){
         try {
             connection = connectionPool.takeConnection();
-            if(user.getRole().equals("taxi")) {
+            if(user.getRole().equals(UserEnum.TAXI.getValue())) {
                 preparedStatement = connection.prepareStatement(SQL_GET_TAXI_BAN);
             }else{
                 preparedStatement = connection.prepareStatement(SQL_GET_CLIENT_BAN);

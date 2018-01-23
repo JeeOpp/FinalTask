@@ -18,5 +18,4 @@ public enum DBParameter {
     public String getValue(){
         return value;
     }
-
 }

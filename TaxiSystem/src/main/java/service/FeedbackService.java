@@ -4,6 +4,7 @@ import dao.DAOFactory;
 import dao.FeedbackDAO;
 import entity.Review;
 import entity.User;
+import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
@@ -28,7 +29,7 @@ public class FeedbackService {
         DAOFactory daoFactory = DAOFactory.getInstance();
         FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
         try {
-            if (user.getRole().equals("client")) {
+            if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
                 reviewList = feedbackDAO.getClientReviews(user);
             } else {
                 reviewList = feedbackDAO.getTaxiReviews(user);

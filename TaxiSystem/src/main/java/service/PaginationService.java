@@ -6,11 +6,9 @@ import entity.Pagination;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DNAPC on 21.12.2017.
- */
 public class PaginationService<E>{
     private static final int RECORDS_PER_PAGE = 5;
+    private static final int DEFAULT_COUNT_PAGE = 1;
     private Pagination<E> pagination = null;
 
     public PaginationService() {
@@ -19,6 +17,7 @@ public class PaginationService<E>{
     public Pagination<E> getPagination() {
         return pagination;
     }
+
     public void buildPagination(List<E> entityList){
         pagination = new Pagination<>();
         pagination.setCountRecords(entityList.size());
@@ -26,7 +25,7 @@ public class PaginationService<E>{
         if((countPages = (int) Math.ceil(pagination.getCountRecords()* 1.0 / RECORDS_PER_PAGE))>0){
             pagination.setCountPages(countPages);
         }else{
-            pagination.setCountPages(1);
+            pagination.setCountPages(DEFAULT_COUNT_PAGE);
         }
         Page<E> page;
         for (int i=1; i<=pagination.getCountPages();i++){
@@ -35,6 +34,7 @@ public class PaginationService<E>{
             pagination.getPagesList().add(page);
         }
     }
+
     private List<E> splitList(int currentPage, List<E> entityList){
         int firstElement = (currentPage-1)*RECORDS_PER_PAGE;
         int lastElement = firstElement+RECORDS_PER_PAGE-1;

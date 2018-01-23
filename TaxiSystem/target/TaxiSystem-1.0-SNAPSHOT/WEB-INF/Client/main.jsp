@@ -126,7 +126,7 @@
                     </div>
                     <div class="modal-body">
                         <input type="text" name="subject" placeholder="${subject}" required /><br/>
-                        <textarea name="text" cols="62" rows="3" placeholder="${text}" required></textarea>  <!--input-->
+                        <textarea name="text" cols="50" rows="3" placeholder="${text}" required></textarea>  <!--input-->
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-light">${sendMail}</button>  <!--input-->

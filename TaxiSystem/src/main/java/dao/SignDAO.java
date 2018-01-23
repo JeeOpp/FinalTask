@@ -153,7 +153,7 @@ public class SignDAO {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_LOGIN_ALL);
             while (resultSet.next()) {
-                if (resultSet.getString("login").equalsIgnoreCase(login)) {
+                if (resultSet.getString(1).equalsIgnoreCase(login)) {
                     return false;
                 }
             }
@@ -171,7 +171,7 @@ public class SignDAO {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_MAIL_ALL);
             while (resultSet.next()) {
-                if (resultSet.getString("mail").equalsIgnoreCase(mail)) {
+                if (resultSet.getString(1).equalsIgnoreCase(mail)) {
                     return false;
                 }
             }

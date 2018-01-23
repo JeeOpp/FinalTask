@@ -1,7 +1,6 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
-import controller.command.SwitchConstant;
 import entity.*;
 import service.*;
 import support.PasswordGen;
@@ -15,16 +14,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by DNAPC on 14.12.2017.
- */
 public class UserManager implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
-        switch (switchConstant) {
+        UserManagerAction userManagerAction = UserManagerAction.getConstant(action);
+        switch (userManagerAction) {
             case PRE_PROFILE:
                 getUserReview(req, resp);
                 break;
@@ -113,7 +109,7 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
-    private void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
             String numPage = req.getParameter("numPage");
@@ -211,6 +207,35 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect("index.jsp");
         }else{
             resp.sendRedirect("index.jsp");
+        }
+    }
+    private enum UserManagerAction{
+        PRE_PROFILE("preProfile"),
+        CHANGE_PASSWORD("changePassword"),
+        GET_CLIENT_LIST("getClientList"),
+        GET_TAXI_LIST("getTaxiList"),
+        CHANGE_BAN_STATUS("changeBanStatus"),
+        CHANGE_BONUS_COUNT("changeBonusCount"),
+        CHANGE_TAXI_CAR("changeTaxiCar"),
+        RESTORE_PASSWORD("restorePassword"),
+
+        NONE("none");
+        private String value;
+
+        UserManagerAction(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+
+        public static UserManagerAction getConstant(String action){
+            for (UserManagerAction each: UserManagerAction.values()){
+                if(each.getValue().equals(action)){
+                    return each;
+                }
+            }
+            return NONE;
         }
     }
 }

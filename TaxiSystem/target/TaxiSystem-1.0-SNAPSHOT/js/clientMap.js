@@ -63,9 +63,3 @@ function initMap() {
 }
 google.maps.event.addDomListener(window, "load", initMap);
 
-
-/*
-    var dragDestHandler=function(e){
-        document.querySelector('input[name="destinyCoordinate"]').value = e.latLng.lat() + "," + e.latLng.lng();
-    };
-*/

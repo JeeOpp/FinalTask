@@ -1,5 +1,6 @@
 package support.mytag.carColour;
 
+import entity.entityEnum.CarEnum;
 import org.apache.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
@@ -11,7 +12,7 @@ import java.util.ResourceBundle;
 /**
  * Created by DNAPC on 21.01.2018.
  */
-public class CarColourTag extends TagSupport {
+public class CarColourTag extends TagSupport implements ICarColour {
     private final static Logger log = Logger.getLogger(CarColourTag.class.getClass());
     private String colour;
     private String locale;
@@ -31,42 +32,42 @@ public class CarColourTag extends TagSupport {
     public int doStartTag() throws JspException {
         try{
             chooseClass();
-            pageContext.getOut().write("<td>"+bodyText+"</td>");
+            pageContext.getOut().write(OPEN_TAG+bodyText+CLOSE_TAG);
         }catch (IOException ex){
             log.error(ex.getMessage());
         }
         return SKIP_BODY;
     }
     private void chooseClass(){
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("localization.local",getLocale());
-        Colour colourEnum = Colour.getConstant(colour);
-        switch (colourEnum){
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE,getLocale());
+        CarEnum.CarColour carColourEnum = CarEnum.CarColour.getConstant(colour);
+        switch (carColourEnum){
             case RED:
-                bodyText = resourceBundle.getString("local.colour.red");
+                bodyText = resourceBundle.getString(RED);
                 break;
             case ORANGE:
-                bodyText = resourceBundle.getString("local.colour.orange");
+                bodyText = resourceBundle.getString(ORANGE);
                 break;
             case YELLOW:
-                bodyText = resourceBundle.getString("local.colour.yellow");
+                bodyText = resourceBundle.getString(YELLOW);
                 break;
             case GREEN:
-                bodyText = resourceBundle.getString("local.colour.green");
+                bodyText = resourceBundle.getString(GREEN);
                 break;
             case SKY:
-                bodyText = resourceBundle.getString("local.colour.sky");
+                bodyText = resourceBundle.getString(SKY);
                 break;
             case BLUE:
-                bodyText = resourceBundle.getString("local.colour.blue");
+                bodyText = resourceBundle.getString(BLUE);
                 break;
             case PURPLE:
-                bodyText = resourceBundle.getString("local.colour.purple");
+                bodyText = resourceBundle.getString(PURPLE);
                 break;
             case BLACK:
-                bodyText = resourceBundle.getString("local.colour.black");
+                bodyText = resourceBundle.getString(BLACK);
                 break;
             case WHITE:
-                bodyText = resourceBundle.getString("local.colour.white");
+                bodyText = resourceBundle.getString(WHITE);
                 break;
         }
     }

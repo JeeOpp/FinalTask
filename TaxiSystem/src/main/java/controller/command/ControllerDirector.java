@@ -9,16 +9,23 @@ import java.util.Map;
  * Created by DNAPC on 16.11.2017.
  */
 public class ControllerDirector {
-    private Map<String, ControllerCommand> commandMap = new HashMap<>();
+    private static final String SIGN_MANAGER_COMMAND = "signManager";
+    private static final String DISPATCHER_COMMAND = "dispatcher";
+    private static final String LOCALIZATION_COMMAND = "localization";
+    private static final String FEEDBACK_COMMAND = "feedback";
+    private static final String USER_MANAGER_COMMAND = "userManager";
+    private static final String TAXIS_COMMAND = "taxis";
+    private static final String MAILER_COMMAND = "mailer";
+    private final Map<String, ControllerCommand> commandMap = new HashMap<>();
 
     public ControllerDirector(){
-        commandMap.put("signManager", new SignManager());
-        commandMap.put("dispatcher", new Dispatcher());
-        commandMap.put("localization", new Localization());
-        commandMap.put("feedback", new Feedback());
-        commandMap.put("userManager", new UserManager());
-        commandMap.put("taxis", new Taxis());
-        commandMap.put("mailer", new Mailer());
+        commandMap.put(SIGN_MANAGER_COMMAND, new SignManager());
+        commandMap.put(DISPATCHER_COMMAND, new Dispatcher());
+        commandMap.put(LOCALIZATION_COMMAND, new Localization());
+        commandMap.put(FEEDBACK_COMMAND, new Feedback());
+        commandMap.put(USER_MANAGER_COMMAND, new UserManager());
+        commandMap.put(TAXIS_COMMAND, new Taxis());
+        commandMap.put(MAILER_COMMAND, new Mailer());
     }
     public ControllerCommand getCommand(String method){
         return commandMap.get(method);

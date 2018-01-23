@@ -5,10 +5,8 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by DNAPC on 08.12.2017.
- */
 public class Order {
+    private final static String DEFAULT_ORDER_STATUS = "processed";
     private final static Logger log = Logger.getLogger(Order.class.getClass());
     private int orderId;
     private Client client;
@@ -27,7 +25,7 @@ public class Order {
     }
 
     public Order(){
-        orderStatus = "processed";
+        orderStatus = DEFAULT_ORDER_STATUS;
     }
 
     public int getOrderId() {

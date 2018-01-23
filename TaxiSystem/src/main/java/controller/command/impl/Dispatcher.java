@@ -1,9 +1,13 @@
 package controller.command.impl;
+import static entity.entityEnum.OrderEnum.OrderAction.*;
 
 import com.google.gson.Gson;
 import controller.command.ControllerCommand;
-import controller.command.SwitchConstant;
 import entity.*;
+
+import entity.entityEnum.OrderEnum;
+import entity.entityEnum.PaginationEnum;
+import entity.entityEnum.UserEnum;
 import service.*;
 
 import javax.servlet.ServletException;
@@ -12,17 +16,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by DNAPC on 29.11.2017.
- */
 public class Dispatcher implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private final static String CLIENT_ORDER_PAGE = "WEB-INF/Client/orders.jsp";
+    private final static String TAXI_ORDER_PAGE = "WEB-INF/Taxi/orders.jsp";
+    private final static String ADMIN_ORDER_PAGE = "WEB-INF/Admin/orders.jsp";
+    private final static String CALL_TAXI_PAGE = "WEB-INF/Client/callTaxi.jsp";
+    private final static String AVAILABLE_TAXI = "availableTaxiList";
+    private final static String ZERO_COUNT = "0";
+    private final static int INVALID_ORDER = -1;
+    private final static int DEFAULT_PAGE = 1;
+    private final static String JSON_CONTENT = "application/json";
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        SwitchConstant switchConstant = SwitchConstant.getConstant(action);
+        String action = req.getParameter(ACTION);
+        DispatcherAction dispatcherAction = DispatcherAction.getConstant(action);
 
-        switch (switchConstant){
+        switch (dispatcherAction){
             case ACCEPT_ORDER:
                 acceptOrder(req,resp);
                 break;
@@ -60,64 +70,64 @@ public class Dispatcher implements ControllerCommand {
     }
 
     void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("client")) {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
             Client client = (Client) user;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             List<Order> orderList = dispatcherService.getClientOrders(client);
-            req.setAttribute("clientOrder", orderList);
-            req.getRequestDispatcher("WEB-INF/Client/orders.jsp").forward(req, resp);
+            req.setAttribute(OrderEnum.CLIENT_ORDER.getValue(), orderList);
+            req.getRequestDispatcher(CLIENT_ORDER_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-        User user = (User)req.getSession().getAttribute("user");
-        if(user.getRole().equals("taxi")) {
+        User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
+        if(user.getRole().equals(UserEnum.TAXI.getValue())) {
             Taxi taxi = (Taxi) user;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             List<Order> orderList = dispatcherService.getTaxiOrders(taxi);
 
-            req.setAttribute("taxiOrder", orderList);
-            req.getRequestDispatcher("WEB-INF/Taxi/orders.jsp").forward(req, resp);
+            req.setAttribute(OrderEnum.TAXI_ORDER.getValue(), orderList);
+            req.getRequestDispatcher(TAXI_ORDER_PAGE).forward(req, resp);
         }else{
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        User user = (User)req.getSession().getAttribute("user");
-        if(user.getRole().equals("client")) {
+        User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
+        if(user.getRole().equals(UserEnum.CLIENT.getValue())) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Taxi> availableTaxiList = userManagerService.getAvailableTaxiList();
 
-            req.setAttribute("availableTaxiList", availableTaxiList);
-            req.getRequestDispatcher("WEB-INF/Client/callTaxi.jsp").forward(req, resp);
+            req.setAttribute(AVAILABLE_TAXI, availableTaxiList);
+            req.getRequestDispatcher(CALL_TAXI_PAGE).forward(req, resp);
         }else{
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void callTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        User user = (User)req.getSession().getAttribute("user");
-        if(user.getRole().equals("client")) {
+        User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
+        if(user.getRole().equals(UserEnum.CLIENT.getValue())) {
             Client client = (Client) user;
-            String sourceCoordinate = req.getParameter("sourceCoordinate");
-            String destinyCoordinate = req.getParameter("destinyCoordinate");
-            Taxi taxi = new Taxi(Integer.parseInt(req.getParameter("taxi")));
-            String bonusText = req.getParameter("bonus");
-            int bonus = Integer.parseInt(bonusText.isEmpty() ? "0" : bonusText);
-            Double price = Double.parseDouble(req.getParameter("price"));
+            String sourceCoordinate = req.getParameter(OrderEnum.SOURCE_COORD.getValue());
+            String destinyCoordinate = req.getParameter(OrderEnum.DESTINY_COORD.getValue());
+            Taxi taxi = new Taxi(Integer.parseInt(req.getParameter(UserEnum.TAXI.getValue())));
+            String bonusText = req.getParameter(OrderEnum.BONUS.getValue());
+            int bonus = Integer.parseInt(bonusText.isEmpty() ? ZERO_COUNT : bonusText);
+            Double price = Double.parseDouble(req.getParameter(OrderEnum.PRICE.getValue()));
 
             Order order = new Order(client, taxi, sourceCoordinate, destinyCoordinate, price);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.callConfirm(order, bonus)) {
-                ((Client)req.getSession().getAttribute("user")).setBonusPoints(client.getBonusPoints()-bonus);
+                ((Client)req.getSession().getAttribute(UserEnum.USER.getValue())).setBonusPoints(client.getBonusPoints() - bonus);
                 getClientOrders(req, resp);
             } else {
                 preOrder(req, resp);
@@ -127,19 +137,19 @@ public class Dispatcher implements ControllerCommand {
         }
     }
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        User user = (User)req.getSession().getAttribute("user");
+        User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if(role.equals("client") || role.equals("admin")) {
-            String orderIdString = req.getParameter("orderId");
-            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+        if(role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.ADMIN.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.changeOrderStatus("cancel",orderId)) {
-                if (user.getRole().equals("client")) {
+            if (dispatcherService.changeOrderStatus(CANCEL.getValue(),orderId)) {
+                if (role.equals(UserEnum.CLIENT.getValue())) {
                     getClientOrders(req, resp);   //to user
-                } else if (user.getRole().equals("admin")) {
-                    getAllOrders(req, resp);     //to admin
+                } else {
+                    getAllOrders(req, resp);      //to admin
                 }
             }
         }else {
@@ -147,58 +157,63 @@ public class Dispatcher implements ControllerCommand {
         }
     }
     private void acceptOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("taxi")) {
-            String orderIdString = req.getParameter("orderId");
-            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.changeOrderStatus("accept",orderId)) {
-                req.getRequestDispatcher("WEB-INF/Taxi/main.jsp").forward(req, resp);
+            if (dispatcherService.changeOrderStatus(ACCEPT.getValue(),orderId)) {
+                getTaxiOrders(req,resp);
+            }else {
+                resp.sendRedirect(REDIRECT_HOME);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void rejectOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if (role.equals("taxi")) {
-            String orderIdString = req.getParameter("orderId");
-            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+        if (role.equals(UserEnum.TAXI.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.changeOrderStatus("reject",orderId)) {
+            if (dispatcherService.changeOrderStatus(REJECT.getValue(),orderId)) {
                 getTaxiOrders(req, resp);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }
+        }else {
+            resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void payOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if (role.equals("client")) {
-            String orderIdString = req.getParameter("orderId");
-            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : -1;
+        if (role.equals(UserEnum.CLIENT.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null)? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.changeOrderStatus("pay",orderId)) {
-
+            if (dispatcherService.changeOrderStatus(PAY.getValue(),orderId)) {
                 getClientOrders(req, resp);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }
+        }else {
+            resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String numPage = req.getParameter("numPage");
-            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+            int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
@@ -210,18 +225,18 @@ public class Dispatcher implements ControllerCommand {
             List<Order> pageOrderList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute("pageOrderList", pageOrderList);
-            req.setAttribute("countPages", paginationService.getPagination().getCountPages());
-            req.setAttribute("currentPage", page);
+            req.setAttribute(PaginationEnum.PAGE_ORDER_LIST.getValue(), pageOrderList);
+            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
+            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
 
-            req.getRequestDispatcher("WEB-INF/Admin/orders.jsp").forward(req, resp);
+            req.getRequestDispatcher(ADMIN_ORDER_PAGE).forward(req, resp);
         }else {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
     private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.deleteAllOrders()) {
@@ -239,7 +254,40 @@ public class Dispatcher implements ControllerCommand {
         Gson gson = new Gson();
         String carListJson = gson.toJson(carList);
 
-        resp.setContentType("application/json");
+        resp.setContentType(JSON_CONTENT);
         resp.getWriter().write(carListJson);
+    }
+
+    private enum DispatcherAction{
+        PRE_ORDER("preOrder"),
+        CALL_TAXI("callTaxi"),
+        GET_CLIENT_ORDERS("getClientOrders"),
+        GET_TAXI_ORDERS("getTaxiOrders"),
+        CANCEL_ORDER("cancelOrder"),
+        ACCEPT_ORDER("acceptOrder"),
+        REJECT_ORDER("rejectOrder"),
+        PAY_ORDER("payOrder"),
+        GET_ALL_ORDERS("getAllOrders"),
+        DELETE_ALL_ORDERS("deleteAllOrders"),
+        GET_JSON_CAR_LIST("getJsonCarList"),
+
+        NONE("none");
+        private String value;
+
+        DispatcherAction(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+
+        public static DispatcherAction getConstant(String action){
+            for (DispatcherAction each: DispatcherAction.values()){
+                if(each.getValue().equals(action)){
+                    return each;
+                }
+            }
+            return NONE;
+        }
     }
 }

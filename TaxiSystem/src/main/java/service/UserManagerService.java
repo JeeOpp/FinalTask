@@ -12,9 +12,6 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by DNAPC on 16.12.2017.
- */
 public class UserManagerService {
     private final static Logger log = Logger.getLogger(UserManagerService.class.getClass());
     public Boolean changePassword(User user, String currentPassword, String newPassword) {

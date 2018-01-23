@@ -3,10 +3,9 @@ package controller.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * Created by DNAPC on 03.12.2017.
- */
 public class CharsetFilter implements Filter {
+    private final static String ENCODING = "characterEncoding";
+
     private String encoding;
 
     public void destroy(){
@@ -19,6 +18,6 @@ public class CharsetFilter implements Filter {
     }
 
     public void init(FilterConfig filterConfig) throws ServletException{
-        encoding = filterConfig.getInitParameter("characterEncoding");
+        encoding = filterConfig.getInitParameter(ENCODING);
     }
 }

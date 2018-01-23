@@ -51,7 +51,7 @@ public class Client extends User{
             this.setLogin(resultSet.getString(2));
             this.setFirstName(resultSet.getString(3));
             this.setLastName(resultSet.getString(4));
-            this.setMail(resultSet.getString("mail"));
+            this.setMail(resultSet.getString(5));
             this.setBonusPoints(resultSet.getInt(6));
             this.setBanStatus(resultSet.getBoolean(7));
             this.setRole(resultSet.getString(8));

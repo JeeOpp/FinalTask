@@ -8,18 +8,19 @@ import controller.command.ControllerCommand;
 import controller.command.ControllerDirector;
 
 import javax.servlet.*;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by DNAPC on 12.11.2017.
  */
 public class Controller extends HttpServlet{
+    private static final String METHOD = "method";
+    private static final String TEXT_CONTENT_TYPE = "text/html";
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -27,9 +28,9 @@ public class Controller extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
+        resp.setContentType(TEXT_CONTENT_TYPE);
 
-        String method = req.getParameter("method");
+        String method = req.getParameter(METHOD);
 
         ControllerDirector controllerDirector = new ControllerDirector();
         ControllerCommand controllerCommand = controllerDirector.getCommand(method);

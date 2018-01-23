@@ -1,5 +1,6 @@
 package support.mytag.orderStatus;
 
+import entity.entityEnum.OrderEnum;
 import org.apache.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
@@ -8,16 +9,9 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by DNAPC on 03.01.2018.
- */
-public class OrderStatusTagWithBody extends BodyTagSupport {
+
+public class OrderStatusTagWithBody extends BodyTagSupport implements IOrderStatus {
     private final static Logger log = Logger.getLogger(OrderStatusTagWithBody.class.getClass());
-    private static final String primary = "colour-accepted";
-    private static final String warning = "colour-processed";
-    private static final String success = "colour-completed";
-    private static final String danger = "colour-rejected";
-    private static final String info = "colour-archive";
     private String orderStatus;
     private String locale;
     private String bodyText;
@@ -36,7 +30,7 @@ public class OrderStatusTagWithBody extends BodyTagSupport {
     public int doStartTag() throws JspException {
         try{
             String attrName = chooseClass();
-            pageContext.getOut().write("<td class="+ attrName + ">");
+            pageContext.getOut().write(START_OPEN_TAG+ attrName + END_OPEN_TAG);
         }catch (IOException ex){
             log.error(ex.getMessage());
         }
@@ -56,31 +50,31 @@ public class OrderStatusTagWithBody extends BodyTagSupport {
     @Override
     public int doEndTag() throws JspException {
         try{
-            pageContext.getOut().write("</td>");
+            pageContext.getOut().write(CLOSE_TAG);
         }catch (IOException ex){
             log.error(ex.getMessage());
         }
         return SKIP_BODY;
     }
     private String chooseClass(){
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("localization.local",getLocale());
-        OrderStatus orderEnum = OrderStatus.getConstant(orderStatus);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE,getLocale());
+        OrderEnum.OrderStatus orderEnum = OrderEnum.OrderStatus.getConstant(orderStatus);
         switch (orderEnum){
             case PROCESSED:
-                bodyText = resourceBundle.getString("local.statusOrder.processed");
-                return warning;
+                bodyText = resourceBundle.getString(LOCALE_PROCESSED);
+                return WARNING;
             case REJECTED:
-                bodyText = resourceBundle.getString("local.statusOrder.rejected");
-                return danger;
+                bodyText = resourceBundle.getString(LOCALE_REJECTED);
+                return DANGER;
             case ACCEPTED:
-                bodyText = resourceBundle.getString("local.statusOrder.accepted");
-                return primary;
+                bodyText = resourceBundle.getString(LOCALE_ACCEPTED);
+                return PRIMARY;
             case COMPLETED:
-                bodyText = resourceBundle.getString("local.statusOrder.completed");
-                return success;
+                bodyText = resourceBundle.getString(LOCALE_COMPLETED);
+                return SUCCESS;
             case ARCHIVE:
-                bodyText = resourceBundle.getString("local.statusOrder.archive");
-                return info;
+                bodyText = resourceBundle.getString(LOCALE_ARCHIVE);
+                return INFO;
         }
         return null;
     }

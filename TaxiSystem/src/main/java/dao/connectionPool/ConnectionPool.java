@@ -14,6 +14,12 @@ import java.util.concurrent.Executor;
  * Created by DNAPC on 26.12.2017.
  */
 public class ConnectionPool {
+    private static final String EX_IN_POOL_MESSAGE = "SQLException in pool";
+    private static final String NO_DRIVER_MASSAGE = "no driver";
+    private static final String ERROR_TO_DATA_MESSAGE = "error to the data source";
+    private static final String CLOSED_MESSAGE = "Already closed";
+    private static final String OFFER_MESSAGE = "offer connection from queue error";
+    private static final String REMOVE_MESSAGE = "remove connection from queue error";
     private static final Logger log = Logger.getLogger(ConnectionPool.class.getClass());
     private static final ConnectionPool instance = new ConnectionPool();
     private BlockingQueue <Connection> connectionQueue;
@@ -54,9 +60,9 @@ public class ConnectionPool {
                 connectionQueue.add(wrappedConnection);
             }
         }catch (SQLException ex){
-            throw new ConnectionPoolException("SQLException in pool", ex);
+            throw new ConnectionPoolException(EX_IN_POOL_MESSAGE, ex);
         }catch (ClassNotFoundException ex){
-            throw new ConnectionPoolException("no driver", ex);
+            throw new ConnectionPoolException(NO_DRIVER_MASSAGE, ex);
         }
     }
     public void dispose(){
@@ -76,7 +82,7 @@ public class ConnectionPool {
             connection = connectionQueue.take();
             giveAwayConQueue.add(connection);
         }catch (InterruptedException ex){
-            throw new ConnectionPoolException("error to the data source", ex);
+            throw new ConnectionPoolException(ERROR_TO_DATA_MESSAGE, ex);
         }
         return connection;
     }
@@ -198,16 +204,16 @@ public class ConnectionPool {
         @Override
         public void close() throws SQLException {
             if (connection.isClosed()){
-                throw new SQLException("already closed");
+                throw new SQLException(CLOSED_MESSAGE);
             }
             if (connection.isReadOnly()){
                 connection.setReadOnly(false);
             }
             if(!giveAwayConQueue.remove(this)){
-                throw new SQLException("remove connection from queue error");
+                throw new SQLException(REMOVE_MESSAGE);
             }
             if(!connectionQueue.offer(this)){
-                throw new SQLException("offer connection to queue error");
+                throw new SQLException(OFFER_MESSAGE);
             }
         }
         @Override
