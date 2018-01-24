@@ -41,6 +41,9 @@
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass1" var="pass1"/>
     <fmt:message bundle="${loc}" key="local.admin.taxi.pass2" var="pass2"/>
     <fmt:message bundle="${loc}" key="local.admin.taxi.registerButton" var="regButton"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.password" var="validPassword"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.login" var="validLogin"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.nameSurname" var="validName"/>
 
     <title>${title}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -174,7 +177,7 @@
                     <div class="cars"></div>
                 </div>
                 <div class="modal-footer">
-                    <button  type="submit" class="btn btn-primary">${changeCar}</button>  <!--input-->
+                    <button  type="submit" class="btn btn-light">${changeCar}</button>  <!--input-->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">${close}</button>
                 </div>
             </form>
@@ -196,11 +199,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="label-line"><label for="login">${userLogin}</label></span><input type="text" id="login" name="login" required/><br/>
-                    <span class="label-line"><label for="pass1">${pass1}</label></span><input type="text" id="pass1" name="password" required/><br/>
+                    <span class="label-line"><label for="login">${userLogin}</label></span><input type="text" id="login" name="login" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="${validLogin}" required/><br/>
+                    <span class="label-line"><label for="pass1">${pass1}</label></span><input type="text" id="pass1" name="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" title="${validPassword}" required/><br/>
                     <span class="label-line"><label for="pass2">${pass2}</label></span><input type="text" id="pass2" name="password" required/><br/>
-                    <span class="label-line"><label for="name">${userName}</label></span><input type="text" id="name" name="name" required><br/>
-                    <span class="label-line"><label for="surname">${userSurname}</label></span><input type="text" id="surname" name="surname" required/><br/>
+                    <span class="label-line"><label for="name">${userName}</label></span><input type="text" id="name" name="name" pattern="^[a-zA-Zа-яА-ЯёЁ]+$" title="${validName}" required><br/>
+                    <span class="label-line"><label for="surname">${userSurname}</label></span><input type="text" id="surname" name="surname" pattern="^[a-zA-Zа-яА-ЯёЁ]+$" title="${validName}" required/><br/>
                     <input type="hidden" name="role" value="taxi"/>
                     <input type="hidden" id="regCheckedCar" name="checkedCarNumber"/>
                     <div class="cars"></div>

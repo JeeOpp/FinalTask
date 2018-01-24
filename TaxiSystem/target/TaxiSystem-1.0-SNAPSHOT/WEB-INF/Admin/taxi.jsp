@@ -174,7 +174,7 @@
                     <div class="cars"></div>
                 </div>
                 <div class="modal-footer">
-                    <button  type="submit" class="btn btn-primary">${changeCar}</button>  <!--input-->
+                    <button  type="submit" class="btn btn-light">${changeCar}</button>  <!--input-->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">${close}</button>
                 </div>
             </form>

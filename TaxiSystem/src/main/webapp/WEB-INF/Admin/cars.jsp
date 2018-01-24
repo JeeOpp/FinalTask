@@ -113,7 +113,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="label-line"><label for="carNumber">${carNumber}</label></span><input type="text" id="carNumber" name="carNumber" required/><br/>
+                    <span class="label-line"><label for="carNumber">${carNumber}</label></span><input type="text" id="carNumber" name="carNumber" pattern="^[a-zA-Z0-9]+$" required/><br/>
                     <span class="label-line"><label for="carName">${carName}</label></span><input type="text" id="carName" name="carName" required><br/>
                     <span class="label-line"><label for="carColour">${colour}</label></span><input type="text" id="carColour" name="carColour" required/><br/>
                 </div>

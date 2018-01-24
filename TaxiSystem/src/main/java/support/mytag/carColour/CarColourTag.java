@@ -66,6 +66,7 @@ public class CarColourTag extends TagSupport implements ICarColour {
             case WHITE:
                 bodyText = resourceBundle.getString(WHITE);
                 break;
+            default: bodyText = colour;
         }
     }
 }

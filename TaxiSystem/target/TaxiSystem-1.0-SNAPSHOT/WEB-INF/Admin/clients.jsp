@@ -32,6 +32,7 @@
     <fmt:message bundle="${loc}" key="local.admin.client.changeButton" var="changeButton"/>
     <fmt:message bundle="${loc}" key="local.admin.ban" var="ban"/>
     <fmt:message bundle="${loc}" key="local.admin.unBan" var="unban"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.bonusChange" var="bonusChangeTitle"/>
 
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
@@ -99,7 +100,7 @@
                     <input type="hidden" name="action" value="changeBonusCount"/>
                     <input type="hidden" name="clientId" value="${client.id}"/>
                     <label for="changeBonusText">${client.bonusPoints} </label>
-                    <input type="text" id="changeBonusText" name="bonusPoints" placeholder="${changeOn}" required/>
+                    <input type="text" id="changeBonusText" pattern="^[-]?\d+$" title="${bonusChangeTitle}" name="bonusPoints" placeholder="${changeOn}" required/>
                     <button class="btn btn-light" type="submit">${changeButton}</button>
                 </form>
             </td>
