@@ -62,6 +62,10 @@ public class ConnectionPool {
             throw new ConnectionPoolException(NO_DRIVER_MASSAGE, ex);
         }
     }
+
+    /**
+     * dispose connection pool resources
+     */
     public void dispose(){
         clearConnectionQueue();
     }
@@ -73,8 +77,14 @@ public class ConnectionPool {
             log.error(ex.getMessage());
         }
     }
+
+    /**
+     * take connection from connection pool
+     * @return the connection
+     * @throws ConnectionPoolException if there are some problems with connection pool.
+     */
     public Connection takeConnection() throws ConnectionPoolException{
-        Connection connection = null;
+        Connection connection;
             try{
             connection = connectionQueue.take();
             giveAwayConQueue.add(connection);
@@ -84,6 +94,12 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * releases connection resource.
+     * @param con connection
+     * @param st statement
+     * @param rs result set
+     */
     public void closeConnection(Connection con, Statement st, ResultSet rs){
         try {
             con.close();
@@ -101,6 +117,12 @@ public class ConnectionPool {
             log.error(ex.getMessage());
         }
     }
+
+    /**
+     * releases connection resources
+     * @param con connection
+     * @param st statement
+     */
     public void closeConnection(Connection con, Statement st) {
         try {
             con.close();
@@ -113,6 +135,13 @@ public class ConnectionPool {
             log.error(ex.getMessage());
         }
     }
+
+    /**
+     * releases connection resource.
+     * @param con connection
+     * @param st prepared statement
+     * @param rs result set
+     */
     public void closeConnection(Connection con, PreparedStatement st, ResultSet rs){
         try {
             con.close();
@@ -130,6 +159,11 @@ public class ConnectionPool {
             log.error(ex.getMessage());
         }
     }
+    /**
+     * releases connection resource.
+     * @param con connection
+     * @param st prepared statement
+     */
     public void closeConnection(Connection con, PreparedStatement st) {
         try {
             con.close();
@@ -155,6 +189,9 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * wrapped connection implement Connection interface.
+     */
     public class WrappedConnection implements Connection {
         private Connection connection;
 

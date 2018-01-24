@@ -21,11 +21,17 @@
     justify-content: space-around;
     align-items: stretch;
 }
-.inner-flex-box:not(:first-child){
+.inner-flex-box{
     display: inline-block;
     text-align: center;
 }
-
+.q-text{
+    display: inline-block;
+    text-align: center;
+    color: #9a9a9a;
+    font-style: italic;
+    font-size: medium;
+}
 .taxiItem {
     list-style-type: none;
     font-weight: 700;

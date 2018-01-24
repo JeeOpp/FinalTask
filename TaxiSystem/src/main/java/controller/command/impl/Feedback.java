@@ -44,7 +44,7 @@ public class Feedback implements ControllerCommand {
         }
     }
     /**
-     * receive a review about order and write it in database. Method could been called by client.
+     * receives a review about order and write it in database. Method could been called by client.
      * If it's success redirect client to client's order page.
      * @param req Standard request argument
      * @param resp Standard response argument

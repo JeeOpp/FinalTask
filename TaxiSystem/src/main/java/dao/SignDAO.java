@@ -9,7 +9,9 @@ import org.apache.log4j.Logger;
 import support.MD5;
 
 import java.sql.*;
-
+/**
+ * A DAO class uses to read or change data in database and send it to the modal layer.
+ */
 public class SignDAO {
     private static final Logger log = Logger.getLogger(SignDAO.class.getClass());
     private static final String SQL_SELECT_LOGIN_ALL = "SELECT client.login FROM client UNION SELECT taxi.login FROM taxi;";
@@ -27,9 +29,16 @@ public class SignDAO {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    public SignDAO() {
+    SignDAO() {
     }
 
+    /**
+     * Searches for a user with the introduced login and password and returns the user role if it success.
+     * @param login user's login.
+     * @param password user's password.
+     * @return a founded user's role.
+     * @throws SQLException when there are problems with database connection.
+     */
     public String preAuthorize(String login, String password) throws SQLException {
         String role = null;
         try {
@@ -50,6 +59,14 @@ public class SignDAO {
         }
         return role;
     }
+
+    /**
+     * read all the information about introduced client from database.
+     * @param login client's login.
+     * @param password client's password.
+     * @return all client's information.
+     * @throws SQLException when there are problems with database connection.
+     */
     public Client clientAuthorize(String login, String password) throws SQLException {
         Client client = null;
         try {
@@ -77,6 +94,13 @@ public class SignDAO {
         }
         return client;
     }
+    /**
+     * read all the information about introduced taxi driver from database.
+     * @param login taxi driver's login.
+     * @param password taxi driver's password.
+     * @return all taxi drivers's information.
+     * @throws SQLException when there are problems with database connection.
+     */
     public Taxi taxiAuthorize(String login, String password) throws SQLException {
         Taxi taxi = null;
         try {
@@ -108,6 +132,12 @@ public class SignDAO {
         }
         return taxi;
     }
+    /**
+     * Register new client to database.
+     * @param client contains all information about client.
+     * @return true if it success, false if there are some problems.
+     * @throws SQLException when there are problems with database connection.
+     */
     public boolean registerClient(Client client) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
@@ -126,6 +156,12 @@ public class SignDAO {
         }
         return false;
     }
+    /**
+     * Register new taxi to database.
+     * @param taxi contains all information about taxi driver.
+     * @return true if it success, false if there are some problems.
+     * @throws SQLException when there are problems with database connection.
+     */
     public boolean registerTaxi(Taxi taxi) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
@@ -144,6 +180,12 @@ public class SignDAO {
         }
         return false;
     }
+
+    /**
+     * try to find a login in the database.
+     * @param login user's login
+     * @return true if the database contains login, otherwise false.
+     */
     public boolean isLoginFree(String login){
         try {
             connection = connectionPool.takeConnection();
@@ -162,6 +204,11 @@ public class SignDAO {
         }
         return false;
     }
+    /**
+     * try to find a mail in the database.
+     * @param mail client's login
+     * @return true if the database contains mail, otherwise false.
+     */
     public boolean isMailFree(String mail){
         try {
             connection = connectionPool.takeConnection();
@@ -173,7 +220,7 @@ public class SignDAO {
                 }
             }
             return true;
-        }catch (ConnectionPoolException | SQLException ex) {
+        }catch (SQLException | ConnectionPoolException ex) {
             log.error(ex.getMessage());
         }finally {
             connectionPool.closeConnection(connection,statement,resultSet);
@@ -181,6 +228,11 @@ public class SignDAO {
         return false;
     }
 
+    /**
+     * Changes taxi status to another from database. (available - unavailable)
+     * @param taxi contains taxi driver id.
+     * @throws SQLException when there are problems with database connection.
+     */
     public void changeAvailableStatus(Taxi taxi) throws SQLException {
         try {
             connection = connectionPool.takeConnection();

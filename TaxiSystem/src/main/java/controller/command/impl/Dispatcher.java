@@ -83,7 +83,7 @@ public class Dispatcher implements ControllerCommand {
     }
 
     /**
-     * Use to get all orders information from specific client and sent it on client's orders page.
+     * Used to get all orders information from specific client and sent it on client's orders page.
      * @param req Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
@@ -105,7 +105,7 @@ public class Dispatcher implements ControllerCommand {
     }
 
     /**
-     * Use to get all orders information from specific taxi and sent it on taxi's orders page.
+     * Used to get all orders information from specific taxi and sent it on taxi's orders page.
      * @param req Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
@@ -127,7 +127,7 @@ public class Dispatcher implements ControllerCommand {
         }
     }
     /**
-     * Use to get available taxi list and sent it on call taxi page.
+     * Used to get available taxi list and sent it on call taxi page.
      * @param req Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception

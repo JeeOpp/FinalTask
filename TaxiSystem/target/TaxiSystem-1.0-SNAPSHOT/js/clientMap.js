@@ -40,7 +40,7 @@ function initMap() {
         var dst = document.getElementById('dstCoord').getAttribute('value');
         var price = calculatePrice(src,dst).toFixed(2);
         document.getElementById('price').setAttribute('value', price);
-        document.getElementById('priceView').innerHTML = price+' p.';
+        document.getElementById('priceView').innerHTML = price+'<span class="q-text">BYN.</span>';
     };
     var calculatePrice = function(src,dst) {
         var coefficient = 60;

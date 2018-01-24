@@ -30,7 +30,7 @@ public class Mailer implements ControllerCommand {
     private final static String END_RESTORE_LINK = "&hashPassword=";
 
     /**
-     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * A command pattern realization. Read a action parameter from request and execute special command depending on read parameter.
      * @param req Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception

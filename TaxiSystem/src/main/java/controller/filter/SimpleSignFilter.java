@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Used to detect invalid requests.
+ * Uses to detect the invalid requests.
  */
 public class SimpleSignFilter implements Filter {
     private static final String INDEX_PAGE = "index.jsp";

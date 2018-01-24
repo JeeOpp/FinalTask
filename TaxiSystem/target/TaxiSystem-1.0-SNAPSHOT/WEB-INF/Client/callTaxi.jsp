@@ -24,6 +24,8 @@
         <fmt:message bundle="${loc}" key="local.client.callTaxi.prePrice" var="prePrice"/>
         <fmt:message bundle="${loc}" key="local.client.callTaxi.availableBonuses" var="availableBonuses"/>
         <fmt:message bundle="${loc}" key="local.client.callTaxi" var="callTaxi"/>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi.availableTaxi" var="availableTaxiText"/>
+        <fmt:message bundle="${loc}" key="local.client.callTaxi.bonusCount" var="bonusCount"/>
 
         <title>${title}</title>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
@@ -79,7 +81,7 @@
                     <input id="srcCoord" type="hidden" name="sourceCoordinate" value="53.90453,27.56152"/>
                     <input id="dstCoord" type="hidden" name="destinyCoordinate" value="53.90453,27.56152"/>
 
-                    <span class="tr-text">$$$Свободные таксисты</span>
+                    <span class="q-text">${availableTaxiText}</span>
 
                     <ul class="taxiList">
                         <c:forEach var="taxi" items="${requestScope.availableTaxiList}">
@@ -97,7 +99,8 @@
                 <div class="inner-flex-box">
                     <label class="pre-price" for="bonus">${availableBonuses} ${user.bonusPoints}   </label>
                     <input id="bonus" type="number" name="bonus" min="0" max="${user.bonusPoints}" placeholder="0"/>
-                    <input id="price" type="hidden" name="price" value="0">
+                    <input id="price" type="hidden" name="price" value="0"><br/>
+                    <span class="q-text">${bonusCount}</span>
                 </div>
                 <div class="inner-flex-box">
                     <button class="big-green-button" type="submit" onclick="checkBonus();">${callTaxi}</button>

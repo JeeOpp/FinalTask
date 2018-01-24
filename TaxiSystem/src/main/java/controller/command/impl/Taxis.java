@@ -41,7 +41,7 @@ public class Taxis implements ControllerCommand {
         }
     }
     /**
-     * Use to get all information about all cars from database. Method could been called by admin.
+     * Used to get all information about all cars from database. Method could been called by admin.
      * If it success redirect admin to admin's cars page.
      * @param req Standard request argument
      * @param resp Standard response argument
@@ -62,7 +62,7 @@ public class Taxis implements ControllerCommand {
         }
     }
     /**
-     * Use to add new car in database. Method could been called by admin.
+     * Used to add new car in database. Method could been called by admin.
      * If it success redirect admin to admin's cars page.
      * @param req Standard request argument
      * @param resp Standard response argument
@@ -121,10 +121,6 @@ public class Taxis implements ControllerCommand {
         TaxisAction(String value){
             this.value = value;
         }
-        /**
-         * return stored in the enum value .
-         * @return value.
-         */
         public String getValue(){
             return value;
         }

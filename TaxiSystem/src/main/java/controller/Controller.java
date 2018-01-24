@@ -2,6 +2,7 @@ package controller;
 
 import controller.command.ControllerCommand;
 import controller.command.ControllerDirector;
+import dao.connectionPool.ConnectionPool;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
@@ -31,5 +32,10 @@ public class Controller extends HttpServlet{
         ControllerDirector controllerDirector = new ControllerDirector();
         ControllerCommand controllerCommand = controllerDirector.getCommand(method);
         controllerCommand.execute(req,resp);
+    }
+
+    @Override
+    public void destroy() {
+        ConnectionPool.getInstance().dispose();
     }
 }

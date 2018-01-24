@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Responds to requests related to sign action.
  * The class implements {@link ControllerCommand}.
@@ -89,6 +91,10 @@ public class SignManager implements ControllerCommand {
 
         String login = req.getParameter(UserEnum.LOGIN.getValue());
         String password = req.getParameter(UserEnum.PASSWORD.getValue());
+
+        try {
+            sleep(2000);
+        }catch (InterruptedException ex){}
 
         try {
             if ((user = signService.authorize(login, password)) == null) {
@@ -207,10 +213,6 @@ public class SignManager implements ControllerCommand {
         SignManagerAction(String value) {
             this.value = value;
         }
-        /**
-         * return stored in the enum value .
-         * @return value.
-         */
         public String getValue() {
             return value;
         }

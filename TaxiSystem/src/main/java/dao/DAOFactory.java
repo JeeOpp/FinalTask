@@ -1,5 +1,9 @@
 package dao;
 
+/**
+ * Factory class contains all the DAO classes objects to encapsulate them.
+ */
+
 public class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
     private final SignDAO signDAO = new SignDAO();

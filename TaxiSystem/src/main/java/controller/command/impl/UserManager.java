@@ -15,7 +15,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * Contain all actions related on actions with users.
+ * Contains all actions related on actions with users.
  */
 public class UserManager implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
@@ -296,10 +296,6 @@ public class UserManager implements ControllerCommand {
         UserManagerAction(String value){
             this.value = value;
         }
-        /**
-         * return stored in the enum value .
-         * @return value.
-         */
         public String getValue(){
             return value;
         }

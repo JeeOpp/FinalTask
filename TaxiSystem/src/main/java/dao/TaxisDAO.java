@@ -8,7 +8,9 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * A DAO class uses to read or change data in database and send it to the modal layer.
+ */
 public class TaxisDAO {
     private static final Logger log = Logger.getLogger(TaxisDAO.class.getClass());
     private static final String SQL_SELECT_ALL_CARS="SELECT * FROM taxisystem.car;";
@@ -21,29 +23,39 @@ public class TaxisDAO {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    public TaxisDAO() {
+    TaxisDAO() {
     }
 
+    /**
+     * searches all the taxi car from the database.
+     * @return cars formed to the list.
+     * @throws SQLException when there are problems with database connection.
+     */
     public List<Car> getCarList() throws SQLException {
         List<Car> carList = new ArrayList<>();
         Car car;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
-            if ((resultSet = statement.executeQuery(SQL_SELECT_ALL_CARS)) != null) {
-                while (resultSet.next()) {
-                    car = new Car();
-                    car.setFromResultSet(resultSet);
-                    carList.add(car);
-                }
+            resultSet = statement.executeQuery(SQL_SELECT_ALL_CARS);
+            while (resultSet.next()) {
+                car = new Car();
+                car.setFromResultSet(resultSet);
+                carList.add(car);
             }
-        }catch (ConnectionPoolException | SQLException ex) {
+        } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
-        }finally {
+        } finally {
             connectionPool.closeConnection(connection, statement, resultSet);
         }
         return carList;
     }
+
+    /**
+     * registers a new car to the database.
+     * @param car we are want to register.
+     * @return true if it success, otherwise false.
+     */
     public boolean addCar(Car car){
         try {
             connection = connectionPool.takeConnection();
@@ -60,6 +72,12 @@ public class TaxisDAO {
         }
         return false;
     }
+
+    /**
+     * delete a car from the database.
+     * @param car we are want to delete.
+     * @return true if it success, otherwise false.
+     */
     public boolean removeCar(Car car){
         try {
             connection = connectionPool.takeConnection();

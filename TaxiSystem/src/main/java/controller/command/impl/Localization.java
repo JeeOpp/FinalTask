@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Localize pages for a russian or english language.
+ * Localizes pages for a russian or english language.
  * The class implements {@link ControllerCommand}.
  */
 public class Localization implements ControllerCommand {
