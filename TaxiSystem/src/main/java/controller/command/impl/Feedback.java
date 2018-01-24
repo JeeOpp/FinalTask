@@ -18,9 +18,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+/**
+ * Responds to requests related to orders
+ * The class implements {@link ControllerCommand}. Responds to request related to reviews.
+ */
 public class Feedback implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     private final static int INVALID_ORDER = -1;
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(ACTION);
@@ -31,7 +43,14 @@ public class Feedback implements ControllerCommand {
                 break;
         }
     }
-
+    /**
+     * receive a review about order and write it in database. Method could been called by client.
+     * If it's success redirect client to client's order page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void writeReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
@@ -66,10 +85,20 @@ public class Feedback implements ControllerCommand {
         FeedbackAction(String value){
             this.value = value;
         }
+        /**
+         * return stored in the enum value .
+         * @return value.
+         */
         public String getValue(){
             return value;
         }
 
+        /**
+         * In the dependence on the received value, return special enum.
+         * @param action Special enum we are want to get.
+         * @return get special enum in accordance with the action value.
+         * If there are no matches return a NONE enum.
+         */
         public static FeedbackAction getConstant(String action){
             for (FeedbackAction each: FeedbackAction.values()){
                 if(each.getValue().equals(action)){

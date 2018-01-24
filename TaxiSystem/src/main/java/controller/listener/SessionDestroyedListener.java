@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.sql.SQLException;
 
+/**
+ * Uses to invalidate taxi's session if a taxi driver forgot to do this.
+ */
 public class SessionDestroyedListener implements HttpSessionListener {
     private static final Logger log = Logger.getLogger(SessionDestroyedListener.class.getClass());
     @Override
@@ -20,6 +23,10 @@ public class SessionDestroyedListener implements HttpSessionListener {
 
     }
 
+    /**
+     * Receives notification that a session is about to be invalidated.
+     * @param httpSessionEvent the HttpSessionEvent containing the session
+     */
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();

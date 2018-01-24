@@ -1,7 +1,3 @@
-//dispatcherDAO метод setResultSet
-
-
-
 package controller;
 
 import controller.command.ControllerCommand;
@@ -13,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The single controller, receives requests from the server.
+ */
 public class Controller extends HttpServlet{
     private static final String METHOD = "method";
     private static final String TEXT_CONTENT_TYPE = "text/html";

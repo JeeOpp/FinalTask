@@ -16,6 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Responds to requests related to orders
+ *
+ * The class implements {@link ControllerCommand}. Responds to request related to orders and modifier orders information.
+ */
 public class Dispatcher implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     private final static String CLIENT_ORDER_PAGE = "WEB-INF/Client/orders.jsp";
@@ -27,6 +32,14 @@ public class Dispatcher implements ControllerCommand {
     private final static int INVALID_ORDER = -1;
     private final static int DEFAULT_PAGE = 1;
     private final static String JSON_CONTENT = "application/json";
+
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(ACTION);
@@ -69,6 +82,13 @@ public class Dispatcher implements ControllerCommand {
         }
     }
 
+    /**
+     * Use to get all orders information from specific client and sent it on client's orders page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     void getClientOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
@@ -83,6 +103,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+
+    /**
+     * Use to get all orders information from specific taxi and sent it on taxi's orders page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getTaxiOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
         if(user.getRole().equals(UserEnum.TAXI.getValue())) {
@@ -98,6 +126,13 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to get available taxi list and sent it on call taxi page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void preOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
         if(user.getRole().equals(UserEnum.CLIENT.getValue())) {
@@ -111,6 +146,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * receives all the information about the order. Writes an order to the database and assigns it an initial status.
+     * In case of success, it sends to the client's order page otherwise you need to place the order again.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void callTaxi(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
         if(user.getRole().equals(UserEnum.CLIENT.getValue())) {
@@ -136,6 +179,16 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * receives an order id. Delete this order from database. Method could been called by client or admin.
+     * So, if it been called by client, if it's success redirect client to client's order page.
+     * If it been called by admin, if it's success redirect admin to admin's order control page.
+     * In case of success, it sends to the client's order page otherwise you need to place the order again.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User)req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
@@ -156,6 +209,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * receives an order id. Method could been called by taxi.
+     * Taxi confirm an order and it change status to "accepted". If it success redirect taxi to taxi's order page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void acceptOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.TAXI.getValue())) {
@@ -173,6 +234,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * receives an order id. Method could been called by taxi.
+     * Taxi reject an order and it change status to "rejected". If it success redirect taxi to taxi's order page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void rejectOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
@@ -191,6 +260,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * receives an order id. Method could been called by client.
+     * Client pay for the order and it change status to "completed". If it success redirect client to client's order page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void payOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
@@ -209,6 +286,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to get all orders information from all clients. Method could been called by admin.
+     * As well build a pagination and sent it on admin's orders page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
@@ -234,6 +319,14 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to delete all information about orders. Method could been called by admin.
+     * If it success redirect admin to admin's order page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
@@ -246,6 +339,13 @@ public class Dispatcher implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to send information about all cars by ajax.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getCarList(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         TaxisService taxisService = serviceFactory.getTaxisService();
@@ -277,10 +377,21 @@ public class Dispatcher implements ControllerCommand {
         DispatcherAction(String value){
             this.value = value;
         }
+
+        /**
+         * return stored in the enum value .
+         * @return value.
+         */
         public String getValue(){
             return value;
         }
 
+        /**
+         * In the dependence on the received value, return special enum.
+         * @param action Special enum we are want to get.
+         * @return get special enum in accordance with the action value.
+         * If there are no matches return a NONE enum.
+         */
         public static DispatcherAction getConstant(String action){
             for (DispatcherAction each: DispatcherAction.values()){
                 if(each.getValue().equals(action)){

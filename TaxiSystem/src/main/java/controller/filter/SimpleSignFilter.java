@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Used to detect invalid requests.
+ */
 public class SimpleSignFilter implements Filter {
     private static final String INDEX_PAGE = "index.jsp";
     private Set<String> availableLocalPages = null;
@@ -38,6 +41,14 @@ public class SimpleSignFilter implements Filter {
         }};
     }
 
+    /**
+     * Filter the specified input.
+     * @param servletRequest standard parameter parameter
+     * @param servletResponse standard parameter parameter
+     * @param filterChain standard parameter parameter
+     * @throws IOException  standard exception
+     * @throws ServletException standard exception
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;

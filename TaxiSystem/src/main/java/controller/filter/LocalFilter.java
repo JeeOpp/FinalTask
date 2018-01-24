@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Immediately allow user to use earlier chosen localization
+ */
 public class LocalFilter implements Filter {
     private final static String LOCALE_PARAMETER = "local";
     private final static String LOCALE_COOKIE = "LOCAL";
@@ -13,6 +16,14 @@ public class LocalFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
+    /**
+     * Filter the specified input.
+     * @param servletRequest standard parameter parameter
+     * @param servletResponse standard parameter parameter
+     * @param filterChain standard parameter parameter
+     * @throws IOException  standard exception
+     * @throws ServletException standard exception
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;

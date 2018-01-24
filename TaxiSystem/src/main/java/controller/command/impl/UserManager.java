@@ -14,8 +14,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Contain all actions related on actions with users.
+ */
 public class UserManager implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -47,7 +57,15 @@ public class UserManager implements ControllerCommand {
                 break;
         }
     }
-
+    /**
+     * If method was called by client read all this user's reviews from database.
+     * If method was called by taxi read all review about taxi.
+     * Finally redirect user on user's profile page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         String role = user.getRole();
@@ -67,6 +85,13 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Uses to change user's password. If it success redirect user to the user's profile page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         String role = user.getRole();
@@ -85,6 +110,13 @@ public class UserManager implements ControllerCommand {
         }
 
     }
+    /**
+     * Get all the information about client from database. Build a client's list and sent it on the admin's client page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")){
@@ -109,6 +141,13 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Get all information about taxi from database. Build a taxi's list and sent it on the admin's taxi page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -133,6 +172,14 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * change a user's ban status from database. If changed user's role is client redirect to the admin's client page,
+     * if user's role is taxi redirect to admin's taxi page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void changeBanStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -155,6 +202,14 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * change a user's bonus points from database.
+     * Finally redirect to the admin's client page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void changeBonusCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -172,6 +227,14 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * change a taxi's car from database and set new car to taxi.
+     * Finally redirect to the admin's taxi page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void changeTaxiCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -189,6 +252,14 @@ public class UserManager implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Checks the request's parameters.
+     * form an electronic message if the parameters are correct and sends it to the user with e-mail.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void restorePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String mail = req.getParameter("mail");
         String hashPassword = req.getParameter("hashPassword");
@@ -225,10 +296,19 @@ public class UserManager implements ControllerCommand {
         UserManagerAction(String value){
             this.value = value;
         }
+        /**
+         * return stored in the enum value .
+         * @return value.
+         */
         public String getValue(){
             return value;
         }
-
+        /**
+         * In the dependence on the received value, return special enum.
+         * @param action Special enum we are want to get.
+         * @return get special enum in accordance with the action value.
+         * If there are no matches return a NONE enum.
+         */
         public static UserManagerAction getConstant(String action){
             for (UserManagerAction each: UserManagerAction.values()){
                 if(each.getValue().equals(action)){

@@ -18,6 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Responds to requests related to sign action.
+ * The class implements {@link ControllerCommand}.
+ */
 public class SignManager implements ControllerCommand {
     private static final Logger log = Logger.getLogger(SignManager.class.getClass());
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
@@ -30,6 +34,14 @@ public class SignManager implements ControllerCommand {
     private static final String BANNED_PAGE = "banned.jsp";
     private static final String INDEX_PAGE = "index.jsp";
 
+
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(ACTION);
@@ -49,12 +61,27 @@ public class SignManager implements ControllerCommand {
                 break;
         }
     }
-
+    /**
+     * In the case of user's role, redirect on user's home page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req, resp);
     }
 
+    /**
+     * Receives login and password from the request.
+     * If the data is correct redirect it on the page accessible to the user.
+     * If the data is incorrect then redirects it to the appropriate page
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -84,6 +111,14 @@ public class SignManager implements ControllerCommand {
         }
     }
 
+    /**
+     * Receives all needed parameters to registration.
+     * If the data is correct registers user to the database.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
@@ -117,7 +152,14 @@ public class SignManager implements ControllerCommand {
             log.error(ex.getMessage());
         }
     }
-
+    /**
+     * Deletes a session and redirects to the main page.
+     * If it was called by taxi changes a available taxi status.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute(UserEnum.USER.getValue());
@@ -135,6 +177,11 @@ public class SignManager implements ControllerCommand {
         }
     }
 
+    /**
+     * returns a user's main page path.
+     * @param role user's role
+     * @return a page path.
+     */
     public String chooseUserPage(String role) {
         if (role.equals(UserEnum.CLIENT.getValue())) {
             return CLIENT_MAIN_PATH;
@@ -160,11 +207,19 @@ public class SignManager implements ControllerCommand {
         SignManagerAction(String value) {
             this.value = value;
         }
-
+        /**
+         * return stored in the enum value .
+         * @return value.
+         */
         public String getValue() {
             return value;
         }
-
+        /**
+         * In the dependence on the received value, return special enum.
+         * @param action Special enum we are want to get.
+         * @return get special enum in accordance with the action value.
+         * If there are no matches return a NONE enum.
+         */
         public static SignManagerAction getConstant(String action) {
             for (SignManagerAction each : SignManagerAction.values()) {
                 if (each.getValue().equals(action)) {

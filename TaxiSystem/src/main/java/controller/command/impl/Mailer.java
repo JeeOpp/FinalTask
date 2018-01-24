@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Send a mail for a special situation, for example sending mail to admin.
+ */
 public class Mailer implements ControllerCommand {
     private final static String SUBJECT_PARAMETER = "subject";
     private final static String MAIL_TEXT_PARAMETER = "text";
@@ -26,6 +29,13 @@ public class Mailer implements ControllerCommand {
     private final static String START_RESTORE_LINK = "http://localhost:8086/Controller?method=userManager&action=restorePassword&mail=";
     private final static String END_RESTORE_LINK = "&hashPassword=";
 
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(ACTION);
@@ -40,6 +50,14 @@ public class Mailer implements ControllerCommand {
         }
     }
 
+    /**
+     * receives a subject mail parameter and body mail parameter.
+     * Send a mail to admin with that parameters. Finally redirect request to the main client page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void sendQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String subject = req.getParameter(SUBJECT_PARAMETER);
         String text = req.getParameter(MAIL_TEXT_PARAMETER);
@@ -49,6 +67,13 @@ public class Mailer implements ControllerCommand {
         req.getRequestDispatcher(CLIENT_MAIN_PAGE).forward(req,resp);
     }
 
+    /**
+     * receives the e-mail we want to send instructions for further recovering the password and sends them to this e-mail.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void preRestore(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String mail = req.getParameter(RESTORE_TO_PARAMETER);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();

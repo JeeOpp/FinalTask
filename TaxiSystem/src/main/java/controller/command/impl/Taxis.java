@@ -12,8 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Contain all actions related on taxi station request.
+ */
 public class Taxis implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    /**
+     * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -30,7 +40,14 @@ public class Taxis implements ControllerCommand {
                 break;
         }
     }
-
+    /**
+     * Use to get all information about all cars from database. Method could been called by admin.
+     * If it success redirect admin to admin's cars page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void getCarList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -44,6 +61,14 @@ public class Taxis implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to add new car in database. Method could been called by admin.
+     * If it success redirect admin to admin's cars page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void addCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -62,6 +87,14 @@ public class Taxis implements ControllerCommand {
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
+    /**
+     * Use to delete information about special car from database. Method could been called by admin.
+     * If it success redirect admin to admin's cars page.
+     * @param req Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException Standard exception
+     */
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         if (user.getRole().equals("admin")) {
@@ -88,10 +121,19 @@ public class Taxis implements ControllerCommand {
         TaxisAction(String value){
             this.value = value;
         }
+        /**
+         * return stored in the enum value .
+         * @return value.
+         */
         public String getValue(){
             return value;
         }
-
+        /**
+         * In the dependence on the received value, return special enum.
+         * @param action Special enum we are want to get.
+         * @return get special enum in accordance with the action value.
+         * If there are no matches return a NONE enum.
+         */
         public static TaxisAction getConstant(String action){
             for (TaxisAction each: TaxisAction.values()){
                 if(each.getValue().equals(action)){

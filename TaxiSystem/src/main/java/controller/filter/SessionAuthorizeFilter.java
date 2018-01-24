@@ -8,12 +8,22 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * Immediately redirects to a standard user page if a user has an open session.
+ */
 public class SessionAuthorizeFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
-
+    /**
+     * Filter the specified input.
+     * @param servletRequest standard parameter parameter
+     * @param servletResponse standard parameter parameter
+     * @param filterChain standard parameter parameter
+     * @throws IOException  standard exception
+     * @throws ServletException standard exception
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
