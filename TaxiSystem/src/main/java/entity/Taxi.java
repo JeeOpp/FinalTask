@@ -3,25 +3,31 @@ package entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Taxi extends User{
+/**
+ * Bean, contains information about taxi drivers.
+ */
+public class Taxi extends User {
     private boolean availableStatus;
     private Car car;
 
     public Taxi() {
     }
 
-    public Taxi(int id){
+    public Taxi(int id) {
         super(id);
     }
-    public Taxi(int id, Car car){
+
+    public Taxi(int id, Car car) {
         this(id);
         this.car = car;
     }
-    public Taxi(int id, String name, String surname){
-        super(id,null,null,name,surname);
+
+    public Taxi(int id, String name, String surname) {
+        super(id, null, null, name, surname);
     }
-    public Taxi(String login, String password, String firstName, String lastName, String role, Car car){
-        super(login,password,firstName,lastName,role);
+
+    public Taxi(String login, String password, String firstName, String lastName, String role, Car car) {
+        super(login, password, firstName, lastName, role);
         this.car = car;
     }
 
@@ -41,7 +47,7 @@ public class Taxi extends User{
         this.availableStatus = availableStatus;
     }
 
-    public void setFromResultSet(ResultSet resultSet){
+    public void setFromResultSet(ResultSet resultSet) {
         Car car;
         try {
             this.setId(resultSet.getInt(1));
@@ -56,7 +62,7 @@ public class Taxi extends User{
             car.setName(resultSet.getString(9));
             car.setColour(resultSet.getString(10));
             this.setCar(car);
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }

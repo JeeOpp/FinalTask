@@ -21,10 +21,11 @@ public class Localization implements ControllerCommand {
      * Get the page localization parameter.
      * If that method was called for the first time,
      * it writes this value to the cookie and session and redirect request to the page from which was called.
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,6 +34,6 @@ public class Localization implements ControllerCommand {
         resp.addCookie(getLocal);
 
         req.getSession().setAttribute(LOCALE_PARAMETER, local);
-        req.getRequestDispatcher(req.getParameter(PaginationEnum.PAGE.getValue())).forward(req,resp);
+        req.getRequestDispatcher(req.getParameter(PaginationEnum.PAGE.getValue())).forward(req, resp);
     }
 }

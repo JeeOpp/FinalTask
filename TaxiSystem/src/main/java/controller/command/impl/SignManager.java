@@ -16,12 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Responds to requests related to sign action.
+ * Delegates business logic to the {@link SignService}
  * The class implements {@link ControllerCommand}.
  */
 public class SignManager implements ControllerCommand {
@@ -39,10 +37,11 @@ public class SignManager implements ControllerCommand {
 
     /**
      * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,12 +62,14 @@ public class SignManager implements ControllerCommand {
                 break;
         }
     }
+
     /**
      * In the case of user's role, redirect on user's home page.
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
@@ -79,10 +80,11 @@ public class SignManager implements ControllerCommand {
      * Receives login and password from the request.
      * If the data is correct redirect it on the page accessible to the user.
      * If the data is incorrect then redirects it to the appropriate page
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     private void authorize(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user;
@@ -92,38 +94,34 @@ public class SignManager implements ControllerCommand {
         String login = req.getParameter(UserEnum.LOGIN.getValue());
         String password = req.getParameter(UserEnum.PASSWORD.getValue());
 
-        try {
-            sleep(2000);
-        }catch (InterruptedException ex){}
+        log.info("LOGIN TEST");
 
-        try {
-            if ((user = signService.authorize(login, password)) == null) {
-                resp.sendRedirect(AUTHORIZATION_PROBLEM);
+        if ((user = signService.authorize(login, password)) == null) {
+            resp.sendRedirect(AUTHORIZATION_PROBLEM);
+        } else {
+            if (user.getBanStatus()) {
+                resp.sendRedirect(BANNED_PAGE);
             } else {
-                if (user.getBanStatus()) {
-                    resp.sendRedirect(BANNED_PAGE);
-                } else {
-                    if (user.getRole().equals(UserEnum.TAXI.getValue())) {
-                        signService.changeSessionStatus((Taxi) user);
-                        ((Taxi) user).setAvailableStatus(true);
-                    }
-                    req.getSession().setAttribute(UserEnum.USER.getValue(), user);
-                    String pageAuthentication = chooseUserPage(user.getRole());
-                    req.getRequestDispatcher(pageAuthentication).forward(req, resp);
+                if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+                    signService.changeSessionStatus((Taxi) user);
+                    ((Taxi) user).setAvailableStatus(true);
                 }
+                req.getSession().setAttribute(UserEnum.USER.getValue(), user);
+                resp.sendRedirect(REDIRECT_HOME);
+                //String pageAuthentication = chooseUserPage(user.getRole());
+                //req.getRequestDispatcher(pageAuthentication).forward(req, resp);
             }
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
         }
     }
 
     /**
      * Receives all needed parameters to registration.
      * If the data is correct registers user to the database.
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -136,35 +134,36 @@ public class SignManager implements ControllerCommand {
         String mail = req.getParameter(UserEnum.EMAIL.getValue()).toLowerCase();
         String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
         String role = req.getParameter(UserEnum.ROLE.getValue());
-        try {
-            if (role.equals(UserEnum.CLIENT.getValue())) {
-                Client client = new Client(login, password, firstName, lastName, mail);
-                if (signService.registerClient(client)) {
-                    req.getRequestDispatcher(REGISTRATION_SUCCESS).forward(req, resp);
-                } else {
-                    req.getRequestDispatcher(REGISTRATION_PROBLEM).forward(req, resp);
-                }
+        if (role.equals(UserEnum.CLIENT.getValue())) {
+            Client client = new Client(login, password, firstName, lastName, mail);
+            if (signService.registerClient(client)) {
+                resp.sendRedirect(REGISTRATION_SUCCESS);
+                //req.getRequestDispatcher(REGISTRATION_SUCCESS).forward(req, resp);
+            } else {
+                resp.sendRedirect(REGISTRATION_SUCCESS);
+                //req.getRequestDispatcher(REGISTRATION_PROBLEM).forward(req, resp);
             }
-            if (role.equals(UserEnum.TAXI.getValue())) {
-                Car car = new Car(carNumber);
-                Taxi taxi = new Taxi(login, password, firstName, lastName, role, car);
-                if (signService.registerTaxi(taxi)) {
-                    new UserManager().getTaxiList(req,resp);
-                } else {
-                    resp.sendRedirect(REDIRECT_HOME);
-                }
+        }
+        if (role.equals(UserEnum.TAXI.getValue())) {
+            Car car = new Car(carNumber);
+            Taxi taxi = new Taxi(login, password, firstName, lastName, role, car);
+            if (signService.registerTaxi(taxi)) {
+                resp.sendRedirect("Controller?method=userManager&action=getTaxiList");
+                //new UserManager().getTaxiList(req,resp);
+            } else {
+                resp.sendRedirect(REDIRECT_HOME);
             }
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
         }
     }
+
     /**
      * Deletes a session and redirects to the main page.
      * If it was called by taxi changes a available taxi status.
-     * @param req Standard request argument
+     *
+     * @param req  Standard request argument
      * @param resp Standard response argument
      * @throws ServletException Standard exception
-     * @throws IOException Standard exception
+     * @throws IOException      Standard exception
      */
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -172,19 +171,16 @@ public class SignManager implements ControllerCommand {
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
-        try {
-            if (user.getRole().equals(UserEnum.TAXI.getValue())) {
-                signService.changeSessionStatus((Taxi) user);
-            }
-            session.invalidate();
-            resp.sendRedirect(INDEX_PAGE);
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
+        if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+            signService.changeSessionStatus((Taxi) user);
         }
+        session.invalidate();
+        resp.sendRedirect(INDEX_PAGE);
     }
 
     /**
      * returns a user's main page path.
+     *
      * @param role user's role
      * @return a page path.
      */
@@ -213,11 +209,14 @@ public class SignManager implements ControllerCommand {
         SignManagerAction(String value) {
             this.value = value;
         }
+
         public String getValue() {
             return value;
         }
+
         /**
          * In the dependence on the received value, return special enum.
+         *
          * @param action Special enum we are want to get.
          * @return get special enum in accordance with the action value.
          * If there are no matches return a NONE enum.

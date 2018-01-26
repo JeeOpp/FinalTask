@@ -1,98 +1,77 @@
 package service;
 
-import dao.DAOFactory;
-import dao.UserManagerDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import org.apache.log4j.Logger;
-import support.MD5;
 
-import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
-public class UserManagerService {
-    private final static Logger log = Logger.getLogger(UserManagerService.class.getClass());
-    public Boolean changePassword(User user, String currentPassword, String newPassword) {
-        if (user.getPassword().equals(MD5.md5Hash(currentPassword))) {
-            user.setPassword(MD5.md5Hash(newPassword));
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            userManagerDAO.changePassword(user);
-            return true;
-        }
-        return false;
-    }
+public interface UserManagerService {
+    /**
+     * Changes a password specific user.
+     *
+     * @param user whose we want to change a pass.
+     * @param currentPassword current password of user's account.
+     * @param newPassword new password of specific user.
+     * @return true is changing password is successfully completed, otherwise false.
+     */
+    boolean changePassword(User user, String currentPassword, String newPassword);
 
-    public List<Client> getClientList() {
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            return userManagerDAO.getClientList();
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-        return null;
-    }
+    /**
+     * Selects all information about client.
+     * @return client list (if there are no clients in database, returns null).
+     */
+    List<Client> getClientList();
 
-    public List<Taxi> getTaxiList() {
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            return userManagerDAO.getTaxiList();
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-        return null;
-    }
+    /**
+     * Selects all information about taxi drivers.
+     *
+     * @return taxi drivers list (if there are no taxi drivers in database, returns null).
+     */
+    List<Taxi> getTaxiList();
 
-    public List<Taxi> getAvailableTaxiList() {
-        List<Taxi> taxiList = getTaxiList();
-        Iterator<Taxi> taxiIterator = taxiList.listIterator();
-        while (taxiIterator.hasNext()) {
-            if (!taxiIterator.next().isAvailableStatus()) {
-                taxiIterator.remove();
-            }
-        }
-        return taxiList;
-    }
+    /**
+     * Selects all information about taxi drivers available at the moment .
+     *
+     * @return available taxi drivers list.
+     */
+    List<Taxi> getAvailableTaxiList();
 
-    public void changeBanStatus(User user) {
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-        userManagerDAO.changeBanStatus(user);
-    }
+    /**
+     * Changes ban status.
+     *
+     * @param user we want to ban/unban.
+     */
+    void changeBanStatus(User user);
 
-    public void changeBonusCount(Client client) {
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            userManagerDAO.changeBonusCount(client);
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-    }
+    /**
+     * changes amount of bonuses specific client.
+     *
+     * @param client whose amount of bonuses we want to change.
+     */
+    void changeBonusCount(Client client);
 
-    public void changeTaxiCar(Taxi taxi) {
-        try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-            userManagerDAO.changeTaxiCar(taxi);
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-    }
+    /**
+     * Changes taxi driver's car.
+     *
+     * @param taxi whose car we want change.
+     */
+    void changeTaxiCar(Taxi taxi);
 
-    public String getHashPassword(String mail) {
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-        return userManagerDAO.getHashPassword(mail);
-    }
+    /**
+     * receives hash password of user according with e-mail.
+     *
+     * @param mail of client whose hash password we want to receive.
+     * @return hash password.
+     */
+    String getHashPassword(String mail);
 
-    public boolean restorePassword(String mail, String hashPassword,String newPassword) {
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
-        return userManagerDAO.restorePassword(mail, hashPassword, newPassword);
-    }
+    /**
+     * Changes user password if hash password and mail of specific user are correct.
+     * @param mail of client we want to restore the password.
+     * @param hashPassword of client we want to restore the password.
+     * @param newPassword we want to set instead of old one.
+     * @return true if action is successfully, otherwise false.
+     */
+    boolean restorePassword(String mail, String hashPassword,String newPassword);
 }

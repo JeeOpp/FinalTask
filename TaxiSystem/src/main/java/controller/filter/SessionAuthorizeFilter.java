@@ -16,24 +16,26 @@ public class SessionAuthorizeFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
+
     /**
      * Filter the specified input.
-     * @param servletRequest standard parameter parameter
+     *
+     * @param servletRequest  standard parameter parameter
      * @param servletResponse standard parameter parameter
-     * @param filterChain standard parameter parameter
-     * @throws IOException  standard exception
+     * @param filterChain     standard parameter parameter
+     * @throws IOException      standard exception
      * @throws ServletException standard exception
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         User user;
-        if((user = (User) req.getSession().getAttribute(UserEnum.USER.getValue()))!=null){
-            if(user.getRole()!=null) {
+        if ((user = (User) req.getSession().getAttribute(UserEnum.USER.getValue())) != null) {
+            if (user.getRole() != null) {
                 req.getRequestDispatcher(new SignManager().chooseUserPage(user.getRole())).forward(servletRequest, servletResponse);
             }
         }
-        filterChain.doFilter(servletRequest,servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

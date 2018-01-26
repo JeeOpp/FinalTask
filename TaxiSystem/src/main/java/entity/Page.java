@@ -2,7 +2,11 @@ package entity;
 
 import java.util.List;
 
-public class Page <E>{
+/**
+ * Store a records in the current page
+ * @param <E> kind of stored information (clients, cars, etc.)
+ */
+public class Page <E> {
     private int page;
     private List<E> records = null;
 

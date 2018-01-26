@@ -23,10 +23,11 @@ public enum UserEnum {
 
     private String value;
 
-    UserEnum(String value){
+    UserEnum(String value) {
         this.value = value;
     }
-    public String getValue(){
+
+    public String getValue() {
         return value;
     }
 }

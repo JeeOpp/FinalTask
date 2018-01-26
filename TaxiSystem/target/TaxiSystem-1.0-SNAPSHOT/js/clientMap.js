@@ -14,7 +14,7 @@ function initMap() {
             position: centerLatLng,
             map: map,
             draggable:true,
-            title:"I'm here"
+            title:"Source"
     });
 
     var markerDestiny = new google.maps.Marker({
@@ -22,7 +22,7 @@ function initMap() {
         map: map,
         icon: destinyIcon,
         draggable:true,
-        title:"Drag me!"
+        title:"Destiny"
     });
 
     var dragSrcHandler=function(e){

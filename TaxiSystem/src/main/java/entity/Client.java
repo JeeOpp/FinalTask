@@ -5,20 +5,24 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Client extends User{
+/**
+ * Bean, contains information about client.
+ */
+public class Client extends User {
     private final static Logger log = Logger.getLogger(Client.class.getClass());
     private int bonusPoints;
     private String mail;
 
-    public Client(){}
+    public Client() {
+    }
 
-    public Client(int id, int bonusPoints){
+    public Client(int id, int bonusPoints) {
         super(id);
         this.bonusPoints = bonusPoints;
     }
 
-    public Client(int id, String name, String surname){
-        super(id,null,null,name,surname);
+    public Client(int id, String name, String surname) {
+        super(id, null, null, name, surname);
     }
 
     public Client(String login, String password, String firstName, String lastName, String mail) {
@@ -42,7 +46,7 @@ public class Client extends User{
         this.mail = mail;
     }
 
-    public void setFromResultSet(ResultSet resultSet){
+    public void setFromResultSet(ResultSet resultSet) {
         try {
             this.setId(resultSet.getInt(1));
             this.setLogin(resultSet.getString(2));
@@ -52,7 +56,7 @@ public class Client extends User{
             this.setBonusPoints(resultSet.getInt(6));
             this.setBanStatus(resultSet.getBoolean(7));
             this.setRole(resultSet.getString(8));
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }

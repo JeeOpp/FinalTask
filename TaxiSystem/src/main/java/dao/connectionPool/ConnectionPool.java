@@ -19,8 +19,8 @@ public class ConnectionPool {
     private static final String REMOVE_MESSAGE = "remove connection from queue error";
     private static final Logger log = Logger.getLogger(ConnectionPool.class.getClass());
     private static final ConnectionPool instance = new ConnectionPool();
-    private BlockingQueue <Connection> connectionQueue;
-    private BlockingQueue <Connection> giveAwayConQueue;
+    private BlockingQueue<Connection> connectionQueue;
+    private BlockingQueue<Connection> giveAwayConQueue;
 
     private String driverName;
     private String url;
@@ -28,7 +28,7 @@ public class ConnectionPool {
     private String password;
     private int poolSize;
 
-    private ConnectionPool(){
+    private ConnectionPool() {
         DBResourceManager dbResourceManager = DBResourceManager.getInstance();
         this.driverName = dbResourceManager.getValue(DBParameter.DB_DRIVER.getValue());
         this.url = dbResourceManager.getValue(DBParameter.DB_URL.getValue());
@@ -37,28 +37,29 @@ public class ConnectionPool {
         this.poolSize = Integer.parseInt(dbResourceManager.getValue(DBParameter.DB_POOL_SIZE.getValue()));
         try {
             initPoolData();
-        }catch (ConnectionPoolException ex){
+        } catch (ConnectionPoolException ex) {
             log.error(ex.getMessage());
         }
     }
 
-    public static ConnectionPool getInstance(){
+    public static ConnectionPool getInstance() {
         return instance;
     }
-    private void initPoolData() throws ConnectionPoolException{
+
+    private void initPoolData() throws ConnectionPoolException {
         Locale.setDefault(Locale.ENGLISH);
         try {
             Class.forName(driverName);
             giveAwayConQueue = new ArrayBlockingQueue<>(poolSize);
             connectionQueue = new ArrayBlockingQueue<>(poolSize);
-            for(int i=0;i<poolSize;i++){
-                Connection connection = DriverManager.getConnection(url,user,password);
+            for (int i = 0; i < poolSize; i++) {
+                Connection connection = DriverManager.getConnection(url, user, password);
                 WrappedConnection wrappedConnection = new WrappedConnection(connection);
                 connectionQueue.add(wrappedConnection);
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new ConnectionPoolException(EX_IN_POOL_MESSAGE, ex);
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new ConnectionPoolException(NO_DRIVER_MASSAGE, ex);
         }
     }
@@ -66,29 +67,31 @@ public class ConnectionPool {
     /**
      * dispose connection pool resources
      */
-    public void dispose(){
+    public void dispose() {
         clearConnectionQueue();
     }
-    private void clearConnectionQueue(){
-        try{
+
+    private void clearConnectionQueue() {
+        try {
             closeConnectionQueue(giveAwayConQueue);
             closeConnectionQueue(connectionQueue);
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
 
     /**
      * take connection from connection pool
+     *
      * @return the connection
      * @throws ConnectionPoolException if there are some problems with connection pool.
      */
-    public Connection takeConnection() throws ConnectionPoolException{
+    public Connection takeConnection() throws ConnectionPoolException {
         Connection connection;
-            try{
+        try {
             connection = connectionQueue.take();
             giveAwayConQueue.add(connection);
-        }catch (InterruptedException ex){
+        } catch (InterruptedException ex) {
             throw new ConnectionPoolException(ERROR_TO_DATA_MESSAGE, ex);
         }
         return connection;
@@ -96,32 +99,34 @@ public class ConnectionPool {
 
     /**
      * releases connection resource.
+     *
      * @param con connection
-     * @param st statement
-     * @param rs result set
+     * @param st  statement
+     * @param rs  result set
      */
-    public void closeConnection(Connection con, Statement st, ResultSet rs){
+    public void closeConnection(Connection con, Statement st, ResultSet rs) {
         try {
             con.close();
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             rs.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             st.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
 
     /**
-     * releases connection resources
+     * releases the connection resources
+     *
      * @param con connection
-     * @param st statement
+     * @param st  statement
      */
     public void closeConnection(Connection con, Statement st) {
         try {
@@ -138,31 +143,34 @@ public class ConnectionPool {
 
     /**
      * releases connection resource.
+     *
      * @param con connection
-     * @param st prepared statement
-     * @param rs result set
+     * @param st  prepared statement
+     * @param rs  result set
      */
-    public void closeConnection(Connection con, PreparedStatement st, ResultSet rs){
+    public void closeConnection(Connection con, PreparedStatement st, ResultSet rs) {
         try {
             con.close();
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             rs.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             st.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }
+
     /**
      * releases connection resource.
+     *
      * @param con connection
-     * @param st prepared statement
+     * @param st  prepared statement
      */
     public void closeConnection(Connection con, PreparedStatement st) {
         try {
@@ -178,11 +186,10 @@ public class ConnectionPool {
     }
 
 
-
-    private void closeConnectionQueue(BlockingQueue<Connection> queue) throws SQLException{
+    private void closeConnectionQueue(BlockingQueue<Connection> queue) throws SQLException {
         Connection connection;
-        while ((connection = queue.poll()) != null){
-            if(!connection.getAutoCommit()){
+        while ((connection = queue.poll()) != null) {
+            if (!connection.getAutoCommit()) {
                 connection.commit();
             }
             ((WrappedConnection) connection).reallyClose();
@@ -200,232 +207,286 @@ public class ConnectionPool {
             this.connection.setAutoCommit(true);
         }
 
-        public void reallyClose() throws SQLException{
+        public void reallyClose() throws SQLException {
             connection.close();
         }
+
         @Override
         public Statement createStatement() throws SQLException {
-            return  connection.createStatement();
+            return connection.createStatement();
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql) throws SQLException {
-            return  connection.prepareStatement(sql);
+            return connection.prepareStatement(sql);
         }
+
         @Override
         public CallableStatement prepareCall(String sql) throws SQLException {
             return connection.prepareCall(sql);
         }
+
         @Override
         public String nativeSQL(String sql) throws SQLException {
             return connection.nativeSQL(sql);
         }
+
         @Override
         public void setAutoCommit(boolean autoCommit) throws SQLException {
             connection.setAutoCommit(autoCommit);
         }
+
         @Override
         public boolean getAutoCommit() throws SQLException {
             return connection.getAutoCommit();
         }
+
         @Override
         public void commit() throws SQLException {
             connection.commit();
         }
+
         @Override
         public void rollback() throws SQLException {
             connection.rollback();
         }
+
         @Override
         public void close() throws SQLException {
-            if (connection.isClosed()){
+            if (connection.isClosed()) {
                 throw new SQLException(CLOSED_MESSAGE);
             }
-            if (connection.isReadOnly()){
+            if (connection.isReadOnly()) {
                 connection.setReadOnly(false);
             }
-            if(!giveAwayConQueue.remove(this)){
+            if (!giveAwayConQueue.remove(this)) {
                 throw new SQLException(REMOVE_MESSAGE);
             }
-            if(!connectionQueue.offer(this)){
+            if (!connectionQueue.offer(this)) {
                 throw new SQLException(OFFER_MESSAGE);
             }
         }
+
         @Override
         public boolean isClosed() throws SQLException {
             return connection.isClosed();
         }
+
         @Override
         public DatabaseMetaData getMetaData() throws SQLException {
             return connection.getMetaData();
         }
+
         @Override
         public void setReadOnly(boolean readOnly) throws SQLException {
             connection.setReadOnly(readOnly);
         }
+
         @Override
         public boolean isReadOnly() throws SQLException {
             return connection.isReadOnly();
         }
+
         @Override
         public void setCatalog(String catalog) throws SQLException {
             connection.setCatalog(catalog);
         }
+
         @Override
         public String getCatalog() throws SQLException {
             return connection.getCatalog();
         }
+
         @Override
         public void setTransactionIsolation(int level) throws SQLException {
             connection.setTransactionIsolation(level);
         }
+
         @Override
         public int getTransactionIsolation() throws SQLException {
             return connection.getTransactionIsolation();
         }
+
         @Override
         public SQLWarning getWarnings() throws SQLException {
             return connection.getWarnings();
         }
+
         @Override
         public void clearWarnings() throws SQLException {
             connection.clearWarnings();
         }
+
         @Override
         public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.createStatement(resultSetType, resultSetConcurrency);
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.prepareStatement(sql, resultSetType, resultSetConcurrency);
         }
+
         @Override
         public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.prepareCall(sql, resultSetType, resultSetConcurrency);
         }
+
         @Override
         public Map<String, Class<?>> getTypeMap() throws SQLException {
             return connection.getTypeMap();
         }
+
         @Override
         public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
             connection.setTypeMap(map);
         }
+
         @Override
         public void setHoldability(int holdability) throws SQLException {
             connection.setHoldability(holdability);
         }
+
         @Override
         public int getHoldability() throws SQLException {
             return connection.getHoldability();
         }
+
         @Override
         public Savepoint setSavepoint() throws SQLException {
             return connection.setSavepoint();
         }
+
         @Override
         public Savepoint setSavepoint(String name) throws SQLException {
             return connection.setSavepoint(name);
         }
+
         @Override
         public void rollback(Savepoint savepoint) throws SQLException {
             connection.rollback(savepoint);
         }
+
         @Override
         public void releaseSavepoint(Savepoint savepoint) throws SQLException {
             connection.releaseSavepoint(savepoint);
         }
+
         @Override
         public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
             return connection.createStatement(resultSetType, resultSetConcurrency, resultSetHoldability);
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
             return connection.prepareStatement(sql, resultSetType, resultSetConcurrency);
         }
+
         @Override
         public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
             return connection.prepareCall(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
             return connection.prepareStatement(sql, autoGeneratedKeys);
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
             return connection.prepareStatement(sql, columnIndexes);
         }
+
         @Override
         public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
             return connection.prepareStatement(sql, columnNames);
         }
+
         @Override
         public Clob createClob() throws SQLException {
             return connection.createClob();
         }
+
         @Override
         public Blob createBlob() throws SQLException {
             return connection.createBlob();
         }
+
         @Override
         public NClob createNClob() throws SQLException {
             return connection.createNClob();
         }
+
         @Override
         public SQLXML createSQLXML() throws SQLException {
             return connection.createSQLXML();
         }
+
         @Override
         public boolean isValid(int timeout) throws SQLException {
             return connection.isValid(timeout);
         }
+
         @Override
         public void setClientInfo(String name, String value) throws SQLClientInfoException {
             connection.setClientInfo(name, value);
         }
+
         @Override
         public void setClientInfo(Properties properties) throws SQLClientInfoException {
             connection.setClientInfo(properties);
         }
+
         @Override
         public String getClientInfo(String name) throws SQLException {
             return connection.getClientInfo(name);
         }
+
         @Override
         public Properties getClientInfo() throws SQLException {
             return connection.getClientInfo();
         }
+
         @Override
         public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
             return connection.createArrayOf(typeName, elements);
         }
+
         @Override
         public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-            return connection.createStruct(typeName,attributes);
+            return connection.createStruct(typeName, attributes);
         }
+
         @Override
         public void setSchema(String schema) throws SQLException {
             connection.setSchema(schema);
         }
+
         @Override
         public String getSchema() throws SQLException {
             return connection.getSchema();
         }
+
         @Override
         public void abort(Executor executor) throws SQLException {
             connection.abort(executor);
         }
+
         @Override
         public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-            connection.setNetworkTimeout(executor,milliseconds);
+            connection.setNetworkTimeout(executor, milliseconds);
         }
+
         @Override
         public int getNetworkTimeout() throws SQLException {
             return connection.getNetworkTimeout();
         }
+
         @Override
         public <T> T unwrap(Class<T> iface) throws SQLException {
             return connection.unwrap(iface);
         }
+
         @Override
         public boolean isWrapperFor(Class<?> iface) throws SQLException {
             return connection.isWrapperFor(iface);

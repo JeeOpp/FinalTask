@@ -26,11 +26,11 @@ public class SimpleSignFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        availableActionRequest = new HashSet<String>(){{
-           add("authorization");
-           add("registration");
-           add("preRestore");
-           add("restorePassword");
+        availableActionRequest = new HashSet<String>() {{
+            add("authorization");
+            add("registration");
+            add("preRestore");
+            add("restorePassword");
         }};
         availableLocalPages = new HashSet<String>() {{
             add("authorizationProblem.jsp");
@@ -43,10 +43,11 @@ public class SimpleSignFilter implements Filter {
 
     /**
      * Filter the specified input.
-     * @param servletRequest standard parameter parameter
+     *
+     * @param servletRequest  standard parameter parameter
      * @param servletResponse standard parameter parameter
-     * @param filterChain standard parameter parameter
-     * @throws IOException  standard exception
+     * @param filterChain     standard parameter parameter
+     * @throws IOException      standard exception
      * @throws ServletException standard exception
      */
     @Override
@@ -63,7 +64,7 @@ public class SimpleSignFilter implements Filter {
             availableLocalRequest = isAvailableLocalPage(pageRequest);
         }
         String requestAction = req.getParameter(ACTION);
-        boolean availableAction =  availableActionRequest.contains(requestAction);
+        boolean availableAction = availableActionRequest.contains(requestAction);
 
         if (loggedIn || availableAction || availableLocalRequest) {
             filterChain.doFilter(req, resp);
@@ -80,6 +81,4 @@ public class SimpleSignFilter implements Filter {
     private boolean isAvailableLocalPage(String page) {
         return availableLocalPages.contains(page);
     }
-
-
 }

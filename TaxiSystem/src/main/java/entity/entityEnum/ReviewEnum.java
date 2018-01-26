@@ -7,10 +7,11 @@ public enum ReviewEnum {
 
     private String value;
 
-    ReviewEnum(String value){
+    ReviewEnum(String value) {
         this.value = value;
     }
-    public String getValue(){
+
+    public String getValue() {
         return value;
     }
 }

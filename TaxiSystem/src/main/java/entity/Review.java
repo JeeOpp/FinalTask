@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ * Bean, contains information about reviews.
+ */
 public class Review {
     private int reviewId;
     private Client client;

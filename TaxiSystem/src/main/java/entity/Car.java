@@ -5,15 +5,19 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Bean, contains information about car.
+ */
 public class Car {
     private final static Logger log = Logger.getLogger(Car.class.getClass());
     private String number;
     private String name;
     private String colour;
-    
-    public Car(){}
 
-    public Car(String number){
+    public Car() {
+    }
+
+    public Car(String number) {
         this.number = number;
     }
 
@@ -47,12 +51,12 @@ public class Car {
         this.colour = colour;
     }
 
-    public void setFromResultSet(ResultSet resultSet){
+    public void setFromResultSet(ResultSet resultSet) {
         try {
             this.setNumber(resultSet.getString(1));
             this.setName(resultSet.getString(2));
             this.setColour(resultSet.getString(3));
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }

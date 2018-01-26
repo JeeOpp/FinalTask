@@ -9,10 +9,11 @@ public enum DBParameter {
 
     private String value;
 
-    DBParameter(String value){
+    DBParameter(String value) {
         this.value = value;
     }
-    public String getValue(){
+
+    public String getValue() {
         return value;
     }
 }

@@ -1,16 +1,17 @@
 package entity.entityEnum;
 
-public enum CarEnum{
+public enum CarEnum {
     NUMBER("number"),
     NAME("name"),
     COLOUR("colour");
 
     private String value;
 
-    CarEnum(String value){
+    CarEnum(String value) {
         this.value = value;
     }
-    public String getValue(){
+
+    public String getValue() {
         return value;
     }
 
@@ -28,16 +29,17 @@ public enum CarEnum{
 
         private String value;
 
-        CarColour(String value){
+        CarColour(String value) {
             this.value = value;
         }
-        public String getValue(){
+
+        public String getValue() {
             return value;
         }
 
-        public static CarColour getConstant(String orderStatus){
-            for (CarColour each: CarColour.values()){
-                if(each.getValue().equals(orderStatus)){
+        public static CarColour getConstant(String orderStatus) {
+            for (CarColour each : CarColour.values()) {
+                if (each.getValue().equals(orderStatus)) {
                     return each;
                 }
             }

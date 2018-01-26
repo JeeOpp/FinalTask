@@ -3,7 +3,11 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pagination<E>{
+/**
+ * Stores information about pages, their count and the stored records count.
+ * @param <E> kind of stored information (clients, cars, etc.)
+ */
+public class Pagination<E> {
     private List<Page<E>> pagesList = null;
     private int countRecords;
     private int countPages;
@@ -17,7 +21,7 @@ public class Pagination<E>{
     }
 
     public List<E> getPage(int page) {
-        if(page>0) {
+        if (page > 0) {
             return pagesList.get(page - 1).getRecords();
         }
         return null;

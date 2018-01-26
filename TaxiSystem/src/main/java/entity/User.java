@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ * Bean, contains information about all the users registered in taxi system.
+ */
 public class User {
     private int id;
     private String login;
@@ -13,11 +16,11 @@ public class User {
     public User() {
     }
 
-    public User(int id){
+    public User(int id) {
         this.id = id;
     }
 
-    public User(String role){
+    public User(String role) {
         this.role = role;
     }
 
@@ -26,39 +29,39 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String login, String password){
-        this(login,password);
+    public User(int id, String login, String password) {
+        this(login, password);
         this.id = id;
     }
 
-    public User(int id, String role){
+    public User(int id, String role) {
         this(role);
         this.id = id;
     }
 
-    public User(int id, boolean banStatus, String role){
-        this(id,role);
+    public User(int id, boolean banStatus, String role) {
+        this(id, role);
         this.banStatus = banStatus;
     }
 
     public User(String login, String password, String firstName, String lastName) {
-        this(login,password);
+        this(login, password);
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     public User(String login, String password, String firstName, String lastName, String role) {
-        this(login,password,firstName,lastName);
+        this(login, password, firstName, lastName);
         this.role = role;
     }
 
-    public User(int id, String login, String password, String firstName, String lastName){
+    public User(int id, String login, String password, String firstName, String lastName) {
         this(login, password, firstName, lastName);
-        this.id=id;
+        this.id = id;
     }
 
-    public User(int id, String login, String password, String firstName, String lastName,boolean banStatus, String role) {
-        this(id,login,password,firstName,lastName);
+    public User(int id, String login, String password, String firstName, String lastName, boolean banStatus, String role) {
+        this(id, login, password, firstName, lastName);
         this.banStatus = banStatus;
         this.role = role;
     }

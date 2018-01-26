@@ -11,24 +11,25 @@ public class CharsetFilter implements Filter {
 
     private String encoding;
 
-    public void destroy(){
+    public void destroy() {
     }
 
     /**
      * Filter the specified input.
-     * @param req standard parameter parameter
-     * @param resp standard parameter parameter
+     *
+     * @param req   standard parameter parameter
+     * @param resp  standard parameter parameter
      * @param chain standard parameter parameter
-     * @throws IOException  standard exception
+     * @throws IOException      standard exception
      * @throws ServletException standard exception
      */
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         req.setCharacterEncoding(encoding);
         resp.setCharacterEncoding(encoding);
-        chain.doFilter(req,resp);
+        chain.doFilter(req, resp);
     }
 
-    public void init(FilterConfig filterConfig) throws ServletException{
+    public void init(FilterConfig filterConfig) throws ServletException {
         encoding = filterConfig.getInitParameter(ENCODING);
     }
 }

@@ -35,6 +35,9 @@
     <fmt:message bundle="${loc}" key="local.index.restoreText" var="restoreText"/>
     <fmt:message bundle="${loc}" key="local.index.restoreButton" var="restoreButton"/>
     <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.password" var="validPassword"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.login" var="validLogin"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.nameSurname" var="validName"/>
 
     <title>${title}</title>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -72,15 +75,15 @@
                 <input type="hidden" name="role" value="client"/>
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="text" required name="name" placeholder="${userName}" autocomplete="off"/>
+                        <input type="text" required name="name" placeholder="${userName}" autocomplete="off" pattern="^[a-zA-Zа-яА-ЯёЁ]+$" title="${validName}"/>
                     </div>
                     <div class="field-wrap">
-                        <input type="text" required name="surname" placeholder="${userSurname}" autocomplete="off"/>
+                        <input type="text" required name="surname" placeholder="${userSurname}" autocomplete="off" pattern="^[a-zA-Zа-яА-ЯёЁ]+$" title="${validName}}"/>
                     </div>
                 </div>
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="text" required name="login"  placeholder="${userLogin}" autocomplete="off"/>
+                        <input type="text" required name="login"  placeholder="${userLogin}" autocomplete="off" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="${validLogin}"/>
                     </div>
                     <div class="field-wrap">
                         <input type="email" required name="email"  placeholder="e-mail" autocomplete="off"/>
@@ -88,7 +91,7 @@
                 </div>
                 <div class="wrapped-row">
                     <div class="field-wrap">
-                        <input type="password" required id="pass1" name="password"  placeholder="${pass1}" autocomplete="off"/>
+                        <input type="password" required id="pass1" name="password"  placeholder="${pass1}" autocomplete="off" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" title="${validPassword}"/>
                     </div>
                     <div class="field-wrap">
                         <input type="password" required id="pass2" name="password"  placeholder="${pass2}" autocomplete="off"/>

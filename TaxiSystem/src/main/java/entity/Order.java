@@ -5,6 +5,9 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Bean, contains information about order.
+ */
 public class Order {
     private final static String DEFAULT_ORDER_STATUS = "processed";
     private final static Logger log = Logger.getLogger(Order.class.getClass());
@@ -24,7 +27,7 @@ public class Order {
         this.price = price;
     }
 
-    public Order(){
+    public Order() {
         orderStatus = DEFAULT_ORDER_STATUS;
     }
 
@@ -84,7 +87,7 @@ public class Order {
         this.price = price;
     }
 
-    public void setFromResultSet(ResultSet resultSet){
+    public void setFromResultSet(ResultSet resultSet) {
         try {
             this.setOrderId(resultSet.getInt(1));
             this.setOrderStatus(resultSet.getString(2));
@@ -108,7 +111,7 @@ public class Order {
             car.setColour(resultSet.getString(16));
             taxi.setCar(car);
             this.setTaxi(taxi);
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
     }

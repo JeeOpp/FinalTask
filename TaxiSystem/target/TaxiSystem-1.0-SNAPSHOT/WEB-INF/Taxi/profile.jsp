@@ -33,6 +33,7 @@
     <fmt:message bundle="${loc}" key="local.all.user.login" var="userLogin"/>
     <fmt:message bundle="${loc}" key="local.all.car.car" var="car"/>
     <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
+    <fmt:message bundle="${loc}" key="local.forms.title.password" var="validPassword"/>
 
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
@@ -117,7 +118,7 @@
                 </div>
                 <div class="modal-body">
                     <span class="label-line"><label for="previousPass">${currentPass}</label></span><input type="text" id="previousPass" name="previousPass" required/><br/>
-                    <span class="label-line"><label for="pass1">${newPass}</label></span><input type="text" id="pass1" name="newPass" required/><br/>
+                    <span class="label-line"><label for="pass1">${newPass}</label></span><input type="text" id="pass1" name="newPass" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" title="${validPassword}" required/><br/>
                     <span class="label-line"><label for="pass2">${repeatPass}</label></span><input type="text" id="pass2" name="newPass" required>
                 </div>
                 <div class="modal-footer">

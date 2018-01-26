@@ -13,14 +13,15 @@ public enum OrderEnum {
 
     private String value;
 
-    OrderEnum(String value){
+    OrderEnum(String value) {
         this.value = value;
     }
-    public String getValue(){
+
+    public String getValue() {
         return value;
     }
 
-    public enum OrderAction{
+    public enum OrderAction {
         ACCEPT("accept"),
         REJECT("reject"),
         CANCEL("cancel"),
@@ -29,10 +30,11 @@ public enum OrderEnum {
 
         private String value;
 
-        OrderAction(String value){
+        OrderAction(String value) {
             this.value = value;
         }
-        public String getValue(){
+
+        public String getValue() {
             return value;
         }
     }
@@ -47,16 +49,17 @@ public enum OrderEnum {
 
         private String value;
 
-        OrderStatus(String value){
+        OrderStatus(String value) {
             this.value = value;
         }
-        public String getValue(){
+
+        public String getValue() {
             return value;
         }
 
-        public static OrderStatus getConstant(String orderStatus){
-            for (OrderStatus each: OrderStatus.values()){
-                if(each.getValue().equals(orderStatus)){
+        public static OrderStatus getConstant(String orderStatus) {
+            for (OrderStatus each : OrderStatus.values()) {
+                if (each.getValue().equals(orderStatus)) {
                     return each;
                 }
             }

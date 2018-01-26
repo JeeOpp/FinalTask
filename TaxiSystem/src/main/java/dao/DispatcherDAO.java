@@ -1,170 +1,53 @@
 package dao;
 
-import dao.connectionPool.ConnectionPool;
-import dao.connectionPool.ConnectionPoolException;
 import entity.Order;
-import org.apache.log4j.Logger;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-/**
- * A DAO class uses to read or change data in database and send a data to the modal layer.
- */
-public class DispatcherDAO {
-    private static final Logger log = Logger.getLogger(DispatcherDAO.class.getClass());
-    private static final String SQL_SELECT_ALL_ORDER="SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.order\n" +
+public interface DispatcherDAO {
+    String SQL_DELETE_ALL_ORDER = "DELETE FROM `order` WHERE `order`.order_id > 0;";
+    String SQL_MAKE_ORDER = "INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);";
+    String SQL_CANCEL_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ?;";
+    String SQL_ACCEPT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;";
+    String SQL_REJECT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;";
+    String SQL_PAY_ORDER = "UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;";
+    String SQL_ARCHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
+    String SQL_SELECT_ALL_ORDER = "SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.order\n" +
             " JOIN client ON taxisystem.order.client_id = client.id" +
             " JOIN taxi ON taxisystem.order.taxi_id = taxi.id" +
             " JOIN car ON taxi.carNumber = car.number ORDER BY order_id DESC;";
-    private static final String SQL_DELETE_ALL_ORDER="DELETE FROM `order` WHERE `order`.order_id > 0;";
-    private static final String SQL_MAKE_ORDER="INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);";
-    private static final String SQL_CANCEL_ORDER ="DELETE FROM taxisystem.order WHERE order_id = ?;";
-    private static final String SQL_ACCEPT_ORDER="UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;";
-    private static final String SQL_REJECT_ORDER="UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;";
-    private static final String SQL_PAY_ORDER="UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;";
-    private static final String SQL_ARCHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
-
-    private ConnectionPool connectionPool = ConnectionPool.getInstance();
-    private Connection connection = null;
-    private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
-
-    DispatcherDAO() {
-    }
 
     /**
      * Read all information about orders from database and forms it into the collection list.
+     *
      * @return a list contained all orders information.
      * @throws SQLException when there are problems with database connection.
      */
-    public List<Order> getOrderList() throws SQLException {
-        List<Order> orderList = new ArrayList<>();
-        Order order;
-        try {
-            connection = connectionPool.takeConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(SQL_SELECT_ALL_ORDER);
-            while (resultSet.next()) {
-                order = new Order();
-                order.setFromResultSet(resultSet);
-                orderList.add(order);
-            }
-        } catch (ConnectionPoolException | SQLException ex) {
-            log.error(ex.getMessage());
-        } finally {
-            connectionPool.closeConnection(connection, statement, resultSet);
-        }
-        return orderList;
-    }
+    List<Order> getOrderList() throws SQLException;
 
     /**
      * Used to add a new order information to the database.
+     *
      * @param order contains a all information about order there are client info, taxi driver info, source, destiny and order price;
      * @throws SQLException when there are problems with database connection.
      */
-    public void orderConfirm(Order order) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(SQL_MAKE_ORDER);
-            preparedStatement.setInt(1, order.getClient().getId());
-            preparedStatement.setInt(2, order.getTaxi().getId());
-            preparedStatement.setString(3, order.getSourceCoordinate());
-            preparedStatement.setString(4, order.getDestinyCoordinate());
-            preparedStatement.setDouble(5, order.getPrice());
-            preparedStatement.execute();
-        }catch (ConnectionPoolException | SQLException ex) {
-            log.error(ex.getMessage());
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
+    void orderConfirm(Order order) throws SQLException;
 
     /**
      * Used to change an order status from database.
      * In the dependence on the status we want to put in the database used a different prepared statement query.
+     *
      * @param orderAction the action we want to apply in method.
-     * @param orderId used to identify an order we want to change.
+     * @param orderId     used to identify an order we want to change.
      * @throws SQLException when there are problems with database connection.
      */
-    public void changeOrderStatus(String orderAction, int orderId) throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            preparedStatement = connection.prepareStatement(chooseOrderAction(orderAction));
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.execute();
-        }catch (ConnectionPoolException | SQLException ex) {
-            log.error(ex.getMessage());
-        }finally {
-            connectionPool.closeConnection(connection,preparedStatement);
-        }
-    }
+    void changeOrderStatus(String orderAction, int orderId) throws SQLException;
 
     /**
      * Delete all the information about orders from database.
+     *
      * @throws SQLException when there are problems with database connection.
      */
-    public void deleteAllOrders() throws SQLException{
-        try {
-            connection = connectionPool.takeConnection();
-            statement = connection.createStatement();
-            statement.execute(SQL_DELETE_ALL_ORDER);
-        }catch (ConnectionPoolException | SQLException ex) {
-            log.error(ex.getMessage());
-        }finally {
-            connectionPool.closeConnection(connection,statement);
-        }
-    }
-
-    /**
-     * used to identify a special SQL query we want to use dependent on action parameter.
-     * @param orderAction identify sql query we want to get
-     * @return the special sql query.
-     */
-    private String chooseOrderAction(String orderAction){
-        OrderAction orderEnum = OrderAction.getConstant(orderAction);
-        switch (orderEnum){
-            case CANCEL: return SQL_CANCEL_ORDER;
-            case ACCEPT: return SQL_ACCEPT_ORDER;
-            case REJECT: return SQL_REJECT_ORDER;
-            case PAY: return SQL_PAY_ORDER;
-            case ARCHIVE: return SQL_ARCHIVE_ORDER;
-        }
-        return null;
-    }
-
-    enum OrderAction{
-        CANCEL("cancel"),
-        ACCEPT("accept"),
-        REJECT("reject"),
-        PAY("pay"),
-        ARCHIVE("archive"),
-        NONE("none");
-
-        private String value;
-
-        OrderAction(String value){
-            this.value = value;
-        }
-
-        public String getValue(){
-            return value;
-        }
-        /**
-         * In the dependence on the received value, return special enum.
-         * @param orderStatus Special enum we are want to get.
-         * @return get special enum in accordance with the action value.
-         * If there are no matches return a NONE enum.
-         */
-        public static OrderAction getConstant(String orderStatus){
-            for (OrderAction each: OrderAction.values()){
-                if(each.getValue().equals(orderStatus)){
-                    return each;
-                }
-            }
-            return NONE;
-        }
-    }
+    void deleteAllOrders() throws SQLException;
 }

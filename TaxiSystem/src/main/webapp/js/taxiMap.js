@@ -26,7 +26,7 @@ function setCoord(srcLat,srcLng,dstLat,dstLng) {
     var markerClient = new google.maps.Marker({
         position: srcLatLng,
         map: map,
-        title:"I'm here"
+        title:"Source"
     });
     markers.push(markerClient);
 
@@ -34,7 +34,7 @@ function setCoord(srcLat,srcLng,dstLat,dstLng) {
         position: dstLatLng,
         map: map,
         icon: destinyIcon,
-        title:"Drag me!"
+        title:"Destiny"
     });
     markers.push(markerDestiny);
 }

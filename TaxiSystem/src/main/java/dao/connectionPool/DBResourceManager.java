@@ -7,11 +7,11 @@ public class DBResourceManager {
 
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("connectionPool/db");
 
-    public static DBResourceManager getInstance(){
+    public static DBResourceManager getInstance() {
         return instance;
     }
 
-    public String getValue(String key){
+    public String getValue(String key) {
         return resourceBundle.getString(key);
     }
 }
