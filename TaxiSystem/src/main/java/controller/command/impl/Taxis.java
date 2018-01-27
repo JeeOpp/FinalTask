@@ -3,6 +3,8 @@ package controller.command.impl;
 import controller.command.ControllerCommand;
 import entity.Car;
 import entity.User;
+import entity.entityEnum.CarEnum;
+import entity.entityEnum.UserEnum;
 import service.ServiceFactory;
 import service.TaxisService;
 import service.impl.TaxisServiceImpl;
@@ -20,6 +22,8 @@ import java.util.List;
  */
 public class Taxis implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private final static String ADMIN_CARS_PAGE = "WEB-INF/Admin/cars.jsp";
+    private final static String GET_CAR_PAGE = "Controller?method=taxis&action=getCarList";
 
     /**
      * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
@@ -31,7 +35,7 @@ public class Taxis implements ControllerCommand {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
+        String action = req.getParameter(ACTION);
         TaxisAction taxisAction = TaxisAction.getConstant(action);
         switch (taxisAction) {
             case GET_CAR_LIST:
@@ -56,14 +60,14 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getCarList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             TaxisService taxisService = serviceFactory.getTaxisService();
             List<Car> carList = taxisService.getCarList();
 
-            req.setAttribute("carList", carList);
-            req.getRequestDispatcher("WEB-INF/Admin/cars.jsp").forward(req, resp);
+            req.setAttribute(CarEnum.CAR_LIST.getValue(), carList);
+            req.getRequestDispatcher(ADMIN_CARS_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -79,19 +83,18 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void addCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String carNumber = req.getParameter("carNumber");
-            String carName = req.getParameter("carName");
-            String colour = req.getParameter("carColour");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String carNumber = req.getParameter(CarEnum.CAR_NUMBER.getValue());
+            String carName = req.getParameter(CarEnum.CAR_NAME.getValue());
+            String colour = req.getParameter(CarEnum.CAR_COLOUR.getValue());
 
             Car car = new Car(carNumber, carName, colour);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             TaxisService taxisService = serviceFactory.getTaxisService();
             if (taxisService.addCar(car)) {
-                resp.sendRedirect("Controller?method=taxis&action=getCarList");
-                //getCarList(req, resp);
+                resp.sendRedirect(GET_CAR_PAGE);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -108,16 +111,15 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String carNumber = req.getParameter("carNumber");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String carNumber = req.getParameter(CarEnum.CAR_NUMBER.getValue());
             Car car = new Car(carNumber);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             TaxisService taxisService = serviceFactory.getTaxisService();
             taxisService.removeCar(car);
-            resp.sendRedirect("Controller?method=taxis&action=getCarList");
-            //getCarList(req, resp);
+            resp.sendRedirect(GET_CAR_PAGE);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }

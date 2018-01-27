@@ -2,8 +2,12 @@ package entity.entityEnum;
 
 public enum CarEnum {
     NUMBER("number"),
+    CAR_NUMBER("carNumber"),
     NAME("name"),
-    COLOUR("colour");
+    CAR_NAME("carName"),
+    COLOUR("colour"),
+    CAR_COLOUR("carColour"),
+    CAR_LIST("carList");
 
     private String value;
 

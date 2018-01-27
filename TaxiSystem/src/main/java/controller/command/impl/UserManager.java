@@ -2,6 +2,10 @@ package controller.command.impl;
 
 import controller.command.ControllerCommand;
 import entity.*;
+import entity.entityEnum.OrderEnum;
+import entity.entityEnum.PaginationEnum;
+import entity.entityEnum.ReviewEnum;
+import entity.entityEnum.UserEnum;
 import service.*;
 import support.PasswordGen;
 import support.TLSSender;
@@ -21,6 +25,23 @@ import java.util.ResourceBundle;
  */
 public class UserManager implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private final static String CLIENT_PROFILE_PAGE = "WEB-INF/Client/profile.jsp";
+    private final static String TAXI_PROFILE_PAGE = "WEB-INF/Taxi/profile.jsp";
+    private final static String GET_USER_REVIEW_REQ = "Controller?method=userManager&action=getUserReview";
+    private final static String ADMIN_CLIENTS_PAGE = "WEB-INF/Admin/clients.jsp";
+    private final static String ADMIN_TAXI_PAGE = "WEB-INF/Admin/taxi.jsp";
+    private final static String INDEX_PAGE = "index.jsp";
+    private final static int WRONG_ID = -1;
+    private final static int DEFAULT_BONUS = 0;
+    private final static int DEFAULT_PAGE = 1;
+    private final static String GET_CLIENT_LIST_GEQ = "Controller?method=userManager&action=getClientList";
+    private final static String GET_TAXI_LIST_GEQ = "Controller?method=userManager&action=getTaxiList";
+    private final static String MAIL = "mail";
+    private final static String HASH_PASS = "hashPassword";
+    private final static String LOCAL = "local";
+    private final static String BUNDLE = "localization.local";
+    private final static String SUBJECT = "local.restoreEmail.subject";
+    private final static String PASS_TEXT = "local.restoreEmail.newPassText";
 
     /**
      * Realization of command pattern. Read a action parameter from request and execute special command depending on read parameter.
@@ -32,7 +53,7 @@ public class UserManager implements ControllerCommand {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
+        String action = req.getParameter(ACTION);
         UserManagerAction userManagerAction = UserManagerAction.getConstant(action);
         switch (userManagerAction) {
             case PRE_PROFILE:
@@ -73,19 +94,19 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if (role.equals("client") || role.equals("taxi")) {
+        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.TAXI.getValue())) {
             List<Review> reviewList;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             FeedbackService feedbackService = serviceFactory.getFeedbackService();
             reviewList = feedbackService.getUserReviews(user);
 
-            req.setAttribute("userReviews", reviewList);
+            req.setAttribute(ReviewEnum.USER_REVIEWS.getValue(), reviewList);
             if (role.equals("client")) {
-                req.getRequestDispatcher("WEB-INF/Client/profile.jsp").forward(req, resp);
+                req.getRequestDispatcher(CLIENT_PROFILE_PAGE).forward(req, resp);
             } else {
-                req.getRequestDispatcher("WEB-INF/Taxi/profile.jsp").forward(req, resp);
+                req.getRequestDispatcher(TAXI_PROFILE_PAGE).forward(req, resp);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -101,19 +122,18 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if (role.equals("client") || role.equals("taxi")) {
-            String currentPassword = req.getParameter("previousPass");
-            String newPassword = req.getParameter("newPass");
+        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.TAXI.getValue())) {
+            String currentPassword = req.getParameter(UserEnum.PREVIOUS_PASS.getValue());
+            String newPassword = req.getParameter(UserEnum.NEW_PASS.getValue());
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             if (userManagerService.changePassword(user, currentPassword, newPassword)) {
-                req.getSession().setAttribute("user", user);
+                req.getSession().setAttribute(UserEnum.USER.getValue(), user);
             }
-            resp.sendRedirect("Controller?method=userManager&action=getUserReview");
-            //getUserReview(req, resp);
+            resp.sendRedirect(GET_USER_REVIEW_REQ);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -129,10 +149,10 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String numPage = req.getParameter("numPage");
-            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+            int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Client> clientList = userManagerService.getClientList();
@@ -143,11 +163,11 @@ public class UserManager implements ControllerCommand {
             List<Client> pageClientList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute("pageClientList", pageClientList);
-            req.setAttribute("countPages", paginationService.getPagination().getCountPages());
-            req.setAttribute("currentPage", page);
+            req.setAttribute(PaginationEnum.PAGE_CLIENT_LIST.getValue(), pageClientList);
+            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
+            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
 
-            req.getRequestDispatcher("WEB-INF/Admin/clients.jsp").forward(req, resp);
+            req.getRequestDispatcher(ADMIN_CLIENTS_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -161,11 +181,11 @@ public class UserManager implements ControllerCommand {
      * @throws ServletException Standard exception
      * @throws IOException      Standard exception
      */
-    void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String numPage = req.getParameter("numPage");
-            int page = (numPage != null) ? Integer.parseInt(numPage) : 1;
+    private void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+            int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Taxi> taxiList = userManagerService.getTaxiList();
@@ -176,11 +196,11 @@ public class UserManager implements ControllerCommand {
             List<Taxi> pageTaxiList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute("pageTaxiList", pageTaxiList);
-            req.setAttribute("countPages", paginationService.getPagination().getCountPages());
-            req.setAttribute("currentPage", page);
+            req.setAttribute(PaginationEnum.PAGE_TAXI_LIST.getValue(), pageTaxiList);
+            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
+            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
 
-            req.getRequestDispatcher("WEB-INF/Admin/taxi.jsp").forward(req, resp);
+            req.getRequestDispatcher(ADMIN_TAXI_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -196,24 +216,22 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeBanStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String userIdString = req.getParameter("id");
-            int userId = (userIdString != null) ? Integer.parseInt(userIdString) : -1;
-            boolean banStatus = Boolean.parseBoolean(req.getParameter("banStatus"));
-            String rolePage = req.getParameter("role");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String userIdString = req.getParameter(UserEnum.ID.getValue());
+            int userId = (userIdString != null) ? Integer.parseInt(userIdString) : WRONG_ID;
+            boolean banStatus = Boolean.parseBoolean(req.getParameter(UserEnum.BAN_STATUS.getValue()));
+            String rolePage = req.getParameter(UserEnum.ROLE.getValue());
 
             User userToChange = new User(userId, banStatus, rolePage);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBanStatus(userToChange);
-            if (rolePage.equals("client")) {
-                resp.sendRedirect("Controller?method=userManager&action=getClientList");
-                //getClientList(req, resp);
+            if (rolePage.equals(UserEnum.CLIENT.getValue())) {
+                resp.sendRedirect(GET_CLIENT_LIST_GEQ);
             } else {
-                resp.sendRedirect("Controller?method=userManager&action=getTaxiList");
-                //getTaxiList(req, resp);
+                resp.sendRedirect(GET_TAXI_LIST_GEQ);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -230,19 +248,18 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeBonusCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String clientIdString = req.getParameter("clientId");
-            int clientId = (clientIdString != null) ? Integer.parseInt(clientIdString) : -1;
-            String bonusPointsString = req.getParameter("bonusPoints");
-            int bonusPoints = (bonusPointsString != null) ? Integer.parseInt(bonusPointsString) : 0;
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String clientIdString = req.getParameter(UserEnum.CLIENT_ID.getValue());
+            int clientId = (clientIdString != null) ? Integer.parseInt(clientIdString) : WRONG_ID;
+            String bonusPointsString = req.getParameter(UserEnum.BONUS_POINTS.getValue());
+            int bonusPoints = (bonusPointsString != null) ? Integer.parseInt(bonusPointsString) : DEFAULT_BONUS;
 
             Client client = new Client(clientId, bonusPoints);
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBonusCount(client);
-            resp.sendRedirect("Controller?method=userManager&action=getClientList");
-            //getClientList(req, resp);
+            resp.sendRedirect(GET_CLIENT_LIST_GEQ);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -258,19 +275,18 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeTaxiCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
-            String taxiIdString = req.getParameter("changeTaxiId");
-            int taxiId = (taxiIdString != null) ? Integer.parseInt(taxiIdString) : -1;
-            String carNumber = req.getParameter("checkedCarNumber");
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String taxiIdString = req.getParameter(UserEnum.CHANGE_TAXI_ID.getValue());
+            int taxiId = (taxiIdString != null) ? Integer.parseInt(taxiIdString) : WRONG_ID;
+            String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
             Car car = new Car(carNumber);
             Taxi taxi = new Taxi(taxiId, car);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeTaxiCar(taxi);
-            resp.sendRedirect("Controller?method=userManager&action=getTaxiList");
-            //getTaxiList(req, resp);
+            resp.sendRedirect(GET_TAXI_LIST_GEQ);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -286,23 +302,23 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void restorePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String mail = req.getParameter("mail");
-        String hashPassword = req.getParameter("hashPassword");
+        String mail = req.getParameter(MAIL);
+        String hashPassword = req.getParameter(HASH_PASS);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserManagerService userManagerService = serviceFactory.getUserManagerService();
         String newPassword = PasswordGen.generate();
         if (userManagerService.restorePassword(mail, hashPassword, newPassword)) {
-            String locale = (String) req.getSession().getAttribute("local");
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("localization.local", new Locale(locale));
-            String restoreSubject = resourceBundle.getString("local.restoreEmail.subject");
-            String newPassTest = resourceBundle.getString("local.restoreEmail.newPassText") + "\n" + newPassword;
+            String locale = (String) req.getSession().getAttribute(LOCAL);
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE, new Locale(locale));
+            String restoreSubject = resourceBundle.getString(SUBJECT);
+            String newPassTest = resourceBundle.getString(PASS_TEXT) + "\n" + newPassword;
 
             Thread sendMail = new Thread(new TLSSender(mail, newPassTest, restoreSubject));
             sendMail.start();
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect(INDEX_PAGE);
         } else {
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect(INDEX_PAGE);
         }
     }
 

@@ -24,6 +24,7 @@ public class Mailer implements ControllerCommand {
     private final static String TO_ADMIN_MAIL = "demkoandrey2012@yandex.by";
     private final static String LOCALE_PARAMETER = "local";
     private final static String BUNDLE = "localization.local";
+    private final static String DEFAULT_LOCALE = "US";
     private final static String SUBJECT_LOCALE = "local.restoreEmail.subject";
     private final static String TEXT_LOCALE = "local.restoreEmail.text";
     private final static String START_RESTORE_LINK = "http://localhost:8086/Controller?method=userManager&action=restorePassword&mail=";
@@ -84,6 +85,9 @@ public class Mailer implements ControllerCommand {
         String hashPassword = userManagerService.getHashPassword(mail);
 
         String locale = (String) req.getSession().getAttribute(LOCALE_PARAMETER);
+        if (locale == null){
+            locale = DEFAULT_LOCALE;
+        }
         ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE, new Locale(locale));
         String restoreSubject = resourceBundle.getString(SUBJECT_LOCALE);
         String restoreText = resourceBundle.getString(TEXT_LOCALE) + "\n" + createRestoreLink(mail, hashPassword);

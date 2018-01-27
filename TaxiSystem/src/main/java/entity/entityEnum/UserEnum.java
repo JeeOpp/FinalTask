@@ -10,6 +10,8 @@ public enum UserEnum {
     ID("id"),
     LOGIN("login"),
     PASSWORD("password"),
+    NEW_PASS("newPass"),
+    PREVIOUS_PASS("previousPass"),
     FIRST_NAME("firstName"),
     NAME("name"),
     LAST_NAME("lastName"),
@@ -19,6 +21,7 @@ public enum UserEnum {
     BONUS_POINTS("bonusPoints"),
     EMAIL("email"),
     AVAILABLE_STATUS("availableStatus"),
+    CHANGE_TAXI_ID("changeTaxiId"),
     CAR("car");
 
     private String value;

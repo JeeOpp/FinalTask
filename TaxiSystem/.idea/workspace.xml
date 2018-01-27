@@ -1,167 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="jav">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/DispatcherDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/FeedbackDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/SignDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/TaxisDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/UserManagerDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/DispatcherServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/FeedbackServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/PaginationServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/SignServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/TaxisServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/impl/UserManagerServiceImpl.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/log4j/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/log4j/log4j.properties" afterPath="" />
+    <list default="true" id="df8c3581-716f-4bb2-8697-b0ddc9f9cb2e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher$1.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Dispatcher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback$1.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Feedback.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Localization.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Localization.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Mailer.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Mailer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager$1.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/SignManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis$1.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/Taxis.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager$1.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/command/impl/UserManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/CharsetFilter.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/CharsetFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/LocalFilter.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/LocalFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/SessionAuthorizeFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/listener/SessionDestroyedListener.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/controller/listener/SessionDestroyedListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DispatcherDAO.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/DispatcherDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/FeedbackDAO.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/FeedbackDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/SignDAO.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/SignDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/TaxisDAO.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/TaxisDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/UserManagerDAO.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/UserManagerDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/ConnectionPool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBParameter.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/dao/connectionPool/DBParameter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Car.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Car.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Client.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Order.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Order.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Page.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Page.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Pagination.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Pagination.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Review.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Review.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Taxi.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/Taxi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/User.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/entity/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/DispatcherService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/DispatcherService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/FeedbackService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/FeedbackService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/PaginationService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/PaginationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/ServiceFactory.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/ServiceFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/SignService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/SignService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/TaxisService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/TaxisService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/UserManagerService.class" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/service/UserManagerService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Dispatcher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Feedback.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Localization.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Localization.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Mailer.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Mailer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/SignManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/Taxis.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager.class" afterPath="$PROJECT_DIR$/target/classes/controller/command/impl/UserManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/filter/CharsetFilter.class" afterPath="$PROJECT_DIR$/target/classes/controller/filter/CharsetFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/filter/LocalFilter.class" afterPath="$PROJECT_DIR$/target/classes/controller/filter/LocalFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/filter/SessionAuthorizeFilter.class" afterPath="$PROJECT_DIR$/target/classes/controller/filter/SessionAuthorizeFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/listener/SessionDestroyedListener.class" afterPath="$PROJECT_DIR$/target/classes/controller/listener/SessionDestroyedListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/target/classes/dao/DAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/DispatcherDAO.class" afterPath="$PROJECT_DIR$/target/classes/dao/DispatcherDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/FeedbackDAO.class" afterPath="$PROJECT_DIR$/target/classes/dao/FeedbackDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/SignDAO.class" afterPath="$PROJECT_DIR$/target/classes/dao/SignDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/TaxisDAO.class" afterPath="$PROJECT_DIR$/target/classes/dao/TaxisDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/UserManagerDAO.class" afterPath="$PROJECT_DIR$/target/classes/dao/UserManagerDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" afterPath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool$WrappedConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool.class" afterPath="$PROJECT_DIR$/target/classes/dao/connectionPool/ConnectionPool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBParameter.class" afterPath="$PROJECT_DIR$/target/classes/dao/connectionPool/DBParameter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Car.class" afterPath="$PROJECT_DIR$/target/classes/entity/Car.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Client.class" afterPath="$PROJECT_DIR$/target/classes/entity/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Order.class" afterPath="$PROJECT_DIR$/target/classes/entity/Order.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Page.class" afterPath="$PROJECT_DIR$/target/classes/entity/Page.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Pagination.class" afterPath="$PROJECT_DIR$/target/classes/entity/Pagination.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Review.class" afterPath="$PROJECT_DIR$/target/classes/entity/Review.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/Taxi.class" afterPath="$PROJECT_DIR$/target/classes/entity/Taxi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/entity/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/DispatcherService.class" afterPath="$PROJECT_DIR$/target/classes/service/DispatcherService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/FeedbackService.class" afterPath="$PROJECT_DIR$/target/classes/service/FeedbackService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/PaginationService.class" afterPath="$PROJECT_DIR$/target/classes/service/PaginationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" afterPath="$PROJECT_DIR$/target/classes/service/ServiceFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/SignService.class" afterPath="$PROJECT_DIR$/target/classes/service/SignService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/TaxisService.class" afterPath="$PROJECT_DIR$/target/classes/service/TaxisService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/service/UserManagerService.class" afterPath="$PROJECT_DIR$/target/classes/service/UserManagerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/TaxiSystem_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/TaxiSystem_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaxiSystem.iml" afterPath="$PROJECT_DIR$/TaxiSystem.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/CharsetFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/filter/LocalFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/LocalFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/filter/SimpleSignFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/SimpleSignFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" afterPath="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/dao/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/DispatcherDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/SignDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/SignDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/TaxisDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/TaxisDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/UserManagerDAO.java" afterPath="$PROJECT_DIR$/src/main/java/dao/UserManagerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPool.java" afterPath="$PROJECT_DIR$/src/main/java/dao/connectionPool/ConnectionPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/connectionPool/DBParameter.java" afterPath="$PROJECT_DIR$/src/main/java/dao/connectionPool/DBParameter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/connectionPool/DBResourceManager.java" afterPath="$PROJECT_DIR$/src/main/java/dao/connectionPool/DBResourceManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Car.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Client.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Order.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Page.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Page.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Pagination.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Pagination.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Review.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Review.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/Taxi.java" afterPath="$PROJECT_DIR$/src/main/java/entity/Taxi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java" afterPath="$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java" afterPath="$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/entityEnum/PaginationEnum.java" afterPath="$PROJECT_DIR$/src/main/java/entity/entityEnum/PaginationEnum.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java" afterPath="$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java" afterPath="$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" afterPath="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" afterPath="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/PaginationService.java" afterPath="$PROJECT_DIR$/src/main/java/service/PaginationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" afterPath="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/SignService.java" afterPath="$PROJECT_DIR$/src/main/java/service/SignService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/TaxisService.java" afterPath="$PROJECT_DIR$/src/main/java/service/TaxisService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/UserManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/service/UserManagerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/clientMap.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/clientMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/taxiMap.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/taxiMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/cars.jsp" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/cars.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/taxi.jsp" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Admin/taxi.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/profile.jsp" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Client/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/profile.jsp" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/Taxi/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local.properties" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_en.properties" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_ru.properties" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/WEB-INF/classes/localization/local_ru.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/index.jsp" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/clientMap.js" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/clientMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/taxiMap.js" afterPath="$PROJECT_DIR$/target/TaxiSystem-1.0-SNAPSHOT/js/taxiMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/localization/local.properties" afterPath="$PROJECT_DIR$/target/classes/localization/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/localization/local_en.properties" afterPath="$PROJECT_DIR$/target/classes/localization/local_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/localization/local_ru.properties" afterPath="$PROJECT_DIR$/target/classes/localization/local_ru.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/log4j/log4j.properties" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -213,141 +65,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Dispatcher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding>
-                <element signature="e#18704#18705#0" expanded="false" />
-                <element signature="e#18746#18747#0" expanded="false" />
-                <element signature="e#18888#18889#0" expanded="false" />
-                <element signature="e#18924#18925#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedbackDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/FeedbackDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Taxis.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="18" column="50" lean-forward="false" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+            <state relative-caret-position="2222">
+              <caret line="123" column="42" lean-forward="false" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#5182#5183#0" expanded="false" />
-                <element signature="e#5224#5225#0" expanded="false" />
-                <element signature="e#5260#5261#0" expanded="false" />
-                <element signature="e#5296#5297#0" expanded="false" />
+                <element signature="e#5466#5467#0" expanded="true" />
+                <element signature="e#5508#5509#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CarEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding>
+                <element signature="e#274#275#0" expanded="true" />
+                <element signature="e#308#309#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1232">
+              <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7282">
-              <caret line="347" column="0" lean-forward="false" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#14232#14233#0" expanded="false" />
-                <element signature="e#14274#14275#0" expanded="false" />
-                <element signature="e#14310#14311#0" expanded="false" />
-                <element signature="e#14346#14347#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionDestroyedListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+            <state relative-caret-position="723">
+              <caret line="361" column="1" lean-forward="true" selection-start-line="361" selection-start-column="1" selection-end-line="361" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServiceFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/ServiceFactory.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="37" column="1" lean-forward="false" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-              <folding>
-                <element signature="e#794#795#0" expanded="false" />
-                <element signature="e#825#826#0" expanded="false" />
-                <element signature="e#866#867#0" expanded="false" />
-                <element signature="e#900#901#0" expanded="false" />
-                <element signature="e#1030#1031#0" expanded="false" />
-                <element signature="e#1068#1069#0" expanded="false" />
-                <element signature="e#1123#1124#0" expanded="false" />
-                <element signature="e#1164#1165#0" expanded="false" />
-                <element signature="e#1217#1218#0" expanded="false" />
-                <element signature="e#1257#1258#0" expanded="false" />
-                <element signature="e#1300#1301#0" expanded="false" />
-                <element signature="e#1335#1336#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TLSSender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/support/TLSSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <element signature="e#1188#1379#0" expanded="true" />
-                <element signature="e#1378#1379#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Feedback.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DispatcherService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/DispatcherService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="47" column="61" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="61" />
+            <state relative-caret-position="982">
+              <caret line="123" column="1" lean-forward="false" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeedbackService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/FeedbackService.java">
+      <file leaf-file-name="UserEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="21" column="43" lean-forward="true" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="308">
+              <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Taxi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Taxi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Review.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Review.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="51" column="1" lean-forward="false" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReviewEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mailer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1738">
+              <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -419,11 +238,8 @@
         <option value="$PROJECT_DIR$/src/main/java/entity/Review.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Taxi.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/PaginationEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/impl/FeedbackServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/PaginationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/impl/PaginationServiceImpl.java" />
@@ -434,15 +250,18 @@
         <option value="$PROJECT_DIR$/src/main/java/service/UserManagerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/impl/UserManagerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/ServiceFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/listener/SessionDestroyedListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Dispatcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/DispatcherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/FeedbackService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java" />
       </list>
     </option>
   </component>
@@ -666,58 +485,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="entityEnum" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -770,137 +537,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="connectionPool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="listener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TaxiSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="command" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1732,7 +1369,7 @@
       <workItem from="1516888511333" duration="1196000" />
       <workItem from="1516913779946" duration="7221000" />
       <workItem from="1516982369054" duration="14977000" />
-      <workItem from="1517009081751" duration="291000" />
+      <workItem from="1517009081751" duration="3130000" />
     </task>
     <task id="LOCAL-00001" summary="new structure">
       <created>1511907017124</created>
@@ -1993,7 +1630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516838027251</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="javadoc and interfaces">
+      <created>1517009490199</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1517009490199</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2029,7 +1673,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="779027000" />
+    <option name="totallyTimeSpent" value="781866000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2052,12 +1696,13 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13968958" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13948497" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45753115" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2074,7 +1719,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2103,7 +1747,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="some in taxi and client Profile" />
     <MESSAGE value="profile, some in change password" />
     <MESSAGE value="some in admin" />
     <MESSAGE value="in admin:&#10;bans, authTaxi, bonus" />
@@ -2128,11 +1771,12 @@
     <MESSAGE value="pre JavaDoc" />
     <MESSAGE value="some in JavaDoc" />
     <MESSAGE value="validation on the client side" />
-    <option name="LAST_COMMIT_MESSAGE" value="validation on the client side" />
+    <MESSAGE value="javadoc and interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="javadoc and interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="190" />
+      <option name="time" value="191" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2141,32 +1785,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DispatcherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="148" column="1" lean-forward="false" selection-start-line="148" selection-start-column="1" selection-end-line="148" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/ControllerCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/LocalFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="47" column="1" lean-forward="false" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/SessionAuthorizeFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -2196,12 +1814,12 @@
         <state relative-caret-position="418">
           <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
           <folding>
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
+            <element signature="e#759#760#0" expanded="false" />
+            <element signature="e#838#839#0" expanded="false" />
+            <element signature="e#921#922#0" expanded="false" />
+            <element signature="e#995#996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2219,11 +1837,11 @@
         <state relative-caret-position="440">
           <caret line="494" column="1" lean-forward="false" selection-start-line="494" selection-start-column="1" selection-end-line="494" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
-            <element signature="e#1967#1968#0" expanded="true" />
-            <element signature="e#2885#2886#0" expanded="true" />
-            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1936#1937#0" expanded="false" />
+            <element signature="e#1967#1968#0" expanded="false" />
+            <element signature="e#2885#2886#0" expanded="false" />
+            <element signature="e#2923#2924#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2233,8 +1851,8 @@
         <state relative-caret-position="308">
           <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding>
-            <element signature="e#252#253#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#252#253#0" expanded="false" />
+            <element signature="e#318#319#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2244,8 +1862,8 @@
         <state relative-caret-position="264">
           <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="false" />
+            <element signature="e#391#392#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2254,6 +1872,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
           <caret line="180" column="1" lean-forward="false" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
+          <folding>
+            <element signature="e#5696#5697#0" expanded="false" />
+            <element signature="e#5774#5775#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2261,6 +1883,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="121" column="1" lean-forward="false" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2268,6 +1891,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="277" column="1" lean-forward="false" selection-start-line="277" selection-start-column="1" selection-end-line="277" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2275,6 +1899,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="100" column="1" lean-forward="false" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2282,6 +1907,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="261" column="1" lean-forward="false" selection-start-line="261" selection-start-column="1" selection-end-line="261" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2290,7 +1916,7 @@
         <state relative-caret-position="374">
           <caret line="82" column="1" lean-forward="false" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
           <folding>
-            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2300,7 +1926,7 @@
         <state relative-caret-position="374">
           <caret line="62" column="1" lean-forward="false" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
           <folding>
-            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2310,7 +1936,7 @@
         <state relative-caret-position="396">
           <caret line="117" column="1" lean-forward="false" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
           <folding>
-            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2331,93 +1957,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Review.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="51" column="1" lean-forward="false" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Taxi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-          <folding>
-            <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="123" column="1" lean-forward="false" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
-          <folding>
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="48" column="1" lean-forward="false" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
-          <folding>
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-          <folding>
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/PaginationEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding>
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="false" />
+            <element signature="e#428#429#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2426,6 +1972,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2434,7 +1981,7 @@
         <state relative-caret-position="352">
           <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2443,6 +1990,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-506">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2451,7 +2001,7 @@
         <state relative-caret-position="-304">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2460,6 +2010,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1492">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2468,7 +2019,7 @@
         <state relative-caret-position="616">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2477,6 +2028,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="64" column="13" lean-forward="false" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2485,7 +2037,7 @@
         <state relative-caret-position="1012">
           <caret line="75" column="81" lean-forward="false" selection-start-line="75" selection-start-column="81" selection-end-line="75" selection-end-column="81" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2494,71 +2046,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4670#4671#0" expanded="false" />
-            <element signature="e#4712#4713#0" expanded="false" />
-            <element signature="e#4748#4749#0" expanded="false" />
-            <element signature="e#4784#4785#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-          <folding>
-            <element signature="e#8580#8581#0" expanded="false" />
-            <element signature="e#8622#8623#0" expanded="false" />
-            <element signature="e#8658#8659#0" expanded="false" />
-            <element signature="e#8694#8695#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="18" column="50" lean-forward="false" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5182#5183#0" expanded="false" />
-            <element signature="e#5224#5225#0" expanded="false" />
-            <element signature="e#5260#5261#0" expanded="false" />
-            <element signature="e#5296#5297#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7282">
-          <caret line="347" column="0" lean-forward="false" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#14232#14233#0" expanded="false" />
-            <element signature="e#14274#14275#0" expanded="false" />
-            <element signature="e#14310#14311#0" expanded="false" />
-            <element signature="e#14346#14347#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2619,18 +2107,8 @@
         <state relative-caret-position="22">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="e#1188#1379#0" expanded="true" />
-            <element signature="e#1378#1379#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1188#1379#0" expanded="false" />
+            <element signature="e#1378#1379#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2650,6 +2128,147 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/dao/connectionPool/ConnectionPoolTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/11e40c27/d5c56219-4ea9-421e-b4bb-90bbf7d273ae/taxisystem.client">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Feedback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/SignManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1470">
+          <caret line="144" column="13" lean-forward="true" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Localization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Taxis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="123" column="42" lean-forward="false" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
+          <folding>
+            <element signature="e#5466#5467#0" expanded="true" />
+            <element signature="e#5508#5509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Review.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="51" column="1" lean-forward="false" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="982">
+          <caret line="123" column="1" lean-forward="false" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/CarEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/OrderEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/ReviewEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/entityEnum/UserEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Taxi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/Mailer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1738">
+          <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/command/impl/UserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="361" column="1" lean-forward="true" selection-start-line="361" selection-start-column="1" selection-end-line="361" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

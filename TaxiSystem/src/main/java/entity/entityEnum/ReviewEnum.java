@@ -3,7 +3,8 @@ package entity.entityEnum;
 public enum ReviewEnum {
     REVIEW("review"),
     REVIEW_ID("reviewId"),
-    COMMENT("comment");
+    COMMENT("comment"),
+    USER_REVIEWS("userReviews");
 
     private String value;
 

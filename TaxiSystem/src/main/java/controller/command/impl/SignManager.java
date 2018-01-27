@@ -140,7 +140,7 @@ public class SignManager implements ControllerCommand {
                 resp.sendRedirect(REGISTRATION_SUCCESS);
                 //req.getRequestDispatcher(REGISTRATION_SUCCESS).forward(req, resp);
             } else {
-                resp.sendRedirect(REGISTRATION_SUCCESS);
+                resp.sendRedirect(REGISTRATION_PROBLEM);
                 //req.getRequestDispatcher(REGISTRATION_PROBLEM).forward(req, resp);
             }
         }
