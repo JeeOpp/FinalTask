@@ -75,7 +75,7 @@ public class SignServiceImpl implements SignService{
                 return signDAO.taxiAuthorize(login, password);
             }
             if (UserEnum.ADMIN.getValue().equals(role)) {
-                return new User(UserEnum.ADMIN.getValue());
+                return new User.UserBuilder().setRole(UserEnum.ADMIN.getValue()).build();
             }
         } catch (SQLException ex) {
             log.error(ex.getMessage());

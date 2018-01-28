@@ -63,7 +63,7 @@ public class Feedback implements ControllerCommand {
             Client client = (Client) user;
 
             String taxiIdString = req.getParameter(UserEnum.TAXI_ID.getValue());
-            Taxi taxi = (taxiIdString != null) ? new Taxi(Integer.parseInt(taxiIdString)) : null;
+            Taxi taxi = (taxiIdString != null) ? (Taxi) new Taxi.TaxiBuilder().setId(Integer.parseInt(taxiIdString)).build() : null;
 
             String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
             int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;

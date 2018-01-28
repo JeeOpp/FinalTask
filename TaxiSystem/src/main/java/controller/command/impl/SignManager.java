@@ -132,7 +132,12 @@ public class SignManager implements ControllerCommand {
         String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
         String role = req.getParameter(UserEnum.ROLE.getValue());
         if (role.equals(UserEnum.CLIENT.getValue())) {
-            Client client = new Client(login, password, firstName, lastName, mail);
+            Client client = (Client) new Client.ClientBuilder().
+                    setMail(mail).
+                    setLogin(login).
+                    setPassword(password).
+                    setFirstName(firstName).
+                    setLastName(lastName).build();
             if (signService.registerClient(client)) {
                 resp.sendRedirect(REGISTRATION_SUCCESS);
             } else {
@@ -141,7 +146,12 @@ public class SignManager implements ControllerCommand {
         }
         if (role.equals(UserEnum.TAXI.getValue())) {
             Car car = new Car(carNumber);
-            Taxi taxi = new Taxi(login, password, firstName, lastName, role, car);
+            Taxi taxi = (Taxi) new Taxi.TaxiBuilder().
+                    setCar(car).
+                    setLogin(login).
+                    setPassword(password).
+                    setFirstName(firstName).
+                    setLastName(lastName).build();
             if (signService.registerTaxi(taxi)) {
                 resp.sendRedirect(REQ_TAXI_LIST);
             } else {

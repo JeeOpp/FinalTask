@@ -223,8 +223,10 @@ public class UserManager implements ControllerCommand {
             boolean banStatus = Boolean.parseBoolean(req.getParameter(UserEnum.BAN_STATUS.getValue()));
             String rolePage = req.getParameter(UserEnum.ROLE.getValue());
 
-            User userToChange = new User(userId, banStatus, rolePage);
-
+            User userToChange = new User.UserBuilder().
+                    setId(userId).
+                    setBanStatus(banStatus).
+                    setRole(rolePage).build();
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBanStatus(userToChange);
@@ -255,7 +257,9 @@ public class UserManager implements ControllerCommand {
             String bonusPointsString = req.getParameter(UserEnum.BONUS_POINTS.getValue());
             int bonusPoints = (bonusPointsString != null) ? Integer.parseInt(bonusPointsString) : DEFAULT_BONUS;
 
-            Client client = new Client(clientId, bonusPoints);
+            Client client = (Client) new Client.ClientBuilder().
+                    setBonusPoints(bonusPoints).
+                    setId(clientId).build();
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBonusCount(client);
@@ -281,8 +285,9 @@ public class UserManager implements ControllerCommand {
             int taxiId = (taxiIdString != null) ? Integer.parseInt(taxiIdString) : WRONG_ID;
             String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
             Car car = new Car(carNumber);
-            Taxi taxi = new Taxi(taxiId, car);
-
+            Taxi taxi = (Taxi) new Taxi.TaxiBuilder().
+                    setCar(car).
+                    setId(taxiId).build();
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeTaxiCar(taxi);

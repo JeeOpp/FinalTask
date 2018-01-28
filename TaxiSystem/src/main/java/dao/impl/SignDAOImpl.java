@@ -16,6 +16,10 @@ import java.sql.*;
 public class SignDAOImpl implements SignDAO {
     private static final Logger log = Logger.getLogger(SignDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     public SignDAOImpl() {
     }
@@ -30,9 +34,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public String preAuthorize(String login, String password) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         String role = null;
         try {
             connection = connectionPool.takeConnection();
@@ -63,9 +64,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public Client clientAuthorize(String login, String password) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         Client client = null;
         try {
             connection = connectionPool.takeConnection();
@@ -74,16 +72,8 @@ public class SignDAOImpl implements SignDAO {
             preparedStatement.setString(2, MD5.md5Hash(password));
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                client = new Client();
-                client.setId(resultSet.getInt(1));
-                client.setLogin(resultSet.getString(2));
-                client.setPassword(resultSet.getString(3));
-                client.setFirstName(resultSet.getString(4));
-                client.setLastName(resultSet.getString(5));
-                client.setMail(resultSet.getString(6));
-                client.setBonusPoints(resultSet.getInt(7));
-                client.setBanStatus(resultSet.getBoolean(8));
-                client.setRole(resultSet.getString(9));
+                client = new Client.ClientBuilder().build();
+                client.setFromResultSet(resultSet);
             }
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
@@ -103,9 +93,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public Taxi taxiAuthorize(String login, String password) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         Taxi taxi = null;
         try {
             connection = connectionPool.takeConnection();
@@ -115,19 +102,7 @@ public class SignDAOImpl implements SignDAO {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 taxi = new Taxi();
-                taxi.setId(resultSet.getInt(1));
-                taxi.setLogin(resultSet.getString(2));
-                taxi.setPassword(resultSet.getString(3));
-                taxi.setFirstName(resultSet.getString(4));
-                taxi.setLastName(resultSet.getString(5));
-                taxi.setAvailableStatus(resultSet.getBoolean(6));
-                taxi.setBanStatus(resultSet.getBoolean(7));
-                taxi.setRole(resultSet.getString(8));
-                Car car = new Car();
-                car.setNumber(resultSet.getString(9));
-                car.setName(resultSet.getString(10));
-                car.setColour(resultSet.getString(11));
-                taxi.setCar(car);
+                taxi.setFromResultSet(resultSet);
             }
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
@@ -146,8 +121,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public boolean registerClient(Client client) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_REG_CLIENT);
@@ -175,8 +148,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public boolean registerTaxi(Taxi taxi) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_REG_TAXI);
@@ -203,9 +174,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public boolean isLoginFree(String login) {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
@@ -232,9 +200,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public boolean isMailFree(String mail) {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
@@ -261,8 +226,6 @@ public class SignDAOImpl implements SignDAO {
      */
     @Override
     public void changeAvailableStatus(Taxi taxi) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_CHANGE_AVAILABLE_STATUS);

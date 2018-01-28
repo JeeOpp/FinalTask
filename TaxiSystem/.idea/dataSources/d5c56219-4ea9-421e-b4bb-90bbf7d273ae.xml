@@ -200,45 +200,49 @@ taxi_id</ColNames>
       <OnUpdate>update</OnUpdate>
       <OnDelete>delete</OnDelete>
     </foreign-key>
-    <column id="44" parent="11" name="review_id">
+    <trigger id="44" parent="10" name="bonusAdder">
+      <Turn>after-row</Turn>
+      <Events>U</Events>
+    </trigger>
+    <column id="45" parent="11" name="review_id">
       <Position>1</Position>
       <Comment>Уникальный номер (ключ) отзыва, создавалься из-за того что cliend_id и taxi_id в качестве составного ключа не давали бы уникальность записей так как клиент может еще раз попасть к такому же таксисту.</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="45" parent="11" name="client_id">
+    <column id="46" parent="11" name="client_id">
       <Position>2</Position>
       <Comment>Внишний ключ клиента.</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="46" parent="11" name="taxi_id">
+    <column id="47" parent="11" name="taxi_id">
       <Position>3</Position>
       <Comment>Внешний ключ таксиста</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="47" parent="11" name="comment">
+    <column id="48" parent="11" name="comment">
       <Position>4</Position>
       <Comment>Комментарий (отзыв) к таксисту. Может отсуствовать.</Comment>
       <DataType>text|0</DataType>
     </column>
-    <index id="48" parent="11" name="fk_client_has_Taxi_client_idx">
+    <index id="49" parent="11" name="fk_client_has_Taxi_client_idx">
       <ColNames>client_id</ColNames>
     </index>
-    <index id="49" parent="11" name="fk_Client_has_Taxi_Taxi2_idx">
+    <index id="50" parent="11" name="fk_Client_has_Taxi_Taxi2_idx">
       <ColNames>taxi_id</ColNames>
     </index>
-    <index id="50" parent="11" name="rewiew">
+    <index id="51" parent="11" name="rewiew">
       <ColNames>client_id
 taxi_id</ColNames>
     </index>
-    <key id="51" parent="11" name="PRIMARY">
+    <key id="52" parent="11" name="PRIMARY">
       <ColNames>review_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="52" parent="11" name="fk_client_has_Taxi_Client2">
+    <foreign-key id="53" parent="11" name="fk_client_has_Taxi_Client2">
       <ColNames>client_id</ColNames>
       <RefSchemaName>taxisystem</RefSchemaName>
       <RefTableName>client</RefTableName>
@@ -246,7 +250,7 @@ taxi_id</ColNames>
       <OnUpdate>update</OnUpdate>
       <OnDelete>delete</OnDelete>
     </foreign-key>
-    <foreign-key id="53" parent="11" name="fk_Client_has_Taxi_Taxi2">
+    <foreign-key id="54" parent="11" name="fk_Client_has_Taxi_Taxi2">
       <ColNames>taxi_id</ColNames>
       <RefSchemaName>taxisystem</RefSchemaName>
       <RefTableName>taxi</RefTableName>
@@ -254,78 +258,78 @@ taxi_id</ColNames>
       <OnUpdate>update</OnUpdate>
       <OnDelete>delete</OnDelete>
     </foreign-key>
-    <column id="54" parent="12" name="id">
+    <column id="55" parent="12" name="id">
       <Position>1</Position>
       <Comment>Уникальный номер таксиста. Введен из-за того что альтернативный ключ логин может быть слишком большим.</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="55" parent="12" name="carNumber">
+    <column id="56" parent="12" name="carNumber">
       <Position>2</Position>
       <Comment>Государственный номер машины, на которой ездит текущий таксист, является внешним ключем к таблице car. </Comment>
       <DataType>char(7)|0</DataType>
     </column>
-    <column id="56" parent="12" name="login">
+    <column id="57" parent="12" name="login">
       <Position>3</Position>
       <Comment>логин для входа в систему</Comment>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="57" parent="12" name="password">
+    <column id="58" parent="12" name="password">
       <Position>4</Position>
       <Comment>пароль</Comment>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="58" parent="12" name="name">
+    <column id="59" parent="12" name="name">
       <Position>5</Position>
       <Comment>Имя таксиста.</Comment>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="59" parent="12" name="surname">
+    <column id="60" parent="12" name="surname">
       <Position>6</Position>
       <Comment>Фамилия таксиста.</Comment>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="60" parent="12" name="availableStatus">
+    <column id="61" parent="12" name="availableStatus">
       <Position>7</Position>
       <Comment>Поле показывающее доступен ли в данный момент таксист. Если в данный момент у него заказон нет, то значение true, если таксист не в системе или на заказе, то значение false.</Comment>
       <DataType>tinyint(4)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="61" parent="12" name="banStatus">
+    <column id="62" parent="12" name="banStatus">
       <Position>8</Position>
       <Comment>есть ли бан у тасиста</Comment>
       <DataType>tinyint(4)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="62" parent="12" name="role">
+    <column id="63" parent="12" name="role">
       <Position>9</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;taxi&apos;</DefaultExpression>
     </column>
-    <index id="63" parent="12" name="fk_Taxi_car1_idx">
+    <index id="64" parent="12" name="fk_Taxi_car1_idx">
       <ColNames>carNumber</ColNames>
     </index>
-    <index id="64" parent="12" name="login">
+    <index id="65" parent="12" name="login">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="65" parent="12" name="PRIMARY">
+    <key id="66" parent="12" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="66" parent="12" name="login">
+    <key id="67" parent="12" name="login">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>login</UnderlyingIndexName>
     </key>
-    <foreign-key id="67" parent="12" name="fk_Taxi_car1">
+    <foreign-key id="68" parent="12" name="fk_Taxi_car1">
       <ColNames>carNumber</ColNames>
       <RefSchemaName>taxisystem</RefSchemaName>
       <RefTableName>car</RefTableName>

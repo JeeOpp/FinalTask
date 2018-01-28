@@ -15,6 +15,10 @@ import java.util.List;
 public class TaxisDAOImpl implements TaxisDAO {
     private static final Logger log = Logger.getLogger(TaxisDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     public TaxisDAOImpl() {
     }
@@ -27,9 +31,6 @@ public class TaxisDAOImpl implements TaxisDAO {
      */
     @Override
     public List<Car> getCarList() throws SQLException {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         List<Car> carList = new ArrayList<>();
         Car car;
         try {
@@ -57,8 +58,6 @@ public class TaxisDAOImpl implements TaxisDAO {
      */
     @Override
     public boolean addCar(Car car) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_INSERT_CAR);
@@ -83,8 +82,6 @@ public class TaxisDAOImpl implements TaxisDAO {
      */
     @Override
     public boolean removeCar(Car car) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_DELETE_CAR);

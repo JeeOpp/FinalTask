@@ -94,17 +94,17 @@ public class Order {
             this.setSourceCoordinate(resultSet.getString(3));
             this.setDestinyCoordinate(resultSet.getString(4));
             this.setPrice(resultSet.getDouble(5));
-            Client client = new Client();
-            client.setId(resultSet.getInt(6));
-            client.setLogin(resultSet.getString(7));
-            client.setFirstName(resultSet.getString(8));
-            client.setLastName(resultSet.getString(9));
+            Client client = (Client) new Client.ClientBuilder().
+                    setId(resultSet.getInt(6)).
+                    setLogin(resultSet.getString(7)).
+                    setFirstName(resultSet.getString(8)).
+                    setLastName(resultSet.getString(9)).build();
             this.setClient(client);
-            Taxi taxi = new Taxi();
-            taxi.setId(resultSet.getInt(10));
-            taxi.setLogin(resultSet.getString(11));
-            taxi.setFirstName(resultSet.getString(12));
-            taxi.setLastName(resultSet.getString(13));
+            Taxi taxi = (Taxi) new Taxi.TaxiBuilder().
+                    setId(resultSet.getInt(10)).
+                    setLogin(resultSet.getString(11)).
+                    setFirstName(resultSet.getString(12)).
+                    setLastName(resultSet.getString(13)).build();
             Car car = new Car();
             car.setNumber(resultSet.getString(14));
             car.setName(resultSet.getString(15));

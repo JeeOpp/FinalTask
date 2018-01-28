@@ -10,13 +10,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
-public class ConnectionPool {
-    private static final String EX_IN_POOL_MESSAGE = "SQLException in pool";
-    private static final String NO_DRIVER_MASSAGE = "no driver";
-    private static final String ERROR_TO_DATA_MESSAGE = "error to the data source";
-    private static final String CLOSED_MESSAGE = "Already closed";
-    private static final String OFFER_MESSAGE = "offer connection from queue error";
-    private static final String REMOVE_MESSAGE = "remove connection from queue error";
+public class ConnectionPool implements IConnectionPool{
     private static final Logger log = Logger.getLogger(ConnectionPool.class.getClass());
     private static final ConnectionPool instance = new ConnectionPool();
     private BlockingQueue<Connection> connectionQueue;
@@ -67,6 +61,7 @@ public class ConnectionPool {
     /**
      * dispose connection pool resources
      */
+    @Override
     public void dispose() {
         clearConnectionQueue();
     }
@@ -86,6 +81,7 @@ public class ConnectionPool {
      * @return the connection
      * @throws ConnectionPoolException if there are some problems with connection pool.
      */
+    @Override
     public Connection takeConnection() throws ConnectionPoolException {
         Connection connection;
         try {
@@ -104,6 +100,7 @@ public class ConnectionPool {
      * @param st  statement
      * @param rs  result set
      */
+    @Override
     public void closeConnection(Connection con, Statement st, ResultSet rs) {
         try {
             con.close();
@@ -128,6 +125,7 @@ public class ConnectionPool {
      * @param con connection
      * @param st  statement
      */
+    @Override
     public void closeConnection(Connection con, Statement st) {
         try {
             con.close();
@@ -148,6 +146,7 @@ public class ConnectionPool {
      * @param st  prepared statement
      * @param rs  result set
      */
+    @Override
     public void closeConnection(Connection con, PreparedStatement st, ResultSet rs) {
         try {
             con.close();
@@ -172,6 +171,7 @@ public class ConnectionPool {
      * @param con connection
      * @param st  prepared statement
      */
+    @Override
     public void closeConnection(Connection con, PreparedStatement st) {
         try {
             con.close();

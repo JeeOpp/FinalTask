@@ -17,6 +17,10 @@ import java.util.List;
 public class DispatcherDAOImpl implements DispatcherDAO {
     private static final Logger log = Logger.getLogger(DispatcherDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     public DispatcherDAOImpl() {
     }
@@ -29,9 +33,6 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      */
     @Override
     public List<Order> getOrderList() throws SQLException {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         List<Order> orderList = new ArrayList<>();
         Order order;
         try {
@@ -59,8 +60,6 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      */
     @Override
     public void orderConfirm(Order order) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_MAKE_ORDER);
@@ -80,6 +79,7 @@ public class DispatcherDAOImpl implements DispatcherDAO {
     /**
      * Used to change an order status from database.
      * In the dependence on the status we want to put in the database used a different prepared statement query.
+     * Attention! Database contains trigger, when order status will become a completed, client will receives a bonus (10% order price).
      *
      * @param orderAction the action we want to apply in method.
      * @param orderId     used to identify an order we want to change.
@@ -87,8 +87,6 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      */
     @Override
     public void changeOrderStatus(String orderAction, int orderId) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(chooseOrderAction(orderAction));
@@ -108,8 +106,6 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      */
     @Override
     public void deleteAllOrders() throws SQLException {
-        Connection connection = null;
-        Statement statement = null;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();

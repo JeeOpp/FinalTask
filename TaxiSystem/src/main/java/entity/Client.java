@@ -13,21 +13,12 @@ public class Client extends User {
     private int bonusPoints;
     private String mail;
 
-    public Client() {
-    }
+    public Client(){}
 
-    public Client(int id, int bonusPoints) {
-        super(id);
-        this.bonusPoints = bonusPoints;
-    }
-
-    public Client(int id, String name, String surname) {
-        super(id, null, null, name, surname);
-    }
-
-    public Client(String login, String password, String firstName, String lastName, String mail) {
-        super(login, password, firstName, lastName);
-        this.mail = mail;
+    public Client(ClientBuilder clientBuilder){
+        super(clientBuilder);
+        this.bonusPoints = clientBuilder.bonusPoints;
+        this.mail = clientBuilder.mail;
     }
 
     public int getBonusPoints() {
@@ -50,14 +41,36 @@ public class Client extends User {
         try {
             this.setId(resultSet.getInt(1));
             this.setLogin(resultSet.getString(2));
-            this.setFirstName(resultSet.getString(3));
-            this.setLastName(resultSet.getString(4));
-            this.setMail(resultSet.getString(5));
-            this.setBonusPoints(resultSet.getInt(6));
-            this.setBanStatus(resultSet.getBoolean(7));
-            this.setRole(resultSet.getString(8));
+            this.setPassword(resultSet.getString(3));
+            this.setFirstName(resultSet.getString(4));
+            this.setLastName(resultSet.getString(5));
+            this.setMail(resultSet.getString(6));
+            this.setBonusPoints(resultSet.getInt(7));
+            this.setBanStatus(resultSet.getBoolean(8));
+            this.setRole(resultSet.getString(9));
         } catch (SQLException ex) {
             log.error(ex.getMessage());
+        }
+    }
+    public static class ClientBuilder extends UserBuilder{
+        private int bonusPoints;
+        private String mail;
+
+        public ClientBuilder(){}
+
+        public ClientBuilder setBonusPoints(int bonusPoints) {
+            this.bonusPoints = bonusPoints;
+            return this;
+        }
+
+        public ClientBuilder setMail(String mail) {
+            this.mail = mail;
+            return this;
+        }
+
+        @Override
+        public Client build(){
+            return new Client(this);
         }
     }
 }

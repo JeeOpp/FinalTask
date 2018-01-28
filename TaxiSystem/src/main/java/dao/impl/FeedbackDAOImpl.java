@@ -18,6 +18,9 @@ import java.util.List;
 public class FeedbackDAOImpl implements FeedbackDAO {
     private static final Logger log = Logger.getLogger(FeedbackDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
 
     public FeedbackDAOImpl() {
     }
@@ -30,8 +33,6 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public void setReview(Review review) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_SET_REVIEW);
@@ -55,9 +56,6 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public List<Review> getClientReviews(User user) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         List<Review> reviewList = new ArrayList<>();
         Review review;
         try {
@@ -70,7 +68,10 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                 int taxiId = resultSet.getInt(1);
                 String taxiName = resultSet.getString(2);
                 String taxiSurname = resultSet.getString(3);
-                review.setTaxi(new Taxi(taxiId, taxiName, taxiSurname));
+                review.setTaxi((Taxi) new Taxi.TaxiBuilder().
+                        setId(taxiId).
+                        setFirstName(taxiName).
+                        setLastName(taxiSurname).build());
                 String comment = resultSet.getString(4);
                 review.setComment(comment);
                 reviewList.add(review);
@@ -92,9 +93,6 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public List<Review> getTaxiReviews(User user) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         List<Review> reviewList = new ArrayList<>();
         Review review;
         try {
@@ -107,7 +105,10 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                 int clientId = resultSet.getInt(1);
                 String clientName = resultSet.getString(2);
                 String clientSurname = resultSet.getString(3);
-                review.setClient(new Client(clientId, clientName, clientSurname));
+                review.setClient((Client)new Client.ClientBuilder().
+                        setId(clientId).
+                        setFirstName(clientName).
+                        setLastName(clientSurname).build());
                 String comment = resultSet.getString(4);
                 review.setComment(comment);
                 reviewList.add(review);

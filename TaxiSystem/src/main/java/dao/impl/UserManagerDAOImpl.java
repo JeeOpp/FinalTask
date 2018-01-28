@@ -19,6 +19,10 @@ import java.util.List;
 public class UserManagerDAOImpl implements UserManagerDAO {
     private static final Logger log = Logger.getLogger(UserManagerDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     public UserManagerDAOImpl() {
     }
@@ -30,8 +34,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public synchronized void changePassword(User user) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             if (user.getRole().equals(UserEnum.TAXI.getValue())) {
@@ -57,9 +59,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public List<Taxi> getTaxiList() throws SQLException {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         List<Taxi> taxiList = new ArrayList<>();
         Taxi taxi;
         try {
@@ -67,7 +66,7 @@ public class UserManagerDAOImpl implements UserManagerDAO {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI);
             while (resultSet.next()) {
-                taxi = new Taxi();
+                taxi = new Taxi.TaxiBuilder().build();
                 taxi.setFromResultSet(resultSet);
                 taxiList.add(taxi);
             }
@@ -87,9 +86,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public List<Client> getClientList() throws SQLException {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         List<Client> clientList = new ArrayList<>();
         Client client;
         try {
@@ -97,7 +93,7 @@ public class UserManagerDAOImpl implements UserManagerDAO {
             statement = connection.createStatement();
             if ((resultSet = statement.executeQuery(SQL_SELECT_ALL_CLIENT)) != null) {
                 while (resultSet.next()) {
-                    client = new Client();
+                    client = new Client.ClientBuilder().build();
                     client.setFromResultSet(resultSet);
                     clientList.add(client);
                 }
@@ -117,8 +113,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public void changeBanStatus(User user) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             if (user.getRole().equals(UserEnum.TAXI.getValue())) {
@@ -145,8 +139,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public void decreaseBonus(Client client, int bonus) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_DECREASE_BONUS);
@@ -168,8 +160,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public void changeBonusCount(Client client) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_CHANGE_BONUS_COUNT);
@@ -191,8 +181,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public void changeTaxiCar(Taxi taxi) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_CHANGE_TAXI_CAR);
@@ -214,9 +202,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public String getHashPassword(String email) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_GET_HASH_PASSWORD);
@@ -243,8 +228,6 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public boolean restorePassword(String mail, String hashPassword, String newPassword) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_RESTORE_PASSWORD);

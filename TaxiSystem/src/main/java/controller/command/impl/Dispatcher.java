@@ -171,7 +171,8 @@ public class Dispatcher implements ControllerCommand {
             Client client = (Client) user;
             String sourceCoordinate = req.getParameter(OrderEnum.SOURCE_COORD.getValue());
             String destinyCoordinate = req.getParameter(OrderEnum.DESTINY_COORD.getValue());
-            Taxi taxi = new Taxi(Integer.parseInt(req.getParameter(UserEnum.TAXI.getValue())));
+            int taxiId = Integer.parseInt(req.getParameter(UserEnum.TAXI.getValue()));
+            Taxi taxi = (Taxi) new Taxi.TaxiBuilder().setId(taxiId).build();
             String bonusText = req.getParameter(OrderEnum.BONUS.getValue());
             int bonus = Integer.parseInt(bonusText.isEmpty() ? ZERO_COUNT : bonusText);
             Double price = Double.parseDouble(req.getParameter(OrderEnum.PRICE.getValue()));

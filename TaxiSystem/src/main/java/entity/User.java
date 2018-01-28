@@ -12,58 +12,16 @@ public class User {
     private boolean banStatus;
     private String role;
 
+    public User(){}
 
-    public User() {
-    }
-
-    public User(int id) {
-        this.id = id;
-    }
-
-    public User(String role) {
-        this.role = role;
-    }
-
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
-    public User(int id, String login, String password) {
-        this(login, password);
-        this.id = id;
-    }
-
-    public User(int id, String role) {
-        this(role);
-        this.id = id;
-    }
-
-    public User(int id, boolean banStatus, String role) {
-        this(id, role);
-        this.banStatus = banStatus;
-    }
-
-    public User(String login, String password, String firstName, String lastName) {
-        this(login, password);
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String login, String password, String firstName, String lastName, String role) {
-        this(login, password, firstName, lastName);
-        this.role = role;
-    }
-
-    public User(int id, String login, String password, String firstName, String lastName) {
-        this(login, password, firstName, lastName);
-        this.id = id;
-    }
-
-    public User(int id, String login, String password, String firstName, String lastName, boolean banStatus, String role) {
-        this(id, login, password, firstName, lastName);
-        this.banStatus = banStatus;
-        this.role = role;
+    public User(UserBuilder userBuilder){
+        this.id = userBuilder.id;
+        this.login = userBuilder.login;
+        this.password = userBuilder.password;
+        this.firstName = userBuilder.firstName;
+        this.lastName = userBuilder.lastName;
+        this.banStatus = userBuilder.banStatus;
+        this.role = userBuilder.role;
     }
 
     public int getId() {
@@ -120,5 +78,55 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public static class UserBuilder{
+        private int id;
+        private String login;
+        private String password;
+        private String firstName;
+        private String lastName;
+        private boolean banStatus;
+        private String role;
+
+        public UserBuilder(){}
+
+        public UserBuilder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public UserBuilder setLogin(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public UserBuilder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public UserBuilder setBanStatus(boolean banStatus) {
+            this.banStatus = banStatus;
+            return this;
+        }
+
+        public UserBuilder setRole(String role) {
+            this.role = role;
+            return this;
+        }
+        public User build(){
+            return new User(this);
+        }
     }
 }
