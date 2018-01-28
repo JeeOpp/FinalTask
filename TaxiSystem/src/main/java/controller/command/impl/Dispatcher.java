@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Responds to requests related to orders
@@ -26,6 +27,10 @@ public class Dispatcher implements ControllerCommand {
     private final static String TAXI_ORDER_PAGE = "WEB-INF/Taxi/orders.jsp";
     private final static String ADMIN_ORDER_PAGE = "WEB-INF/Admin/orders.jsp";
     private final static String CALL_TAXI_PAGE = "WEB-INF/Client/callTaxi.jsp";
+    private final static String REQ_CLIENT_ORDER = "Controller?method=dispatcher&action=getClientOrders";
+    private final static String REQ_TAXI_ORDER = "Controller?method=dispatcher&action=getTaxiOrders";
+    private final static String REQ_PRE_ORDER = "Controller?method=dispatcher&action=preOrder";
+    private final static String REQ_ALL_ORDER = "Controller?method=dispatcher&action=getAllOrders";
     private final static String AVAILABLE_TAXI = "availableTaxiList";
     private final static String ZERO_COUNT = "0";
     private final static int INVALID_ORDER = -1;
@@ -177,11 +182,9 @@ public class Dispatcher implements ControllerCommand {
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.callConfirm(order, bonus)) {
                 ((Client) req.getSession().getAttribute(UserEnum.USER.getValue())).setBonusPoints(client.getBonusPoints() - bonus);
-                resp.sendRedirect("Controller?method=dispatcher&action=getClientOrders");
-                //getClientOrders(req, resp);
+                resp.sendRedirect(REQ_CLIENT_ORDER);
             } else {
-                resp.sendRedirect("Controller?method=dispatcher&action=preOrder");
-                //preOrder(req, resp);
+                resp.sendRedirect(REQ_PRE_ORDER);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -189,9 +192,10 @@ public class Dispatcher implements ControllerCommand {
     }
 
     /**
-     * receives an order id. Delete this order from database. Method could been called by client or admin.
+     * receives an order id. Delete this order from database.
      * So, if it been called by client, if it's success redirect client to client's order page.
      * If it been called by admin, if it's success redirect admin to admin's order control page.
+     * If it been called by taxi driver, if it's success redirect taxi driver to taxi's order page.
      * In case of success, it sends to the client's order page otherwise you need to place the order again.
      *
      * @param req  Standard request argument
@@ -202,20 +206,18 @@ public class Dispatcher implements ControllerCommand {
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.ADMIN.getValue())) {
-            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
-            int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;
+        String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+        int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
-            ServiceFactory serviceFactory = ServiceFactory.getInstance();
-            DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.changeOrderStatus(CANCEL.getValue(), orderId)) {
-                if (role.equals(UserEnum.CLIENT.getValue())) {
-                    resp.sendRedirect("Controller?method=dispatcher&action=getClientOrders");
-                    //getClientOrders(req, resp);   //to user
-                } else {
-                    resp.sendRedirect("Controller?method=dispatcher&action=getAllOrders");
-                    //getAllOrders(req, resp);      //to admin
-                }
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+        if (dispatcherService.changeOrderStatus(CANCEL.getValue(), orderId)) {
+            if (role.equals(UserEnum.CLIENT.getValue())) {
+                resp.sendRedirect(REQ_CLIENT_ORDER);
+            } else if (role.equals(UserEnum.ADMIN.getValue())){
+                resp.sendRedirect(REQ_ALL_ORDER);
+            } else {
+                resp.sendRedirect(REQ_TAXI_ORDER);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -240,8 +242,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus(ACCEPT.getValue(), orderId)) {
-                resp.sendRedirect("Controller?method=dispatcher&action=getTaxiOrders");
-                //getTaxiOrders(req,resp);
+                resp.sendRedirect(REQ_TAXI_ORDER);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }
@@ -269,8 +270,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus(REJECT.getValue(), orderId)) {
-                resp.sendRedirect("Controller?method=dispatcher&action=getTaxiOrders");
-                //getTaxiOrders(req, resp);
+                resp.sendRedirect(REQ_TAXI_ORDER);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }
@@ -298,8 +298,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.changeOrderStatus(PAY.getValue(), orderId)) {
-                resp.sendRedirect("Controller?method=dispatcher&action=getClientOrders");
-                //getClientOrders(req, resp);
+                resp.sendRedirect(REQ_CLIENT_ORDER);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }
@@ -358,8 +357,7 @@ public class Dispatcher implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             if (dispatcherService.deleteAllOrders()) {
-                resp.sendRedirect("Controller?method=dispatcher&action=getAllOrders");
-                //getAllOrders(req,resp);
+                resp.sendRedirect(REQ_ALL_ORDER);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);

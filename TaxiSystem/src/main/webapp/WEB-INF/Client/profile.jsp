@@ -121,9 +121,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="label-line"><label for="previousPass">${currentPass}</label></span><input type="text" id="previousPass" name="previousPass" required/><br/>
-                    <span class="label-line"><label for="pass1">${newPass}</label></span><input type="text" id="pass1" name="newPass" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" title="${validPassword}" required/><br/>
-                    <span class="label-line"><label for="pass2">${repeatPass}</label></span><input type="text" id="pass2" name="newPass" required>
+                    <span class="label-line"><label for="previousPass">${currentPass}</label></span><input type="password" id="previousPass" name="previousPass" required/><br/>
+                    <span class="label-line"><label for="pass1">${newPass}</label></span><input type="password" id="pass1" name="newPass" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" title="${validPassword}" required/><br/>
+                    <span class="label-line"><label for="pass2">${repeatPass}</label></span><input type="password" id="pass2" name="newPass" required>
                 </div>
                 <div class="modal-footer">
                     <button onclick="validatePassword()" type="submit" class="btn btn-light">${changePasswordButton}</button>  <!--input-->

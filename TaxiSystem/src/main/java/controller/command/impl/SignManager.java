@@ -25,6 +25,7 @@ import java.io.IOException;
 public class SignManager implements ControllerCommand {
     private static final Logger log = Logger.getLogger(SignManager.class.getClass());
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private final static String REQ_TAXI_LIST = "Controller?method=userManager&action=getTaxiList";
     private static final String ADMIN_MAIN_PATH = "WEB-INF/Admin/main.jsp";
     private static final String CLIENT_MAIN_PATH = "WEB-INF/Client/main.jsp";
     private static final String TAXI_MAIN_PATH = "WEB-INF/Taxi/main.jsp";
@@ -94,8 +95,6 @@ public class SignManager implements ControllerCommand {
         String login = req.getParameter(UserEnum.LOGIN.getValue());
         String password = req.getParameter(UserEnum.PASSWORD.getValue());
 
-        log.info("LOGIN TEST");
-
         if ((user = signService.authorize(login, password)) == null) {
             resp.sendRedirect(AUTHORIZATION_PROBLEM);
         } else {
@@ -108,8 +107,6 @@ public class SignManager implements ControllerCommand {
                 }
                 req.getSession().setAttribute(UserEnum.USER.getValue(), user);
                 resp.sendRedirect(REDIRECT_HOME);
-                //String pageAuthentication = chooseUserPage(user.getRole());
-                //req.getRequestDispatcher(pageAuthentication).forward(req, resp);
             }
         }
     }
@@ -138,18 +135,15 @@ public class SignManager implements ControllerCommand {
             Client client = new Client(login, password, firstName, lastName, mail);
             if (signService.registerClient(client)) {
                 resp.sendRedirect(REGISTRATION_SUCCESS);
-                //req.getRequestDispatcher(REGISTRATION_SUCCESS).forward(req, resp);
             } else {
                 resp.sendRedirect(REGISTRATION_PROBLEM);
-                //req.getRequestDispatcher(REGISTRATION_PROBLEM).forward(req, resp);
             }
         }
         if (role.equals(UserEnum.TAXI.getValue())) {
             Car car = new Car(carNumber);
             Taxi taxi = new Taxi(login, password, firstName, lastName, role, car);
             if (signService.registerTaxi(taxi)) {
-                resp.sendRedirect("Controller?method=userManager&action=getTaxiList");
-                //new UserManager().getTaxiList(req,resp);
+                resp.sendRedirect(REQ_TAXI_LIST);
             } else {
                 resp.sendRedirect(REDIRECT_HOME);
             }

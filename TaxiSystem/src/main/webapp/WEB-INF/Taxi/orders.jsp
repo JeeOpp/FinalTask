@@ -30,6 +30,7 @@
     <fmt:message bundle="${loc}" key="local.taxi.orders.completed" var="orderCompleted"/>
     <fmt:message bundle="${loc}" key="local.taxi.orders.rejected" var="orderRejected"/>
     <fmt:message bundle="${loc}" key="local.taxi.orders.withMap" var="withMap"/>
+    <fmt:message bundle="${loc}" key="local.taxi.orders.noClient" var="noClient"/>
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -77,7 +78,7 @@
 
 <div class="my-flex-container" style="justify-content: space-between; align-items: stretch">
     <div class="wightPage" style="width: 50%; height: 92%">
-        <table class="table table-striped table-dark" style="height: 100%">
+        <table class="table table-striped table-dark">
             <tr class="tr-text">
                 <th>${orderIdName}</th>
                 <th>${userName}</th>
@@ -91,23 +92,31 @@
                     <td>${order.client.firstName}</td>
                     <td>${order.client.lastName}</td>
                     <td>${order.price}</td>
-                    <td><c:choose>
+                    <td style="max-height: 100px"><c:choose>
                         <c:when test = "${order.orderStatus eq 'processed'}">
-                            <form action="Controller" method="post">
+                            <span>
+                                <form style="display: inline-block;" action="Controller" method="post">
                                 <input type="hidden" name="method" value = "dispatcher"/>
                                 <input type="hidden" name="action" value="acceptOrder"/>
                                 <input type="hidden" name="orderId" value="${order.orderId}"/>
                                 <button class="btn btn-light" type="submit">${acceptOrder}</button>
                             </form>
-                            <form action="Controller" method="post">
+                            <form style="display: inline-block;" action="Controller" method="post">
                                 <input type="hidden" name="method" value = "dispatcher"/>
                                 <input type="hidden" name="action" value="rejectOrder"/>
                                 <input type="hidden" name="orderId" value="${order.orderId}"/>
                                 <button class="btn btn-light" type="submit">${rejectOrder}</button>
                             </form>
+                            </span>
                         </c:when>
                         <c:when test="${order.orderStatus eq 'accepted'}">
-                            <button class="btn btn-dark" onclick="setCoord(${order.sourceCoordinate},${order.destinyCoordinate})">${withMap}</button>
+                            <span><button class="btn btn-dark" onclick="setCoord(${order.sourceCoordinate},${order.destinyCoordinate})">${withMap}</button>
+                            <form style="display: inline-block" action="Controller" method="post">
+                                <input type="hidden" name="method" value = "dispatcher"/>
+                                <input type="hidden" name="action" value="cancelOrder"/>
+                                <input type="hidden" name="orderId" value="${order.orderId}"/>
+                                <button class="btn btn-dark" type="submit">${noClient}</button>
+                            </form></span>
                         </c:when>
                         <c:when test="${order.orderStatus eq 'rejected'}">
                             <button class="btn btn-secondary" disabled>${orderRejected}</button>

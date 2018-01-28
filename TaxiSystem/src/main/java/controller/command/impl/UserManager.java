@@ -27,15 +27,15 @@ public class UserManager implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
     private final static String CLIENT_PROFILE_PAGE = "WEB-INF/Client/profile.jsp";
     private final static String TAXI_PROFILE_PAGE = "WEB-INF/Taxi/profile.jsp";
-    private final static String GET_USER_REVIEW_REQ = "Controller?method=userManager&action=getUserReview";
+    private final static String GET_USER_REVIEW_REQ = "Controller?method=userManager&action=preProfile";
     private final static String ADMIN_CLIENTS_PAGE = "WEB-INF/Admin/clients.jsp";
     private final static String ADMIN_TAXI_PAGE = "WEB-INF/Admin/taxi.jsp";
     private final static String INDEX_PAGE = "index.jsp";
     private final static int WRONG_ID = -1;
     private final static int DEFAULT_BONUS = 0;
     private final static int DEFAULT_PAGE = 1;
-    private final static String GET_CLIENT_LIST_GEQ = "Controller?method=userManager&action=getClientList";
-    private final static String GET_TAXI_LIST_GEQ = "Controller?method=userManager&action=getTaxiList";
+    private final static String REQ_CLIENT_LIST = "Controller?method=userManager&action=getClientList";
+    private final static String REQ_TAXI_LIST = "Controller?method=userManager&action=getTaxiList";
     private final static String MAIL = "mail";
     private final static String HASH_PASS = "hashPassword";
     private final static String LOCAL = "local";
@@ -103,7 +103,7 @@ public class UserManager implements ControllerCommand {
             reviewList = feedbackService.getUserReviews(user);
 
             req.setAttribute(ReviewEnum.USER_REVIEWS.getValue(), reviewList);
-            if (role.equals("client")) {
+            if (role.equals(UserEnum.CLIENT.getValue())) {
                 req.getRequestDispatcher(CLIENT_PROFILE_PAGE).forward(req, resp);
             } else {
                 req.getRequestDispatcher(TAXI_PROFILE_PAGE).forward(req, resp);
@@ -229,9 +229,9 @@ public class UserManager implements ControllerCommand {
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBanStatus(userToChange);
             if (rolePage.equals(UserEnum.CLIENT.getValue())) {
-                resp.sendRedirect(GET_CLIENT_LIST_GEQ);
+                resp.sendRedirect(REQ_CLIENT_LIST);
             } else {
-                resp.sendRedirect(GET_TAXI_LIST_GEQ);
+                resp.sendRedirect(REQ_TAXI_LIST);
             }
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -259,7 +259,7 @@ public class UserManager implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBonusCount(client);
-            resp.sendRedirect(GET_CLIENT_LIST_GEQ);
+            resp.sendRedirect(REQ_CLIENT_LIST);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }
@@ -286,7 +286,7 @@ public class UserManager implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeTaxiCar(taxi);
-            resp.sendRedirect(GET_TAXI_LIST_GEQ);
+            resp.sendRedirect(REQ_TAXI_LIST);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }

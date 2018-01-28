@@ -26,6 +26,7 @@ import java.io.IOException;
  */
 public class Feedback implements ControllerCommand {
     private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
+    private final static String REQ_CLIENT_ORDER = "Controller?method=dispatcher&action=getClientOrders";
     private final static int INVALID_ORDER = -1;
 
     /**
@@ -76,8 +77,7 @@ public class Feedback implements ControllerCommand {
 
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             dispatcherService.changeOrderStatus(ARCHIVE.getValue(), orderId);
-            resp.sendRedirect("Controller?method=dispatcher&action=getClientOrders");
-            //new Dispatcher().getClientOrders(req, resp);
+            resp.sendRedirect(REQ_CLIENT_ORDER);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
         }

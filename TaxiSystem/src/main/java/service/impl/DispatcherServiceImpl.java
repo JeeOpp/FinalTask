@@ -30,7 +30,7 @@ public class DispatcherServiceImpl implements DispatcherService {
      *
      * @param order that client want to order.
      * @param bonus client want to spend.
-     * @return false if client has less bonuses then he are going to spent, true if it success.
+     * @return false if client has less bonuses then he are going to spent or client didn't complete previous order, true if it success.
      */
     @Override
     public Boolean callConfirm(Order order, int bonus) {

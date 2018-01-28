@@ -5,34 +5,37 @@ import service.impl.*;
 /**
  * Factory class contains all the service classes objects to encapsulate them.
  */
-public class ServiceFactory <E>{
+public class ServiceFactory <E> {
     private static final ServiceFactory instance = new ServiceFactory();
-    private final SignService signService = new SignServiceImpl();
-    private final DispatcherService dispatcherService = new DispatcherServiceImpl();
-    private final FeedbackService feedbackService = new FeedbackServiceImpl();
-    private final UserManagerService userManagerService = new UserManagerServiceImpl();
-    private final PaginationService<E> paginationService = new PaginationServiceImpl<>();
-    private final TaxisService taxisService = new TaxisServiceImpl();
 
-    private ServiceFactory() {}
+    private ServiceFactory() {
+    }
 
-    public static ServiceFactory getInstance(){
+    public static ServiceFactory getInstance() {
         return instance;
     }
-    public SignService getSignService(){
-        return signService;
+
+    public SignService getSignService() {
+        return new SignServiceImpl();
     }
-    public DispatcherService getDispatcherService(){ return dispatcherService; }
-    public FeedbackService getFeedbackService(){
-        return feedbackService;
+
+    public DispatcherService getDispatcherService() {
+        return new DispatcherServiceImpl();
     }
-    public UserManagerService getUserManagerService(){
-        return userManagerService;
+
+    public FeedbackService getFeedbackService() {
+        return new FeedbackServiceImpl();
     }
-    public PaginationService getPaginationService(){
-        return paginationService;
+
+    public UserManagerService getUserManagerService() {
+        return new UserManagerServiceImpl();
     }
-    public TaxisService getTaxisService(){
-        return taxisService;
+
+    public PaginationService getPaginationService() {
+        return new PaginationServiceImpl<E>();
+    }
+
+    public TaxisService getTaxisService() {
+        return new TaxisServiceImpl();
     }
 }
