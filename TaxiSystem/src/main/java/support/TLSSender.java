@@ -31,10 +31,10 @@ public class TLSSender implements Runnable{
 
     @Override
     public void run() {
-        send(subject,text,USERNAME,toEmail);
+        send();
     }
 
-    private void send(String subject, String text, String fromEmail, String toEmail) {
+    public boolean send() {
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(USERNAME, PASSWORD);
@@ -43,14 +43,16 @@ public class TLSSender implements Runnable{
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromEmail));
+            message.setFrom(new InternetAddress(USERNAME));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject(subject);
             message.setText(text);
 
             Transport.send(message);
+            return true;
         } catch (MessagingException ex) {
             log.error(ex.getMessage());
         }
+        return false;
     }
 }

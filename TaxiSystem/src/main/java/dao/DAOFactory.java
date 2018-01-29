@@ -8,6 +8,11 @@ import dao.impl.*;
 
 public class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
+    private SignDAO signDAO = new SignDAOImpl();
+    private DispatcherDAO dispatcherDAO = new DispatcherDAOImpl();
+    private FeedbackDAO feedbackDAO = new FeedbackDAOImpl();
+    private UserManagerDAO userManagerDAO = new UserManagerDAOImpl();
+    private TaxisDAO taxisDAO = new TaxisDAOImpl();
 
     private DAOFactory() {
     }
@@ -17,22 +22,22 @@ public class DAOFactory {
     }
 
     public SignDAO getSignDAO() {
-        return new SignDAOImpl();
+        return signDAO;
     }
 
     public DispatcherDAO getDispatcherDAO() {
-        return new DispatcherDAOImpl();
+        return dispatcherDAO;
     }
 
     public FeedbackDAO getFeedbackDAO() {
-        return new FeedbackDAOImpl();
+        return feedbackDAO;
     }
 
     public UserManagerDAO getUserManagerDAO() {
-        return new UserManagerDAOImpl();
+        return userManagerDAO;
     }
 
     public TaxisDAO getTaxisDAO() {
-        return new TaxisDAOImpl();
+        return taxisDAO;
     }
 }

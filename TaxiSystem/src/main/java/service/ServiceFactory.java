@@ -7,6 +7,12 @@ import service.impl.*;
  */
 public class ServiceFactory <E> {
     private static final ServiceFactory instance = new ServiceFactory();
+    private SignService signService = new SignServiceImpl();
+    private DispatcherService dispatcherService = new DispatcherServiceImpl();
+    private FeedbackService feedbackService = new FeedbackServiceImpl();
+    private UserManagerService userManagerService = new UserManagerServiceImpl();
+    private PaginationService<E> paginationService = new PaginationServiceImpl<E>();
+    private TaxisService taxisService = new TaxisServiceImpl();
 
     private ServiceFactory() {
     }
@@ -16,26 +22,26 @@ public class ServiceFactory <E> {
     }
 
     public SignService getSignService() {
-        return new SignServiceImpl();
+        return signService;
     }
 
     public DispatcherService getDispatcherService() {
-        return new DispatcherServiceImpl();
+        return dispatcherService;
     }
 
     public FeedbackService getFeedbackService() {
-        return new FeedbackServiceImpl();
+        return feedbackService;
     }
 
     public UserManagerService getUserManagerService() {
-        return new UserManagerServiceImpl();
+        return userManagerService;
     }
 
-    public PaginationService getPaginationService() {
-        return new PaginationServiceImpl<E>();
+    public PaginationService<E> getPaginationService() {
+        return paginationService;
     }
 
     public TaxisService getTaxisService() {
-        return new TaxisServiceImpl();
+        return taxisService;
     }
 }
