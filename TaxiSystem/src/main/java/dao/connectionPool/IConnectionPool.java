@@ -14,9 +14,14 @@ public interface IConnectionPool {
     String REMOVE_MESSAGE = "remove connection from queue error";
 
     void dispose();
+
     Connection takeConnection() throws ConnectionPoolException;
+
     void closeConnection(Connection con, Statement st, ResultSet rs);
+
     void closeConnection(Connection con, Statement st);
+
     void closeConnection(Connection con, PreparedStatement st, ResultSet rs);
+
     void closeConnection(Connection con, PreparedStatement st);
 }

@@ -22,6 +22,7 @@ public enum OrderEnum {
     }
 
     public enum OrderAction {
+        DELETE("delete"),
         ACCEPT("accept"),
         REJECT("reject"),
         CANCEL("cancel"),

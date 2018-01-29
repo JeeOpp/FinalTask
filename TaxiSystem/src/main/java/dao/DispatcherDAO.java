@@ -8,11 +8,12 @@ import java.util.List;
 public interface DispatcherDAO {
     String SQL_DELETE_ALL_ORDER = "DELETE FROM `order` WHERE `order`.order_id > 0;";
     String SQL_MAKE_ORDER = "INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);";
-    String SQL_CANCEL_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ?;";
-    String SQL_ACCEPT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=?;";
-    String SQL_REJECT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=?;";
-    String SQL_PAY_ORDER = "UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=?;";
-    String SQL_ARCHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=?;";
+    String SQL_DELETE_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ?;";
+    String SQL_CANCEL_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ? AND (orderStatus = 'processed' OR orderStatus = 'accepted') ;";
+    String SQL_ACCEPT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='accepted' WHERE order_id=? AND orderStatus = 'processed';";
+    String SQL_REJECT_ORDER = "UPDATE taxisystem.`order` SET orderStatus='rejected' WHERE order_id=? AND orderStatus = 'processed';";
+    String SQL_PAY_ORDER = "UPDATE taxisystem.`order` SET orderStatus='completed' WHERE order_id=? AND orderStatus = 'accepted';";
+    String SQL_ARCHIVE_ORDER = "UPDATE taxisystem.`order` SET orderStatus='archive' WHERE order_id=? AND orderStatus = 'completed';";
     String SQL_SELECT_ALL_ORDER = "SELECT taxisystem.order.order_id, taxisystem.order.orderStatus, taxisystem.order.source_coord, taxisystem.order.destiny_coord, taxisystem.order.price, client.id, client.login, client.name, client.surname, taxi.id, taxi.login, taxi.name, taxi.surname, car.number, car.car, car.colour FROM taxisystem.order\n" +
             " JOIN client ON taxisystem.order.client_id = client.id" +
             " JOIN taxi ON taxisystem.order.taxi_id = taxi.id" +
@@ -32,7 +33,7 @@ public interface DispatcherDAO {
      * @param order contains a all information about order there are client info, taxi driver info, source, destiny and order price;
      * @throws SQLException when there are problems with database connection.
      */
-    void orderConfirm(Order order) throws SQLException;
+    boolean orderConfirm(Order order) throws SQLException;
 
     /**
      * Used to change an order status from database.
@@ -42,12 +43,12 @@ public interface DispatcherDAO {
      * @param orderId     used to identify an order we want to change.
      * @throws SQLException when there are problems with database connection.
      */
-    void changeOrderStatus(String orderAction, int orderId) throws SQLException;
+    boolean changeOrderStatus(String orderAction, int orderId) throws SQLException;
 
     /**
      * Delete all the information about orders from database.
      *
      * @throws SQLException when there are problems with database connection.
      */
-    void deleteAllOrders() throws SQLException;
+    boolean deleteAllOrders() throws SQLException;
 }

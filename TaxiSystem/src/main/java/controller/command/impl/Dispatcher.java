@@ -60,6 +60,9 @@ public class Dispatcher implements ControllerCommand {
             case CANCEL_ORDER:
                 cancelOrder(req, resp);
                 break;
+            case DELETE_ORDER:
+                deleteOrder(req,resp);
+                break;
             case DELETE_ALL_ORDERS:
                 deleteAllOrders(req, resp);
                 break;
@@ -193,9 +196,34 @@ public class Dispatcher implements ControllerCommand {
     }
 
     /**
+     * receives an order id. Delete this order from database (without restriction).
+     * In case of success, it sends to the client's order page otherwise you need to place the order again.
+     *
+     * @param req  Standard request argument
+     * @param resp Standard response argument
+     * @throws ServletException Standard exception
+     * @throws IOException      Standard exception
+     */
+    private void deleteOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;
+
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+            if (dispatcherService.changeOrderStatus(DELETE.getValue(), orderId)) {
+                resp.sendRedirect(REQ_ALL_ORDER);
+            }
+        }else{
+            resp.sendRedirect(REDIRECT_HOME);
+        }
+    }
+
+
+    /**
      * receives an order id. Delete this order from database.
      * So, if it been called by client, if it's success redirect client to client's order page.
-     * If it been called by admin, if it's success redirect admin to admin's order control page.
      * If it been called by taxi driver, if it's success redirect taxi driver to taxi's order page.
      * In case of success, it sends to the client's order page otherwise you need to place the order again.
      *
@@ -207,25 +235,29 @@ public class Dispatcher implements ControllerCommand {
     private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         String role = user.getRole();
-        String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
-        int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;
+        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.TAXI.getValue())) {
+            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_ORDER;
 
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-        if (dispatcherService.changeOrderStatus(CANCEL.getValue(), orderId)) {
-            if (role.equals(UserEnum.CLIENT.getValue())) {
-                resp.sendRedirect(REQ_CLIENT_ORDER);
-            } else if (role.equals(UserEnum.ADMIN.getValue())){
-                resp.sendRedirect(REQ_ALL_ORDER);
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            DispatcherService dispatcherService = serviceFactory.getDispatcherService();
+            if (dispatcherService.changeOrderStatus(CANCEL.getValue(), orderId)) {
+                if (role.equals(UserEnum.CLIENT.getValue())) {
+                    resp.sendRedirect(REQ_CLIENT_ORDER);
+                } else {
+                    resp.sendRedirect(REQ_TAXI_ORDER);
+                }
             } else {
-                resp.sendRedirect(REQ_TAXI_ORDER);
+                resp.sendRedirect(REDIRECT_HOME);
             }
-        } else {
+        }else{
             resp.sendRedirect(REDIRECT_HOME);
         }
     }
 
     /**
+     * if (role.equals(UserEnum.ADMIN.getValue())){
+     resp.sendRedirect(REQ_ALL_ORDER);
      * receives an order id. Method could been called by taxi.
      * Taxi confirm an order and it change status to "accepted". If it success redirect taxi to taxi's order page.
      *
@@ -395,6 +427,7 @@ public class Dispatcher implements ControllerCommand {
         REJECT_ORDER("rejectOrder"),
         PAY_ORDER("payOrder"),
         GET_ALL_ORDERS("getAllOrders"),
+        DELETE_ORDER("deleteOrder"),
         DELETE_ALL_ORDERS("deleteAllOrders"),
         GET_JSON_CAR_LIST("getJsonCarList"),
 

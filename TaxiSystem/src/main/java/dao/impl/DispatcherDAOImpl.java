@@ -59,7 +59,7 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      * @throws SQLException when there are problems with database connection.
      */
     @Override
-    public void orderConfirm(Order order) throws SQLException {
+    public boolean orderConfirm(Order order) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_MAKE_ORDER);
@@ -69,11 +69,13 @@ public class DispatcherDAOImpl implements DispatcherDAO {
             preparedStatement.setString(4, order.getDestinyCoordinate());
             preparedStatement.setDouble(5, order.getPrice());
             preparedStatement.execute();
+            return true;
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
         } finally {
             connectionPool.closeConnection(connection, preparedStatement);
         }
+        return false;
     }
 
     /**
@@ -86,17 +88,19 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      * @throws SQLException when there are problems with database connection.
      */
     @Override
-    public void changeOrderStatus(String orderAction, int orderId) throws SQLException {
+    public boolean changeOrderStatus(String orderAction, int orderId) throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(chooseOrderAction(orderAction));
             preparedStatement.setInt(1, orderId);
             preparedStatement.executeUpdate();
+            return true;
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
         } finally {
             connectionPool.closeConnection(connection, preparedStatement);
         }
+        return false;
     }
 
     /**
@@ -105,16 +109,18 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      * @throws SQLException when there are problems with database connection.
      */
     @Override
-    public void deleteAllOrders() throws SQLException {
+    public boolean deleteAllOrders() throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             statement.execute(SQL_DELETE_ALL_ORDER);
+            return true;
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());
         } finally {
             connectionPool.closeConnection(connection, statement);
         }
+        return false;
     }
 
     /**
@@ -126,6 +132,8 @@ public class DispatcherDAOImpl implements DispatcherDAO {
     private String chooseOrderAction(String orderAction) {
         OrderAction orderEnum = OrderAction.getConstant(orderAction);
         switch (orderEnum) {
+            case DELETE:
+                return SQL_DELETE_ORDER;
             case CANCEL:
                 return SQL_CANCEL_ORDER;
             case ACCEPT:
@@ -141,6 +149,7 @@ public class DispatcherDAOImpl implements DispatcherDAO {
     }
 
     enum OrderAction {
+        DELETE("delete"),
         CANCEL("cancel"),
         ACCEPT("accept"),
         REJECT("reject"),

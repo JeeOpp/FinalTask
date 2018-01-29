@@ -196,6 +196,14 @@ public class ConnectionPool implements IConnectionPool{
         }
     }
 
+    public BlockingQueue<Connection> getConnectionQueue() {
+        return connectionQueue;
+    }
+
+    public BlockingQueue<Connection> getGiveAwayConQueue() {
+        return giveAwayConQueue;
+    }
+
     /**
      * wrapped connection implement Connection interface.
      */

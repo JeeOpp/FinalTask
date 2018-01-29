@@ -14,7 +14,7 @@ public interface DispatcherService {
      * @param bonus client want to spend.
      * @return false if client has less bonuses then he are going to spent, true if it success.
      */
-    Boolean callConfirm(Order order, int bonus);
+    boolean callConfirm(Order order, int bonus);
 
     /**
      * Delegates selecting the client's orders to DAO layer and form their to list. If order has "archive" status remove it from list.

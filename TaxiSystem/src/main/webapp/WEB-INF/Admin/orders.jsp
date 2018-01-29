@@ -116,7 +116,7 @@
             <td>
                 <form action="Controller" method="post">
                     <input type="hidden" name="method" value = "dispatcher"/>
-                    <input type="hidden" name="action" value="cancelOrder"/>
+                    <input type="hidden" name="action" value="deleteOrder"/>
                     <input type="hidden" name="orderId" value="${order.orderId}"/>
                     <button class="btn btn-light" type="submit">${deleteOrder}</button>
                 </form>

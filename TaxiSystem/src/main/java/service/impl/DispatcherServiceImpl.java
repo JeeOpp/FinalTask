@@ -33,7 +33,7 @@ public class DispatcherServiceImpl implements DispatcherService {
      * @return false if client has less bonuses then he are going to spent or client didn't complete previous order, true if it success.
      */
     @Override
-    public Boolean callConfirm(Order order, int bonus) {
+    public boolean callConfirm(Order order, int bonus) {
         if (order.getClient().getBonusPoints() < bonus) {
             return false;
         }
@@ -44,14 +44,16 @@ public class DispatcherServiceImpl implements DispatcherService {
         DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
         UserManagerDAO userManagerDAO = daoFactory.getUserManagerDAO();
         try {
-            dispatcherDAO.orderConfirm(order);
-            if (bonus > MIN_BONUS) {
-                userManagerDAO.decreaseBonus(order.getClient(), bonus);
+            if (dispatcherDAO.orderConfirm(order)) {
+                if (bonus > MIN_BONUS) {
+                    userManagerDAO.decreaseBonus(order.getClient(), bonus);
+                }
+                return true;
             }
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
-        return true;
+        return false;
     }
 
     /**
@@ -122,11 +124,11 @@ public class DispatcherServiceImpl implements DispatcherService {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.changeOrderStatus(orderAction, orderId);
+            return dispatcherDAO.changeOrderStatus(orderAction, orderId);
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
-        return true;
+        return false;
     }
 
     /**
@@ -139,8 +141,7 @@ public class DispatcherServiceImpl implements DispatcherService {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            dispatcherDAO.deleteAllOrders();
-            return true;
+            return dispatcherDAO.deleteAllOrders();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }

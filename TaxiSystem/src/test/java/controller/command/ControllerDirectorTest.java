@@ -15,7 +15,7 @@ public class ControllerDirectorTest {
     public void getCommand() throws Exception {
         ControllerDirector controllerDirector = new ControllerDirector();
         ControllerCommand controllerCommand = controllerDirector.getCommand(SIGN_MANAGER_COMMAND);
-        assertEquals(true, controllerCommand instanceof SignManager);
+        assertTrue(controllerCommand instanceof SignManager);
     }
 
 }
