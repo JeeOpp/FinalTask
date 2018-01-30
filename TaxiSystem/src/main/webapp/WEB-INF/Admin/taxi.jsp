@@ -23,6 +23,7 @@
     <fmt:message bundle="${loc}" key="local.admin.nav.taxi" var="taxi"/>
     <fmt:message bundle="${loc}" key="local.admin.nav.client" var="client"/>
     <fmt:message bundle="${loc}" key="local.admin.nav.cars" var="cars"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.review" var="reviews"/>
     <fmt:message bundle="${loc}" key="local.all.user.id" var="userId"/>
     <fmt:message bundle="${loc}" key="local.all.user.name" var="userName"/>
     <fmt:message bundle="${loc}" key="local.all.user.surname" var="userSurname"/>
@@ -72,6 +73,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="Controller?method=taxis&action=getCarList">${cars}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=feedback&action=getAllReviews">${reviews}</a>
         </li>
     </ul>
 

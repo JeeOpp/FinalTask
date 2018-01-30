@@ -52,4 +52,40 @@ public class FeedbackServiceImpl implements FeedbackService{
         }
         return reviewList;
     }
+
+    /**
+     * Delegates selecting all the reviews to DAO layer and form their to list.
+     *
+     * @return all order review.
+     */
+
+    @Override
+    public List<Review> getAllReviewList() {
+        List<Review> reviewList = null;
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
+            reviewList = feedbackDAO.getReviewList();
+        } catch (SQLException ex) {
+            log.error(ex.getMessage());
+        }
+        return reviewList;
+    }
+    /**
+     * Delegates deleting specific review to DAO layer.
+     *@param reviewId review we want to delete.
+     *
+     * @return true if deleting successful.
+     */
+    @Override
+    public boolean deleteReview(int reviewId) {
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
+            return feedbackDAO.deleteReview(reviewId);
+        } catch (SQLException ex) {
+            log.error(ex.getMessage());
+        }
+        return false;
+    }
 }

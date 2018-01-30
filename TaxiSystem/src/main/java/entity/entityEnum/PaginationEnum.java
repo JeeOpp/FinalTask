@@ -8,6 +8,7 @@ public enum PaginationEnum {
     PAGE_CLIENT_LIST("pageClientList"),
     PAGE_TAXI_LIST("pageTaxiList"),
     PAGE_ORDER_LIST("pageOrderList"),
+    PAGE_REVIEW_LIST("pageReviewList"),
     CURRENT_PAGE("currentPage");
 
     private String value;

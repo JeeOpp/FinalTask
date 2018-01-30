@@ -2,6 +2,8 @@ package service;
 
 import entity.Review;
 import entity.User;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public interface FeedbackService {
@@ -20,4 +22,19 @@ public interface FeedbackService {
      * @return the list of reviews.
      */
     List<Review> getUserReviews(User user);
+
+    /**
+     * Delegates selecting all the reviews to DAO layer and form their to list.
+     *
+     * @return all review list.
+     */
+
+    List<Review> getAllReviewList();
+
+    /**
+     * Delete information about specific review from database.
+     *
+     * @param reviewId review we want to delete
+     */
+    boolean deleteReview(int reviewId);
 }

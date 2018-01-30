@@ -19,6 +19,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
     private static final Logger log = Logger.getLogger(FeedbackDAOImpl.class.getClass());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private Connection connection = null;
+    private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
@@ -119,5 +120,53 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             connectionPool.closeConnection(connection, preparedStatement, resultSet);
         }
         return reviewList;
+    }
+    /**
+     * Read all information about reviews from database and forms it into the collection list.
+     *
+     * @return a list contained all reviews information.
+     * @throws SQLException when there are problems with database connection.
+     */
+    @Override
+    public List<Review> getReviewList() throws SQLException {
+        List<Review> reviewList = new ArrayList<>();
+        Review review;
+        try {
+            connection = connectionPool.takeConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(SQL_SELECT_ALL_REVIEW);
+            while (resultSet.next()) {
+                review = new Review();
+                review.setFromResultSet(resultSet);
+                reviewList.add(review);
+            }
+        } catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        } finally {
+            connectionPool.closeConnection(connection, statement, resultSet);
+        }
+        return reviewList;
+    }
+
+    /**
+     * Delete information about specific review from database.
+     * @param reviewId review we want to delete
+     *
+     * @throws SQLException when there are problems with database connection.
+     */
+    @Override
+    public boolean deleteReview(int reviewId) throws SQLException {
+        try {
+            connection = connectionPool.takeConnection();
+            preparedStatement = connection.prepareStatement(SQL_DELETE_REVIEW);
+            preparedStatement.setInt(1, reviewId);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (ConnectionPoolException | SQLException ex) {
+            log.error(ex.getMessage());
+        } finally {
+            connectionPool.closeConnection(connection, preparedStatement);
+        }
+        return false;
     }
 }
