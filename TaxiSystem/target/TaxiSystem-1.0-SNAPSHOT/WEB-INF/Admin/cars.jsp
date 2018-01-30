@@ -31,6 +31,7 @@
     <fmt:message bundle="${loc}" key="local.admin.nav.taxi" var="taxi"/>
     <fmt:message bundle="${loc}" key="local.admin.nav.client" var="client"/>
     <fmt:message bundle="${loc}" key="local.admin.nav.cars" var="cars"/>
+    <fmt:message bundle="${loc}" key="local.admin.nav.review" var="reviews"/>
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -53,6 +54,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="Controller?method=taxis&action=getCarList">${cars}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Controller?method=feedback&action=getAllReviews">${reviews}</a>
         </li>
     </ul>
 

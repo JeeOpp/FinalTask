@@ -33,9 +33,10 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      */
     @Override
     public List<Order> getOrderList() throws SQLException {
-        List<Order> orderList = new ArrayList<>();
+        List<Order> orderList = null;
         Order order;
         try {
+            orderList = new ArrayList<>();
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_ORDER);

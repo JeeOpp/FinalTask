@@ -5,6 +5,7 @@ import entity.Pagination;
 import service.PaginationService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
 public class PaginationServiceImpl<E> implements PaginationService<E> {
     private static final int RECORDS_PER_PAGE = 5;
     private static final int DEFAULT_COUNT_PAGE = 1;
+    private static final int NULL_COUNT = 0;
     private Pagination<E> pagination = null;
 
     public PaginationServiceImpl() {
@@ -26,12 +28,15 @@ public class PaginationServiceImpl<E> implements PaginationService<E> {
     }
 
     /**
-     * builds pagination out of entity list
+     * builds pagination out of entity list. (splits the records according with page count)
      *
      * @param entityList list stored information about specific kind of information
      */
     @Override
     public void buildPagination(List<E> entityList) {
+        if(entityList==null){
+            entityList= Collections.emptyList();
+        }
         pagination = new Pagination<>();
         pagination.setCountRecords(entityList.size());
         int countPages;
@@ -43,7 +48,7 @@ public class PaginationServiceImpl<E> implements PaginationService<E> {
         Page<E> page;
         for (int i = 1; i <= pagination.getCountPages(); i++) {
             page = new Page<>();
-            page.setRecords(splitList(i, entityList));
+            page.setRecords(         splitList(i, entityList));
             pagination.getPagesList().add(page);
         }
     }

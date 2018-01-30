@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import service.DispatcherService;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -65,6 +66,9 @@ public class DispatcherServiceImpl implements DispatcherService {
     @Override
     public List<Order> getClientOrders(Client client) {
         List<Order> orderList = getAllOrderList();
+        if(orderList==null){
+            orderList = Collections.emptyList();
+        }
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
             Order order = orderIterator.next();
@@ -84,6 +88,9 @@ public class DispatcherServiceImpl implements DispatcherService {
     @Override
     public List<Order> getTaxiOrders(Taxi taxi) {
         List<Order> orderList = getAllOrderList();
+        if(orderList==null){
+            orderList = Collections.emptyList();
+        }
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
             Order order = orderIterator.next();
