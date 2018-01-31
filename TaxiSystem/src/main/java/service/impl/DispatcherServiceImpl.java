@@ -144,11 +144,11 @@ public class DispatcherServiceImpl implements DispatcherService {
      * @return true if deleting success, otherwise false.
      */
     @Override
-    public boolean deleteAllOrders() {
+    public boolean deleteObsoleteOrders() {
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             DispatcherDAO dispatcherDAO = daoFactory.getDispatcherDAO();
-            return dispatcherDAO.deleteAllOrders();
+            return dispatcherDAO.deleteObsoleteOrders();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }

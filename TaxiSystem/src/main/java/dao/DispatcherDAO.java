@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface DispatcherDAO {
-    String SQL_DELETE_ALL_ORDER = "DELETE FROM `order` WHERE `order`.order_id > 0;";
+    String SQL_DELETE_OBSOLETE_ORDER = "DELETE FROM `order` WHERE `order`.order_id > 0 AND `order`.orderStatus = 'archive';";
     String SQL_MAKE_ORDER = "INSERT INTO taxisystem.order (client_id, taxi_id,source_coord, destiny_coord, price) VALUES (?,?,?,?,?);";
     String SQL_DELETE_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ?;";
     String SQL_CANCEL_ORDER = "DELETE FROM taxisystem.order WHERE order_id = ? AND (orderStatus = 'processed' OR orderStatus = 'accepted') ;";
@@ -50,5 +50,5 @@ public interface DispatcherDAO {
      *
      * @throws SQLException when there are problems with database connection.
      */
-    boolean deleteAllOrders() throws SQLException;
+    boolean deleteObsoleteOrders() throws SQLException;
 }

@@ -36,10 +36,10 @@ public class DispatcherDAOImpl implements DispatcherDAO {
         List<Order> orderList = null;
         Order order;
         try {
-            orderList = new ArrayList<>();
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_ORDER);
+            orderList = new ArrayList<>();
             while (resultSet.next()) {
                 order = new Order();
                 order.setFromResultSet(resultSet);
@@ -110,11 +110,11 @@ public class DispatcherDAOImpl implements DispatcherDAO {
      * @throws SQLException when there are problems with database connection.
      */
     @Override
-    public boolean deleteAllOrders() throws SQLException {
+    public boolean deleteObsoleteOrders() throws SQLException {
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
-            statement.execute(SQL_DELETE_ALL_ORDER);
+            statement.execute(SQL_DELETE_OBSOLETE_ORDER);
             return true;
         } catch (ConnectionPoolException | SQLException ex) {
             log.error(ex.getMessage());

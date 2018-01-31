@@ -58,7 +58,7 @@ public class SignDAOImplTest {
         String login = "taxi";
         String password = "root";
 
-        Taxi taxi = (Taxi) new Taxi.TaxiBuilder().setId(4).build();
+        Taxi taxi = (Taxi) new Taxi.TaxiBuilder().setId(taxiId).build();
         signDAO.changeAvailableStatus(taxi);
         taxi = signDAO.taxiAuthorize(login,password);
         assertTrue(taxi.isAvailableStatus());

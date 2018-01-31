@@ -1,17 +1,18 @@
 package service;
 
+import entity.User;
 import service.impl.*;
 
 /**
  * Factory class contains all the service classes objects to encapsulate them.
  */
-public class ServiceFactory <E> {
+public class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
     private SignService signService = new SignServiceImpl();
     private DispatcherService dispatcherService = new DispatcherServiceImpl();
     private FeedbackService feedbackService = new FeedbackServiceImpl();
     private UserManagerService userManagerService = new UserManagerServiceImpl();
-    private PaginationService<E> paginationService = new PaginationServiceImpl<E>();
+    private PaginationService paginationService = new PaginationServiceImpl();
     private TaxisService taxisService = new TaxisServiceImpl();
 
     private ServiceFactory() {
@@ -37,7 +38,7 @@ public class ServiceFactory <E> {
         return userManagerService;
     }
 
-    public PaginationService<E> getPaginationService() {
+    public <E> PaginationService<E> getPaginationService() {
         return paginationService;
     }
 

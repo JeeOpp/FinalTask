@@ -186,6 +186,7 @@ public class UserManager implements ControllerCommand {
         if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
             String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
             int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
+
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             List<Taxi> taxiList = userManagerService.getTaxiList();

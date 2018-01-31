@@ -31,12 +31,13 @@ public class TaxisDAOImpl implements TaxisDAO {
      */
     @Override
     public List<Car> getCarList() throws SQLException {
-        List<Car> carList = new ArrayList<>();
+        List<Car> carList = null;
         Car car;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_CARS);
+            carList = new ArrayList<>();
             while (resultSet.next()) {
                 car = new Car();
                 car.setFromResultSet(resultSet);

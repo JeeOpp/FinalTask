@@ -2,14 +2,9 @@ package dao.impl;
 
 import dao.DAOFactory;
 import dao.DispatcherDAO;
-import entity.Client;
 import entity.Order;
-import org.junit.Before;
 import org.junit.Test;
-import service.DispatcherService;
-import service.ServiceFactory;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -30,6 +25,21 @@ public class DispatcherDAOImplTest {
     }
 
     @Test
+    public void deleteObsoleteOrders() throws Exception{
+        boolean actual = false;
+        dispatcherDAO.deleteObsoleteOrders();
+        List<Order> orderList = dispatcherDAO.getOrderList();
+        if (orderList!=null){
+            for (Order order : orderList) {
+                if (order.getOrderStatus().equals(ARCHIVE)) {
+                    actual = true;
+                }
+            }
+        }
+        assertFalse(actual);
+    }
+
+    @Test
     public void changeOrderStatus() throws Exception {
         boolean actual = false;
         dispatcherDAO.changeOrderStatus(ARCHIVE,FIRST_ORDER);
@@ -46,7 +56,7 @@ public class DispatcherDAOImplTest {
 
     @Test
     public void deleteAllOrders() throws Exception {
-        dispatcherDAO.deleteAllOrders();
+        dispatcherDAO.deleteObsoleteOrders();
         List<Order> orderList = dispatcherDAO.getOrderList();
         assertTrue(orderList!=null && orderList.isEmpty());
     }

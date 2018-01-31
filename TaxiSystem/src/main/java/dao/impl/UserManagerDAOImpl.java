@@ -59,14 +59,15 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public List<Taxi> getTaxiList() throws SQLException {
-        List<Taxi> taxiList = new ArrayList<>();
+        List<Taxi> taxiList = null;
         Taxi taxi;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_TAXI);
+            taxiList = new ArrayList<>();
             while (resultSet.next()) {
-                taxi = new Taxi.TaxiBuilder().build();
+                taxi = new Taxi();
                 taxi.setFromResultSet(resultSet);
                 taxiList.add(taxi);
             }
@@ -86,14 +87,15 @@ public class UserManagerDAOImpl implements UserManagerDAO {
      */
     @Override
     public List<Client> getClientList() throws SQLException {
-        List<Client> clientList = new ArrayList<>();
+        List<Client> clientList = null;
         Client client;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
+            clientList = new ArrayList<>();
             if ((resultSet = statement.executeQuery(SQL_SELECT_ALL_CLIENT)) != null) {
                 while (resultSet.next()) {
-                    client = new Client.ClientBuilder().build();
+                    client = new Client();
                     client.setFromResultSet(resultSet);
                     clientList.add(client);
                 }

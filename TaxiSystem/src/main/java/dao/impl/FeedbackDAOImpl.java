@@ -57,13 +57,14 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public List<Review> getClientReviews(User user) throws SQLException {
-        List<Review> reviewList = new ArrayList<>();
+        List<Review> reviewList = null;
         Review review;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_GET_CLIENT_REVIEW);
             preparedStatement.setInt(1, user.getId());
             resultSet = preparedStatement.executeQuery();
+            reviewList = new ArrayList<>();
             while (resultSet.next()) {
                 review = new Review();
                 int taxiId = resultSet.getInt(1);
@@ -94,13 +95,14 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public List<Review> getTaxiReviews(User user) throws SQLException {
-        List<Review> reviewList = new ArrayList<>();
+        List<Review> reviewList = null;
         Review review;
         try {
             connection = connectionPool.takeConnection();
             preparedStatement = connection.prepareStatement(SQL_GET_TAXI_REVIEW);
             preparedStatement.setInt(1, user.getId());
             resultSet = preparedStatement.executeQuery();
+            reviewList = new ArrayList<>();
             while (resultSet.next()) {
                 review = new Review();
                 int clientId = resultSet.getInt(1);
@@ -129,12 +131,13 @@ public class FeedbackDAOImpl implements FeedbackDAO {
      */
     @Override
     public List<Review> getReviewList() throws SQLException {
-        List<Review> reviewList = new ArrayList<>();
+        List<Review> reviewList = null;
         Review review;
         try {
             connection = connectionPool.takeConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_REVIEW);
+            reviewList = new ArrayList<>();
             while (resultSet.next()) {
                 review = new Review();
                 review.setFromResultSet(resultSet);

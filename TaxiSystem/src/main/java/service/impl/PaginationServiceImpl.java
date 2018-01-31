@@ -16,7 +16,6 @@ import java.util.List;
 public class PaginationServiceImpl<E> implements PaginationService<E> {
     private static final int RECORDS_PER_PAGE = 5;
     private static final int DEFAULT_COUNT_PAGE = 1;
-    private static final int NULL_COUNT = 0;
     private Pagination<E> pagination = null;
 
     public PaginationServiceImpl() {
@@ -48,7 +47,7 @@ public class PaginationServiceImpl<E> implements PaginationService<E> {
         Page<E> page;
         for (int i = 1; i <= pagination.getCountPages(); i++) {
             page = new Page<>();
-            page.setRecords(         splitList(i, entityList));
+            page.setRecords(splitList(i, entityList));
             pagination.getPagesList().add(page);
         }
     }

@@ -60,7 +60,7 @@ public interface UserManagerDAO {
     void decreaseBonus(Client client, int bonus) throws SQLException;
 
     /**
-     * changes user's bonus count stored in the user's object field.
+     * changes user's bonus count on value which stored in client's object
      *
      * @param client we are want to change.
      * @throws SQLException when there are problems with database connection.
@@ -68,7 +68,7 @@ public interface UserManagerDAO {
     void changeBonusCount(Client client) throws SQLException;
 
     /**
-     * changes a taxi's driver car to another car.
+     * changes a taxi's driver car to another car which stored in taxi object.
      *
      * @param taxi stored taxi driver id and car we are want to change.
      * @throws SQLException when there are problems with database connection.

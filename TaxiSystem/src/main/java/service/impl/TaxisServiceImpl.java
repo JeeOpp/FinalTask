@@ -44,9 +44,11 @@ public class TaxisServiceImpl implements TaxisService{
         TaxisDAO taxisDAO = daoFactory.getTaxisDAO();
         try {
             List<Car> carList = taxisDAO.getCarList();
-            for (Car each : carList) {
-                if (each.getNumber().equals(car.getNumber())) {
-                    return false;
+            if(carList != null) {
+                for (Car each : carList) {
+                    if (each.getNumber().equals(car.getNumber())) {
+                        return false;
+                    }
                 }
             }
             return taxisDAO.addCar(car);

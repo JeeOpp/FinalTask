@@ -54,5 +54,5 @@ public interface DispatcherService {
      *
      * @return true if deleting success, otherwise false.
      */
-    boolean deleteAllOrders();
+    boolean deleteObsoleteOrders();
 }

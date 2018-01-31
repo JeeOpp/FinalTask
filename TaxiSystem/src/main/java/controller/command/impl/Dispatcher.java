@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.TreeSet;
 
 /**
  * Responds to requests related to orders
@@ -63,8 +62,8 @@ public class Dispatcher implements ControllerCommand {
             case DELETE_ORDER:
                 deleteOrder(req,resp);
                 break;
-            case DELETE_ALL_ORDERS:
-                deleteAllOrders(req, resp);
+            case DELETE_OBSOLETE_ORDERS:
+                deleteObsoleteOrders(req, resp);
                 break;
             case GET_ALL_ORDERS:
                 getAllOrders(req, resp);
@@ -384,12 +383,12 @@ public class Dispatcher implements ControllerCommand {
      * @throws ServletException Standard exception
      * @throws IOException      Standard exception
      */
-    private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void deleteObsoleteOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
         if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            if (dispatcherService.deleteAllOrders()) {
+            if (dispatcherService.deleteObsoleteOrders()) {
                 resp.sendRedirect(REQ_ALL_ORDER);
             }
         } else {
@@ -428,7 +427,7 @@ public class Dispatcher implements ControllerCommand {
         PAY_ORDER("payOrder"),
         GET_ALL_ORDERS("getAllOrders"),
         DELETE_ORDER("deleteOrder"),
-        DELETE_ALL_ORDERS("deleteAllOrders"),
+        DELETE_OBSOLETE_ORDERS("deleteObsoleteOrders"),
         GET_JSON_CAR_LIST("getJsonCarList"),
 
         NONE("none");

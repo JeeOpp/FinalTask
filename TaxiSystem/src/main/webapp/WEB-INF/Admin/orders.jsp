@@ -38,7 +38,7 @@
     <fmt:message bundle="${loc}" key="local.all.car.name" var="carName"/>
     <fmt:message bundle="${loc}" key="local.all.car.colour" var="colour"/>
     <fmt:message bundle="${loc}" key="local.admin.orders.deleteOrder" var="deleteOrder"/>
-    <fmt:message bundle="${loc}" key="local.admin.orders.deleteAll" var="deleteAll"/>
+    <fmt:message bundle="${loc}" key="local.admin.orders.deleteObsolete" var="deleteObsolete"/>
     <title>${title}</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVlbCzAS1kedMyyEjnnASz9vwaIjOmp8"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -143,11 +143,11 @@
         </c:forEach>
     </ul>
 </nav>
-<!--УДАЛИТЬ ВСЕ-->
+
 <form action="Controller" method="post">
     <input type="hidden" name="method" value = "dispatcher"/>
-    <input type="hidden" name="action" value="deleteAllOrders"/>
-    <button class="btn btn-danger" type="submit">${deleteAll}</button>
+    <input type="hidden" name="action" value="deleteObsoleteOrders"/>
+    <button class="btn btn-danger" type="submit">${deleteObsolete}</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
