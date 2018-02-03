@@ -1,6 +1,6 @@
 package support.mytag.carColour;
 
-import entity.entityEnum.CarEnum;
+import entity.entityEnum.CarColour;
 import org.apache.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
@@ -37,7 +37,7 @@ public class CarColourTag extends TagSupport implements ICarColour {
     }
     private void chooseClass(){
         ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE,getLocale());
-        CarEnum.CarColour carColourEnum = CarEnum.CarColour.getConstant(colour);
+        CarColour carColourEnum = CarColour.getConstant(colour);
         switch (carColourEnum){
             case RED:
                 bodyText = resourceBundle.getString(RED);

@@ -3,17 +3,17 @@ package controller.command.impl;
 import controller.command.ControllerCommand;
 import entity.Car;
 import entity.User;
-import entity.entityEnum.CarEnum;
-import entity.entityEnum.UserEnum;
 import service.ServiceFactory;
 import service.TaxisService;
-import service.impl.TaxisServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
+import static support.constants.CarConstants.*;
+import static support.constants.UserConstants.*;
 
 /**
  * Contain all actions related on taxi station request.
@@ -62,13 +62,13 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getCarList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             TaxisService taxisService = serviceFactory.getTaxisService();
             List<Car> carList = taxisService.getCarList();
 
-            req.setAttribute(CarEnum.CAR_LIST.getValue(), carList);
+            req.setAttribute(CAR_LIST, carList);
             req.getRequestDispatcher(ADMIN_CARS_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -85,11 +85,11 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void addCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String carNumber = req.getParameter(CarEnum.CAR_NUMBER.getValue());
-            String carName = req.getParameter(CarEnum.CAR_NAME.getValue());
-            String colour = req.getParameter(CarEnum.CAR_COLOUR.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String carNumber = req.getParameter(CAR_NUMBER);
+            String carName = req.getParameter(CAR_NAME);
+            String colour = req.getParameter(CAR_COLOUR);
 
             Car car = new Car(carNumber, carName, colour);
 
@@ -113,9 +113,9 @@ public class Taxis implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void removeCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String carNumber = req.getParameter(CarEnum.CAR_NUMBER.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String carNumber = req.getParameter(CAR_NUMBER);
             Car car = new Car(carNumber);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();

@@ -6,13 +6,15 @@ import dao.connectionPool.ConnectionPoolException;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import support.MD5;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static support.constants.UserConstants.TAXI;
+
 /**
  * A DAO class uses to read or change data in database and send it to the modal layer.
  */
@@ -36,7 +38,7 @@ public class UserManagerDAOImpl implements UserManagerDAO {
     public synchronized void changePassword(User user) {
         try {
             connection = connectionPool.takeConnection();
-            if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+            if (user.getRole().equals(TAXI)) {
                 preparedStatement = connection.prepareStatement(SQL_CHANGE_TAXI_PASS);
             } else {
                 preparedStatement = connection.prepareStatement(SQL_CHANGE_CLIENT_PASS);
@@ -117,7 +119,7 @@ public class UserManagerDAOImpl implements UserManagerDAO {
     public void changeBanStatus(User user) {
         try {
             connection = connectionPool.takeConnection();
-            if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+            if (user.getRole().equals(TAXI)) {
                 preparedStatement = connection.prepareStatement(SQL_GET_TAXI_BAN);
             } else {
                 preparedStatement = connection.prepareStatement(SQL_GET_CLIENT_BAN);

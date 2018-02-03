@@ -1,12 +1,14 @@
 package controller.command.impl;
 
-import static entity.entityEnum.OrderEnum.OrderAction.*;
+import static support.constants.OrderConstants.ARCHIVE;
+import static support.constants.OrderConstants.ORDER_ID;
+import static support.constants.PaginationConstants.*;
+import static support.constants.ReviewConstants.REVIEW;
+import static support.constants.ReviewConstants.REVIEW_ID;
+import static support.constants.UserConstants.*;
+
 import controller.command.ControllerCommand;
 import entity.*;
-import entity.entityEnum.OrderEnum;
-import entity.entityEnum.PaginationEnum;
-import entity.entityEnum.ReviewEnum;
-import entity.entityEnum.UserEnum;
 import service.DispatcherService;
 import service.FeedbackService;
 import service.PaginationService;
@@ -69,17 +71,17 @@ public class Feedback implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void writeReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(CLIENT)) {
             Client client = (Client) user;
 
-            String taxiIdString = req.getParameter(UserEnum.TAXI_ID.getValue());
+            String taxiIdString = req.getParameter(TAXI_ID);
             Taxi taxi = (taxiIdString != null) ? (Taxi) new Taxi.TaxiBuilder().setId(Integer.parseInt(taxiIdString)).build() : null;
 
-            String orderIdString = req.getParameter(OrderEnum.ORDER_ID.getValue());
+            String orderIdString = req.getParameter(ORDER_ID);
             int orderId = (orderIdString != null) ? Integer.parseInt(orderIdString) : INVALID_VALUE;
 
-            String comment = req.getParameter(ReviewEnum.REVIEW.getValue());
+            String comment = req.getParameter(REVIEW);
             Review review = new Review(client, taxi, comment);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -87,7 +89,7 @@ public class Feedback implements ControllerCommand {
             feedbackService.setReview(review);
 
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
-            dispatcherService.changeOrderStatus(ARCHIVE.getValue(), orderId);
+            dispatcherService.changeOrderStatus(ARCHIVE, orderId);
             resp.sendRedirect(REQ_CLIENT_ORDER);
         } else {
             resp.sendRedirect(REDIRECT_HOME);
@@ -104,9 +106,9 @@ public class Feedback implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getAllReviews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String numPage = req.getParameter(NUM_PAGE);
             int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -119,9 +121,9 @@ public class Feedback implements ControllerCommand {
             List<Review> pageReviewList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute(PaginationEnum.PAGE_REVIEW_LIST.getValue(), pageReviewList);
-            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
-            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
+            req.setAttribute(PAGE_REVIEW_LIST, pageReviewList);
+            req.setAttribute(PAGE_COUNT, paginationService.getPagination().getCountPages());
+            req.setAttribute(CURRENT_PAGE, page);
 
             req.getRequestDispatcher(ADMIN_REVIEW_PAGE).forward(req, resp);
         } else {
@@ -137,9 +139,9 @@ public class Feedback implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void deleteReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String reviewIdString = req.getParameter(ReviewEnum.REVIEW_ID.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String reviewIdString = req.getParameter(REVIEW_ID);
             int reviewId = (reviewIdString != null) ? Integer.parseInt(reviewIdString) : INVALID_VALUE;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();

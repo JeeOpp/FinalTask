@@ -4,12 +4,13 @@ import dao.DAOFactory;
 import dao.FeedbackDAO;
 import entity.Review;
 import entity.User;
-import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import service.FeedbackService;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import static support.constants.UserConstants.CLIENT;
 
 /**
  *  Delegates action with database to the {@link FeedbackDAO}
@@ -42,7 +43,7 @@ public class FeedbackServiceImpl implements FeedbackService{
         DAOFactory daoFactory = DAOFactory.getInstance();
         FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
         try {
-            if (user.getRole().equals(UserEnum.CLIENT.getValue())) {
+            if (user.getRole().equals(CLIENT)) {
                 reviewList = feedbackDAO.getClientReviews(user);
             } else {
                 reviewList = feedbackDAO.getTaxiReviews(user);

@@ -5,11 +5,14 @@ import dao.SignDAO;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import service.SignService;
 
 import java.sql.SQLException;
+
+import static support.constants.UserConstants.ADMIN;
+import static support.constants.UserConstants.CLIENT;
+import static support.constants.UserConstants.TAXI;
 
 /**
  *  Delegates action with database to the {@link SignDAO}
@@ -68,14 +71,14 @@ public class SignServiceImpl implements SignService{
             DAOFactory daoFactory = DAOFactory.getInstance();
             SignDAO signDAO = daoFactory.getSignDAO();
             String role = signDAO.preAuthorize(login, password);
-            if (UserEnum.CLIENT.getValue().equals(role)) {
+            if (CLIENT.equals(role)) {
                 return signDAO.clientAuthorize(login, password);
             }
-            if (UserEnum.TAXI.getValue().equals(role)) {
+            if (TAXI.equals(role)) {
                 return signDAO.taxiAuthorize(login, password);
             }
-            if (UserEnum.ADMIN.getValue().equals(role)) {
-                return new User.UserBuilder().setRole(UserEnum.ADMIN.getValue()).build();
+            if (ADMIN.equals(role)) {
+                return new User.UserBuilder().setRole(ADMIN).build();
             }
         } catch (SQLException ex) {
             log.error(ex.getMessage());

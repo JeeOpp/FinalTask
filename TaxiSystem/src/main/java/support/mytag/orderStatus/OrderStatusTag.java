@@ -1,6 +1,6 @@
 package support.mytag.orderStatus;
 
-import entity.entityEnum.OrderEnum;
+import entity.entityEnum.OrderStatus;
 import org.apache.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
@@ -37,7 +37,7 @@ public class OrderStatusTag extends TagSupport implements IOrderStatus {
     }
     private String chooseClass(){
         ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE,getLocale());
-        OrderEnum.OrderStatus orderStatusEnum = OrderEnum.OrderStatus.getConstant(orderStatus);
+        OrderStatus orderStatusEnum = OrderStatus.getConstant(orderStatus);
         switch (orderStatusEnum){
             case PROCESSED:
                 bodyText = resourceBundle.getString(LOCALE_PROCESSED);

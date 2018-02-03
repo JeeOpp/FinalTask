@@ -5,8 +5,6 @@ import entity.Car;
 import entity.Client;
 import entity.Taxi;
 import entity.User;
-import entity.entityEnum.OrderEnum;
-import entity.entityEnum.UserEnum;
 import org.apache.log4j.Logger;
 import service.ServiceFactory;
 import service.SignService;
@@ -16,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static support.constants.OrderConstants.CHECKED_CAR;
+import static support.constants.UserConstants.*;
 
 /**
  * Responds to requests related to sign action.
@@ -75,7 +76,7 @@ public class SignManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void goHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
         req.getRequestDispatcher(chooseUserPage(user.getRole())).forward(req, resp);
     }
 
@@ -94,8 +95,8 @@ public class SignManager implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
-        String login = req.getParameter(UserEnum.LOGIN.getValue());
-        String password = req.getParameter(UserEnum.PASSWORD.getValue());
+        String login = req.getParameter(LOGIN);
+        String password = req.getParameter(PASSWORD);
 
         if ((user = signService.authorize(login, password)) == null) {
             resp.sendRedirect(AUTHORIZATION_PROBLEM);
@@ -103,11 +104,11 @@ public class SignManager implements ControllerCommand {
             if (user.getBanStatus()) {
                 resp.sendRedirect(BANNED_PAGE);
             } else {
-                if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+                if (user.getRole().equals(TAXI)) {
                     signService.changeSessionStatus((Taxi) user);
                     ((Taxi) user).setAvailableStatus(true);
                 }
-                req.getSession().setAttribute(UserEnum.USER.getValue(), user);
+                req.getSession().setAttribute(USER, user);
                 resp.sendRedirect(REDIRECT_HOME);
             }
         }
@@ -126,14 +127,14 @@ public class SignManager implements ControllerCommand {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
 
-        String login = req.getParameter(UserEnum.LOGIN.getValue());
-        String password = req.getParameter(UserEnum.PASSWORD.getValue());
-        String firstName = req.getParameter(UserEnum.NAME.getValue());
-        String lastName = req.getParameter(UserEnum.SURNAME.getValue());
-        String mail = req.getParameter(UserEnum.EMAIL.getValue());
-        String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
-        String role = req.getParameter(UserEnum.ROLE.getValue());
-        if (role.equals(UserEnum.CLIENT.getValue())) {
+        String login = req.getParameter(LOGIN);
+        String password = req.getParameter(PASSWORD);
+        String firstName = req.getParameter(NAME);
+        String lastName = req.getParameter(SURNAME);
+        String mail = req.getParameter(EMAIL);
+        String carNumber = req.getParameter(CHECKED_CAR);
+        String role = req.getParameter(ROLE);
+        if (role.equals(CLIENT)) {
             Client client = (Client) new Client.ClientBuilder().
                     setMail(mail).
                     setLogin(login).
@@ -146,7 +147,7 @@ public class SignManager implements ControllerCommand {
                 resp.sendRedirect(REGISTRATION_PROBLEM);
             }
         }
-        if (role.equals(UserEnum.TAXI.getValue())) {
+        if (role.equals(TAXI)) {
             Car car = new Car(carNumber);
             Taxi taxi = (Taxi) new Taxi.TaxiBuilder().
                     setCar(car).
@@ -173,11 +174,11 @@ public class SignManager implements ControllerCommand {
      */
     private void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute(UserEnum.USER.getValue());
+        User user = (User) session.getAttribute(USER);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SignService signService = serviceFactory.getSignService();
-        if (user.getRole().equals(UserEnum.TAXI.getValue())) {
+        if (user.getRole().equals(TAXI)) {
             signService.changeSessionStatus((Taxi) user);
         }
         session.invalidate();
@@ -191,13 +192,13 @@ public class SignManager implements ControllerCommand {
      * @return a page path.
      */
     public String chooseUserPage(String role) {
-        if (role.equals(UserEnum.CLIENT.getValue())) {
+        if (role.equals(CLIENT)) {
             return CLIENT_MAIN_PATH;
         }
-        if (role.equals(UserEnum.TAXI.getValue())) {
+        if (role.equals(TAXI)) {
             return TAXI_MAIN_PATH;
         }
-        if (role.equals(UserEnum.ADMIN.getValue())) {
+        if (role.equals(ADMIN)) {
             return ADMIN_MAIN_PATH;
         }
         return AUTHORIZATION_PROBLEM;

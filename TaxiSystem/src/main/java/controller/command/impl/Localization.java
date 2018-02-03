@@ -1,13 +1,14 @@
 package controller.command.impl;
 
 import controller.command.ControllerCommand;
-import entity.entityEnum.PaginationEnum;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static support.constants.PaginationConstants.PAGE;
 
 /**
  * Localizes pages for a russian or english language.
@@ -35,7 +36,7 @@ public class Localization implements ControllerCommand {
         resp.addCookie(getLocal);
 
         req.getSession().setAttribute(LOCALE_PARAMETER, local);
-        String page = req.getParameter(PaginationEnum.PAGE.getValue());
+        String page = req.getParameter(PAGE);
         if(page != null && !page.isEmpty()){
             req.getRequestDispatcher(page).forward(req, resp);
         }else{

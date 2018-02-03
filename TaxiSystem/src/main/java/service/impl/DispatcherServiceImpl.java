@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import static entity.entityEnum.OrderEnum.OrderAction.ARCHIVE;
+import static support.constants.OrderConstants.ARCHIVE;
 
 /**
  * Service class contains order business logic.
@@ -72,7 +72,7 @@ public class DispatcherServiceImpl implements DispatcherService {
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
             Order order = orderIterator.next();
-            if (order.getClient().getId() != client.getId() || order.getOrderStatus().equals(ARCHIVE.getValue())) {
+            if (order.getClient().getId() != client.getId() || order.getOrderStatus().equals(ARCHIVE)) {
                 orderIterator.remove();
             }
         }
@@ -94,7 +94,7 @@ public class DispatcherServiceImpl implements DispatcherService {
         Iterator<Order> orderIterator = orderList.listIterator();
         while (orderIterator.hasNext()) {
             Order order = orderIterator.next();
-            if (order.getTaxi().getId() != taxi.getId() || order.getOrderStatus().equals(ARCHIVE.getValue())) {
+            if (order.getTaxi().getId() != taxi.getId() || order.getOrderStatus().equals(ARCHIVE)) {
                 orderIterator.remove();
             }
         }

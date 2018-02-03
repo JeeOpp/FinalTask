@@ -2,10 +2,6 @@ package controller.command.impl;
 
 import controller.command.ControllerCommand;
 import entity.*;
-import entity.entityEnum.OrderEnum;
-import entity.entityEnum.PaginationEnum;
-import entity.entityEnum.ReviewEnum;
-import entity.entityEnum.UserEnum;
 import service.*;
 import support.PasswordGen;
 import support.TLSSender;
@@ -17,6 +13,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import static support.constants.OrderConstants.CHECKED_CAR;
+import static support.constants.PaginationConstants.*;
+import static support.constants.ReviewConstants.USER_REVIEWS;
+import static support.constants.UserConstants.*;
 
 /**
  * Contains all actions related on actions with users.
@@ -96,16 +97,16 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getUserReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
         String role = user.getRole();
-        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.TAXI.getValue())) {
+        if (role.equals(CLIENT) || role.equals(TAXI)) {
             List<Review> reviewList;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             FeedbackService feedbackService = serviceFactory.getFeedbackService();
             reviewList = feedbackService.getUserReviews(user);
 
-            req.setAttribute(ReviewEnum.USER_REVIEWS.getValue(), reviewList);
-            if (role.equals(UserEnum.CLIENT.getValue())) {
+            req.setAttribute(USER_REVIEWS, reviewList);
+            if (role.equals(CLIENT)) {
                 req.getRequestDispatcher(CLIENT_PROFILE_PAGE).forward(req, resp);
             } else {
                 req.getRequestDispatcher(TAXI_PROFILE_PAGE).forward(req, resp);
@@ -124,16 +125,16 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
         String role = user.getRole();
-        if (role.equals(UserEnum.CLIENT.getValue()) || role.equals(UserEnum.TAXI.getValue())) {
-            String currentPassword = req.getParameter(UserEnum.PREVIOUS_PASS.getValue());
-            String newPassword = req.getParameter(UserEnum.NEW_PASS.getValue());
+        if (role.equals(CLIENT) || role.equals(TAXI)) {
+            String currentPassword = req.getParameter(PREVIOUS_PASS);
+            String newPassword = req.getParameter(NEW_PASS);
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             if (userManagerService.changePassword(user, currentPassword, newPassword)) {
-                req.getSession().setAttribute(UserEnum.USER.getValue(), user);
+                req.getSession().setAttribute(USER, user);
             }
             resp.sendRedirect(GET_USER_REVIEW_REQ);
         } else {
@@ -151,9 +152,9 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getClientList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String numPage = req.getParameter(NUM_PAGE);
             int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
@@ -165,9 +166,9 @@ public class UserManager implements ControllerCommand {
             List<Client> pageClientList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute(PaginationEnum.PAGE_CLIENT_LIST.getValue(), pageClientList);
-            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
-            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
+            req.setAttribute(PAGE_CLIENT_LIST, pageClientList);
+            req.setAttribute(PAGE_COUNT, paginationService.getPagination().getCountPages());
+            req.setAttribute(CURRENT_PAGE, page);
 
             req.getRequestDispatcher(ADMIN_CLIENTS_PAGE).forward(req, resp);
         } else {
@@ -184,9 +185,9 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void getTaxiList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String numPage = req.getParameter(PaginationEnum.NUM_PAGE.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String numPage = req.getParameter(NUM_PAGE);
             int page = (numPage != null) ? Integer.parseInt(numPage) : DEFAULT_PAGE;
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -199,9 +200,9 @@ public class UserManager implements ControllerCommand {
             List<Taxi> pageTaxiList = paginationService.getPagination().getPage(page);
 
 
-            req.setAttribute(PaginationEnum.PAGE_TAXI_LIST.getValue(), pageTaxiList);
-            req.setAttribute(PaginationEnum.PAGE_COUNT.getValue(), paginationService.getPagination().getCountPages());
-            req.setAttribute(PaginationEnum.CURRENT_PAGE.getValue(), page);
+            req.setAttribute(PAGE_TAXI_LIST, pageTaxiList);
+            req.setAttribute(PAGE_COUNT, paginationService.getPagination().getCountPages());
+            req.setAttribute(CURRENT_PAGE, page);
 
             req.getRequestDispatcher(ADMIN_TAXI_PAGE).forward(req, resp);
         } else {
@@ -219,12 +220,12 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeBanStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String userIdString = req.getParameter(UserEnum.ID.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String userIdString = req.getParameter(ID);
             int userId = (userIdString != null) ? Integer.parseInt(userIdString) : WRONG_ID;
-            boolean banStatus = Boolean.parseBoolean(req.getParameter(UserEnum.BAN_STATUS.getValue()));
-            String rolePage = req.getParameter(UserEnum.ROLE.getValue());
+            boolean banStatus = Boolean.parseBoolean(req.getParameter(BAN_STATUS));
+            String rolePage = req.getParameter(ROLE);
 
             User userToChange = new User.UserBuilder().
                     setId(userId).
@@ -233,7 +234,7 @@ public class UserManager implements ControllerCommand {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             UserManagerService userManagerService = serviceFactory.getUserManagerService();
             userManagerService.changeBanStatus(userToChange);
-            if (rolePage.equals(UserEnum.CLIENT.getValue())) {
+            if (rolePage.equals(CLIENT)) {
                 resp.sendRedirect(REQ_CLIENT_LIST);
             } else {
                 resp.sendRedirect(REQ_TAXI_LIST);
@@ -253,11 +254,11 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeBonusCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String clientIdString = req.getParameter(UserEnum.CLIENT_ID.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String clientIdString = req.getParameter(CLIENT_ID);
             int clientId = (clientIdString != null) ? Integer.parseInt(clientIdString) : WRONG_ID;
-            String bonusPointsString = req.getParameter(UserEnum.BONUS_POINTS.getValue());
+            String bonusPointsString = req.getParameter(BONUS_POINTS);
             int bonusPoints = (bonusPointsString != null) ? Integer.parseInt(bonusPointsString) : DEFAULT_BONUS;
 
             Client client = (Client) new Client.ClientBuilder().
@@ -282,11 +283,11 @@ public class UserManager implements ControllerCommand {
      * @throws IOException      Standard exception
      */
     private void changeTaxiCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute(UserEnum.USER.getValue());
-        if (user.getRole().equals(UserEnum.ADMIN.getValue())) {
-            String taxiIdString = req.getParameter(UserEnum.CHANGE_TAXI_ID.getValue());
+        User user = (User) req.getSession().getAttribute(USER);
+        if (user.getRole().equals(ADMIN)) {
+            String taxiIdString = req.getParameter(CHANGE_TAXI_ID);
             int taxiId = (taxiIdString != null) ? Integer.parseInt(taxiIdString) : WRONG_ID;
-            String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
+            String carNumber = req.getParameter(CHECKED_CAR);
             Car car = new Car(carNumber);
             Taxi taxi = (Taxi) new Taxi.TaxiBuilder().
                     setCar(car).

@@ -1,9 +1,6 @@
 package controller.filter;
 
 
-import entity.entityEnum.PaginationEnum;
-import entity.entityEnum.UserEnum;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +8,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+
+import static support.constants.PaginationConstants.PAGE;
+import static support.constants.UserConstants.USER;
 
 /**
  * Uses to detect the invalid requests.
@@ -59,12 +59,12 @@ public class SimpleSignFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession(false);
 
-        boolean loggedIn = (session != null) && (session.getAttribute(UserEnum.USER.getValue()) != null);
+        boolean loggedIn = (session != null) && (session.getAttribute(USER) != null);
         boolean availableLocalRequest = false;
         String pageRequest;
         if (LOCAL_METHOD.equals(req.getParameter(METHOD))) {
             String local = req.getParameter(LOCAL);
-            pageRequest = req.getParameter(PaginationEnum.PAGE.getValue());
+            pageRequest = req.getParameter(PAGE);
             availableLocalRequest = isAvailableLocalPage(pageRequest) && (RU.equals(local) || EN.equals(local));
         }
         String requestAction = req.getParameter(ACTION);
