@@ -22,6 +22,9 @@ public class SimpleSignFilter implements Filter {
     private static final String METHOD = "method";
     private static final String LOCAL_METHOD = "localization";
     private static final String ACTION = "action";
+    private static final String LOCAL = "local";
+    private static final String RU = "ru";
+    private static final String EN = "en";
 
 
     @Override
@@ -59,9 +62,10 @@ public class SimpleSignFilter implements Filter {
         boolean loggedIn = (session != null) && (session.getAttribute(UserEnum.USER.getValue()) != null);
         boolean availableLocalRequest = false;
         String pageRequest;
-        if ((req.getParameter(METHOD)).equals(LOCAL_METHOD)) {
+        if (LOCAL_METHOD.equals(req.getParameter(METHOD))) {
+            String local = req.getParameter(LOCAL);
             pageRequest = req.getParameter(PaginationEnum.PAGE.getValue());
-            availableLocalRequest = isAvailableLocalPage(pageRequest);
+            availableLocalRequest = isAvailableLocalPage(pageRequest) && (RU.equals(local) || EN.equals(local));
         }
         String requestAction = req.getParameter(ACTION);
         boolean availableAction = availableActionRequest.contains(requestAction);
@@ -79,6 +83,6 @@ public class SimpleSignFilter implements Filter {
     }
 
     private boolean isAvailableLocalPage(String page) {
-        return availableLocalPages.contains(page);
+        return availableLocalPages.contains(page) ;
     }
 }

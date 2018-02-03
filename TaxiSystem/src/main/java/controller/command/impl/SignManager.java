@@ -61,6 +61,8 @@ public class SignManager implements ControllerCommand {
             case GO_HOME_PAGE:
                 goHomePage(req, resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 
@@ -128,7 +130,7 @@ public class SignManager implements ControllerCommand {
         String password = req.getParameter(UserEnum.PASSWORD.getValue());
         String firstName = req.getParameter(UserEnum.NAME.getValue());
         String lastName = req.getParameter(UserEnum.SURNAME.getValue());
-        String mail = req.getParameter(UserEnum.EMAIL.getValue()).toLowerCase();
+        String mail = req.getParameter(UserEnum.EMAIL.getValue());
         String carNumber = req.getParameter(OrderEnum.CHECKED_CAR.getValue());
         String role = req.getParameter(UserEnum.ROLE.getValue());
         if (role.equals(UserEnum.CLIENT.getValue())) {

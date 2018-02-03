@@ -103,17 +103,17 @@ public class ConnectionPool implements IConnectionPool{
     @Override
     public void closeConnection(Connection con, Statement st, ResultSet rs) {
         try {
-            con.close();
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-        try {
             rs.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             st.close();
+        } catch (SQLException ex) {
+            log.error(ex.getMessage());
+        }
+        try {
+            con.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
@@ -128,12 +128,12 @@ public class ConnectionPool implements IConnectionPool{
     @Override
     public void closeConnection(Connection con, Statement st) {
         try {
-            con.close();
+            st.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
-            st.close();
+            con.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
@@ -149,17 +149,17 @@ public class ConnectionPool implements IConnectionPool{
     @Override
     public void closeConnection(Connection con, PreparedStatement st, ResultSet rs) {
         try {
-            con.close();
-        } catch (SQLException ex) {
-            log.error(ex.getMessage());
-        }
-        try {
             rs.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
             st.close();
+        } catch (SQLException ex) {
+            log.error(ex.getMessage());
+        }
+        try {
+            con.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
@@ -174,12 +174,12 @@ public class ConnectionPool implements IConnectionPool{
     @Override
     public void closeConnection(Connection con, PreparedStatement st) {
         try {
-            con.close();
+            st.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }
         try {
-            st.close();
+            con.close();
         } catch (SQLException ex) {
             log.error(ex.getMessage());
         }

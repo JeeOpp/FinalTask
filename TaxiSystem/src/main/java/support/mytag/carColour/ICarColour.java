@@ -12,6 +12,7 @@ public interface ICarColour {
     String SKY = "local.colour.sky";
     String BLUE = "local.colour.blue";
     String PURPLE = "local.colour.purple";
+    String GREY = "local.colour.grey";
     String BLACK = "local.colour.black";
     String WHITE = "local.colour.white";
 }

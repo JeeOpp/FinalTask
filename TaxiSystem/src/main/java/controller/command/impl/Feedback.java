@@ -54,6 +54,8 @@ public class Feedback implements ControllerCommand {
             case DELETE_REVIEW:
                 deleteReview(req,resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 

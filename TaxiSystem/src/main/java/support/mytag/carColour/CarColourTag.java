@@ -60,6 +60,8 @@ public class CarColourTag extends TagSupport implements ICarColour {
             case PURPLE:
                 bodyText = resourceBundle.getString(PURPLE);
                 break;
+            case GREY:
+                bodyText = resourceBundle.getString(GREY);
             case BLACK:
                 bodyText = resourceBundle.getString(BLACK);
                 break;

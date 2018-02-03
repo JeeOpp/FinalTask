@@ -16,6 +16,8 @@ import java.io.IOException;
 public class Controller extends HttpServlet{
     private static final String METHOD = "method";
     private static final String TEXT_CONTENT_TYPE = "text/html";
+    private static final String REDIRECT_INDEX = "index.jsp";
+    private final static String REDIRECT_HOME = "Controller?method=signManager&action=goHomePage";
 
 
     @Override
@@ -28,10 +30,17 @@ public class Controller extends HttpServlet{
         resp.setContentType(TEXT_CONTENT_TYPE);
 
         String method = req.getParameter(METHOD);
-
-        ControllerDirector controllerDirector = new ControllerDirector();
-        ControllerCommand controllerCommand = controllerDirector.getCommand(method);
-        controllerCommand.execute(req,resp);
+        if(method!=null){
+            ControllerDirector controllerDirector = new ControllerDirector();
+            ControllerCommand controllerCommand = controllerDirector.getCommand(method);
+            if(controllerCommand!=null) {
+                controllerCommand.execute(req, resp);
+            }else {
+                resp.sendRedirect(REDIRECT_HOME); //or 404
+            }
+        }else {
+            resp.sendRedirect(REDIRECT_INDEX); //or 404
+        }
     }
 
     @Override

@@ -27,6 +27,7 @@ public enum CarEnum {
         SKY("sky"),
         BLUE("blue"),
         PURPLE("purple"),
+        GREY("grey"),
         BLACK("black"),
         WHITE("white"),
         NONE("none");

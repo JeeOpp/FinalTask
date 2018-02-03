@@ -31,6 +31,8 @@ public class Dispatcher implements ControllerCommand {
     private final static String REQ_PRE_ORDER = "Controller?method=dispatcher&action=preOrder";
     private final static String REQ_ALL_ORDER = "Controller?method=dispatcher&action=getAllOrders";
     private final static String AVAILABLE_TAXI = "availableTaxiList";
+    private final static String REFRESH_HEADER = "Refresh";
+    private final static String TIME_IN_SEC = "5";
     private final static String ZERO_COUNT = "0";
     private final static int INVALID_ORDER = -1;
     private final static int DEFAULT_PAGE = 1;
@@ -86,6 +88,8 @@ public class Dispatcher implements ControllerCommand {
             case REJECT_ORDER:
                 rejectOrder(req, resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 
@@ -106,6 +110,7 @@ public class Dispatcher implements ControllerCommand {
             DispatcherService dispatcherService = serviceFactory.getDispatcherService();
             List<Order> orderList = dispatcherService.getClientOrders(client);
             req.setAttribute(OrderEnum.CLIENT_ORDER.getValue(), orderList);
+            resp.setHeader(REFRESH_HEADER, TIME_IN_SEC);
             req.getRequestDispatcher(CLIENT_ORDER_PAGE).forward(req, resp);
         } else {
             resp.sendRedirect(REDIRECT_HOME);

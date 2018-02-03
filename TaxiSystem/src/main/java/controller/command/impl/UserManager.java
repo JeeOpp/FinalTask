@@ -80,6 +80,8 @@ public class UserManager implements ControllerCommand {
             case RESTORE_PASSWORD:
                 restorePassword(req, resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 

@@ -49,6 +49,8 @@ public class Mailer implements ControllerCommand {
             case PRE_RESTORE:
                 preRestore(req, resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 
@@ -84,16 +86,18 @@ public class Mailer implements ControllerCommand {
         UserManagerService userManagerService = serviceFactory.getUserManagerService();
         String hashPassword = userManagerService.getHashPassword(mail);
 
-        String locale = (String) req.getSession().getAttribute(LOCALE_PARAMETER);
-        if (locale == null){
-            locale = DEFAULT_LOCALE;
-        }
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE, new Locale(locale));
-        String restoreSubject = resourceBundle.getString(SUBJECT_LOCALE);
-        String restoreText = resourceBundle.getString(TEXT_LOCALE) + "\n" + createRestoreLink(mail, hashPassword);
+        if(hashPassword!=null) {
+            String locale = (String) req.getSession().getAttribute(LOCALE_PARAMETER);
+            if (locale == null) {
+                locale = DEFAULT_LOCALE;
+            }
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE, new Locale(locale));
+            String restoreSubject = resourceBundle.getString(SUBJECT_LOCALE);
+            String restoreText = resourceBundle.getString(TEXT_LOCALE) + "\n" + createRestoreLink(mail, hashPassword);
 
-        Thread sendMail = new Thread(new TLSSender(mail, restoreText, restoreSubject));
-        sendMail.start();
+            Thread sendMail = new Thread(new TLSSender(mail, restoreText, restoreSubject));
+            sendMail.start();
+        }
         resp.sendRedirect(INDEX_PAGE);
     }
 

@@ -16,6 +16,7 @@ import java.io.IOException;
 public class Localization implements ControllerCommand {
     private final static String LOCALE_PARAMETER = "local";
     private final static String LOCALE_COOKIE = "LOCAL";
+    private final static String INDEX_PAGE = "index.jsp";
 
     /**
      * Get the page localization parameter.
@@ -34,6 +35,11 @@ public class Localization implements ControllerCommand {
         resp.addCookie(getLocal);
 
         req.getSession().setAttribute(LOCALE_PARAMETER, local);
-        req.getRequestDispatcher(req.getParameter(PaginationEnum.PAGE.getValue())).forward(req, resp);
+        String page = req.getParameter(PaginationEnum.PAGE.getValue());
+        if(page != null && !page.isEmpty()){
+            req.getRequestDispatcher(page).forward(req, resp);
+        }else{
+            resp.sendRedirect(INDEX_PAGE);
+        }
     }
 }

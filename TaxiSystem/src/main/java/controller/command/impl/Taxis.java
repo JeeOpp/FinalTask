@@ -47,6 +47,8 @@ public class Taxis implements ControllerCommand {
             case REMOVE_CAR:
                 removeCar(req, resp);
                 break;
+            case NONE:
+                resp.sendRedirect(REDIRECT_HOME);
         }
     }
 

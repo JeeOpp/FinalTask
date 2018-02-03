@@ -102,7 +102,7 @@
         </div>
         <div id="login">
             <h1>${signInText}</h1>
-            <form action="Controller" method="get">
+            <form action="Controller" method="post">
                 <input type="hidden" name="method" value="signManager"/>
                 <input type="hidden" name="action" value="authorization"/>
                 <div class="field-wrap">

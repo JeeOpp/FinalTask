@@ -14,6 +14,7 @@
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4.5" />
           <element id="library" level="project" name="Maven: com.sun.mail:smtp:1.4.4" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.4" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
