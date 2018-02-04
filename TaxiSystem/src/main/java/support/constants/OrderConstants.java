@@ -7,7 +7,6 @@ public class OrderConstants {
     public static final String ORDER_ID ="orderId";
     public static final String CLIENT_ORDER = "clientOrder";
     public static final String TAXI_ORDER = "taxiOrder";
-    public static final String ORDER_STATUS = "orderStatus";
     public static final String SOURCE_COORD = "sourceCoordinate";
     public static final String DESTINY_COORD = "destinyCoordinate";
     public static final String BONUS = "bonus";

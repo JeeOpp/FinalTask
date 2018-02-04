@@ -72,7 +72,7 @@ public class SignDAOImpl implements SignDAO {
             preparedStatement.setString(2, MD5.md5Hash(password));
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                client = new Client.ClientBuilder().build();
+                client = new Client();
                 client.setFromResultSet(resultSet);
             }
         } catch (ConnectionPoolException | SQLException ex) {

@@ -5,7 +5,6 @@ package support.constants;
  */
 public class PaginationConstants {
     public static final String PAGE = "page";
-    public static final String RECORDS = "records";
     public static final String NUM_PAGE = "numPage";
     public static final String PAGE_COUNT = "countPages";
     public static final String PAGE_CLIENT_LIST = "pageClientList";

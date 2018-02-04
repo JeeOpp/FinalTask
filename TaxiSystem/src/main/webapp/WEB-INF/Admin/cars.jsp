@@ -20,7 +20,7 @@
     <fmt:message bundle="${loc}" key="local.all.logOut" var="logOut"/>
     <fmt:message bundle="${loc}" key="local.all.close" var="close"/>
     <fmt:message bundle="${loc}" key="local.all.car.number" var="carNumber"/>
-    <fmt:message bundle="${loc}" key="local.all.car.name" var="carName"/>
+    <fmt:message bundle="${loc}" key="local.all.car.name" var="locCarName"/>
     <fmt:message bundle="${loc}" key="local.all.car.colour" var="colour"/>
     <fmt:message bundle="${loc}" key="local.admin.cars.title" var="title"/>
     <fmt:message bundle="${loc}" key="local.admin.cars.addCarTitle" var="addCar"/>
@@ -81,7 +81,7 @@
     <thead class="thead-dark">
     <tr class="tr-text">
         <th>${carNumber}</th>
-        <th>${carName}</th>
+        <th>${locCarName}</th>
         <th>${colour}</th>
         <th>${action}</th>
     </tr>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="modal-body">
                     <span class="label-line"><label for="carNumber">${carNumber}</label></span><input type="text" id="carNumber" name="carNumber" pattern="^[a-zA-Z0-9]+$" required/><br/>
-                    <span class="label-line"><label for="carName">${carName}</label></span><input type="text" id="carName" name="carName" required><br/>
+                    <span class="label-line"><label for="carName">${locCarName}</label></span><input type="text" id="carName" name="carName" required/><br/>
                     <span class="label-line"><label for="carColour">${colour}</label></span><input type="text" id="carColour" name="carColour" required/><br/>
                 </div>
                 <div class="modal-footer">
